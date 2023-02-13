@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   events.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
+/*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 12:43:10 by syluiset          #+#    #+#             */
-/*   Updated: 2023/01/31 01:05:44 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/13 17:48:50 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,7 +151,7 @@ void	move_coins(t_param *param, t_gps *new, int direction)
 
 int render_next_frame(int keycode, t_param *param)
 {
-	//ft_printf("%d", keycode);
+	ft_printf("%d", keycode);
 	if (keycode == 65307)
 		close_win(param);
 	if (keycode == 97)

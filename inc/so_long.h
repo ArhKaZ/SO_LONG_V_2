@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 11:22:07 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/13 16:36:08 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/13 17:20:43 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -333,7 +333,7 @@ t_lst_planet	*create_planet(int height, int width, int texture);
 
 void	put_image(t_mlx *mlx, void *sprite, t_gps *new, int plus);
 
-t_ennemy	*del_ennemy(t_param *param, t_gps *coor);
+void	del_ennemy(t_param *param, t_gps *coor);
 
 clock_t	shooting(t_param *param);
 
@@ -348,5 +348,7 @@ void	del_shot(t_param *param);
 int animate_shoot(t_param *param, t_gps *coor);
 
 t_ennemy	*clear_ennemy(t_ennemy *ennemy);
+
+void	free_ennemy(t_ennemy *boss);
 //!bonus
 #endif

@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 16:58:46 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/13 16:20:44 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/13 17:43:07 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,18 +121,21 @@ int	choose_direction(t_param *param)
 	t_ennemy	*first;
 	int			random;
 
+	
 	if (param->map->nb_ennemy > 0)
 	{
+		free_ennemy(param->boss);
+		param->boss = get_ennemy(param->map);
 		first = param->boss;
 		while (param->boss != NULL)
 		{
-			if (param->boss->next != NULL)
-			{
-				if (param->map->map[param->boss->next->coor->y][param->boss->next->coor->x] == 'V')
-				{
-					param->boss = clear_ennemy(param->boss);
-				}
-			}
+			// if (param->boss->next != NULL)
+			// {
+			// 	if (param->map->map[param->boss->next->coor->y][param->boss->next->coor->x] == 'V')
+			// 	{
+			// 		param->boss = clear_ennemy(param->boss);
+			// 	}
+			// }
 			random = get_random(50);
 			if (random == 0)
 				move_ennemy_left(param, param->boss->coor);
@@ -156,7 +159,7 @@ int	animation(t_param *param)
 	choose_direction(param);
 	put_frame_for_coin(param);
 	animate_black_hole(param);
-	//game_over(param);
+	game_over(param);
 	usleep(50000);
 	return (0);
 }

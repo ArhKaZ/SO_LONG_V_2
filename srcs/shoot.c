@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 17:10:42 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/13 16:20:11 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/13 17:40:02 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,16 +104,15 @@ void	kill_boss(t_param *param, t_gps *new)
 
 void	make_explosion(t_param *param, t_gps *new)
 {
-	put_image(param->mlx, param->textures->background->p, param->shots->coor, 0);
 	if (new->x == 0 || new->y == 0 || new->y == param->map->height - 1 || new->x == param->map->width - 1)
 		return ;
 	else
 	{
 		put_image(param->mlx, param->textures->explode->frame1->p, new, 0);
-		usleep(5000);
+		usleep(50000);
 		put_image(param->mlx, param->textures->explode->planet_explosion->p, new, 19);
 		put_image(param->mlx, param->textures->explode->frame2->p, new, 0);
-		usleep(5000);
+		usleep(50000);
 		put_image(param->mlx, param->textures->background->p, new, 0);
 		put_image(param->mlx, param->textures->planets->planet_exp->p, new, 8);
 	}
@@ -159,6 +158,7 @@ bool	put_shot_in_coor(t_param *param, t_gps *new)
 	value_case = param->map->map[new->y][new->x];
 	if (value_case == '1')
 	{
+		put_image(param->mlx, param->textures->background->p, param->shots->coor, 0);
 		make_explosion(param, new);
 		param->map->map[param->shots->coor->y][param->shots->coor->x] = '0';
 		return (false);
@@ -208,7 +208,7 @@ void	create_new_shot(t_param *param)
 	}
 	if (param->map->map[shot->coor->y][shot->coor->x] == 'D')
 	{
-		param->boss = del_ennemy(param, shot->coor);
+		del_ennemy(param, shot->coor);
 		put_image(param->mlx, param->textures->background->p, shot->coor, 0);
 		return ;
 	}
@@ -242,7 +242,7 @@ bool	move_shot(t_param *param)
 
 	ret = true;
 	actual = clock();
-	if ((actual - param->shots->shoot_time) * 1000 / CLOCKS_PER_SEC > 3)
+	if ((actual - param->shots->shoot_time) * 1000 / CLOCKS_PER_SEC > 1)
 	{
 		new = get_next_coor_s(param->shots->direction, param->shots->coor);
 		if (put_shot_in_coor(param, new) == false)
