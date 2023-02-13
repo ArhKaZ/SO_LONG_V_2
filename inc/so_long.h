@@ -1,0 +1,352 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   so_long.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/01/16 11:22:07 by syluiset          #+#    #+#             */
+/*   Updated: 2023/02/13 16:36:08 by syluiset         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#ifndef SO_LONG_H
+# define SO_LONG_H
+# include "../minilibx/mlx.h"
+# include "../Libft_w_a/libft.h"
+# include <stdbool.h>
+# include <fcntl.h>
+
+//!bonus
+#include <unistd.h>
+#include <time.h>
+//!bonus
+
+typedef struct s_mlx
+{
+	void	*mlx;
+	void	*mlx_win;
+}				t_mlx;
+
+typedef struct s_gps
+{
+	int	y;
+	int	x;
+}				t_gps;
+
+typedef struct s_player
+{
+	t_gps	*coor;
+	int		collect;
+	int		moves;
+	int		hp;
+	int		direction;
+}				t_player;
+
+typedef struct s_ennemy
+{
+	t_gps	*coor;
+	struct s_ennemy	*next;
+}				t_ennemy;
+
+typedef struct s_texture
+{
+	void	*p;
+	char	*path;
+	t_gps	*size;
+}				t_texture;
+
+typedef struct s_coins
+{
+	t_texture	*frame1;
+	t_texture	*frame2;
+	t_texture	*frame3;
+	t_texture	*frame4;
+	t_texture	*frame5;
+	t_texture	*frame6;
+	t_texture	*frame7;
+	t_texture	*frame8;
+	t_texture	*frame9;
+	t_texture	*frame10;
+	t_texture	*frame11;
+	t_texture	*frame12;
+	t_texture	*frame13;
+	t_texture	*frame14;
+	t_texture	*frame15;
+	int			frame_act;
+}					t_coins;
+
+//!bonus
+typedef struct s_hp
+{
+	t_texture	*full;
+	t_texture	*empty;
+}				t_hp;
+
+typedef struct s_black_hole
+{
+	t_texture	*frame1;
+	t_texture	*frame2;
+	t_texture	*frame3;
+	t_texture	*frame4;
+	t_texture	*frame5;
+	t_texture	*frame6;
+	t_texture	*frame7;
+	t_texture	*frame8;
+	t_texture	*frame9;
+	int			frame_act;
+}				t_black_hole;
+//!bonus
+
+typedef	struct s_sprite_boss
+{
+	t_texture	*boss_top;
+	t_texture	*boss_left;
+	t_texture	*boss_right;
+	t_texture	*boss_bottom;
+}				t_sprite_boss;
+
+typedef struct s_sprite_player
+{
+	t_texture	*player_top;
+	t_texture	*player_bottom;
+	t_texture	*player_right;
+	t_texture	*player_left;
+}				t_sprite_player;
+
+typedef	struct s_explode
+{
+	t_texture	*frame1;
+	t_texture	*frame2;
+	t_texture	*planet_explosion;
+	t_texture	*boss_explosion1;
+	t_texture	*boss_explosion2;
+	t_texture	*boss_explosion3;
+}				t_explode;
+
+typedef	struct s_sprite_planet
+{
+	t_texture	*planet_1;
+	t_texture	*planet_2;
+	t_texture	*planet_3;
+	t_texture	*planet_4;
+	t_texture	*planet_exp;
+}				t_sprite_planet;
+
+typedef struct s_shoot_texture
+{
+	t_texture	*frame1_left;
+	t_texture	*frame1_top;
+	t_texture	*frame1_right;
+	t_texture	*frame1_bot;
+	t_texture	*frame2_left;
+	t_texture	*frame2_top;
+	t_texture	*frame2_right;
+	t_texture	*frame2_bot;
+	t_texture	*frame3_left;
+	t_texture	*frame3_top;
+	t_texture	*frame3_right;
+	t_texture	*frame3_bot;
+	t_texture	*frame4_left;
+	t_texture	*frame4_top;
+	t_texture	*frame4_right;
+	t_texture	*frame4_bot;
+	int			frame_act;
+}				t_shoot_texture;
+
+typedef struct s_shoot
+{
+	t_gps 			*coor;
+	int 			direction;
+	clock_t			shoot_time;
+}				t_shoot;
+
+typedef struct s_go
+{
+	t_texture	*little;
+	t_texture	*medium;
+	t_texture	*big;
+}				t_go;
+
+typedef struct s_all_texture
+{
+	t_texture	*wall;
+	t_texture	*background;
+	t_texture	*exit;
+	t_coins		*coin;
+	t_sprite_player	*player;
+	//!bonus
+	t_sprite_boss	*ennemy;
+	t_black_hole	*black_hole;
+	t_hp			*hp;
+	t_go			*game_over;
+	t_explode		*explode;
+	t_sprite_planet	*planets;
+	t_shoot_texture		*shoot;
+	//!bonus
+}				t_all_texture;
+
+typedef struct s_lst_planet
+{
+	t_gps	*coor;
+	int		texture;
+	struct s_lst_planet	*next;
+}				t_lst_planet;
+
+typedef	struct s_map
+{
+	int	nb_empty;
+	int	nb_wall;
+	int	nb_item;
+	//!bonus
+	int	nb_ennemy;
+	t_gps	*coor_exit;
+	int		nb_shot;
+	//!bonus
+	int	exit;
+	int	begin;
+	char	**map;
+	int	height;
+	int	width;
+	t_lst_planet	*planets;
+}				t_map;
+
+typedef struct s_param
+{
+	t_map			*map;
+	t_mlx			*mlx;
+	t_player 		*player;
+	t_all_texture	*textures;
+	//!bonus
+	t_ennemy		*boss;
+	t_shoot			*shots;
+	//!bonus
+}				t_param;
+
+bool	check_extension(char *path);
+
+void	print_map(char **map);
+
+t_map	*create_empty_map(void);
+
+t_gps	*create_empty_gps(void);
+
+t_player	*create_empty_player(void);
+
+t_mlx	*create_empty_mlx(void);
+
+t_param		*create_param(t_map *map, t_mlx *mlx, t_player *player, t_all_texture *all_texture);
+
+void	try_go_wall(char **map_cp, t_gps *coor, t_map *map, int direction);
+
+bool	change_to_x(t_map *map, char **map_cp, int x, int y);
+
+char	*get_map_to_string(char *path, t_map *map);
+
+bool	get_map(char *path, t_map *map);
+
+bool	checking_map(t_map *map);
+
+void	create_visu(t_map *map, t_mlx *mlx, t_gps *player, t_all_texture *all_texture);
+
+int		render_next_frame(int keycode, t_param *param);
+
+t_all_texture	*create_all_texture(t_mlx *mlx);
+
+void	free_all(t_param *param);
+
+void	free_player(t_player *player);
+
+void	free_map(t_map *map);
+
+void	put_strings(t_map *map, t_mlx *mlx, t_player *player, t_all_texture *textures);
+
+void	put_move(t_map *map, t_mlx *mlx, t_player *player, t_all_texture *textures);
+
+void	put_score(t_map *map, t_mlx *mlx, t_player *player, t_all_texture *textures);
+
+int		get_random(int nb_max);
+
+bool	map_is_finishable(t_map *map);
+
+void	free_char_map(char **map);
+
+int		close_win(t_param *param);
+
+void	put_coins(t_map *map, void *mlx, void *mlx_win, t_texture *coin);
+
+void	move_left(t_param *param);
+
+void	move_right(t_param *param);
+
+void	move_top(t_param *param);
+
+void	move_bottom(t_param *param);
+
+int		move_exit(t_param *param, t_gps *new, int move);
+
+void	move_player_sprite(t_param *param, t_gps *new, int direction);
+
+void	move_player(t_map *map, t_player *player, t_gps *new);
+
+void	move_coins(t_param *param, t_gps *new, int direction);
+
+void	not_move_player_sprite(t_param *param, int direction);
+
+void	free_texture(t_texture *text, void *mlx);
+//!bonus
+bool	put_shot_in_coor(t_param *param, t_gps *new);
+
+int		put_frame_for_coin(t_param *param);
+
+int		put_exit_animate(t_param *param);
+
+int		get_random(int nb_max);
+
+int	move_ennemy_left(t_param *param, t_gps *ennemy);
+
+int	move_ennemy_right(t_param *param, t_gps *ennemy);
+
+int	move_ennemy_top(t_param *param, t_gps *ennemy);
+
+int	move_ennemy_bottom(t_param *param, t_gps *ennemy);
+
+t_ennemy	*get_ennemy(t_map *map);
+
+int		choose_direction(t_param *param);
+
+void	move_to_boss(t_param *param, int direction);
+
+void	not_move_ennemy_sprite(t_param *param, int direction);
+
+void	less_hp(t_param *param, int direction);
+
+void	put_hp(t_map *map, t_mlx *mlx, t_player *player, t_all_texture *text);
+
+int	game_over(t_param *param);
+
+int	animation(t_param *param);
+
+void	lst_planet_add_back(t_lst_planet **lst, t_lst_planet *new);
+
+t_lst_planet	*create_planet(int height, int width, int texture);
+
+void	put_image(t_mlx *mlx, void *sprite, t_gps *new, int plus);
+
+t_ennemy	*del_ennemy(t_param *param, t_gps *coor);
+
+clock_t	shooting(t_param *param);
+
+int	animate_shoot(t_param *param, t_gps *coor);
+
+int	shoot_exist(t_param *param);
+
+void	create_new_shot(t_param *param);
+
+void	del_shot(t_param *param);
+
+int animate_shoot(t_param *param, t_gps *coor);
+
+t_ennemy	*clear_ennemy(t_ennemy *ennemy);
+//!bonus
+#endif
