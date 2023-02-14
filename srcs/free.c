@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 16:29:58 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/13 17:59:17 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/14 15:50:56 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,14 @@ void	free_map(t_map *map)
 	int i;
 
 	i = 0;
-	while (map->map[i])
+	while (map->map[i] != NULL)
 	{
 		free(map->map[i]);
 		i++;
 	}
-	free(map->map[i]);
+	//free(map->map[i]);
 	free(map->map);
+	free(map->coor_exit);
 	free(map);
 }
 
@@ -124,17 +125,59 @@ void	free_planets(t_sprite_planet *p, void *mlx)
 	free(p);
 }
 
+void	free_go(t_go *go, void *mlx)
+{
+	free_texture(go->little, mlx);	
+	//free_texture(go->medium, mlx);	
+	free_texture(go->big, mlx);	
+	free(go);
+}
+
+void	free_explode(t_explode *ex, void *mlx)
+{
+	free_texture(ex->frame1, mlx);
+	free_texture(ex->frame2, mlx);
+	free_texture(ex->planet_explosion, mlx);
+	free_texture(ex->boss_explosion1, mlx);
+	free_texture(ex->boss_explosion2, mlx);
+	free_texture(ex->boss_explosion3, mlx);
+	free(ex);
+}
+
+void	free_shoot(t_shoot_texture *s, void *mlx)
+{
+	free_texture(s->frame1_left, mlx);
+	free_texture(s->frame1_top, mlx);
+	free_texture(s->frame1_right, mlx);
+	free_texture(s->frame1_bot, mlx);
+	free_texture(s->frame2_left, mlx);
+	free_texture(s->frame2_top, mlx);
+	free_texture(s->frame2_right, mlx);
+	free_texture(s->frame2_bot, mlx);
+	free_texture(s->frame3_left, mlx);
+	free_texture(s->frame3_top, mlx);
+	free_texture(s->frame3_right, mlx);
+	free_texture(s->frame3_bot, mlx);
+	free_texture(s->frame4_left, mlx);
+	free_texture(s->frame4_top, mlx);
+	free_texture(s->frame4_right, mlx);
+	free_texture(s->frame4_bot, mlx);
+	free(s);
+}
+
 void	free_textures(t_all_texture *texts, void *mlx)
 {
 	free_texture(texts->background, mlx);
 	free_coin(texts->coin, mlx);
-	free_texture(texts->exit, mlx);
+	free_planets(texts->planets, mlx);
 	free_player_s(texts->player, mlx);
+	free_texture(texts->wall, mlx);
 	free_ennemy_s(texts->ennemy, mlx);
 	free_black_hole(texts->black_hole, mlx);
 	free_hp(texts->hp, mlx);
-	free_planets(texts->planets); //TODO:FAIRE LE RESTE
-	free_texture(texts->wall, mlx);
+	free_go(texts->game_over, mlx);
+	free_explode(texts->explode, mlx);
+	free_shoot(texts->shoot, mlx);
 	free(texts);
 }
 
@@ -143,5 +186,7 @@ void	free_all(t_param *param)
 	free_map(param->map);
 	free_player(param->player);
 	free_textures(param->textures, param->mlx->mlx);
+	free_ennemy(param->boss);
+	free(param->mlx);
 	free(param);
 }

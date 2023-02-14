@@ -6,35 +6,11 @@
 /*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 16:58:46 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/13 17:43:07 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/14 17:07:38 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
-t_gps	*find_exit(t_param *param)
-{
-	t_gps	*exit;
-	int i;
-	int j;
-
-	i = 0;
-	exit = create_empty_gps();
-	while (param->map->map[i] != NULL)
-	{
-		j = 0;
-		while (param->map->map[i][j])
-		{
-			if (param->map->map[i][j] == 'E')
-			{
-				exit->x = j;
-				exit->y = i;
-			}
-			j++;
-		}
-		i++;
-	}
-	return (exit);
-}
 
 int	animate_black_hole(t_param *param)
 {
@@ -121,7 +97,6 @@ int	choose_direction(t_param *param)
 	t_ennemy	*first;
 	int			random;
 
-	
 	if (param->map->nb_ennemy > 0)
 	{
 		free_ennemy(param->boss);
@@ -129,13 +104,6 @@ int	choose_direction(t_param *param)
 		first = param->boss;
 		while (param->boss != NULL)
 		{
-			// if (param->boss->next != NULL)
-			// {
-			// 	if (param->map->map[param->boss->next->coor->y][param->boss->next->coor->x] == 'V')
-			// 	{
-			// 		param->boss = clear_ennemy(param->boss);
-			// 	}
-			// }
 			random = get_random(50);
 			if (random == 0)
 				move_ennemy_left(param, param->boss->coor);
@@ -154,13 +122,16 @@ int	choose_direction(t_param *param)
 
 int	animation(t_param *param)
 {
-	if (shoot_exist(param) == 1)
-		animate_shoot(param, param->shots->coor);
-	choose_direction(param);
-	put_frame_for_coin(param);
-	animate_black_hole(param);
-	game_over(param);
-	usleep(50000);
+	if (param->finish == false)
+	{
+		if (shoot_exist(param) == 1)
+			animate_shoot(param, param->shots->coor);
+		choose_direction(param);
+		put_frame_for_coin(param);
+		animate_black_hole(param);
+		game_over(param);
+		usleep(50000);
+	}
 	return (0);
 }
 

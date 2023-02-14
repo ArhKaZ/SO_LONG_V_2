@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 15:01:15 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/13 17:32:43 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/14 15:20:01 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	free_ennemy(t_ennemy *boss)
 {
 	t_ennemy	*temp;
 	t_ennemy	*tempnxt;
-
+	
 	if (!boss)
 		return ;
 	tempnxt = boss;
@@ -82,6 +82,7 @@ void	del_ennemy(t_param *param, t_gps *coor)
 		// free(temp);
 		// temp = next;
 		param->map->map[coor->y][coor->x] = '0';
+		param->map->nb_ennemy -= 1;
 	}
 	else
 	{
@@ -97,6 +98,7 @@ void	del_ennemy(t_param *param, t_gps *coor)
 				// free(temp->coor);
 				// free(temp);
 				param->map->map[coor->y][coor->x] = '0';
+				param->map->nb_ennemy -= 1;		
 				break;
 			}
 			temp = temp->next;

@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 11:22:07 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/13 17:20:43 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/14 17:08:26 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,6 @@ typedef struct s_coins
 	int			frame_act;
 }					t_coins;
 
-//!bonus
 typedef struct s_hp
 {
 	t_texture	*full;
@@ -96,7 +95,6 @@ typedef struct s_black_hole
 	t_texture	*frame9;
 	int			frame_act;
 }				t_black_hole;
-//!bonus
 
 typedef	struct s_sprite_boss
 {
@@ -172,10 +170,8 @@ typedef struct s_all_texture
 {
 	t_texture	*wall;
 	t_texture	*background;
-	t_texture	*exit;
 	t_coins		*coin;
 	t_sprite_player	*player;
-	//!bonus
 	t_sprite_boss	*ennemy;
 	t_black_hole	*black_hole;
 	t_hp			*hp;
@@ -183,15 +179,7 @@ typedef struct s_all_texture
 	t_explode		*explode;
 	t_sprite_planet	*planets;
 	t_shoot_texture		*shoot;
-	//!bonus
 }				t_all_texture;
-
-typedef struct s_lst_planet
-{
-	t_gps	*coor;
-	int		texture;
-	struct s_lst_planet	*next;
-}				t_lst_planet;
 
 typedef	struct s_map
 {
@@ -208,7 +196,6 @@ typedef	struct s_map
 	char	**map;
 	int	height;
 	int	width;
-	t_lst_planet	*planets;
 }				t_map;
 
 typedef struct s_param
@@ -220,6 +207,7 @@ typedef struct s_param
 	//!bonus
 	t_ennemy		*boss;
 	t_shoot			*shots;
+	bool			finish;
 	//!bonus
 }				t_param;
 
@@ -259,7 +247,7 @@ void	free_player(t_player *player);
 
 void	free_map(t_map *map);
 
-void	put_strings(t_map *map, t_mlx *mlx, t_player *player, t_all_texture *textures);
+void	put_strings(t_param *param);
 
 void	put_move(t_map *map, t_mlx *mlx, t_player *player, t_all_texture *textures);
 
@@ -294,8 +282,12 @@ void	move_coins(t_param *param, t_gps *new, int direction);
 void	not_move_player_sprite(t_param *param, int direction);
 
 void	free_texture(t_texture *text, void *mlx);
-//!bonus
+
+void	free_textures(t_all_texture *texts, void *mlx);
+
 bool	put_shot_in_coor(t_param *param, t_gps *new);
+
+int		game_finish(t_param *param);
 
 int		put_frame_for_coin(t_param *param);
 
@@ -327,10 +319,6 @@ int	game_over(t_param *param);
 
 int	animation(t_param *param);
 
-void	lst_planet_add_back(t_lst_planet **lst, t_lst_planet *new);
-
-t_lst_planet	*create_planet(int height, int width, int texture);
-
 void	put_image(t_mlx *mlx, void *sprite, t_gps *new, int plus);
 
 void	del_ennemy(t_param *param, t_gps *coor);
@@ -350,5 +338,4 @@ int animate_shoot(t_param *param, t_gps *coor);
 t_ennemy	*clear_ennemy(t_ennemy *ennemy);
 
 void	free_ennemy(t_ennemy *boss);
-//!bonus
 #endif

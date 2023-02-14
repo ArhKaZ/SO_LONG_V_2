@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 12:43:10 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/13 17:48:50 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/14 16:58:47 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 int	close_win(t_param *param)
 {
-
 	mlx_destroy_window(param->mlx->mlx, param->mlx->mlx_win);
 	free_all(param);
 	exit(EXIT_SUCCESS);
@@ -73,27 +72,15 @@ void	move_player_sprite(t_param *param, t_gps *new, int direction)
 	void	*sprite;
 
 	sprite = NULL;
+	param->player->direction = direction;
 	if (direction == 1)
-	{
 		sprite = param->textures->player->player_left->p;
-		param->player->direction = 1;
-	}
 	if (direction == 2)
-	{
 		sprite = param->textures->player->player_top->p;
-		param->player->direction = 2;
-	}
 	if (direction == 3)
-	{
 		sprite = param->textures->player->player_right->p;
-		param->player->direction = 3;
-	}
 	if (direction == 4)
-	{
 		sprite = param->textures->player->player_bottom->p;
-		param->player->direction = 4;
-	}
-
 	move_player(param->map, param->player, new);
 	mlx_put_image_to_window(param->mlx->mlx, param->mlx->mlx_win, sprite, new->x * 64 + 9, new->y * 64 + 9);
 	sprite = param->textures->background->p;
@@ -108,7 +95,7 @@ int	move_exit(t_param *param, t_gps *new, int move)
 	if (param->player->collect == param->map->nb_item)
 	{
 		move_player_sprite(param, new, move);
-		close_win(param);
+		game_finish(param);
 	}
 	else
 		not_move_player_sprite(param, move);
@@ -151,21 +138,21 @@ void	move_coins(t_param *param, t_gps *new, int direction)
 
 int render_next_frame(int keycode, t_param *param)
 {
-	ft_printf("%d", keycode);
+	if (param->finish == false)
+	{
+		if (keycode == 97)
+			move_left(param);
+		if (keycode == 115)
+			move_bottom(param);
+		if (keycode == 100)
+			move_right(param);
+		if (keycode == 119)
+			move_top(param);
+		if (keycode == 32 && param->map->nb_shot == 0)
+			create_new_shot(param);
+		put_move(param->map, param->mlx, param->player, param->textures);
+	}
 	if (keycode == 65307)
-		close_win(param);
-	if (keycode == 97)
-		move_left(param);
-	if (keycode == 115)
-		move_bottom(param);
-	if (keycode == 100)
-		move_right(param);
-	if (keycode == 119)
-		move_top(param);
-	//!bonus
-	if (keycode == 32 && param->map->nb_shot == 0)
-		create_new_shot(param);
-	//!bonus
-	put_move(param->map, param->mlx, param->player, param->textures);
+			close_win(param);
 	return (0);
 }

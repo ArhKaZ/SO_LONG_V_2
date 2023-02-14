@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   create_visu.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
+/*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 16:50:44 by syluiset          #+#    #+#             */
-/*   Updated: 2023/01/31 01:05:27 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/14 17:01:36 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
 
-void	*get_sprite_obstacle(t_all_texture *texts, t_map *map, int height, int width)
+void	*get_sprite_obstacle(t_all_texture *texts)
 {
 	void	*sprite;
 	int		random;
@@ -20,25 +20,13 @@ void	*get_sprite_obstacle(t_all_texture *texts, t_map *map, int height, int widt
 	sprite = NULL;
 	random = get_random(4);
 	if (random == 0)
-	{
 		sprite = texts->planets->planet_1->p;
-		lst_planet_add_back(&map->planets, create_planet(height, width, 1));
-	}
 	if (random == 1)
-	{
 		sprite = texts->planets->planet_2->p;
-		lst_planet_add_back(&map->planets, create_planet(height, width, 2));
-	}
 	if (random == 2)
-	{
 		sprite = texts->planets->planet_3->p;
-		lst_planet_add_back(&map->planets, create_planet(height, width, 3));
-	}
 	if (random == 3)
-	{
 		sprite = texts->planets->planet_4->p;
-		lst_planet_add_back(&map->planets, create_planet(height, width, 4));
-	}
 	return (sprite);
 }
 
@@ -56,7 +44,7 @@ void	put_obstacle_in_map(t_map *map, void *mlx, void *mlx_win, t_all_texture *te
 		{
 			if (map->map[height][width] == '1')
 			{
-				sprite = get_sprite_obstacle(texts, map, height, width);
+				sprite = get_sprite_obstacle(texts);
 				mlx_put_image_to_window(mlx, mlx_win, sprite, width * 64 + 8, height * 64 + 8);
 			}
 			width++;
@@ -172,7 +160,6 @@ void	put_coins(t_map *map, void *mlx, void *mlx_win, t_texture *coin)
 	}
 }
 
-//!bonus
 void	put_ennemy(t_map *map, void *mlx, void *mlx_win, t_sprite_boss *ennemy)
 {
 	int		height;
@@ -191,7 +178,6 @@ void	put_ennemy(t_map *map, void *mlx, void *mlx_win, t_sprite_boss *ennemy)
 		height++;
 	}
 }
-//!bonus
 
 void	create_visu(t_map *map, t_mlx *mlx, t_gps *player, t_all_texture *all_texture)
 {
@@ -203,5 +189,4 @@ void	create_visu(t_map *map, t_mlx *mlx, t_gps *player, t_all_texture *all_textu
 	put_player(map, mlx, player, all_texture->player->player_top);
 	put_exit(map, mlx->mlx, mlx->mlx_win, all_texture->black_hole);
 	put_ennemy(map, mlx->mlx, mlx->mlx_win, all_texture->ennemy);
-	//?put_exit_animate(map, mlx->mlx, mlx->mlx_win, all_texture->black_hole);
 }

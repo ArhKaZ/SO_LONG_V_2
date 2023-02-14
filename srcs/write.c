@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:14:04 by syluiset          #+#    #+#             */
-/*   Updated: 2023/01/27 12:33:42 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/14 17:09:32 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,9 +73,12 @@ void	put_hp(t_map *map, t_mlx *mlx, t_player *player, t_all_texture *text)
 
 }
 
-void	put_strings(t_map *map, t_mlx *mlx, t_player *player, t_all_texture *text)
+void	put_strings(t_param *param)
 {
-	put_score(map, mlx, player, text);
-	put_move(map, mlx, player, text);
-	put_hp(map, mlx, player, text);
+	if (param->finish == false)
+	{
+		put_score(param->map, param->mlx, param->player, param->textures);
+		put_move(param->map, param->mlx, param->player, param->textures);
+		put_hp(param->map, param->mlx, param->player, param->textures);
+	}
 }

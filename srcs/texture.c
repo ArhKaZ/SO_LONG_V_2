@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 15:01:59 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/13 16:36:11 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/14 15:02:32 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -172,7 +172,7 @@ t_shoot_texture	*create_shoot_sprite(t_mlx *mlx)
 {
 	t_shoot_texture	*s;
 
-	s = malloc(sizeof(t_shoot));
+	s = malloc(sizeof(t_shoot_texture));
 	s->frame1_left = create_texture("texture_converted/shoot/pulse1_left.xpm", mlx);
 	s->frame1_top = create_texture("texture_converted/shoot/pulse1_top.xpm", mlx);
 	s->frame1_right = create_texture("texture_converted/shoot/pulse1_right.xpm", mlx);
@@ -199,7 +199,7 @@ t_go	*create_game_over(t_mlx *mlx)
 	go = malloc(sizeof(t_go));
 	go->little = create_texture("texture_converted/game_over/little3.xpm", mlx);
 	go->medium = NULL;
-	go->big = create_texture("texture_converted/Big_game_over.xpm", mlx);
+	go->big = create_texture("texture_converted/game_over/Big_game_over.xpm", mlx);
 	return (go);
 }
 
@@ -213,7 +213,6 @@ t_all_texture	*create_all_texture(t_mlx *mlx)
 	all_texture->background = create_texture("texture_converted/Space_Stars6.xpm", mlx);
 	all_texture->coin = create_collectible(mlx);
 	all_texture->planets = create_planet_sprite(mlx);
-	all_texture->exit = create_texture("texture_converted/Black_hole/Black_hole_closed1.xpm", mlx);
 	all_texture->player = create_player_sprites(mlx);
 	all_texture->wall = create_texture("texture_converted/Asteroid.xpm", mlx);
 	//!bonus

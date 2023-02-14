@@ -6,54 +6,17 @@
 /*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 17:10:42 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/13 17:40:02 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/14 16:59:58 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
-
-// t_shoot	*lst_s_last(t_shoot *lst)
-// {
-// 	if (!lst)
-// 		return (NULL);
-// 	while (lst->next != NULL)
-// 		lst = lst->next;
-// 	return (lst);
-// }
-
-// void	shoot_add_back(t_shoot **shoot, t_shoot *new)
-// {
-// 	t_shoot	*temp;
-
-// 	if (!shoot || !new)
-// 		return ;
-// 	if (*shoot != NULL)
-// 	{
-// 		temp = lst_s_last(*shoot);
-// 		temp->next = new;
-// 	}
-// 	else
-// 		*shoot = new;
-// }
-
-// void	del_shot(t_shoot *shoot)
-// {
-// 	t_shoot	*next;
-
-// 	next = shoot->next;
-// 	free(shoot->coor);
-// 	free(shoot);
-// 	if (next != NULL)
-// 		shoot = next;
-// 	return ;
-// }
 
 t_shoot	*create_shot(clock_t time, int direction)
 {
 	t_shoot	*shot;
 
 	shot = malloc(sizeof(t_shoot));
-	shot->coor = create_empty_gps();
 	shot->direction = direction;
 	shot->shoot_time = time;
 	return (shot);
@@ -122,17 +85,11 @@ void	make_explosion(t_param *param, t_gps *new)
 void	pass_collectible(t_param *param, t_gps *new)
 {
 	if (param->shots->direction == 1)
-	{
 		new->x = new->x - 1;
-	}
 	if (param->shots->direction == 2)
-	{
 		new->y = new->y - 1;
-	}
 	if (param->shots->direction == 3)
-	{
 		new->x = new->x + 1;
-	}
 	if (param->shots->direction == 4)
 		new->y = new->y + 1;
 	put_shot_in_coor(param, new);
@@ -161,12 +118,14 @@ bool	put_shot_in_coor(t_param *param, t_gps *new)
 		put_image(param->mlx, param->textures->background->p, param->shots->coor, 0);
 		make_explosion(param, new);
 		param->map->map[param->shots->coor->y][param->shots->coor->x] = '0';
+		del_shot(param);
 		return (false);
 	}
 	if (value_case == 'D')
 	{
 		kill_boss(param, new);
 		param->map->map[param->shots->coor->y][param->shots->coor->x] = '0';
+		del_shot(param);
 		return (false);
 	}
 	if (value_case == '0')
@@ -178,16 +137,18 @@ bool	put_shot_in_coor(t_param *param, t_gps *new)
 		param->shots->coor->x = new->x;
 		param->shots->coor->y = new->y;
 	}
-	if (value_case == 'E') //animation ?
+	if (value_case == 'E')
 	{
 		put_image(param->mlx, param->textures->background->p, param->shots->coor, 0);
 		param->map->map[param->shots->coor->y][param->shots->coor->x] = '0';
+		del_shot(param);
 		return (false);
 	}
 	if (value_case == 'C')
 	{
 		put_image(param->mlx, param->textures->background->p, param->shots->coor, 0);
 		param->map->map[param->shots->coor->y][param->shots->coor->x] = '0';
+		del_shot(param);
 		return (false);
 	}
 	return (true);
@@ -201,21 +162,32 @@ void	create_new_shot(t_param *param)
 	shot->coor = get_next_coor_s(param->player->direction, param->player->coor);
 	if (param->map->map[shot->coor->y][shot->coor->x] == '1')
 	{
-		if (shot->coor->x == 0 || shot->coor->y == 0 || shot->coor->x == param->map->width - 1 || shot->coor->y == param->map->height - 1)
-			return ;
-		make_explosion(param, shot->coor);
+		if (!(shot->coor->x == 0 || shot->coor->y == 0 || shot->coor->x == param->map->width - 1 || shot->coor->y == param->map->height - 1))
+			make_explosion(param, shot->coor);
+		free(shot->coor);
+		free(shot);
 		return ;
 	}
 	if (param->map->map[shot->coor->y][shot->coor->x] == 'D')
 	{
 		del_ennemy(param, shot->coor);
 		put_image(param->mlx, param->textures->background->p, shot->coor, 0);
+		free(shot->coor);
+		free(shot);
 		return ;
 	}
 	if (param->map->map[shot->coor->y][shot->coor->x] == 'E')
+	{
+		free(shot->coor);
+		free(shot);
 		return ;
+	}
 	if (param->map->map[shot->coor->y][shot->coor->x] == 'C')
+	{
+		free(shot->coor);
+		free(shot);
 		return ;
+	}
 	if (param->map->map[shot->coor->y][shot->coor->x] == '0')
 	{
 		param->map->nb_shot += 1;
@@ -257,8 +229,7 @@ int	shoot_exist(t_param *param)
 {
 	if (param->map->nb_shot == 1)
 	{
-		if (move_shot(param) == false)
-			del_shot(param);
+		move_shot(param);
 		return (1);
 	}
 	return (0);
