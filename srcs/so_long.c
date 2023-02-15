@@ -81,7 +81,6 @@ int main(int argc, char **argv)
 		param = get_param(argv);
 		if (map_test(param) == 0)
 			return (0);
-		put_strings(param);
 		mlx_loop_hook(param->mlx->mlx, &animation, param);
 		mlx_hook(param->mlx->mlx_win, 17, 1L >> 0, &close_win, param);
 		mlx_hook(param->mlx->mlx_win, 2, 1L >> 0, &render_next_frame, param);

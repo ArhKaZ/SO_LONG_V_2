@@ -166,6 +166,13 @@ typedef struct s_go
 	t_texture	*big;
 }				t_go;
 
+typedef struct s_end
+{
+	t_texture	*little;
+	t_texture	*medium;
+	t_texture	*big;
+}				t_end;
+
 typedef struct s_all_texture
 {
 	t_texture	*wall;
@@ -176,6 +183,7 @@ typedef struct s_all_texture
 	t_black_hole	*black_hole;
 	t_hp			*hp;
 	t_go			*game_over;
+	t_end			*end;
 	t_explode		*explode;
 	t_sprite_planet	*planets;
 	t_shoot_texture		*shoot;
@@ -207,7 +215,7 @@ typedef struct s_param
 	//!bonus
 	t_ennemy		*boss;
 	t_shoot			*shots;
-	bool			finish;
+	int				finish;
 	//!bonus
 }				t_param;
 
@@ -287,7 +295,7 @@ void	free_textures(t_all_texture *texts, void *mlx);
 
 bool	put_shot_in_coor(t_param *param, t_gps *new);
 
-int		game_finish(t_param *param);
+int		game_win(t_param *param);
 
 int		put_frame_for_coin(t_param *param);
 
@@ -338,4 +346,6 @@ int animate_shoot(t_param *param, t_gps *coor);
 t_ennemy	*clear_ennemy(t_ennemy *ennemy);
 
 void	free_ennemy(t_ennemy *boss);
+
+int		is_end(t_param *param);
 #endif

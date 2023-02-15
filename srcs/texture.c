@@ -203,6 +203,16 @@ t_go	*create_game_over(t_mlx *mlx)
 	return (go);
 }
 
+t_end	*create_end(t_mlx *mlx)
+{
+	t_end	*end;
+	end = malloc(sizeof(t_end));
+	end->little = create_texture("texture_converted/finish/Real_little.xpm", mlx);
+	end->medium = NULL;
+	end->big = NULL;
+	return (end);
+}
+
 t_all_texture	*create_all_texture(t_mlx *mlx)
 {
 	t_all_texture	*all_texture;
@@ -215,13 +225,12 @@ t_all_texture	*create_all_texture(t_mlx *mlx)
 	all_texture->planets = create_planet_sprite(mlx);
 	all_texture->player = create_player_sprites(mlx);
 	all_texture->wall = create_texture("texture_converted/Asteroid.xpm", mlx);
-	//!bonus
 	all_texture->black_hole = create_black_hole(mlx);
 	all_texture->ennemy = create_sprite_boss(mlx);
 	all_texture->hp = create_sprite_hp(mlx);
 	all_texture->game_over = create_game_over(mlx);
 	all_texture->explode = create_explode(mlx);
 	all_texture->shoot = create_shoot_sprite(mlx);
-	//!bonus
+	all_texture->end = create_end(mlx);
 	return (all_texture);
 }

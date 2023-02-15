@@ -129,9 +129,9 @@ int	animation(t_param *param)
 		choose_direction(param);
 		put_frame_for_coin(param);
 		animate_black_hole(param);
-		game_over(param);
+		is_end(param);
+		put_strings(param);
 		usleep(50000);
 	}
 	return (0);
 }
-

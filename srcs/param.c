@@ -24,6 +24,6 @@ t_param	*create_param(t_map *map, t_mlx *mlx, t_player *player, t_all_texture *a
 	param->player = player;
 	param->textures = all_texture;
 	param->shots = NULL;
-	param->finish = false;
+	param->finish = 0;
 	return (param);
 }

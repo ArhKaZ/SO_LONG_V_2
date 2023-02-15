@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
+
 void	put_score(t_map *map, t_mlx *mlx, t_player *player, t_all_texture *text)
 {
 	char	*nb_collect;
@@ -75,10 +76,7 @@ void	put_hp(t_map *map, t_mlx *mlx, t_player *player, t_all_texture *text)
 
 void	put_strings(t_param *param)
 {
-	if (param->finish == false)
-	{
-		put_score(param->map, param->mlx, param->player, param->textures);
-		put_move(param->map, param->mlx, param->player, param->textures);
-		put_hp(param->map, param->mlx, param->player, param->textures);
-	}
+	put_score(param->map, param->mlx, param->player, param->textures);
+	put_move(param->map, param->mlx, param->player, param->textures);
+	put_hp(param->map, param->mlx, param->player, param->textures);
 }

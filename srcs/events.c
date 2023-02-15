@@ -95,7 +95,8 @@ int	move_exit(t_param *param, t_gps *new, int move)
 	if (param->player->collect == param->map->nb_item)
 	{
 		move_player_sprite(param, new, move);
-		game_finish(param);
+		param->finish = 1;
+		game_win(param);
 	}
 	else
 		not_move_player_sprite(param, move);
