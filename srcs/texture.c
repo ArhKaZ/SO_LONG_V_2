@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 15:01:59 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/14 15:02:32 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/16 17:54:11 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,16 +50,12 @@
 
 t_texture	*create_texture(char *path, t_mlx *mlx)
 {
-	void	*p;
-	t_gps	*size;
 	t_texture	*texture;
-
-	size = create_empty_gps();
-	p = mlx_xpm_file_to_image(mlx->mlx, path, &size->x, &size->y);
+	
 	texture = malloc(sizeof(t_texture));
-	texture->p = p;
+	texture->size = create_empty_gps();
+	texture->p = mlx_xpm_file_to_image(mlx->mlx, path, &texture->size->x, &texture->size->y);
 	texture->path = ft_strdup(path);
-	texture->size = size;
 	return (texture);
 }
 
@@ -98,7 +94,7 @@ t_sprite_player	*create_player_sprites(t_mlx *mlx)
 	player->player_top = create_texture("texture_converted/Spaceship_top.xpm", mlx);
 	return (player);
 }
-//!bonus
+
 t_black_hole	*create_black_hole(t_mlx *mlx)
 {
 	t_black_hole *bh;
@@ -166,8 +162,6 @@ t_sprite_planet	*create_planet_sprite(t_mlx *mlx)
 	return (planets);
 }
 
-//!bonus
-
 t_shoot_texture	*create_shoot_sprite(t_mlx *mlx)
 {
 	t_shoot_texture	*s;
@@ -197,9 +191,9 @@ t_go	*create_game_over(t_mlx *mlx)
 	t_go	*go;
 
 	go = malloc(sizeof(t_go));
-	go->little = create_texture("texture_converted/game_over/little3.xpm", mlx);
-	go->medium = NULL;
-	go->big = create_texture("texture_converted/game_over/Big_game_over.xpm", mlx);
+	go->little = create_texture("texture_converted/game_over/little_lose.xpm", mlx);
+	go->medium = create_texture("texture_converted/game_over/medium_lose.xpm", mlx);
+	go->big = create_texture("texture_converted/game_over/big_lose.xpm", mlx);
 	return (go);
 }
 
@@ -207,13 +201,77 @@ t_end	*create_end(t_mlx *mlx)
 {
 	t_end	*end;
 	end = malloc(sizeof(t_end));
-	end->little = create_texture("texture_converted/finish/Real_little.xpm", mlx);
-	end->medium = NULL;
-	end->big = NULL;
+	end->little = create_texture("texture_converted/finish/little_win.xpm", mlx);
+	end->medium = create_texture("texture_converted/finish/medium_win.xpm", mlx);
+	end->big = create_texture("texture_converted/finish/big_win.xpm", mlx);
 	return (end);
 }
 
-t_all_texture	*create_all_texture(t_mlx *mlx)
+t_nb	*create_nb_little(t_mlx *mlx)
+{
+	t_nb	*nb;
+	nb = malloc(sizeof(t_nb));
+	nb->zero = create_texture("texture_converted/nb/little_0_sprite.xpm", mlx);
+	nb->one = create_texture("texture_converted/nb/little_1_sprite.xpm", mlx);
+	nb->two = create_texture("texture_converted/nb/little_2_sprite.xpm", mlx);
+	nb->three = create_texture("texture_converted/nb/little_3_sprite.xpm", mlx);
+	nb->four = create_texture("texture_converted/nb/little_4_sprite.xpm", mlx);
+	nb->five = create_texture("texture_converted/nb/little_5_sprite.xpm", mlx);
+	nb->six = create_texture("texture_converted/nb/little_6_sprite.xpm", mlx);
+	nb->seven = create_texture("texture_converted/nb/little_7_sprite.xpm", mlx);
+	//TODO : nb->eight = create_texture("texture_converted/nb/little_8_sprite.xpm", mlx);
+	nb->eight = NULL;
+	nb->nine = create_texture("texture_converted/nb/little_9_sprite.xpm", mlx);
+	return (nb);
+}
+
+t_nb	*create_nb_medium(t_mlx *mlx)
+{
+	t_nb	*nb;
+	nb = malloc(sizeof(t_nb));
+	nb->zero = create_texture("texture_converted/nb/0_sprite.xpm", mlx);
+	nb->one = create_texture("texture_converted/nb/1_sprite.xpm", mlx);
+	nb->two = create_texture("texture_converted/nb/2_sprite.xpm", mlx);
+	nb->three = create_texture("texture_converted/nb/3_sprite.xpm", mlx);
+	nb->four = create_texture("texture_converted/nb/4_sprite.xpm", mlx);
+	nb->five = create_texture("texture_converted/nb/5_sprite.xpm", mlx);
+	nb->six = create_texture("texture_converted/nb/6_sprite.xpm", mlx);
+	nb->seven = create_texture("texture_converted/nb/7_sprite.xpm", mlx);
+	nb->eight = create_texture("texture_converted/nb/8_sprite.xpm", mlx);
+	nb->nine = create_texture("texture_converted/nb/9_sprite.xpm", mlx);
+	return (nb);
+}
+t_nb	*create_nb_big(t_mlx *mlx)
+{
+	t_nb	*nb;
+	nb = malloc(sizeof(t_nb));
+	//TODO : nb->zero = create_texture("texture_converted/nb/big_0_sprite.xpm", mlx);
+	nb->zero = NULL;
+	nb->one = create_texture("texture_converted/nb/big_1_sprite.xpm", mlx);
+	nb->two = create_texture("texture_converted/nb/big_2_sprite.xpm", mlx);
+	nb->three = create_texture("texture_converted/nb/big_3_sprite.xpm", mlx);
+	nb->four = create_texture("texture_converted/nb/big_4_sprite.xpm", mlx);
+	nb->five = create_texture("texture_converted/nb/big_5_sprite.xpm", mlx);
+	nb->six = create_texture("texture_converted/nb/big_6_sprite.xpm", mlx);
+	nb->seven = create_texture("texture_converted/nb/big_7_sprite.xpm", mlx);
+	nb->eight = create_texture("texture_converted/nb/big_8_sprite.xpm", mlx);
+	nb->nine = create_texture("texture_converted/nb/big_9_sprite.xpm", mlx);
+	return (nb);
+}
+
+t_nb	*create_nb(t_mlx *mlx, int width, int height)
+{
+	t_nb	*nb;
+	if (width < 8 && height < 8)
+		nb= create_nb_little(mlx);
+	else if (width < 14 && height < 14)
+		nb = create_nb_medium(mlx);
+	else if (width >= 14 && height >= 14)
+		nb = create_nb_big(mlx);
+	return (nb);
+}
+
+t_all_texture	*create_all_texture(t_mlx *mlx, int width, int height)
 {
 	t_all_texture	*all_texture;
 
@@ -232,5 +290,6 @@ t_all_texture	*create_all_texture(t_mlx *mlx)
 	all_texture->explode = create_explode(mlx);
 	all_texture->shoot = create_shoot_sprite(mlx);
 	all_texture->end = create_end(mlx);
+	all_texture->nb = create_nb(mlx, width, height);
 	return (all_texture);
 }

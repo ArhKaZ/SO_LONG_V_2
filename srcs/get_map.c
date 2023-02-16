@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_map.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
+/*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 15:38:49 by syluiset          #+#    #+#             */
-/*   Updated: 2023/01/26 16:11:20 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/16 17:41:42 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,9 @@ void	add_to_map(t_map *map, char c)
 bool	check_line(char *line, t_map *map)
 {
 	int i;
-
 	i = 0;
+	if (line[0] == 0)
+		return (false);
 	while (line[i])
 	{
 		if (check_char(line[i]) == false)
@@ -75,21 +76,28 @@ char	*map_in_one_string(char *line, char *string)
 char	*get_map_to_string(char *path, t_map *map)
 {
 	int		fd;
-	bool	loop;
 	char	*line;
 	char	*map_string;
+	size_t	length;
 
+	length = 0;
 	map_string = NULL;
-	loop = false;
 	fd = open(path, O_RDONLY);
-	while (loop == false)
+	while (1)
 	{
 		line = get_next_line(fd);
 		if (line == NULL)
-		{
-			loop = true;
 			break ;
+		if (length == 0)
+			length = ft_strlen(line);
+		else if (ft_strlen(line) != length)
+		{
+			free(map_string);
+			free(line);
+			ft_putstr_fd("Error map is not regular\n", 2);
+			return (NULL);
 		}
+		length = ft_strlen(line);
 		if (check_line(line, map) == false)
 		{
 			if (map_string != NULL)

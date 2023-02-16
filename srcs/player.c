@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 14:07:49 by syluiset          #+#    #+#             */
-/*   Updated: 2023/01/30 17:30:05 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/16 17:57:04 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,6 @@ t_player	*create_empty_player(void)
 	player->moves = 0;
 	player->hp = 1;
 	player->direction = 2;
+	player->score = 0;
 	return (player);
 }

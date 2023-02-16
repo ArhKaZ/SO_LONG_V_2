@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 11:22:07 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/14 17:08:26 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/16 17:56:53 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ typedef struct s_player
 	int		moves;
 	int		hp;
 	int		direction;
+	int		score;
 }				t_player;
 
 typedef struct s_ennemy
@@ -173,20 +174,42 @@ typedef struct s_end
 	t_texture	*big;
 }				t_end;
 
+typedef struct s_nb
+{
+	t_texture	*zero;
+	t_texture	*one;
+	t_texture	*two;
+	t_texture	*three;
+	t_texture	*four;
+	t_texture	*five;
+	t_texture	*six;
+	t_texture	*seven;
+	t_texture	*eight;
+	t_texture	*nine;
+}				t_nb;
+
+// typedef struct s_all_nb
+// {
+// 	t_nb	*little;
+// 	t_nb	*medium;
+// 	t_nb	*big;
+// }				t_all_nb;
+
 typedef struct s_all_texture
 {
-	t_texture	*wall;
-	t_texture	*background;
-	t_coins		*coin;
-	t_sprite_player	*player;
-	t_sprite_boss	*ennemy;
-	t_black_hole	*black_hole;
-	t_hp			*hp;
-	t_go			*game_over;
-	t_end			*end;
-	t_explode		*explode;
-	t_sprite_planet	*planets;
+	t_texture			*wall;
+	t_texture			*background;
+	t_coins				*coin;
+	t_sprite_player		*player;
+	t_sprite_boss		*ennemy;
+	t_black_hole		*black_hole;
+	t_hp				*hp;
+	t_go				*game_over;
+	t_end				*end;
+	t_explode			*explode;
+	t_sprite_planet		*planets;
 	t_shoot_texture		*shoot;
+	t_nb			*nb;
 }				t_all_texture;
 
 typedef	struct s_map
@@ -194,11 +217,9 @@ typedef	struct s_map
 	int	nb_empty;
 	int	nb_wall;
 	int	nb_item;
-	//!bonus
 	int	nb_ennemy;
 	t_gps	*coor_exit;
 	int		nb_shot;
-	//!bonus
 	int	exit;
 	int	begin;
 	char	**map;
@@ -212,11 +233,9 @@ typedef struct s_param
 	t_mlx			*mlx;
 	t_player 		*player;
 	t_all_texture	*textures;
-	//!bonus
 	t_ennemy		*boss;
 	t_shoot			*shots;
 	int				finish;
-	//!bonus
 }				t_param;
 
 bool	check_extension(char *path);
@@ -247,7 +266,7 @@ void	create_visu(t_map *map, t_mlx *mlx, t_gps *player, t_all_texture *all_textu
 
 int		render_next_frame(int keycode, t_param *param);
 
-t_all_texture	*create_all_texture(t_mlx *mlx);
+t_all_texture	*create_all_texture(t_mlx *mlx, int width, int height);
 
 void	free_all(t_param *param);
 

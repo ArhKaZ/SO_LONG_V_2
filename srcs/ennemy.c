@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 15:01:15 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/14 15:20:01 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/16 14:48:02 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,24 +29,6 @@ t_ennemy	*last_ennemy(t_ennemy *list)
 	while (list->next != NULL)
 		list = list->next;
 	return (list);
-}
-
-void	free_ennemy(t_ennemy *boss)
-{
-	t_ennemy	*temp;
-	t_ennemy	*tempnxt;
-	
-	if (!boss)
-		return ;
-	tempnxt = boss;
-	while (tempnxt != NULL)
-	{
-		temp = tempnxt;
-		tempnxt = temp->next;
-		free(temp->coor);
-		free(temp);
-	}
-	boss = NULL;
 }
 
 void	add_ennemy_back(t_ennemy **lst, int height, int width)

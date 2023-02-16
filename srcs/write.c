@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:14:04 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/14 17:09:32 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/16 17:57:21 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	put_score(t_map *map, t_mlx *mlx, t_player *player, t_all_texture *text)
 {
 	char	*nb_collect;
 
-	nb_collect = ft_itoa(player->collect);
+	nb_collect = ft_itoa(player->score);
 	mlx_put_image_to_window(mlx->mlx, mlx->mlx_win, text->background->p, 0, (map->height - 1) * 64);
 	mlx_put_image_to_window(mlx->mlx, mlx->mlx_win, text->wall->p, 12 , (map->height - 1) * 64 + 12);
 	mlx_put_image_to_window(mlx->mlx, mlx->mlx_win, text->background->p, 64, (map->height - 1) * 64);
