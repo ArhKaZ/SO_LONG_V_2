@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 17:10:42 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/14 16:59:58 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/17 16:50:27 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,21 +78,9 @@ void	make_explosion(t_param *param, t_gps *new)
 		usleep(50000);
 		put_image(param->mlx, param->textures->background->p, new, 0);
 		put_image(param->mlx, param->textures->planets->planet_exp->p, new, 8);
+		param->player->score -= 20;
 	}
 	return ;
-}
-
-void	pass_collectible(t_param *param, t_gps *new)
-{
-	if (param->shots->direction == 1)
-		new->x = new->x - 1;
-	if (param->shots->direction == 2)
-		new->y = new->y - 1;
-	if (param->shots->direction == 3)
-		new->x = new->x + 1;
-	if (param->shots->direction == 4)
-		new->y = new->y + 1;
-	put_shot_in_coor(param, new);
 }
 
 void	put_shoot_in_direction(t_param *param, t_gps *new)
@@ -125,6 +113,7 @@ bool	put_shot_in_coor(t_param *param, t_gps *new)
 	{
 		kill_boss(param, new);
 		param->map->map[param->shots->coor->y][param->shots->coor->x] = '0';
+		param->player->score += 50;
 		del_shot(param);
 		return (false);
 	}
@@ -219,7 +208,8 @@ bool	move_shot(t_param *param)
 		new = get_next_coor_s(param->shots->direction, param->shots->coor);
 		if (put_shot_in_coor(param, new) == false)
 			ret = false;
-		param->shots->shoot_time = actual;
+		else
+			param->shots->shoot_time = actual;
 		free(new);
 	}
 	return (ret);
@@ -229,8 +219,10 @@ int	shoot_exist(t_param *param)
 {
 	if (param->map->nb_shot == 1)
 	{
-		move_shot(param);
-		return (1);
+		if (move_shot(param) == true)
+			return (1);
+		else
+			return (0);
 	}
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 15:01:59 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/16 17:54:11 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/17 15:39:14 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,10 +52,10 @@ t_texture	*create_texture(char *path, t_mlx *mlx)
 {
 	t_texture	*texture;
 	
+	texture = NULL;
 	texture = malloc(sizeof(t_texture));
 	texture->size = create_empty_gps();
 	texture->p = mlx_xpm_file_to_image(mlx->mlx, path, &texture->size->x, &texture->size->y);
-	texture->path = ft_strdup(path);
 	return (texture);
 }
 
@@ -63,6 +63,7 @@ t_coins	*create_collectible(t_mlx *mlx) //TODO:NORM
 {
 	t_coins	*coins;
 
+	coins = NULL;
 	coins = malloc(sizeof(t_coins));
 	coins->frame1 = create_texture("texture_converted/collectable/Collectible1.xpm", mlx);
 	coins->frame2 = create_texture("texture_converted/collectable/Collectible2.xpm", mlx);
@@ -87,6 +88,7 @@ t_sprite_player	*create_player_sprites(t_mlx *mlx)
 {
 	t_sprite_player *player;
 
+	player = NULL;
 	player = malloc(sizeof(t_sprite_player));
 	player->player_bottom = create_texture("texture_converted/Spaceship_bottom.xpm", mlx);
 	player->player_left = create_texture("texture_converted/Spaceship_left.xpm", mlx);
@@ -99,6 +101,26 @@ t_black_hole	*create_black_hole(t_mlx *mlx)
 {
 	t_black_hole *bh;
 
+	bh = NULL;
+	bh = malloc(sizeof(t_black_hole));
+	bh->frame1 = create_texture("texture_converted/Black_hole/Black_hole_close1.xpm", mlx);
+	bh->frame2 = create_texture("texture_converted/Black_hole/Black_hole_close2.xpm", mlx);
+	bh->frame3 = create_texture("texture_converted/Black_hole/Black_hole_close3.xpm", mlx);
+	bh->frame4 = create_texture("texture_converted/Black_hole/Black_hole_close4.xpm", mlx);
+	bh->frame5 = create_texture("texture_converted/Black_hole/Black_hole_close5.xpm", mlx);
+	bh->frame6 = create_texture("texture_converted/Black_hole/Black_hole_close6.xpm", mlx);
+	bh->frame7 = create_texture("texture_converted/Black_hole/Black_hole_close7.xpm", mlx);
+	bh->frame8 = create_texture("texture_converted/Black_hole/Black_hole_close8.xpm", mlx);
+	bh->frame9 = create_texture("texture_converted/Black_hole/Black_hole_close9.xpm", mlx);
+	bh->frame_act = 0;
+	return (bh);
+}
+
+t_black_hole	*create_black_hole_for_end(t_mlx *mlx)
+{
+	t_black_hole *bh;
+
+	bh = NULL;
 	bh = malloc(sizeof(t_black_hole));
 	bh->frame1 = create_texture("texture_converted/Black_hole/Black_hole1.xpm", mlx);
 	bh->frame2 = create_texture("texture_converted/Black_hole/Black_hole2.xpm", mlx);
@@ -117,6 +139,7 @@ t_sprite_boss	*create_sprite_boss(t_mlx *mlx)
 {
 	t_sprite_boss *boss;
 
+	boss = NULL;
 	boss = malloc(sizeof(t_sprite_boss));
 	boss->boss_bottom = create_texture("texture_converted/Boss/Boss_bottom.xpm", mlx);
 	boss->boss_left = create_texture("texture_converted/Boss/Boss_left.xpm", mlx);
@@ -129,6 +152,7 @@ t_hp	*create_sprite_hp(t_mlx *mlx)
 {
 	t_hp *hp;
 
+	hp = NULL;
 	hp = malloc(sizeof(t_hp));
 	hp->empty = create_texture("texture_converted/hp_empty.xpm", mlx);
 	hp->full = create_texture("texture_converted/hp_full.xpm", mlx);
@@ -139,6 +163,7 @@ t_explode	*create_explode(t_mlx *mlx)
 {
 	t_explode	*ex;
 
+	ex = NULL;
 	ex = malloc(sizeof(t_explode));
 	ex->frame1 = create_texture("texture_converted/explosion/Explode0.xpm", mlx);
 	ex->frame2 = create_texture("texture_converted/explosion/Explode1.xpm", mlx);
@@ -153,6 +178,7 @@ t_sprite_planet	*create_planet_sprite(t_mlx *mlx)
 {
 	t_sprite_planet	*planets;
 
+	planets = NULL;
 	planets = malloc(sizeof(t_sprite_planet));
 	planets->planet_1 = create_texture("texture_converted/planet/Planet1.xpm", mlx);
 	planets->planet_2 = create_texture("texture_converted/planet/Planet.xpm", mlx);
@@ -166,6 +192,7 @@ t_shoot_texture	*create_shoot_sprite(t_mlx *mlx)
 {
 	t_shoot_texture	*s;
 
+	s = NULL;
 	s = malloc(sizeof(t_shoot_texture));
 	s->frame1_left = create_texture("texture_converted/shoot/pulse1_left.xpm", mlx);
 	s->frame1_top = create_texture("texture_converted/shoot/pulse1_top.xpm", mlx);
@@ -190,6 +217,7 @@ t_go	*create_game_over(t_mlx *mlx)
 {
 	t_go	*go;
 
+	go = NULL;
 	go = malloc(sizeof(t_go));
 	go->little = create_texture("texture_converted/game_over/little_lose.xpm", mlx);
 	go->medium = create_texture("texture_converted/game_over/medium_lose.xpm", mlx);
@@ -200,6 +228,8 @@ t_go	*create_game_over(t_mlx *mlx)
 t_end	*create_end(t_mlx *mlx)
 {
 	t_end	*end;
+
+	end = NULL;
 	end = malloc(sizeof(t_end));
 	end->little = create_texture("texture_converted/finish/little_win.xpm", mlx);
 	end->medium = create_texture("texture_converted/finish/medium_win.xpm", mlx);
@@ -210,6 +240,8 @@ t_end	*create_end(t_mlx *mlx)
 t_nb	*create_nb_little(t_mlx *mlx)
 {
 	t_nb	*nb;
+
+	nb = NULL;
 	nb = malloc(sizeof(t_nb));
 	nb->zero = create_texture("texture_converted/nb/little_0_sprite.xpm", mlx);
 	nb->one = create_texture("texture_converted/nb/little_1_sprite.xpm", mlx);
@@ -219,8 +251,7 @@ t_nb	*create_nb_little(t_mlx *mlx)
 	nb->five = create_texture("texture_converted/nb/little_5_sprite.xpm", mlx);
 	nb->six = create_texture("texture_converted/nb/little_6_sprite.xpm", mlx);
 	nb->seven = create_texture("texture_converted/nb/little_7_sprite.xpm", mlx);
-	//TODO : nb->eight = create_texture("texture_converted/nb/little_8_sprite.xpm", mlx);
-	nb->eight = NULL;
+	nb->eight = create_texture("texture_converted/nb/little_8_sprite.xpm", mlx);
 	nb->nine = create_texture("texture_converted/nb/little_9_sprite.xpm", mlx);
 	return (nb);
 }
@@ -228,6 +259,8 @@ t_nb	*create_nb_little(t_mlx *mlx)
 t_nb	*create_nb_medium(t_mlx *mlx)
 {
 	t_nb	*nb;
+
+	nb = NULL;
 	nb = malloc(sizeof(t_nb));
 	nb->zero = create_texture("texture_converted/nb/0_sprite.xpm", mlx);
 	nb->one = create_texture("texture_converted/nb/1_sprite.xpm", mlx);
@@ -244,9 +277,10 @@ t_nb	*create_nb_medium(t_mlx *mlx)
 t_nb	*create_nb_big(t_mlx *mlx)
 {
 	t_nb	*nb;
+
+	nb = NULL;
 	nb = malloc(sizeof(t_nb));
-	//TODO : nb->zero = create_texture("texture_converted/nb/big_0_sprite.xpm", mlx);
-	nb->zero = NULL;
+	nb->zero = create_texture("texture_converted/nb/big_0_sprite.xpm", mlx);
 	nb->one = create_texture("texture_converted/nb/big_1_sprite.xpm", mlx);
 	nb->two = create_texture("texture_converted/nb/big_2_sprite.xpm", mlx);
 	nb->three = create_texture("texture_converted/nb/big_3_sprite.xpm", mlx);
@@ -262,6 +296,8 @@ t_nb	*create_nb_big(t_mlx *mlx)
 t_nb	*create_nb(t_mlx *mlx, int width, int height)
 {
 	t_nb	*nb;
+
+	nb = NULL;
 	if (width < 8 && height < 8)
 		nb= create_nb_little(mlx);
 	else if (width < 14 && height < 14)
@@ -275,6 +311,7 @@ t_all_texture	*create_all_texture(t_mlx *mlx, int width, int height)
 {
 	t_all_texture	*all_texture;
 
+	all_texture = NULL;
 	all_texture = malloc(sizeof(t_all_texture));
 	if (!all_texture)
 		return (NULL);
@@ -283,7 +320,8 @@ t_all_texture	*create_all_texture(t_mlx *mlx, int width, int height)
 	all_texture->planets = create_planet_sprite(mlx);
 	all_texture->player = create_player_sprites(mlx);
 	all_texture->wall = create_texture("texture_converted/Asteroid.xpm", mlx);
-	all_texture->black_hole = create_black_hole(mlx);
+	all_texture->black_hole_close = create_black_hole(mlx);
+	all_texture->black_hole = create_black_hole_for_end(mlx);
 	all_texture->ennemy = create_sprite_boss(mlx);
 	all_texture->hp = create_sprite_hp(mlx);
 	all_texture->game_over = create_game_over(mlx);

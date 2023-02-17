@@ -6,16 +6,18 @@
 /*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 12:43:10 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/14 16:58:47 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/17 16:00:40 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
 
-int	close_win(t_param *param)
+int	close_win(t_param *param, void *mlx, void *mlx_win)
 {
-	mlx_destroy_window(param->mlx->mlx, param->mlx->mlx_win);
 	free_all(param);
+	mlx_destroy_window(mlx, mlx_win);
+	mlx_destroy_display(mlx);
+	free(mlx);
 	exit(EXIT_SUCCESS);
 }
 
@@ -37,27 +39,16 @@ void	not_move_player_sprite(t_param *param, int direction)
 	sprite = param->textures->background->p;
 	mlx_put_image_to_window(param->mlx->mlx, param->mlx->mlx_win, sprite, param->player->coor->x * 64, param->player->coor->y * 64);
 	if (direction == 1)
-	{
 		sprite = param->textures->player->player_left->p;
-		param->player->direction = 1;
-	}
 	if (direction == 2)
-	{
 		sprite = param->textures->player->player_top->p;
-		param->player->direction = 2;
-	}
 	if (direction == 3)
-	{
 		sprite = param->textures->player->player_right->p;
-		param->player->direction = 3;
-	}
 	if (direction == 4)
-	{
 		sprite = param->textures->player->player_bottom->p;
-		param->player->direction = 4;
-	}
 	mlx_put_image_to_window(param->mlx->mlx, param->mlx->mlx_win, sprite, param->player->coor->x * 64 + 9, param->player->coor->y * 64 + 9);
 	sprite = NULL;
+	param->player->direction = direction;
 }
 
 void	less_hp(t_param *param, int direction)
@@ -105,30 +96,16 @@ int	move_exit(t_param *param, t_gps *new, int move)
 
 void	change_exit(t_param *param)
 {
-	int x;
-	int y;
-
-	x = 0;
-	y = 0;
-	while (param->map->map[y] != NULL)
-	{
-		x = 0;
-		while (param->map->map[y][x])
-		{
-			if (param->map->map[y][x] == 'E')
-			{
-				mlx_put_image_to_window(param->mlx->mlx, param->mlx->mlx_win, param->textures->background->p, x * 64, y * 64);
-				mlx_put_image_to_window(param->mlx->mlx, param->mlx->mlx_win, param->textures->black_hole->frame1->p, x * 64, y * 64);
-			}
-			x++;
-		}
-		y++;
-	}
+	put_image(param->mlx, param->textures->background->p, param->map->coor_exit, 0);
+	put_image(param->mlx, param->textures->black_hole->frame1->p, param->map->coor_exit, 0);
+	param->textures->black_hole->frame_act = 1;
+	return ;
 }
 
 void	move_coins(t_param *param, t_gps *new, int direction)
 {
 	param->player->collect += 1;
+	param->player->score += 140;
 	if (param->player->collect == param->map->nb_item)
 		change_exit(param);
 	mlx_put_image_to_window(param->mlx->mlx, param->mlx->mlx_win, param->textures->background->p, new->x * 64, new->y * 64);
@@ -154,6 +131,6 @@ int render_next_frame(int keycode, t_param *param)
 		put_move(param->map, param->mlx, param->player, param->textures);
 	}
 	if (keycode == 65307)
-			close_win(param);
+			close_win(param, param->mlx->mlx, param->mlx->mlx_win);
 	return (0);
 }

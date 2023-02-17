@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 00:47:17 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/16 16:08:34 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/17 16:12:52 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,9 @@ char	**cp_map(t_map *map)
 	char	**map_cp;
 	int		h;
 
+	map_cp = NULL;
 	h = 0;
-	map_cp = malloc(sizeof(char *) * map->height + 1);
+	map_cp = malloc(sizeof(char *) * (map->height + 1));
 	while (h < map->height)
 	{
 		map_cp[h] = ft_strdup(map->map[h]);
@@ -57,6 +58,7 @@ void	change_p(char **map_cp, t_map *map)
 		i++;
 	}
 }
+
 char	**checker_map(t_map *map ,char **map_cp)
 {
 	int count_x;
@@ -101,6 +103,7 @@ bool	map_is_finishable(t_map *map)
 	int j;
 
 	i = 0;
+	map_cp = NULL;
 	map_cp = checker_map(map, cp_map(map));
 	while (map_cp[i] != NULL)
 	{

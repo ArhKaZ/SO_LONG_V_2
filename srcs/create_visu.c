@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 16:50:44 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/16 14:58:41 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/17 18:02:46 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,7 +116,7 @@ void	put_player(t_map *map, t_mlx *mlx, t_gps *p, t_texture *player)
 	}
 }
 
-void	put_exit(t_map *map, void *mlx, void *mlx_win, t_black_hole *exit)
+void	put_exit(t_map *map, t_mlx *mlx, t_black_hole *exit)
 {
 	int	height;
 	int	width;
@@ -131,7 +131,7 @@ void	put_exit(t_map *map, void *mlx, void *mlx_win, t_black_hole *exit)
 			{
 				map->coor_exit->x = width;
 				map->coor_exit->y = height;
-				mlx_put_image_to_window(mlx, mlx_win, exit->frame1->p, width * 64 , height * 64);
+				put_image(mlx, exit->frame1->p, map->coor_exit, 16);
 				exit->frame_act = 1;
 				return ;
 			}
@@ -187,6 +187,6 @@ void	create_visu(t_map *map, t_mlx *mlx, t_gps *player, t_all_texture *all_textu
 	put_coins(map, mlx->mlx,mlx->mlx_win, all_texture->coin->frame1);
 	all_texture->coin->frame_act = 1;
 	put_player(map, mlx, player, all_texture->player->player_top);
-	put_exit(map, mlx->mlx, mlx->mlx_win, all_texture->black_hole);
+	put_exit(map, mlx, all_texture->black_hole_close);
 	put_ennemy(map, mlx->mlx, mlx->mlx_win, all_texture->ennemy);
 }

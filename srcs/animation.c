@@ -6,11 +6,46 @@
 /*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 16:58:46 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/14 17:07:38 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/17 13:07:34 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
+
+int	animate_black_hole_close(t_param *param)
+{
+	t_black_hole *bh;
+	t_map	*map;
+
+	map = param->map;
+	bh = param->textures->black_hole_close;
+	if (bh->frame_act < 9)
+	{
+		if (bh->frame_act == 1)
+			put_image(param->mlx, bh->frame2->p, map->coor_exit, 16);
+		if (bh->frame_act == 2)
+			put_image(param->mlx, bh->frame3->p, map->coor_exit, 16);
+		if (bh->frame_act == 3)
+			put_image(param->mlx, bh->frame4->p, map->coor_exit, 16);
+		if (bh->frame_act == 4)
+			put_image(param->mlx, bh->frame5->p, map->coor_exit, 16);
+		if (bh->frame_act == 5)
+			put_image(param->mlx, bh->frame6->p, map->coor_exit, 16);
+		if (bh->frame_act == 6)
+			put_image(param->mlx, bh->frame7->p, map->coor_exit, 16);
+		if (bh->frame_act == 7)
+			put_image(param->mlx, bh->frame8->p, map->coor_exit, 16);
+		if (bh->frame_act == 8)
+			put_image(param->mlx, bh->frame9->p, map->coor_exit, 16);
+		bh->frame_act += 1;
+	}
+	else if (bh->frame_act == 9)
+	{
+		put_image(param->mlx, bh->frame1->p, map->coor_exit, 16);
+		bh->frame_act = 1;
+	}
+	return (0);
+}
 
 int	animate_black_hole(t_param *param)
 {
@@ -22,26 +57,26 @@ int	animate_black_hole(t_param *param)
 	if (bh->frame_act < 9)
 	{
 		if (bh->frame_act == 1)
-			mlx_put_image_to_window(param->mlx->mlx, param->mlx->mlx_win, bh->frame2->p, map->coor_exit->x * 64, map->coor_exit->y * 64);
+			put_image(param->mlx, bh->frame2->p, map->coor_exit, 0);
 		if (bh->frame_act == 2)
-			mlx_put_image_to_window(param->mlx->mlx, param->mlx->mlx_win, bh->frame3->p, map->coor_exit->x * 64, map->coor_exit->y * 64);
+			put_image(param->mlx, bh->frame3->p, map->coor_exit, 0);
 		if (bh->frame_act == 3)
-			mlx_put_image_to_window(param->mlx->mlx, param->mlx->mlx_win, bh->frame4->p, map->coor_exit->x * 64, map->coor_exit->y * 64);
+			put_image(param->mlx, bh->frame4->p, map->coor_exit, 0);
 		if (bh->frame_act == 4)
-			mlx_put_image_to_window(param->mlx->mlx, param->mlx->mlx_win, bh->frame5->p, map->coor_exit->x * 64, map->coor_exit->y * 64);
+			put_image(param->mlx, bh->frame5->p, map->coor_exit, 0);
 		if (bh->frame_act == 5)
-			mlx_put_image_to_window(param->mlx->mlx, param->mlx->mlx_win, bh->frame6->p, map->coor_exit->x * 64, map->coor_exit->y * 64);
+			put_image(param->mlx, bh->frame6->p, map->coor_exit, 0);
 		if (bh->frame_act == 6)
-			mlx_put_image_to_window(param->mlx->mlx, param->mlx->mlx_win, bh->frame7->p, map->coor_exit->x * 64, map->coor_exit->y * 64);
+			put_image(param->mlx, bh->frame7->p, map->coor_exit, 0);
 		if (bh->frame_act == 7)
-			mlx_put_image_to_window(param->mlx->mlx, param->mlx->mlx_win, bh->frame8->p, map->coor_exit->x * 64, map->coor_exit->y * 64);
+			put_image(param->mlx, bh->frame8->p, map->coor_exit, 0);
 		if (bh->frame_act == 8)
-			mlx_put_image_to_window(param->mlx->mlx, param->mlx->mlx_win, bh->frame9->p, map->coor_exit->x * 64, map->coor_exit->y * 64);
+			put_image(param->mlx, bh->frame9->p, map->coor_exit, 0);
 		bh->frame_act += 1;
 	}
 	else if (bh->frame_act == 9)
 	{
-		mlx_put_image_to_window(param->mlx->mlx, param->mlx->mlx_win, bh->frame1->p, map->coor_exit->x * 64, map->coor_exit->y * 64);
+		put_image(param->mlx, bh->frame1->p, map->coor_exit, 0);
 		bh->frame_act = 1;
 	}
 	return (0);
@@ -128,7 +163,10 @@ int	animation(t_param *param)
 			animate_shoot(param, param->shots->coor);
 		choose_direction(param);
 		put_frame_for_coin(param);
-		animate_black_hole(param);
+		if (param->player->collect != param->map->nb_item)
+			animate_black_hole_close(param);
+		else
+			animate_black_hole(param);
 		is_end(param);
 		put_strings(param);
 		usleep(50000);

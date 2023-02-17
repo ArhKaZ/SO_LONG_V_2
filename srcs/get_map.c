@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 15:38:49 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/16 17:41:42 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/17 16:44:34 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,25 @@ void	add_to_map(t_map *map, char c)
 	//!bonus
 }
 
-bool	check_line(char *line, t_map *map)
+bool	check_line(char *line, t_map *map, size_t *length)
 {
-	int i;
+	size_t i;
+	
 	i = 0;
 	if (line[0] == 0)
 		return (false);
+	while (line[i] && line[i] != '\n')
+		i++;
+	if (*length != 0)
+	{
+		if (i != *length)
+		{
+			ft_putstr_fd("Error map is not regular\n", 2);
+			return (false);
+		}
+	}
+	*length = i;
+	i = 0;
 	while (line[i])
 	{
 		if (check_char(line[i]) == false)
@@ -88,17 +101,7 @@ char	*get_map_to_string(char *path, t_map *map)
 		line = get_next_line(fd);
 		if (line == NULL)
 			break ;
-		if (length == 0)
-			length = ft_strlen(line);
-		else if (ft_strlen(line) != length)
-		{
-			free(map_string);
-			free(line);
-			ft_putstr_fd("Error map is not regular\n", 2);
-			return (NULL);
-		}
-		length = ft_strlen(line);
-		if (check_line(line, map) == false)
+		if (check_line(line, map, &length) == false)
 		{
 			if (map_string != NULL)
 				free(map_string);

@@ -130,7 +130,7 @@ int	mlx_int_xpm_set_pixel(t_img *img, char *data, int opp, int col, int x)
     }
 }
 
-
+#include <stdio.h>
 void	*mlx_int_parse_xpm(t_xvar *xvar,void *info,int info_size,char *(*f)())
 {
 		int		pos;
@@ -195,6 +195,7 @@ void	*mlx_int_parse_xpm(t_xvar *xvar,void *info,int info_size,char *(*f)())
 				if (!tab[j])
 						RETURN;
 				rgb_col = mlx_int_get_text_rgb(tab[j], tab[j+1]);
+				printf("%d\n", rgb_col);
 				/*
 				if ((rgb_col = mlx_int_get_text_rgb(tab[j], tab[j+1]))==-1)
 				{
@@ -213,6 +214,7 @@ void	*mlx_int_parse_xpm(t_xvar *xvar,void *info,int info_size,char *(*f)())
 				{
 						colors[i].name = mlx_int_get_col_name(line,cpp);
 						colors[i].col = rgb_col; //rgb_col>=0?mlx_get_color_value(xvar,rgb_col):rgb_col;
+						printf("%s, %d", colors[i].name, colors[i].col);
 				}
 				free(tab);
 				tab = (void *)0;

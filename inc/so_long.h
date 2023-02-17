@@ -6,13 +6,13 @@
 /*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 11:22:07 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/16 17:56:53 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/17 15:57:43 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
-# include "../minilibx/mlx.h"
+# include "../mlx_linux/mlx.h"
 # include "../Libft_w_a/libft.h"
 # include <stdbool.h>
 # include <fcntl.h>
@@ -53,7 +53,6 @@ typedef struct s_ennemy
 typedef struct s_texture
 {
 	void	*p;
-	char	*path;
 	t_gps	*size;
 }				t_texture;
 
@@ -203,6 +202,7 @@ typedef struct s_all_texture
 	t_sprite_player		*player;
 	t_sprite_boss		*ennemy;
 	t_black_hole		*black_hole;
+	t_black_hole		*black_hole_close;
 	t_hp				*hp;
 	t_go				*game_over;
 	t_end				*end;
@@ -286,7 +286,7 @@ bool	map_is_finishable(t_map *map);
 
 void	free_char_map(char **map);
 
-int		close_win(t_param *param);
+int		close_win(t_param *param, void *mlx, void *mlx_win);
 
 void	put_coins(t_map *map, void *mlx, void *mlx_win, t_texture *coin);
 
@@ -367,4 +367,6 @@ t_ennemy	*clear_ennemy(t_ennemy *ennemy);
 void	free_ennemy(t_ennemy *boss);
 
 int		is_end(t_param *param);
+
+void	free_black_hole(t_black_hole *bh, void *mlx);
 #endif
