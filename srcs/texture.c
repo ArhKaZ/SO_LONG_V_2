@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 15:01:59 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/18 18:04:59 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/18 18:20:50 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ t_texture	*create_texture(char *path, t_mlx *mlx)
 	texture->p = mlx_xpm_file_to_image(mlx->mlx, path, &texture->size->x, &texture->size->y);
 	texture->addr = mlx_get_data_addr(texture->p, &texture->bits_per_pixel, &texture->line_len, &texture->endian);
 	texture->path = ft_strdup(path);
-	texture = put_pixel_for_transparent(mlx, texture);
+	//texture = put_pixel_for_transparent(mlx, texture);
 	return (texture);
 }
 
