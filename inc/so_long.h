@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 11:22:07 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/17 15:57:43 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/18 17:56:49 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,11 @@ typedef struct s_texture
 {
 	void	*p;
 	t_gps	*size;
+	char	*addr;
+	char	*path;
+	int		bits_per_pixel;
+	int		line_len;
+	int		endian;
 }				t_texture;
 
 typedef struct s_coins
@@ -369,4 +374,6 @@ void	free_ennemy(t_ennemy *boss);
 int		is_end(t_param *param);
 
 void	free_black_hole(t_black_hole *bh, void *mlx);
+
+t_texture	*create_texture(char *path, t_mlx *mlx);
 #endif

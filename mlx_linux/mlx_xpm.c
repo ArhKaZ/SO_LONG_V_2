@@ -1,9 +1,9 @@
 /*
- ** xpm-read.c for MinilibX in 
- ** 
+ ** xpm-read.c for MinilibX in
+ **
  ** Made by Charlie Root
  ** Login   <ol@epitech.net>
- ** 
+ **
  ** Started on  Tue Dec 11 15:25:27 2001 olivier crouzet
  ** Last update Sat Oct  1 14:56:13 2005 Olivier Crouzet
  */
@@ -76,7 +76,7 @@ char	*mlx_int_static_line(char **xpm_data,int *pos,int size)
 			len = len2;
 	}
 	strlcpy_is_not_posix(copy, str, len2);
-	
+
 	return (copy);
 }
 
@@ -88,7 +88,7 @@ int	mlx_int_get_col_name(char *str,int size)
 	result = 0;
 	while (size--)
 		result = (result<<8)+*(str++);
-	
+
 	return (result);
 }
 
@@ -118,7 +118,7 @@ int	mlx_int_get_text_rgb(char *name, char *end)
 int	mlx_int_xpm_set_pixel(t_img *img, char *data, int opp, int col, int x)
 {
 	int	dec;
-	
+
 	dec = opp;
   	while (dec--)
     {
@@ -130,7 +130,6 @@ int	mlx_int_xpm_set_pixel(t_img *img, char *data, int opp, int col, int x)
     }
 }
 
-#include <stdio.h>
 void	*mlx_int_parse_xpm(t_xvar *xvar,void *info,int info_size,char *(*f)())
 {
 		int		pos;
@@ -195,7 +194,6 @@ void	*mlx_int_parse_xpm(t_xvar *xvar,void *info,int info_size,char *(*f)())
 				if (!tab[j])
 						RETURN;
 				rgb_col = mlx_int_get_text_rgb(tab[j], tab[j+1]);
-				printf("%d\n", rgb_col);
 				/*
 				if ((rgb_col = mlx_int_get_text_rgb(tab[j], tab[j+1]))==-1)
 				{
@@ -214,7 +212,6 @@ void	*mlx_int_parse_xpm(t_xvar *xvar,void *info,int info_size,char *(*f)())
 				{
 						colors[i].name = mlx_int_get_col_name(line,cpp);
 						colors[i].col = rgb_col; //rgb_col>=0?mlx_get_color_value(xvar,rgb_col):rgb_col;
-						printf("%s, %d", colors[i].name, colors[i].col);
 				}
 				free(tab);
 				tab = (void *)0;

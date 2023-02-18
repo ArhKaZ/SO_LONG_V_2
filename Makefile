@@ -141,7 +141,7 @@ cleanlibext		:
 				make clean -C $(MLX_D)
 
 fclean			:	clean cleanlibext
-				$(RM) $(NAME)
+				$(RM) $(NAME) $(NAME_MAP)
 
 re				:	fclean $(NAME)
 
