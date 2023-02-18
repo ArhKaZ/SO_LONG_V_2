@@ -6,38 +6,47 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 15:01:59 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/18 18:20:50 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/18 18:23:17 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
 
-t_texture	*put_pixel_for_transparent(t_mlx *mlx, t_texture *sprite)
-{
-	t_texture	*render;
-	char		*dst;
-	char		*src;
-	int			i;
-	int			j;
+// void	*put_line_in_pixel(void *img, char *line)
+// {
+// 	int i;
 
-	render = create_texture(sprite->path, mlx);
-	i = 0;
-	while (i < sprite->size->y)
-	{
-		j = 0;
-		while (j < sprite->size->x)
-		{
-			dst = (render->addr + (i * render->line_len + j) * (render->bits_per_pixel >> 3));
-			src = (sprite->addr + (i * sprite->line_len + j) * (sprite->bits_per_pixel >> 3));
-			if (*(unsigned *)src != 0xff000000)
-				*(unsigned long *)dst = *(unsigned long *)src;
-			j++;
-		}
-		i++;
-	}
-	free_texture(sprite, mlx->mlx);
-	return (render);
-}
+// 	i = 0;
+// 	while (line[i])
+// 	{
+// 		if (line[i] != '_')
+// 	}
+// }
+
+// void	*get_image(char *path, t_mlx *mlx, t_gps *size)
+// {
+// 	int fd;
+// 	void	*img;
+// 	bool	loop;
+// 	char	*line;
+
+// 	loop = false;
+// 	fd = open(path, O_RDONLY);
+// 	img = mlx_new_image(mlx->mlx, size->x, size->y);
+// 	while (loop == false)
+// 	{
+// 		line = get_next_line(fd);
+// 		if (line == NULL)
+// 		{
+// 			loop = true;
+// 			break;
+// 		}
+// 		else
+// 		{
+
+// 		}
+// 	}
+// }
 
 t_texture	*create_texture(char *path, t_mlx *mlx)
 {
@@ -47,9 +56,6 @@ t_texture	*create_texture(char *path, t_mlx *mlx)
 	texture = malloc(sizeof(t_texture));
 	texture->size = create_empty_gps();
 	texture->p = mlx_xpm_file_to_image(mlx->mlx, path, &texture->size->x, &texture->size->y);
-	texture->addr = mlx_get_data_addr(texture->p, &texture->bits_per_pixel, &texture->line_len, &texture->endian);
-	texture->path = ft_strdup(path);
-	//texture = put_pixel_for_transparent(mlx, texture);
 	return (texture);
 }
 
