@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 11:22:07 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/18 17:56:49 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/19 22:45:46 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,12 @@ typedef struct s_gps
 
 typedef struct s_player
 {
-	t_gps	*coor;
-	int		collect;
-	int		moves;
-	int		hp;
-	int		direction;
-	int		score;
+	t_gps			*coor;
+	int				collect;
+	int				moves;
+	int				hp;
+	int				direction;
+	unsigned int	score;
 }				t_player;
 
 typedef struct s_ennemy

@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 17:10:42 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/19 21:14:15 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/19 22:43:27 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ void	kill_boss(t_param *param, t_gps *new)
 	put_image(param->mlx, param->textures->explode->boss_explosion3->p, new, 0);
 	usleep(5000);
 	put_image(param->mlx, param->textures->background->p, new, 0);
+	param->player->score += 50;
 	del_ennemy(param, new);
 }
 
@@ -113,7 +114,6 @@ bool	put_shot_in_coor(t_param *param, t_gps *new)
 	{
 		kill_boss(param, new);
 		param->map->map[param->shots->coor->y][param->shots->coor->x] = '0';
-		param->player->score += 50;
 		del_shot(param);
 		return (false);
 	}

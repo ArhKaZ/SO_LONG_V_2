@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 15:01:59 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/19 22:20:52 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/19 22:26:48 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,7 +145,7 @@ t_sprite_planet	*create_planet_sprite(t_mlx *mlx)
 	planets = NULL;
 	planets = malloc(sizeof(t_sprite_planet));
 	planets->planet_1 = create_texture("texture_converted/planet/Planet1.xpm", mlx);
-	planets->planet_2 = create_texture("texture_converted/planet/Planet.xpm", mlx);
+	planets->planet_2 = create_texture("texture_converted/planet/Planet2.xpm", mlx);
 	planets->planet_3 = create_texture("texture_converted/planet/Planet3.xpm", mlx);
 	planets->planet_4 = create_texture("texture_converted/planet/Planet4.xpm", mlx);
 	planets->planet_exp = create_texture("texture_converted/planet/Planet_explode.xpm", mlx);

@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 11:07:26 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/19 22:19:33 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/19 22:44:41 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ int	animate_shoot_left(t_param *param, t_gps *coor)
 	}
 	return (0);
 }
+
 int	animate_shoot_top(t_param *param, t_gps *coor)
 {
 	t_shoot_texture	*shoot;
