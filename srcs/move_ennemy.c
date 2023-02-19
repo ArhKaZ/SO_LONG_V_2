@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move_ennemy.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 15:32:53 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/14 16:00:31 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/19 21:13:26 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	move_ennemy_sprite(t_param *param, t_gps *new, int direction, t_gps *ennemy
 	// else
 	// 	sprite = NULL;
 	move_ennemy(param->map, ennemy, new, '0');
-	mlx_put_image_to_window(param->mlx->mlx, param->mlx->mlx_win, sprite, new->x * 64 + 9, new->y * 64 + 9);
+	mlx_put_image_to_window(param->mlx->mlx, param->mlx->mlx_win, sprite, new->x * 64, new->y * 64);
 	sprite = param->textures->background->p;
 	mlx_put_image_to_window(param->mlx->mlx, param->mlx->mlx_win, sprite, ennemy->x * 64, ennemy->y * 64);
 	ennemy->x = new->x;
@@ -46,8 +46,8 @@ void	not_move_ennemy_sprite(t_param *param, int direction)
 {
 	void	*sprite;
 
-	sprite = param->textures->background->p;
-	mlx_put_image_to_window(param->mlx->mlx, param->mlx->mlx_win, sprite, param->boss->coor->x * 64, param->boss->coor->y * 64);
+	//sprite = param->textures->background->p;
+	//mlx_put_image_to_window(param->mlx->mlx, param->mlx->mlx_win, sprite, param->boss->coor->x * 64, param->boss->coor->y * 64);
 	if (direction == 1)
 		sprite = param->textures->ennemy->boss_left->p;
 	if (direction == 2)
@@ -56,7 +56,7 @@ void	not_move_ennemy_sprite(t_param *param, int direction)
 		sprite = param->textures->ennemy->boss_right->p;
 	if (direction == 4)
 		sprite = param->textures->ennemy->boss_bottom->p;
-	mlx_put_image_to_window(param->mlx->mlx, param->mlx->mlx_win, sprite, param->boss->coor->x * 64 + 9, param->boss->coor->y * 64 + 9);
+	mlx_put_image_to_window(param->mlx->mlx, param->mlx->mlx_win, sprite, param->boss->coor->x * 64, param->boss->coor->y * 64);
 	sprite = NULL;
 }
 
@@ -110,11 +110,11 @@ void	move_ennemy_to_coin(t_param *param, t_gps *new, int direction, t_gps *ennem
 	if (direction == 4)
 		sprite = param->textures->ennemy->boss_bottom->p;
 	move_ennemy(param->map, ennemy, new, 'C');
-	mlx_put_image_to_window(param->mlx->mlx, param->mlx->mlx_win, sprite, new->x * 64 + 9, new->y * 64 + 9);
+	mlx_put_image_to_window(param->mlx->mlx, param->mlx->mlx_win, sprite, new->x * 64, new->y * 64);
 	sprite = param->textures->background->p;
 	mlx_put_image_to_window(param->mlx->mlx, param->mlx->mlx_win, sprite, ennemy->x * 64, ennemy->y * 64);
 	sprite = choose_texture_coin(param);
-	mlx_put_image_to_window(param->mlx->mlx, param->mlx->mlx_win, sprite, ennemy->x * 64 + 12, ennemy->y * 64 + 12);
+	mlx_put_image_to_window(param->mlx->mlx, param->mlx->mlx_win, sprite, ennemy->x * 64, ennemy->y * 64);
 	ennemy->x = new->x;
 	ennemy->y = new->y;
 	sprite = NULL;

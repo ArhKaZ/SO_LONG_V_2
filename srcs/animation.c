@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   animation.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 16:58:46 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/17 13:07:34 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/19 21:06:51 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,26 +22,26 @@ int	animate_black_hole_close(t_param *param)
 	if (bh->frame_act < 9)
 	{
 		if (bh->frame_act == 1)
-			put_image(param->mlx, bh->frame2->p, map->coor_exit, 16);
+			put_image(param->mlx, bh->frame2->p, map->coor_exit, 0);
 		if (bh->frame_act == 2)
-			put_image(param->mlx, bh->frame3->p, map->coor_exit, 16);
+			put_image(param->mlx, bh->frame3->p, map->coor_exit, 0);
 		if (bh->frame_act == 3)
-			put_image(param->mlx, bh->frame4->p, map->coor_exit, 16);
+			put_image(param->mlx, bh->frame4->p, map->coor_exit, 0);
 		if (bh->frame_act == 4)
-			put_image(param->mlx, bh->frame5->p, map->coor_exit, 16);
+			put_image(param->mlx, bh->frame5->p, map->coor_exit, 0);
 		if (bh->frame_act == 5)
-			put_image(param->mlx, bh->frame6->p, map->coor_exit, 16);
+			put_image(param->mlx, bh->frame6->p, map->coor_exit, 0);
 		if (bh->frame_act == 6)
-			put_image(param->mlx, bh->frame7->p, map->coor_exit, 16);
+			put_image(param->mlx, bh->frame7->p, map->coor_exit, 0);
 		if (bh->frame_act == 7)
-			put_image(param->mlx, bh->frame8->p, map->coor_exit, 16);
+			put_image(param->mlx, bh->frame8->p, map->coor_exit, 0);
 		if (bh->frame_act == 8)
-			put_image(param->mlx, bh->frame9->p, map->coor_exit, 16);
+			put_image(param->mlx, bh->frame9->p, map->coor_exit, 0);
 		bh->frame_act += 1;
 	}
 	else if (bh->frame_act == 9)
 	{
-		put_image(param->mlx, bh->frame1->p, map->coor_exit, 16);
+		put_image(param->mlx, bh->frame1->p, map->coor_exit, 0);
 		bh->frame_act = 1;
 	}
 	return (0);

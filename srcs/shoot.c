@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   shoot.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 17:10:42 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/17 16:50:27 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/19 21:14:15 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,12 +54,12 @@ void	kill_boss(t_param *param, t_gps *new)
 {
 	put_image(param->mlx, param->textures->background->p, param->shots->coor, 0);
 	put_image(param->mlx, param->textures->explode->frame1->p, new, 0);
-	put_image(param->mlx, param->textures->explode->boss_explosion1->p, new, 22);
+	put_image(param->mlx, param->textures->explode->boss_explosion1->p, new, 0);
 	usleep(5000);
 	put_image(param->mlx, param->textures->explode->frame2->p, new, 0);
-	put_image(param->mlx, param->textures->explode->boss_explosion2->p, new, 17);
+	put_image(param->mlx, param->textures->explode->boss_explosion2->p, new, 0);
 	usleep(5000);
-	put_image(param->mlx, param->textures->explode->boss_explosion3->p, new, 13);
+	put_image(param->mlx, param->textures->explode->boss_explosion3->p, new, 0);
 	usleep(5000);
 	put_image(param->mlx, param->textures->background->p, new, 0);
 	del_ennemy(param, new);
@@ -73,11 +73,11 @@ void	make_explosion(t_param *param, t_gps *new)
 	{
 		put_image(param->mlx, param->textures->explode->frame1->p, new, 0);
 		usleep(50000);
-		put_image(param->mlx, param->textures->explode->planet_explosion->p, new, 19);
+		put_image(param->mlx, param->textures->explode->planet_explosion->p, new, 0);
 		put_image(param->mlx, param->textures->explode->frame2->p, new, 0);
 		usleep(50000);
 		put_image(param->mlx, param->textures->background->p, new, 0);
-		put_image(param->mlx, param->textures->planets->planet_exp->p, new, 8);
+		put_image(param->mlx, param->textures->planets->planet_exp->p, new, 0);
 		param->player->score -= 20;
 	}
 	return ;
@@ -86,13 +86,13 @@ void	make_explosion(t_param *param, t_gps *new)
 void	put_shoot_in_direction(t_param *param, t_gps *new)
 {
 	if (param->shots->direction == 1)
-		put_image(param->mlx, param->textures->shoot->frame1_left->p, new, 12);
+		put_image(param->mlx, param->textures->shoot->frame1_left->p, new, 0);
 	if (param->shots->direction == 2)
-		put_image(param->mlx, param->textures->shoot->frame1_top->p, new, 12);
+		put_image(param->mlx, param->textures->shoot->frame1_top->p, new, 0);
 	if (param->shots->direction == 3)
-		put_image(param->mlx, param->textures->shoot->frame1_right->p, new, 12);
+		put_image(param->mlx, param->textures->shoot->frame1_right->p, new, 0);
 	if (param->shots->direction == 4)
-		put_image(param->mlx, param->textures->shoot->frame1_bot->p, new, 12);
+		put_image(param->mlx, param->textures->shoot->frame1_bot->p, new, 0);
 	param->textures->shoot->frame_act = 1;
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   events.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 12:43:10 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/17 16:00:40 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/19 21:12:08 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,9 @@ void	not_move_player_sprite(t_param *param, int direction)
 {
 	void	*sprite;
 
-	sprite = param->textures->background->p;
-	mlx_put_image_to_window(param->mlx->mlx, param->mlx->mlx_win, sprite, param->player->coor->x * 64, param->player->coor->y * 64);
+	sprite = NULL;
+	//sprite = param->textures->background->p;
+	//mlx_put_image_to_window(param->mlx->mlx, param->mlx->mlx_win, sprite, param->player->coor->x * 64, param->player->coor->y * 64);
 	if (direction == 1)
 		sprite = param->textures->player->player_left->p;
 	if (direction == 2)
@@ -46,7 +47,7 @@ void	not_move_player_sprite(t_param *param, int direction)
 		sprite = param->textures->player->player_right->p;
 	if (direction == 4)
 		sprite = param->textures->player->player_bottom->p;
-	mlx_put_image_to_window(param->mlx->mlx, param->mlx->mlx_win, sprite, param->player->coor->x * 64 + 9, param->player->coor->y * 64 + 9);
+	mlx_put_image_to_window(param->mlx->mlx, param->mlx->mlx_win, sprite, param->player->coor->x * 64, param->player->coor->y * 64);
 	sprite = NULL;
 	param->player->direction = direction;
 }
@@ -73,7 +74,7 @@ void	move_player_sprite(t_param *param, t_gps *new, int direction)
 	if (direction == 4)
 		sprite = param->textures->player->player_bottom->p;
 	move_player(param->map, param->player, new);
-	mlx_put_image_to_window(param->mlx->mlx, param->mlx->mlx_win, sprite, new->x * 64 + 9, new->y * 64 + 9);
+	mlx_put_image_to_window(param->mlx->mlx, param->mlx->mlx_win, sprite, new->x * 64, new->y * 64);
 	sprite = param->textures->background->p;
 	mlx_put_image_to_window(param->mlx->mlx, param->mlx->mlx_win, sprite, param->player->coor->x * 64, param->player->coor->y * 64);
 	param->player->coor->x = new->x;
@@ -111,7 +112,7 @@ void	move_coins(t_param *param, t_gps *new, int direction)
 	mlx_put_image_to_window(param->mlx->mlx, param->mlx->mlx_win, param->textures->background->p, new->x * 64, new->y * 64);
 	param->map->map[new->y][new->x] = '0';
 	move_player_sprite(param, new, direction);
-	put_score(param->map, param->mlx, param->player, param->textures);
+	//?put_score(param->map, param->mlx, param->player, param->textures);
 }
 
 int render_next_frame(int keycode, t_param *param)
@@ -128,7 +129,7 @@ int render_next_frame(int keycode, t_param *param)
 			move_top(param);
 		if (keycode == 32 && param->map->nb_shot == 0)
 			create_new_shot(param);
-		put_move(param->map, param->mlx, param->player, param->textures);
+		//?put_move(param->map, param->mlx, param->player, param->textures);
 	}
 	if (keycode == 65307)
 			close_win(param, param->mlx->mlx, param->mlx->mlx_win);

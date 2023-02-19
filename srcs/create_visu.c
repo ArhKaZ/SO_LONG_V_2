@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 16:50:44 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/18 18:03:22 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/19 21:06:20 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	put_obstacle_in_map(t_map *map, void *mlx, void *mlx_win, t_all_texture *te
 			if (map->map[height][width] == '1')
 			{
 				sprite = get_sprite_obstacle(texts);
-				mlx_put_image_to_window(mlx, mlx_win, sprite, width * 64 + 8, height * 64 + 8);
+				mlx_put_image_to_window(mlx, mlx_win, sprite, width * 64, height * 64);
 			}
 			width++;
 		}
@@ -61,15 +61,15 @@ void	put_wall(t_map *map, void *mlx, void *mlx_win, t_texture *wall)
 	width = 0;
 	while (width < map->width)
 	{
-		mlx_put_image_to_window(mlx, mlx_win, wall->p, width * 64 + 12,  12);
-		mlx_put_image_to_window(mlx, mlx_win, wall->p, width * 64 + 12, (map->height - 1) * 64 + 12);
+		mlx_put_image_to_window(mlx, mlx_win, wall->p, width * 64, 0);
+		mlx_put_image_to_window(mlx, mlx_win, wall->p, width * 64, (map->height - 1) * 64);
 		width++;
 	}
 	height = 1;
 	while (height < map->height)
 	{
-		mlx_put_image_to_window(mlx, mlx_win, wall->p, 12, height * 64 + 12);
-		mlx_put_image_to_window(mlx, mlx_win, wall->p, (map->width - 1) * 64 + 12, height * 64 + 12);
+		mlx_put_image_to_window(mlx, mlx_win, wall->p, 0, height * 64);
+		mlx_put_image_to_window(mlx, mlx_win, wall->p, (map->width - 1) * 64, height * 64);
 		height++;
 	}
 }
@@ -85,7 +85,8 @@ void	put_background(t_map *map, void *mlx, void *mlx_win, t_texture *back)
 		width = 0;
 		while (width < map->width * back->size->x)
 		{
-			mlx_put_image_to_window(mlx, mlx_win, back->p, width, height);
+			if (map->map[height][width] == '0')
+				mlx_put_image_to_window(mlx, mlx_win, back->p, width, height);
 			width += back->size->x;
 		}
 		height += back->size->y;
@@ -107,7 +108,7 @@ void	put_player(t_map *map, t_mlx *mlx, t_gps *p, t_texture *player)
 			{
 				p->y = height;
 				p->x = width;
-				mlx_put_image_to_window(mlx->mlx, mlx->mlx_win, player->p, width * 64 + 9, height * 64 + 9);
+				mlx_put_image_to_window(mlx->mlx, mlx->mlx_win, player->p, width * 64, height * 64);
 				return ;
 			}
 			width++;
@@ -131,7 +132,7 @@ void	put_exit(t_map *map, t_mlx *mlx, t_black_hole *exit)
 			{
 				map->coor_exit->x = width;
 				map->coor_exit->y = height;
-				put_image(mlx, exit->frame1->p, map->coor_exit, 16);
+				put_image(mlx, exit->frame1->p, map->coor_exit, 0);
 				exit->frame_act = 1;
 				return ;
 			}
@@ -153,7 +154,7 @@ void	put_coins(t_map *map, void *mlx, void *mlx_win, t_texture *coin)
 		while (width < map->width)
 		{
 			if (map->map[height][width] == 'C')
-				mlx_put_image_to_window(mlx, mlx_win, coin->p, width * 64 + 12 , height * 64 + 12);//TODO:changes
+				mlx_put_image_to_window(mlx, mlx_win, coin->p, width * 64, height * 64);//TODO:changes
 			width++;
 		}
 		height++;
@@ -172,7 +173,7 @@ void	put_ennemy(t_map *map, void *mlx, void *mlx_win, t_sprite_boss *ennemy)
 		while (width < map->width - 1)
 		{
 			if (map->map[height][width] == 'D')
-				mlx_put_image_to_window(mlx, mlx_win, ennemy->boss_top->p, width * 64 + 8, height * 64 + 8);
+				mlx_put_image_to_window(mlx, mlx_win, ennemy->boss_top->p, width * 64, height * 64);
 			width++;
 		}
 		height++;
