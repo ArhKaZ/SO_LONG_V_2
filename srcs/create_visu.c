@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 16:50:44 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/19 22:04:51 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/19 22:20:29 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	*get_sprite_obstacle(t_all_texture *texts)
 	int		random;
 
 	sprite = NULL;
-	random = get_random(4);
+	random = get_random(3);
 	if (random == 0)
 		sprite = texts->planets->planet_1->p;
 	if (random == 1)
