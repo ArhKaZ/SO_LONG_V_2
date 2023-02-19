@@ -6,47 +6,11 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 15:01:59 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/18 18:23:17 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/19 13:58:44 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
-
-// void	*put_line_in_pixel(void *img, char *line)
-// {
-// 	int i;
-
-// 	i = 0;
-// 	while (line[i])
-// 	{
-// 		if (line[i] != '_')
-// 	}
-// }
-
-// void	*get_image(char *path, t_mlx *mlx, t_gps *size)
-// {
-// 	int fd;
-// 	void	*img;
-// 	bool	loop;
-// 	char	*line;
-
-// 	loop = false;
-// 	fd = open(path, O_RDONLY);
-// 	img = mlx_new_image(mlx->mlx, size->x, size->y);
-// 	while (loop == false)
-// 	{
-// 		line = get_next_line(fd);
-// 		if (line == NULL)
-// 		{
-// 			loop = true;
-// 			break;
-// 		}
-// 		else
-// 		{
-
-// 		}
-// 	}
-// }
 
 t_texture	*create_texture(char *path, t_mlx *mlx)
 {
@@ -91,9 +55,9 @@ t_sprite_player	*create_player_sprites(t_mlx *mlx)
 	player = NULL;
 	player = malloc(sizeof(t_sprite_player));
 	player->player_bottom = create_texture("texture_converted/Spaceship_bottom.xpm", mlx);
-	player->player_left = create_texture("texture_converted/Spaceship_left.xpm", mlx);
-	player->player_right = create_texture("texture_converted/Spaceship_right.xpm", mlx);
-	player->player_top = create_texture("texture_converted/Spaceship_top.xpm", mlx);
+	player->player_left = create_texture("texture_converted/spaceship/ship_left.xpm", mlx);
+	player->player_right = create_texture("texture_converted/spaceship/Spaceship_right.xpm", mlx);
+	player->player_top = create_texture("texture_converted/spaceship/Spaceship_top.xpm", mlx);
 	return (player);
 }
 
