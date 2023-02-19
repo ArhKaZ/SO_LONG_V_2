@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 17:10:42 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/19 23:43:20 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/19 23:46:44 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,8 +79,10 @@ void	make_explosion(t_param *param, t_gps *new)
 		usleep(50000);
 		put_image(param->mlx, param->textures->background->p, new, 0);
 		put_image(param->mlx, param->textures->planets->planet_exp->p, new, 0);
-		if (param->player->score > 0)
+		if (param->player->score - 20 > 0)
 			param->player->score -= 20;
+		else
+			param->player->score = 0;
 	}
 	return ;
 }

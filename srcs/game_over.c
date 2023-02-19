@@ -3,26 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   game_over.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 13:15:25 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/17 15:44:51 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/19 23:47:12 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
-
-// int	check_key(int keycode, t_param *param) //? besoin
-// {
-// 	if (keycode == 53)
-// 	{
-// 		free_textures(param->textures, param->mlx->mlx);
-// 		free(param->mlx);
-// 		free(param);
-// 		close_win(param);
-// 	}
-// 	return (0);
-// }
 
 void	free_finish(t_param *param)
 {
@@ -70,7 +58,7 @@ void	put_score_end(t_param *param)
 	int		width_div_10;
 	int		nb_temp;
 	t_texture	*sprite;
-	
+
 	sprite = NULL;
 	height_div_10 = (param->map->height * 64) / 100;
 	width_div_10 = (param->map->width * 64) / 100;
@@ -122,7 +110,7 @@ int	game_win(t_param *param)
 
 	sprite = NULL;
 	param->finish = true;
-	place = create_empty_gps(); 
+	place = create_empty_gps();
 	if (param->map->height < 8 && param->map->width < 8)
 		sprite = param->textures->end->little;
 	else if (param->map->height < 14 && param->map->width < 14)
@@ -146,7 +134,7 @@ int	game_over(t_param *param)
 
 	sprite = NULL;
 	param->finish = true;
-	place = create_empty_gps(); 
+	place = create_empty_gps();
 	if (param->map->height < 8 && param->map->width < 8)
 		sprite = param->textures->game_over->little;
 	else if (param->map->height < 14 && param->map->width < 14)
