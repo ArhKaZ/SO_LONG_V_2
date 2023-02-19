@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 16:50:44 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/19 21:06:20 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/19 22:04:51 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ void	put_background(t_map *map, void *mlx, void *mlx_win, t_texture *back)
 		width = 0;
 		while (width < map->width * back->size->x)
 		{
-			if (map->map[height][width] == '0')
+			if (map->map[height / 64][width / 64] == '0')
 				mlx_put_image_to_window(mlx, mlx_win, back->p, width, height);
 			width += back->size->x;
 		}

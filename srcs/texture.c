@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 15:01:59 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/19 21:54:16 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/19 22:08:47 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ t_sprite_player	*create_player_sprites(t_mlx *mlx)
 
 	player = NULL;
 	player = malloc(sizeof(t_sprite_player));
-	player->player_bottom = create_texture("texture_converted/ship/ship_bot", mlx);
+	player->player_bottom = create_texture("texture_converted/ship/ship_bot.xpm", mlx);
 	player->player_left = create_texture("texture_converted/ship/ship_left.xpm", mlx);
 	player->player_right = create_texture("texture_converted/ship/ship_right.xpm", mlx);
 	player->player_top = create_texture("texture_converted/ship/ship_top.xpm", mlx);
