@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 15:32:53 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/19 21:13:26 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/19 21:19:28 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ void	not_move_ennemy_sprite(t_param *param, int direction)
 {
 	void	*sprite;
 
+	sprite = NULL;
 	//sprite = param->textures->background->p;
 	//mlx_put_image_to_window(param->mlx->mlx, param->mlx->mlx_win, sprite, param->boss->coor->x * 64, param->boss->coor->y * 64);
 	if (direction == 1)

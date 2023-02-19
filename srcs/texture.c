@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 15:01:59 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/19 13:58:44 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/19 21:39:36 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,21 +29,21 @@ t_coins	*create_collectible(t_mlx *mlx) //TODO:NORM
 
 	coins = NULL;
 	coins = malloc(sizeof(t_coins));
-	coins->frame1 = create_texture("texture_converted/collectable/Collectible1.xpm", mlx);
-	coins->frame2 = create_texture("texture_converted/collectable/Collectible2.xpm", mlx);
-	coins->frame3 = create_texture("texture_converted/collectable/Collectible3.xpm", mlx);
-	coins->frame4 = create_texture("texture_converted/collectable/Collectible4.xpm", mlx);
-	coins->frame5 = create_texture("texture_converted/collectable/Collectible5.xpm", mlx);
-	coins->frame6 = create_texture("texture_converted/collectable/Collectible6.xpm", mlx);
-	coins->frame7 = create_texture("texture_converted/collectable/Collectible7.xpm", mlx);
-	coins->frame8 = create_texture("texture_converted/collectable/Collectible8.xpm", mlx);
-	coins->frame9 = create_texture("texture_converted/collectable/Collectible9.xpm", mlx);
-	coins->frame10 = create_texture("texture_converted/collectable/Collectible10.xpm", mlx);
-	coins->frame11 = create_texture("texture_converted/collectable/Collectible11.xpm", mlx);
-	coins->frame12 = create_texture("texture_converted/collectable/Collectible12.xpm", mlx);
-	coins->frame13 = create_texture("texture_converted/collectable/Collectible13.xpm", mlx);
-	coins->frame14 = create_texture("texture_converted/collectable/Collectible14.xpm", mlx);
-	coins->frame15 = create_texture("texture_converted/collectable/Collectible15.xpm", mlx);
+	coins->frame1 = create_texture("texture_converted/coins/coins1.xpm", mlx);
+	coins->frame2 = create_texture("texture_converted/coins/coins2.xpm", mlx);
+	coins->frame3 = create_texture("texture_converted/coins/coins3.xpm", mlx);
+	coins->frame4 = create_texture("texture_converted/coins/coins4.xpm", mlx);
+	coins->frame5 = create_texture("texture_converted/coins/coins5.xpm", mlx);
+	coins->frame6 = create_texture("texture_converted/coins/coins6.xpm", mlx);
+	coins->frame7 = create_texture("texture_converted/coins/coins7.xpm", mlx);
+	coins->frame8 = create_texture("texture_converted/coins/coins8.xpm", mlx);
+	coins->frame9 = create_texture("texture_converted/coins/coins9.xpm", mlx);
+	coins->frame10 = create_texture("texture_converted/coins/coins10.xpm", mlx);
+	coins->frame11 = create_texture("texture_converted/coins/coins11.xpm", mlx);
+	coins->frame12 = create_texture("texture_converted/coins/coins12.xpm", mlx);
+	coins->frame13 = create_texture("texture_converted/coins/coins13.xpm", mlx);
+	coins->frame14 = create_texture("texture_converted/coins/coins14.xpm", mlx);
+	coins->frame15 = create_texture("texture_converted/coins/coins15.xpm", mlx);
 	coins->frame_act = 0;
 	return (coins);
 }
@@ -54,10 +54,10 @@ t_sprite_player	*create_player_sprites(t_mlx *mlx)
 
 	player = NULL;
 	player = malloc(sizeof(t_sprite_player));
-	player->player_bottom = create_texture("texture_converted/Spaceship_bottom.xpm", mlx);
-	player->player_left = create_texture("texture_converted/spaceship/ship_left.xpm", mlx);
-	player->player_right = create_texture("texture_converted/spaceship/Spaceship_right.xpm", mlx);
-	player->player_top = create_texture("texture_converted/spaceship/Spaceship_top.xpm", mlx);
+	player->player_bottom = create_texture("texture_converted/ship/ship_bot", mlx);
+	player->player_left = create_texture("texture_converted/ship/ship_left.xpm", mlx);
+	player->player_right = create_texture("texture_converted/ship/ship_right.xpm", mlx);
+	player->player_top = create_texture("texture_converted/ship/ship_top.xpm", mlx);
 	return (player);
 }
 
@@ -67,15 +67,15 @@ t_black_hole	*create_black_hole(t_mlx *mlx)
 
 	bh = NULL;
 	bh = malloc(sizeof(t_black_hole));
-	bh->frame1 = create_texture("texture_converted/Black_hole/Black_hole_close1.xpm", mlx);
-	bh->frame2 = create_texture("texture_converted/Black_hole/Black_hole_close2.xpm", mlx);
-	bh->frame3 = create_texture("texture_converted/Black_hole/Black_hole_close3.xpm", mlx);
-	bh->frame4 = create_texture("texture_converted/Black_hole/Black_hole_close4.xpm", mlx);
-	bh->frame5 = create_texture("texture_converted/Black_hole/Black_hole_close5.xpm", mlx);
-	bh->frame6 = create_texture("texture_converted/Black_hole/Black_hole_close6.xpm", mlx);
-	bh->frame7 = create_texture("texture_converted/Black_hole/Black_hole_close7.xpm", mlx);
-	bh->frame8 = create_texture("texture_converted/Black_hole/Black_hole_close8.xpm", mlx);
-	bh->frame9 = create_texture("texture_converted/Black_hole/Black_hole_close9.xpm", mlx);
+	bh->frame1 = create_texture("texture_converted/black_hole/black_hole_close1.xpm", mlx);
+	bh->frame2 = create_texture("texture_converted/black_hole/black_hole_close2.xpm", mlx);
+	bh->frame3 = create_texture("texture_converted/black_hole/black_hole_close3.xpm", mlx);
+	bh->frame4 = create_texture("texture_converted/black_hole/black_hole_close4.xpm", mlx);
+	bh->frame5 = create_texture("texture_converted/black_hole/black_hole_close5.xpm", mlx);
+	bh->frame6 = create_texture("texture_converted/black_hole/black_hole_close6.xpm", mlx);
+	bh->frame7 = create_texture("texture_converted/black_hole/black_hole_close7.xpm", mlx);
+	bh->frame8 = create_texture("texture_converted/black_hole/black_hole_close8.xpm", mlx);
+	bh->frame9 = create_texture("texture_converted/black_hole/black_hole_close9.xpm", mlx);
 	bh->frame_act = 0;
 	return (bh);
 }
@@ -86,15 +86,15 @@ t_black_hole	*create_black_hole_for_end(t_mlx *mlx)
 
 	bh = NULL;
 	bh = malloc(sizeof(t_black_hole));
-	bh->frame1 = create_texture("texture_converted/Black_hole/Black_hole1.xpm", mlx);
-	bh->frame2 = create_texture("texture_converted/Black_hole/Black_hole2.xpm", mlx);
-	bh->frame3 = create_texture("texture_converted/Black_hole/Black_hole3.xpm", mlx);
-	bh->frame4 = create_texture("texture_converted/Black_hole/Black_hole4.xpm", mlx);
-	bh->frame5 = create_texture("texture_converted/Black_hole/Black_hole5.xpm", mlx);
-	bh->frame6 = create_texture("texture_converted/Black_hole/Black_hole6.xpm", mlx);
-	bh->frame7 = create_texture("texture_converted/Black_hole/Black_hole7.xpm", mlx);
-	bh->frame8 = create_texture("texture_converted/Black_hole/Black_hole8.xpm", mlx);
-	bh->frame9 = create_texture("texture_converted/Black_hole/Black_hole9.xpm", mlx);
+	bh->frame1 = create_texture("texture_converted/black_hole/black_hole1.xpm", mlx);
+	bh->frame2 = create_texture("texture_converted/black_hole/black_hole2.xpm", mlx);
+	bh->frame3 = create_texture("texture_converted/black_hole/black_hole3.xpm", mlx);
+	bh->frame4 = create_texture("texture_converted/black_hole/black_hole4.xpm", mlx);
+	bh->frame5 = create_texture("texture_converted/black_hole/black_hole5.xpm", mlx);
+	bh->frame6 = create_texture("texture_converted/black_hole/black_hole6.xpm", mlx);
+	bh->frame7 = create_texture("texture_converted/black_hole/black_hole7.xpm", mlx);
+	bh->frame8 = create_texture("texture_converted/black_hole/black_hole8.xpm", mlx);
+	bh->frame9 = create_texture("texture_converted/black_hole/black_hole9.xpm", mlx);
 	bh->frame_act = 0;
 	return (bh);
 }
@@ -105,10 +105,10 @@ t_sprite_boss	*create_sprite_boss(t_mlx *mlx)
 
 	boss = NULL;
 	boss = malloc(sizeof(t_sprite_boss));
-	boss->boss_bottom = create_texture("texture_converted/Boss/Boss_bottom.xpm", mlx);
-	boss->boss_left = create_texture("texture_converted/Boss/Boss_left.xpm", mlx);
-	boss->boss_right = create_texture("texture_converted/Boss/Boss_right.xpm", mlx);
-	boss->boss_top = create_texture("texture_converted/Boss/Boss_top.xpm", mlx);
+	boss->boss_bottom = create_texture("texture_converted/boss/boss_bottom.xpm", mlx);
+	boss->boss_left = create_texture("texture_converted/boss/boss_left.xpm", mlx);
+	boss->boss_right = create_texture("texture_converted/boss/boss_right.xpm", mlx);
+	boss->boss_top = create_texture("texture_converted/boss/boss_top.xpm", mlx);
 	return (boss);
 }
 
@@ -279,11 +279,11 @@ t_all_texture	*create_all_texture(t_mlx *mlx, int width, int height)
 	all_texture = malloc(sizeof(t_all_texture));
 	if (!all_texture)
 		return (NULL);
-	all_texture->background = create_texture("texture_converted/Space_Stars6.xpm", mlx);
+	all_texture->background = create_texture("texture_converted/space_Stars6.xpm", mlx);
 	all_texture->coin = create_collectible(mlx);
 	all_texture->planets = create_planet_sprite(mlx);
 	all_texture->player = create_player_sprites(mlx);
-	all_texture->wall = create_texture("texture_converted/Asteroid.xpm", mlx);
+	all_texture->wall = create_texture("texture_converted/asteroid.xpm", mlx);
 	all_texture->black_hole_close = create_black_hole(mlx);
 	all_texture->black_hole = create_black_hole_for_end(mlx);
 	all_texture->ennemy = create_sprite_boss(mlx);
