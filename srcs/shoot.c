@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 17:10:42 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/19 23:46:44 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/19 23:57:16 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -166,6 +166,7 @@ void	create_new_shot(t_param *param)
 		put_image(param->mlx, param->textures->background->p, shot->coor, 0);
 		free(shot->coor);
 		free(shot);
+		param->player->score += 50;
 		return ;
 	}
 	if (param->map->map[shot->coor->y][shot->coor->x] == 'E')

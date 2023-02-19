@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 13:15:25 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/19 23:47:12 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/19 23:56:47 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,8 +90,6 @@ void	put_moves_end(t_param *param, t_gps *place_back, t_gps *back_size)
 	size_y_10 = back_size->y / 100;
 	place->x = place_back->x * 64 + size_x_10 * 50;
 	place->y = place_back->y * 64 + size_y_10 * 40;
-	// place->x = width_div_10 * 63;
-	// place->y = height_div_10 * 58.5;
 	nb_temp = param->player->moves;
 	while (nb_temp > 0)
 	{
