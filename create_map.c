@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_map.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
+/*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 15:12:39 by syluiset          #+#    #+#             */
-/*   Updated: 2023/01/31 01:14:07 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/20 15:26:39 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ t_gps	*create_gps(int height, int width)
 	t_gps	*new;
 
 	new = malloc(sizeof(t_gps));
+	if (!new)
+		return (NULL);
 	new->y = height;
 	new->x = width;
 	return (new);
@@ -88,7 +90,11 @@ void	create_map(int width, int height, int density, int collect)
 	t_gps		*coor;
 
 	coor = create_gps(height, width);
+	if (!coor)
+		return ;
 	map = create_gen_map(collect, 0);
+	if (!map)
+		return ;
 	y = 0;
 	while (y < coor->y + 1)
 	{
@@ -126,10 +132,10 @@ int	main(int argc, char **argv)
 	t_gps	*gps;
 
 	gps = malloc(sizeof(t_gps));
+	if (!gps)
+		return (0);
 	if (argc == 5)
-	{
 		create_map(ft_atoi(argv[1]), ft_atoi(argv[2]), ft_atoi(argv[3]), ft_atoi(argv[4]));
-	}
 	if (argc == 6)
 	{
 		gps->x = ft_atoi(argv[1]);

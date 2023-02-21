@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
+/*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 11:22:07 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/19 23:44:01 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/20 11:52:13 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ typedef struct s_player
 typedef struct s_ennemy
 {
 	t_gps	*coor;
+	int		direction;
 	struct s_ennemy	*next;
 }				t_ennemy;
 
@@ -119,12 +120,10 @@ typedef struct s_sprite_player
 
 typedef	struct s_explode
 {
-	t_texture	*frame1;
-	t_texture	*frame2;
-	t_texture	*planet_explosion;
 	t_texture	*boss_explosion1;
 	t_texture	*boss_explosion2;
 	t_texture	*boss_explosion3;
+	int			frame_act;
 }				t_explode;
 
 typedef	struct s_sprite_planet
@@ -376,4 +375,8 @@ int		is_end(t_param *param);
 void	free_black_hole(t_black_hole *bh, void *mlx);
 
 t_texture	*create_texture(char *path, t_mlx *mlx);
+
+t_explode	*create_explode(t_mlx *mlx, int direction);
+
+void	free_explode(t_explode *ex, void *mlx);
 #endif

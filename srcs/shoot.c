@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   shoot.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
+/*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 17:10:42 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/19 23:57:16 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/21 17:24:36 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,18 +52,35 @@ t_gps	*get_next_coor_s(int direction, t_gps *coor)
 
 void	kill_boss(t_param *param, t_gps *new)
 {
-	put_image(param->mlx, param->textures->background->p, param->shots->coor, 0);
-	put_image(param->mlx, param->textures->explode->frame1->p, new, 0);
-	put_image(param->mlx, param->textures->explode->boss_explosion1->p, new, 0);
-	usleep(5000);
-	put_image(param->mlx, param->textures->explode->frame2->p, new, 0);
-	put_image(param->mlx, param->textures->explode->boss_explosion2->p, new, 0);
-	usleep(5000);
-	put_image(param->mlx, param->textures->explode->boss_explosion3->p, new, 0);
-	usleep(5000);
-	put_image(param->mlx, param->textures->background->p, new, 0);
+	clock_t		begin;
+	clock_t		current;
+	t_explode	*ex;
+
+	begin = clock();
+	current = clock();
+	ex = create_explode(param->mlx, param->boss->direction);
+	put_image(param->mlx, ex->boss_explosion1->p, new, 0);
 	param->player->score += 50;
+	while ((current - begin) * 1000 / CLOCKS_PER_SEC < 100)
+	{
+		if (ex->frame_act < 2)
+		{
+			if (ex->frame_act == 0)
+				put_image(param->mlx, ex->boss_explosion2->p, new, 0);
+			if (ex->frame_act == 1)
+				put_image(param->mlx, ex->boss_explosion3->p, new, 0);
+			ex->frame_act += 1;
+		}
+		else
+		{
+			put_image(param->mlx, ex->boss_explosion1->p, new, 0);
+			ex->frame_act = 0;
+		}
+		current = clock();
+	}
 	del_ennemy(param, new);
+	put_image(param->mlx, param->textures->background->p, new, 0);
+	free_explode(ex, param->mlx->mlx);
 }
 
 void	make_explosion(t_param *param, t_gps *new)
@@ -72,12 +89,6 @@ void	make_explosion(t_param *param, t_gps *new)
 		return ;
 	else
 	{
-		put_image(param->mlx, param->textures->explode->frame1->p, new, 0);
-		usleep(50000);
-		put_image(param->mlx, param->textures->explode->planet_explosion->p, new, 0);
-		put_image(param->mlx, param->textures->explode->frame2->p, new, 0);
-		usleep(50000);
-		put_image(param->mlx, param->textures->background->p, new, 0);
 		put_image(param->mlx, param->textures->planets->planet_exp->p, new, 0);
 		if (param->player->score - 20 > 0)
 			param->player->score -= 20;
@@ -109,6 +120,7 @@ bool	put_shot_in_coor(t_param *param, t_gps *new)
 	{
 		put_image(param->mlx, param->textures->background->p, param->shots->coor, 0);
 		make_explosion(param, new);
+		param->map->map[new->y][new->x] = '2';
 		param->map->map[param->shots->coor->y][param->shots->coor->x] = '0';
 		del_shot(param);
 		return (false);
@@ -117,6 +129,7 @@ bool	put_shot_in_coor(t_param *param, t_gps *new)
 	{
 		kill_boss(param, new);
 		param->map->map[param->shots->coor->y][param->shots->coor->x] = '0';
+		put_image(param->mlx, param->textures->background->p, param->shots->coor, 0);
 		del_shot(param);
 		return (false);
 	}
@@ -129,14 +142,7 @@ bool	put_shot_in_coor(t_param *param, t_gps *new)
 		param->shots->coor->x = new->x;
 		param->shots->coor->y = new->y;
 	}
-	if (value_case == 'E')
-	{
-		put_image(param->mlx, param->textures->background->p, param->shots->coor, 0);
-		param->map->map[param->shots->coor->y][param->shots->coor->x] = '0';
-		del_shot(param);
-		return (false);
-	}
-	if (value_case == 'C')
+	if (value_case == 'E' || value_case == 'C' || value_case == '2')
 	{
 		put_image(param->mlx, param->textures->background->p, param->shots->coor, 0);
 		param->map->map[param->shots->coor->y][param->shots->coor->x] = '0';
@@ -162,11 +168,10 @@ void	create_new_shot(t_param *param)
 	}
 	if (param->map->map[shot->coor->y][shot->coor->x] == 'D')
 	{
-		del_ennemy(param, shot->coor);
+		kill_boss(param, shot->coor);
 		put_image(param->mlx, param->textures->background->p, shot->coor, 0);
 		free(shot->coor);
 		free(shot);
-		param->player->score += 50;
 		return ;
 	}
 	if (param->map->map[shot->coor->y][shot->coor->x] == 'E')
@@ -202,18 +207,18 @@ void	del_shot(t_param *param)
 bool	move_shot(t_param *param)
 {
 	t_gps	*new;
-	clock_t	actual;
+	clock_t	current;
 	bool	ret;
 
 	ret = true;
-	actual = clock();
-	if ((actual - param->shots->shoot_time) * 1000 / CLOCKS_PER_SEC > 1)
+	current = clock();
+	if ((current - param->shots->shoot_time) * 1000 / CLOCKS_PER_SEC > 1)
 	{
 		new = get_next_coor_s(param->shots->direction, param->shots->coor);
 		if (put_shot_in_coor(param, new) == false)
 			ret = false;
 		else
-			param->shots->shoot_time = actual;
+			param->shots->shoot_time = current;
 		free(new);
 	}
 	return (ret);

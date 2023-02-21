@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_map_ennemy.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
+/*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 15:50:27 by syluiset          #+#    #+#             */
-/*   Updated: 2023/01/31 01:20:59 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/20 15:25:37 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ t_gen_map	*create_gen_map(int collect, int ennemy)
 	t_gen_map	*map;
 
 	map = malloc(sizeof(t_gen_map));
+	if (!map)
+		return (NULL);
 	map->begin = 0;
 	map->exit = 0;
 	map->item = 0;
@@ -95,6 +97,8 @@ void	create_map_with_d(t_gps *coor, int density, int collect, int ennemy)
 
 	y = 0;
 	map = create_gen_map(collect, ennemy);
+	if (!map)
+		return ;
 	while (y < coor->y + 1)
 	{
 		x = 0;

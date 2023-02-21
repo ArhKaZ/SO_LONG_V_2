@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   events.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
+/*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 12:43:10 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/19 21:12:08 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/21 17:18:49 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,6 @@ void	not_move_player_sprite(t_param *param, int direction)
 	void	*sprite;
 
 	sprite = NULL;
-	//sprite = param->textures->background->p;
-	//mlx_put_image_to_window(param->mlx->mlx, param->mlx->mlx_win, sprite, param->player->coor->x * 64, param->player->coor->y * 64);
 	if (direction == 1)
 		sprite = param->textures->player->player_left->p;
 	if (direction == 2)

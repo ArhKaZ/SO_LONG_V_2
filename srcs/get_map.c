@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 15:38:49 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/17 16:44:34 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/20 15:22:28 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ bool	check_line(char *line, t_map *map, size_t *length)
 	{
 		if (i != *length)
 		{
-			ft_putstr_fd("Error map is not regular\n", 2);
+			ft_putstr_fd("Error\nmap is not regular\n", 2);
 			return (false);
 		}
 	}
@@ -84,7 +84,14 @@ char	*map_in_one_string(char *line, char *string)
 	return (string);
 }
 
-//t_bool get_next_line (int fd, char **line_pt)
+bool get_next_line_loop (int fd, char **line_pt)
+{
+	*line_pt = get_next_line(fd);
+	if (*line_pt == NULL)
+		return (false);
+	else
+		return (true);
+}
 
 char	*get_map_to_string(char *path, t_map *map)
 {
@@ -92,25 +99,33 @@ char	*get_map_to_string(char *path, t_map *map)
 	char	*line;
 	char	*map_string;
 	size_t	length;
+	bool	ret;
 
+	ret = true;
 	length = 0;
 	map_string = NULL;
 	fd = open(path, O_RDONLY);
-	while (1)
+	while (get_next_line_loop(fd, &line))
 	{
-		line = get_next_line(fd);
-		if (line == NULL)
-			break ;
-		if (check_line(line, map, &length) == false)
+		if (ret == false)
+			free(line);
+		else
 		{
-			if (map_string != NULL)
-				free(map_string);
-			return (NULL);
+			if (check_line(line, map, &length) == false)
+			{
+				if (map_string != NULL)
+					free(map_string);
+				free(line);
+				ret = false;
+			}
+			else
+				map_string = map_in_one_string(line, map_string);
 		}
-		map_string = map_in_one_string(line, map_string);
 	}
 	close(fd);
-	return (map_string);
+	if (ret == true)
+		return (map_string);
+	return (NULL);
 }
 
 bool	check_extension(char *path)
@@ -124,7 +139,7 @@ bool	check_extension(char *path)
 		return (true);
 	else
 	{
-		ft_putstr_fd("Error\n Le nom du fichier n'est pas conforme", 2);
+		ft_putstr_fd("Error\nLe nom du fichier n'est pas conforme\n", 2);
 		return (false);
 	}
 }

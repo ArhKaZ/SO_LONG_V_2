@@ -3,21 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   game_over.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
+/*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 13:15:25 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/19 23:56:47 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/21 17:15:38 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
-
-void	free_finish(t_param *param)
-{
-	free_map(param->map);
-	free_player(param->player);
-	free_ennemy(param->boss);
-}
 
 t_texture	*choose_sprite_nb(t_all_texture *text, int nb)
 {
@@ -43,62 +36,88 @@ t_texture	*choose_sprite_nb(t_all_texture *text, int nb)
 		return (text->nb->nine);
 	return (NULL);
 }
-
-// int	get_distance_from_digit(int	nb)
-// {
-// 	int	digit;
-// 	digit = 0;
-// 	while ()
-// }
-
-void	put_score_end(t_param *param)
+void	put_sprite_nb(t_param *param, int nb_temp, t_texture *sprite, t_gps *place)
 {
-	t_gps	*place;
-	int		height_div_10;
-	int		width_div_10;
-	int		nb_temp;
-	t_texture	*sprite;
-
-	sprite = NULL;
-	height_div_10 = (param->map->height * 64) / 100;
-	width_div_10 = (param->map->width * 64) / 100;
-	place = create_empty_gps();
-	place->x = width_div_10 * 65;
-	place->y = height_div_10 * 41.8;
-	nb_temp = param->player->score;
+	if (nb_temp == 0)
+	{
+		sprite = param->textures->nb->zero;
+		mlx_put_image_to_window(param->mlx->mlx, param->mlx->mlx_win, sprite->p, place->x, place->y);
+	}
 	while (nb_temp > 0)
 	{
 		sprite = choose_sprite_nb(param->textures, nb_temp % 10);
+		place->x -= (sprite->size->x + 4);
 		mlx_put_image_to_window(param->mlx->mlx, param->mlx->mlx_win, sprite->p, place->x, place->y);
 		nb_temp /= 10;
-		place->x -= (sprite->size->x + 4);
 	}
-	free(place);
 }
 
-void	put_moves_end(t_param *param, t_gps *place_back, t_gps *back_size)
+void	put_score_end(t_param *param, t_gps *place_back, t_gps *back_size, int choice)
 {
 	t_gps	*place;
 	int		size_x_10;
 	int		size_y_10;
-	int		nb_temp;
 	t_texture	*sprite;
 
 	sprite = NULL;
 	place = create_empty_gps();
 	size_x_10 = back_size->x / 100;
 	size_y_10 = back_size->y / 100;
-	place->x = place_back->x * 64 + size_x_10 * 50;
-	place->y = place_back->y * 64 + size_y_10 * 40;
-	nb_temp = param->player->moves;
-	while (nb_temp > 0)
+	if (choice == 1)
 	{
-		sprite = choose_sprite_nb(param->textures, nb_temp % 10);
-		mlx_put_image_to_window(param->mlx->mlx, param->mlx->mlx_win, sprite->p, place->x, place->y);
-		nb_temp /= 10;
-		place->x -= (sprite->size->x + 4);
+		place->x = place_back->x + size_x_10 * 100;
+		place->y = place_back->y + size_y_10 * 46;
 	}
+	if (choice == 2)
+	{
+		place->x = place_back->x + size_x_10 * 95;
+		place->y = place_back->y + size_y_10 * 37.5;
+	}
+	if (choice == 3)
+	{
+		place->x = place_back->x + size_x_10 * 95;
+		place->y = place_back->y + size_y_10 * 41;
+	}
+	put_sprite_nb(param, param->player->score, sprite, place);
 	free(place);
+}
+
+void	put_moves_end(t_param *param, t_gps *place_back, t_gps *back_size, int choice)
+{
+	t_gps	*place;
+	float		size_x_10;
+	float		size_y_10;
+	t_texture	*sprite;
+
+	sprite = NULL;
+	place = create_empty_gps();
+	size_x_10 = back_size->x / 100;
+	size_y_10 = back_size->y / 100;
+	if (choice == 1)
+	{
+		place->x = place_back->x + size_x_10 * 90;
+		place->y = place_back->y + size_y_10 * 86;
+	}
+	if (choice == 2)
+	{
+		place->x = place_back->x + size_x_10 * 90;
+		place->y = place_back->y + size_y_10 * 68.5;
+	}
+	if (choice == 3)
+	{
+		place->x = place_back->x + size_x_10 * 90;
+		place->y = place_back->y + size_y_10 * 75;
+	}
+	put_sprite_nb(param, param->player->moves, sprite, place);
+	free(place);
+}
+
+void	put_last_image(t_param *param, t_gps *place, t_texture *sprite, int choice)
+{
+	mlx_clear_window(param->mlx->mlx, param->mlx->mlx_win);
+	mlx_put_image_to_window(param->mlx->mlx, param->mlx->mlx_win, sprite->p, place->x, place->y);
+	put_moves_end(param, place, sprite->size, choice);
+	put_score_end(param, place, sprite->size, choice);
 }
 
 int	game_win(t_param *param)
@@ -109,18 +128,27 @@ int	game_win(t_param *param)
 	sprite = NULL;
 	param->finish = true;
 	place = create_empty_gps();
-	if (param->map->height < 8 && param->map->width < 8)
+	if (param->map->height < 8 || param->map->width < 8)
+	{
 		sprite = param->textures->end->little;
-	else if (param->map->height < 14 && param->map->width < 14)
+		place->x = ((param->map->width * 64 - sprite->size->x) / 2);
+		place->y = ((param->map->height * 64 - sprite->size->y) / 2);
+		put_last_image(param, place, sprite, 1);
+	}
+	else if (param->map->height < 14 || param->map->width < 14)
+	{
 		sprite = param->textures->end->medium;
-	else if (param->map->height >= 14 && param->map->width >= 14)
+		place->x = ((param->map->width * 64 - sprite->size->x) / 2);
+		place->y = ((param->map->height * 64 - sprite->size->y) / 2);
+		put_last_image(param, place, sprite, 2);
+	}
+	else if (param->map->height >= 14 || param->map->width >= 14)
+	{
 		sprite = param->textures->end->big;
-	place->x = (param->map->width - (sprite->size->x / 64)) / 2;
-	place->y = (param->map->height - (sprite->size->y / 64)) / 2;
-	mlx_clear_window(param->mlx->mlx, param->mlx->mlx_win);
-	put_image(param->mlx, sprite->p, place, 0);
-	put_moves_end(param, place, sprite->size);
-	put_score_end(param);
+		place->x = ((param->map->width * 64 - sprite->size->x) / 2);
+		place->y = ((param->map->height * 64 - sprite->size->y) / 2);
+		put_last_image(param, place, sprite, 3);
+	}
 	free(place);
 	return (0);
 }
@@ -133,18 +161,27 @@ int	game_over(t_param *param)
 	sprite = NULL;
 	param->finish = true;
 	place = create_empty_gps();
-	if (param->map->height < 8 && param->map->width < 8)
+	if (param->map->height < 8 || param->map->width < 8)
+	{
 		sprite = param->textures->game_over->little;
-	else if (param->map->height < 14 && param->map->width < 14)
+		place->x = ((param->map->width * 64 - sprite->size->x) / 2);
+		place->y = ((param->map->height * 64 - sprite->size->y) / 2);
+		put_last_image(param, place, sprite, 1);
+	}
+	else if (param->map->height < 14 || param->map->width < 14)
+	{
 		sprite = param->textures->game_over->medium;
-	else if (param->map->height >= 14 && param->map->width >= 14)
+		place->x = ((param->map->width * 64 - sprite->size->x) / 2);
+		place->y = ((param->map->height * 64 - sprite->size->y) / 2);
+		put_last_image(param, place, sprite, 2);
+	}
+	else if (param->map->height >= 14 || param->map->width >= 14)
+	{
 		sprite = param->textures->game_over->big;
-	place->x = (param->map->width - (sprite->size->x / 64)) / 2;
-	place->y = (param->map->height - (sprite->size->y / 64)) / 2;
-	mlx_clear_window(param->mlx->mlx, param->mlx->mlx_win);
-	put_image(param->mlx, sprite->p, place, 0);
-	put_moves_end(param, place, sprite->size);
-	put_score_end(param);
+		place->x = ((param->map->width * 64 - sprite->size->x) / 2);
+		place->y = ((param->map->height * 64 - sprite->size->y) / 2);
+		put_last_image(param, place, sprite, 3);
+	}
 	free(place);
 	return (0);
 }

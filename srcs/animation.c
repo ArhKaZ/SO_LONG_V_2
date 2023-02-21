@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   animation.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
+/*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 16:58:46 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/19 21:06:51 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/20 11:38:12 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,13 +141,25 @@ int	choose_direction(t_param *param)
 		{
 			random = get_random(50);
 			if (random == 0)
+			{
 				move_ennemy_left(param, param->boss->coor);
+				param->boss->direction = random;
+			}
 			if (random == 1)
+			{
 				move_ennemy_right(param, param->boss->coor);
+				param->boss->direction = random;
+			}
 			if (random == 2)
+			{
 				move_ennemy_top(param, param->boss->coor);
+				param->boss->direction = random;
+			}
 			if (random == 3)
+			{
 				move_ennemy_bottom(param, param->boss->coor);
+				param->boss->direction = random;
+			}
 			param->boss = param->boss->next;
 		}
 		param->boss = first;

@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 16:29:58 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/17 16:31:18 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/20 11:59:04 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -184,9 +184,6 @@ void	free_nb(t_nb *nb, void *mlx)
 
 void	free_explode(t_explode *ex, void *mlx)
 {
-	free_texture(ex->frame1, mlx);
-	free_texture(ex->frame2, mlx);
-	free_texture(ex->planet_explosion, mlx);
 	free_texture(ex->boss_explosion1, mlx);
 	free_texture(ex->boss_explosion2, mlx);
 	free_texture(ex->boss_explosion3, mlx);
@@ -228,7 +225,6 @@ void	free_textures(t_all_texture *texts, void *mlx)
 	free_black_hole(texts->black_hole_close, mlx);
 	free_hp(texts->hp, mlx);
 	free_end_and_go(texts->end, texts->game_over, mlx);
-	free_explode(texts->explode, mlx);
 	free_shoot(texts->shoot, mlx);
 	free_nb(texts->nb, mlx);
 	free(texts);

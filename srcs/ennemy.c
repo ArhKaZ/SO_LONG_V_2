@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ennemy.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
+/*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 15:01:15 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/19 21:08:09 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/20 15:29:13 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,12 @@ t_ennemy	*create_new_ennemy(int height, int width)
 	t_ennemy	*new;
 
 	new = malloc(sizeof(t_ennemy));
+	if (!new)
+		return (NULL);
 	new->coor = malloc(sizeof(t_gps));
 	new->coor->x = width;
 	new->coor->y = height;
+	new->direction = 2;
 	new->next = NULL;
 	return (new);
 }
@@ -37,7 +40,7 @@ void	add_ennemy_back(t_ennemy **lst, int height, int width)
 	t_ennemy	*new;
 
 	new = create_new_ennemy(height, width);
-	if (!lst)
+	if (!lst || !new)
 		return ;
 	if (*lst != NULL)
 	{
