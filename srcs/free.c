@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 16:29:58 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/20 11:59:04 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/22 17:46:57 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	free_ennemy(t_ennemy *boss)
 {
 	t_ennemy	*temp;
 	t_ennemy	*tempnxt;
-	
+
 	if (!boss)
 		return ;
 	tempnxt = boss;
@@ -78,21 +78,21 @@ void	free_texture(t_texture *text, void *mlx)
 
 void	free_coin(t_coins *text, void *mlx)
 {
-	free_texture(text->frame1, mlx);	
-	free_texture(text->frame2, mlx);	
-	free_texture(text->frame3, mlx);	
-	free_texture(text->frame4, mlx);	
-	free_texture(text->frame5, mlx);	
-	free_texture(text->frame6, mlx);	
-	free_texture(text->frame7, mlx);	
-	free_texture(text->frame8, mlx);	
-	free_texture(text->frame9, mlx);	
-	free_texture(text->frame10, mlx);	
-	free_texture(text->frame11, mlx);	
-	free_texture(text->frame12, mlx);	
-	free_texture(text->frame13, mlx);	
-	free_texture(text->frame14, mlx);	
-	free_texture(text->frame15, mlx);	
+	free_texture(text->coins[0], mlx);
+	free_texture(text->coins[1], mlx);
+	free_texture(text->coins[2], mlx);
+	free_texture(text->coins[3], mlx);
+	free_texture(text->coins[4], mlx);
+	free_texture(text->coins[5], mlx);
+	free_texture(text->coins[6], mlx);
+	free_texture(text->coins[7], mlx);
+	free_texture(text->coins[8], mlx);
+	free_texture(text->coins[9], mlx);
+	free_texture(text->coins[10], mlx);
+	free_texture(text->coins[11], mlx);
+	free_texture(text->coins[12], mlx);
+	free_texture(text->coins[13], mlx);
+	free_texture(text->coins[14], mlx);
 	free(text);
 	text = NULL;
 }
@@ -119,15 +119,15 @@ void	free_ennemy_s(t_sprite_boss *b, void *mlx)
 
 void	free_black_hole(t_black_hole *bh, void *mlx)
 {
-	free_texture(bh->frame1, mlx);
-	free_texture(bh->frame2, mlx);
-	free_texture(bh->frame3, mlx);
-	free_texture(bh->frame4, mlx);
-	free_texture(bh->frame5, mlx);
-	free_texture(bh->frame6, mlx);
-	free_texture(bh->frame7, mlx);
-	free_texture(bh->frame8, mlx);
-	free_texture(bh->frame9, mlx);
+	free_texture(bh->bh[0], mlx);
+	free_texture(bh->bh[1], mlx);
+	free_texture(bh->bh[2], mlx);
+	free_texture(bh->bh[3], mlx);
+	free_texture(bh->bh[4], mlx);
+	free_texture(bh->bh[5], mlx);
+	free_texture(bh->bh[6], mlx);
+	free_texture(bh->bh[7], mlx);
+	free_texture(bh->bh[8], mlx);
 	free(bh);
 	bh = NULL;
 }
@@ -143,26 +143,24 @@ void	free_hp(t_hp *hp, void *mlx)
 
 void	free_planets(t_sprite_planet *p, void *mlx)
 {
-	free_texture(p->planet_1, mlx);	
-	free_texture(p->planet_2, mlx);	
-	free_texture(p->planet_3, mlx);	
-	free_texture(p->planet_4, mlx);	
-	free_texture(p->planet_exp, mlx);	
+	free_texture(p->planet_1, mlx);
+	free_texture(p->planet_2, mlx);
+	free_texture(p->planet_3, mlx);
+	free_texture(p->planet_4, mlx);
+	free_texture(p->planet_exp, mlx);
 	free(p);
 	p = NULL;
 }
 
-void	free_end_and_go(t_end *end, t_go *go, void *mlx)
+void	free_end_and_go(t_end *end, void *mlx)
 {
-	free_texture(go->little, mlx);	
-	free_texture(go->medium, mlx);	
-	free_texture(go->big, mlx);	
-	free_texture(end->big, mlx);
-	free_texture(end->medium, mlx);
-	free_texture(end->little, mlx);
-	free(go);
+	free_texture(end->l_big, mlx);
+	free_texture(end->l_little, mlx);
+	free_texture(end->l_med, mlx);
+	free_texture(end->w_big, mlx);
+	free_texture(end->w_little, mlx);
+	free_texture(end->w_med, mlx);
 	free(end);
-	go = NULL;
 	end = NULL;
 }
 
@@ -193,22 +191,22 @@ void	free_explode(t_explode *ex, void *mlx)
 
 void	free_shoot(t_shoot_texture *s, void *mlx)
 {
-	free_texture(s->frame1_left, mlx);
-	free_texture(s->frame1_top, mlx);
-	free_texture(s->frame1_right, mlx);
-	free_texture(s->frame1_bot, mlx);
-	free_texture(s->frame2_left, mlx);
-	free_texture(s->frame2_top, mlx);
-	free_texture(s->frame2_right, mlx);
-	free_texture(s->frame2_bot, mlx);
-	free_texture(s->frame3_left, mlx);
-	free_texture(s->frame3_top, mlx);
-	free_texture(s->frame3_right, mlx);
-	free_texture(s->frame3_bot, mlx);
-	free_texture(s->frame4_left, mlx);
-	free_texture(s->frame4_top, mlx);
-	free_texture(s->frame4_right, mlx);
-	free_texture(s->frame4_bot, mlx);
+	free_texture(s->s_left[0], mlx);
+	free_texture(s->s_top[0], mlx);
+	free_texture(s->s_right[0], mlx);
+	free_texture(s->s_bot[0], mlx);
+	free_texture(s->s_left[1], mlx);
+	free_texture(s->s_top[1], mlx);
+	free_texture(s->s_right[1], mlx);
+	free_texture(s->s_bot[1], mlx);
+	free_texture(s->s_left[2], mlx);
+	free_texture(s->s_top[2], mlx);
+	free_texture(s->s_right[2], mlx);
+	free_texture(s->s_bot[2], mlx);
+	free_texture(s->s_left[3], mlx);
+	free_texture(s->s_top[3], mlx);
+	free_texture(s->s_right[3], mlx);
+	free_texture(s->s_bot[3], mlx);
 	free(s);
 	s = NULL;
 }
@@ -224,7 +222,7 @@ void	free_textures(t_all_texture *texts, void *mlx)
 	free_black_hole(texts->black_hole, mlx);
 	free_black_hole(texts->black_hole_close, mlx);
 	free_hp(texts->hp, mlx);
-	free_end_and_go(texts->end, texts->game_over, mlx);
+	free_end_and_go(texts->end, mlx);
 	free_shoot(texts->shoot, mlx);
 	free_nb(texts->nb, mlx);
 	free(texts);

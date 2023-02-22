@@ -1,25 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   events.c                                           :+:      :+:    :+:   */
+/*   player_action_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/19 12:43:10 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/21 17:18:49 by syluiset         ###   ########.fr       */
+/*   Created: 2023/01/24 14:25:45 by syluiset          #+#    #+#             */
+/*   Updated: 2023/02/22 18:03:02 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
-
-int	close_win(t_param *param, void *mlx, void *mlx_win)
-{
-	free_all(param);
-	mlx_destroy_window(mlx, mlx_win);
-	mlx_destroy_display(mlx);
-	free(mlx);
-	exit(EXIT_SUCCESS);
-}
 
 void	move_player(t_map *map, t_player *player, t_gps *new)
 {
@@ -30,7 +21,6 @@ void	move_player(t_map *map, t_player *player, t_gps *new)
 	map->map[player->coor->y][player->coor->x] = c;
 	player->moves += 1;
 }
-
 
 void	not_move_player_sprite(t_param *param, int direction)
 {
@@ -53,8 +43,10 @@ void	not_move_player_sprite(t_param *param, int direction)
 void	less_hp(t_param *param, int direction)
 {
 	param->player->hp -= 1;
+	if (param->player->hp == 0)
+		param->finish = 1;
 	not_move_ennemy_sprite(param, direction);
-	put_hp(param->map, param->mlx, param->player, param->textures);
+	//?put_hp(param->map, param->mlx, param->player, param->textures);
 }
 
 void	move_player_sprite(t_param *param, t_gps *new, int direction)
@@ -93,14 +85,6 @@ int	move_exit(t_param *param, t_gps *new, int move)
 	return (0);
 }
 
-void	change_exit(t_param *param)
-{
-	put_image(param->mlx, param->textures->background->p, param->map->coor_exit, 0);
-	put_image(param->mlx, param->textures->black_hole->frame1->p, param->map->coor_exit, 0);
-	param->textures->black_hole->frame_act = 1;
-	return ;
-}
-
 void	move_coins(t_param *param, t_gps *new, int direction)
 {
 	param->player->collect += 1;
@@ -110,26 +94,4 @@ void	move_coins(t_param *param, t_gps *new, int direction)
 	mlx_put_image_to_window(param->mlx->mlx, param->mlx->mlx_win, param->textures->background->p, new->x * 64, new->y * 64);
 	param->map->map[new->y][new->x] = '0';
 	move_player_sprite(param, new, direction);
-	//?put_score(param->map, param->mlx, param->player, param->textures);
-}
-
-int render_next_frame(int keycode, t_param *param)
-{
-	if (param->finish == false)
-	{
-		if (keycode == 97)
-			move_left(param);
-		if (keycode == 115)
-			move_bottom(param);
-		if (keycode == 100)
-			move_right(param);
-		if (keycode == 119)
-			move_top(param);
-		if (keycode == 32 && param->map->nb_shot == 0)
-			create_new_shot(param);
-		//?put_move(param->map, param->mlx, param->player, param->textures);
-	}
-	if (keycode == 65307)
-			close_win(param, param->mlx->mlx, param->mlx->mlx_win);
-	return (0);
 }

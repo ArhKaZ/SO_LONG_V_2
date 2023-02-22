@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 11:18:21 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/21 15:51:22 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/22 16:52:56 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,18 +24,6 @@ int		map_test(t_param *param)
 	if (map_is_finishable(param->map) == false)
 		close_win(param, param->mlx->mlx, param->mlx->mlx_win);
 	return (1);
-}
-
-void	print_map(char **map)
-{
-	int i;
-
-	i = 0;
-	while (map[i] != NULL)
-	{
-		ft_printf("%s\n", map[i]);
-		i++;
-	}
 }
 
 t_param	*get_param(char **argv)

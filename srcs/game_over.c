@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 13:15:25 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/21 17:15:38 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/22 18:01:25 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,21 +130,21 @@ int	game_win(t_param *param)
 	place = create_empty_gps();
 	if (param->map->height < 8 || param->map->width < 8)
 	{
-		sprite = param->textures->end->little;
+		sprite = param->textures->end->w_little;
 		place->x = ((param->map->width * 64 - sprite->size->x) / 2);
 		place->y = ((param->map->height * 64 - sprite->size->y) / 2);
 		put_last_image(param, place, sprite, 1);
 	}
 	else if (param->map->height < 14 || param->map->width < 14)
 	{
-		sprite = param->textures->end->medium;
+		sprite = param->textures->end->w_med;
 		place->x = ((param->map->width * 64 - sprite->size->x) / 2);
 		place->y = ((param->map->height * 64 - sprite->size->y) / 2);
 		put_last_image(param, place, sprite, 2);
 	}
 	else if (param->map->height >= 14 || param->map->width >= 14)
 	{
-		sprite = param->textures->end->big;
+		sprite = param->textures->end->w_big;
 		place->x = ((param->map->width * 64 - sprite->size->x) / 2);
 		place->y = ((param->map->height * 64 - sprite->size->y) / 2);
 		put_last_image(param, place, sprite, 3);
@@ -163,21 +163,21 @@ int	game_over(t_param *param)
 	place = create_empty_gps();
 	if (param->map->height < 8 || param->map->width < 8)
 	{
-		sprite = param->textures->game_over->little;
+		sprite = param->textures->end->l_little;
 		place->x = ((param->map->width * 64 - sprite->size->x) / 2);
 		place->y = ((param->map->height * 64 - sprite->size->y) / 2);
 		put_last_image(param, place, sprite, 1);
 	}
 	else if (param->map->height < 14 || param->map->width < 14)
 	{
-		sprite = param->textures->game_over->medium;
+		sprite = param->textures->end->l_med;
 		place->x = ((param->map->width * 64 - sprite->size->x) / 2);
 		place->y = ((param->map->height * 64 - sprite->size->y) / 2);
 		put_last_image(param, place, sprite, 2);
 	}
 	else if (param->map->height >= 14 || param->map->width >= 14)
 	{
-		sprite = param->textures->game_over->big;
+		sprite = param->textures->end->l_big;
 		place->x = ((param->map->width * 64 - sprite->size->x) / 2);
 		place->y = ((param->map->height * 64 - sprite->size->y) / 2);
 		put_last_image(param, place, sprite, 3);

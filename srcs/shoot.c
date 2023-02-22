@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 17:10:42 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/21 17:24:36 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/22 13:36:15 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,27 +59,27 @@ void	kill_boss(t_param *param, t_gps *new)
 	begin = clock();
 	current = clock();
 	ex = create_explode(param->mlx, param->boss->direction);
-	put_image(param->mlx, ex->boss_explosion1->p, new, 0);
+	put_image(param->mlx, ex->boss_explosion1->p, new);
 	param->player->score += 50;
 	while ((current - begin) * 1000 / CLOCKS_PER_SEC < 100)
 	{
 		if (ex->frame_act < 2)
 		{
 			if (ex->frame_act == 0)
-				put_image(param->mlx, ex->boss_explosion2->p, new, 0);
+				put_image(param->mlx, ex->boss_explosion2->p, new);
 			if (ex->frame_act == 1)
-				put_image(param->mlx, ex->boss_explosion3->p, new, 0);
+				put_image(param->mlx, ex->boss_explosion3->p, new);
 			ex->frame_act += 1;
 		}
 		else
 		{
-			put_image(param->mlx, ex->boss_explosion1->p, new, 0);
+			put_image(param->mlx, ex->boss_explosion1->p, new);
 			ex->frame_act = 0;
 		}
 		current = clock();
 	}
 	del_ennemy(param, new);
-	put_image(param->mlx, param->textures->background->p, new, 0);
+	put_image(param->mlx, param->textures->background->p, new);
 	free_explode(ex, param->mlx->mlx);
 }
 
@@ -89,7 +89,7 @@ void	make_explosion(t_param *param, t_gps *new)
 		return ;
 	else
 	{
-		put_image(param->mlx, param->textures->planets->planet_exp->p, new, 0);
+		put_image(param->mlx, param->textures->planets->planet_exp->p, new);
 		if (param->player->score - 20 > 0)
 			param->player->score -= 20;
 		else
@@ -101,14 +101,14 @@ void	make_explosion(t_param *param, t_gps *new)
 void	put_shoot_in_direction(t_param *param, t_gps *new)
 {
 	if (param->shots->direction == 1)
-		put_image(param->mlx, param->textures->shoot->frame1_left->p, new, 0);
+		put_image(param->mlx, param->textures->shoot->s_left[0]->p, new);
 	if (param->shots->direction == 2)
-		put_image(param->mlx, param->textures->shoot->frame1_top->p, new, 0);
+		put_image(param->mlx, param->textures->shoot->s_top[0]->p, new);
 	if (param->shots->direction == 3)
-		put_image(param->mlx, param->textures->shoot->frame1_right->p, new, 0);
+		put_image(param->mlx, param->textures->shoot->s_right[0]->p, new);
 	if (param->shots->direction == 4)
-		put_image(param->mlx, param->textures->shoot->frame1_bot->p, new, 0);
-	param->textures->shoot->frame_act = 1;
+		put_image(param->mlx, param->textures->shoot->s_bot[0]->p, new);
+	param->textures->shoot->frame_act = 0;
 }
 
 bool	put_shot_in_coor(t_param *param, t_gps *new)
@@ -118,7 +118,7 @@ bool	put_shot_in_coor(t_param *param, t_gps *new)
 	value_case = param->map->map[new->y][new->x];
 	if (value_case == '1')
 	{
-		put_image(param->mlx, param->textures->background->p, param->shots->coor, 0);
+		put_image(param->mlx, param->textures->background->p, param->shots->coor);
 		make_explosion(param, new);
 		param->map->map[new->y][new->x] = '2';
 		param->map->map[param->shots->coor->y][param->shots->coor->x] = '0';
@@ -129,14 +129,14 @@ bool	put_shot_in_coor(t_param *param, t_gps *new)
 	{
 		kill_boss(param, new);
 		param->map->map[param->shots->coor->y][param->shots->coor->x] = '0';
-		put_image(param->mlx, param->textures->background->p, param->shots->coor, 0);
+		put_image(param->mlx, param->textures->background->p, param->shots->coor);
 		del_shot(param);
 		return (false);
 	}
 	if (value_case == '0')
 	{
 		param->map->map[param->shots->coor->y][param->shots->coor->x] = '0';
-		put_image(param->mlx, param->textures->background->p, param->shots->coor, 0);
+		put_image(param->mlx, param->textures->background->p, param->shots->coor);
 		param->map->map[new->y][new->x] = 'S';
 		put_shoot_in_direction(param, new);
 		param->shots->coor->x = new->x;
@@ -144,7 +144,7 @@ bool	put_shot_in_coor(t_param *param, t_gps *new)
 	}
 	if (value_case == 'E' || value_case == 'C' || value_case == '2')
 	{
-		put_image(param->mlx, param->textures->background->p, param->shots->coor, 0);
+		put_image(param->mlx, param->textures->background->p, param->shots->coor);
 		param->map->map[param->shots->coor->y][param->shots->coor->x] = '0';
 		del_shot(param);
 		return (false);
@@ -169,7 +169,7 @@ void	create_new_shot(t_param *param)
 	if (param->map->map[shot->coor->y][shot->coor->x] == 'D')
 	{
 		kill_boss(param, shot->coor);
-		put_image(param->mlx, param->textures->background->p, shot->coor, 0);
+		put_image(param->mlx, param->textures->background->p, shot->coor);
 		free(shot->coor);
 		free(shot);
 		return ;

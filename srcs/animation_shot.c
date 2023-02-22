@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   animation_shot.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
+/*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 11:07:26 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/19 22:44:41 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/22 14:27:45 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,26 +15,23 @@
 int	animate_shoot_left(t_param *param, t_gps *coor)
 {
 	t_shoot_texture	*shoot;
+	t_texture		*sprite;
 
+	sprite = NULL;
 	shoot = param->textures->shoot;
 	if (param->map->nb_shot == 1)
 	{
-		//put_image(param->mlx, param->textures->background->p, coor, 0);
-		if (shoot->frame_act < 4)
+		if (shoot->frame_act < 3)
 		{
-			if (shoot->frame_act == 1)
-				put_image(param->mlx, shoot->frame2_left->p, coor, 0);
-			if (shoot->frame_act == 2)
-				put_image(param->mlx, shoot->frame3_left->p, coor, 0);
-			if (shoot->frame_act == 3)
-				put_image(param->mlx, shoot->frame4_left->p, coor, 0);
+			sprite = shoot->s_left[shoot->frame_act];
 			shoot->frame_act += 1;
 		}
-		else if (shoot->frame_act == 4)
+		else if (shoot->frame_act == 3)
 		{
-			put_image(param->mlx, shoot->frame1_left->p, coor, 0);
+			sprite = shoot->s_left[shoot->frame_act];
 			shoot->frame_act = 1;
 		}
+		put_image(param->mlx, sprite->p, coor);
 	}
 	return (0);
 }
@@ -42,92 +39,85 @@ int	animate_shoot_left(t_param *param, t_gps *coor)
 int	animate_shoot_top(t_param *param, t_gps *coor)
 {
 	t_shoot_texture	*shoot;
+	t_texture		*sprite;
 
+	sprite = NULL;
 	shoot = param->textures->shoot;
 	if (param->map->nb_shot == 1)
 	{
-		put_image(param->mlx, param->textures->background->p, coor, 0);
-		if (shoot->frame_act < 4)
+		if (shoot->frame_act < 3)
 		{
-			if (shoot->frame_act == 1)
-				put_image(param->mlx, shoot->frame2_top->p, coor, 0);
-			if (shoot->frame_act == 2)
-				put_image(param->mlx, shoot->frame3_top->p, coor, 0);
-			if (shoot->frame_act == 3)
-				put_image(param->mlx, shoot->frame4_top->p, coor, 0);
+			sprite = shoot->s_top[shoot->frame_act];
 			shoot->frame_act += 1;
 		}
-		else if (shoot->frame_act == 4)
+		else if (shoot->frame_act == 3)
 		{
-			put_image(param->mlx, shoot->frame1_top->p, coor, 0);
+			sprite = shoot->s_top[shoot->frame_act];
 			shoot->frame_act = 1;
 		}
+		put_image(param->mlx, sprite->p, coor);
 	}
 	return (0);
 }
+
 int	animate_shoot_right(t_param *param, t_gps *coor)
 {
 	t_shoot_texture	*shoot;
+	t_texture		*sprite;
 
+	sprite = NULL;
 	shoot = param->textures->shoot;
 	if (param->map->nb_shot == 1)
 	{
-		put_image(param->mlx, param->textures->background->p, coor, 0);
-		if (shoot->frame_act < 4)
+		if (shoot->frame_act < 3)
 		{
-			if (shoot->frame_act == 1)
-				put_image(param->mlx, shoot->frame2_right->p, coor, 0);
-			if (shoot->frame_act == 2)
-				put_image(param->mlx, shoot->frame3_right->p, coor, 0);
-			if (shoot->frame_act == 3)
-				put_image(param->mlx, shoot->frame4_right->p, coor, 0);
+			sprite = shoot->s_right[shoot->frame_act];
 			shoot->frame_act += 1;
 		}
-		else if (shoot->frame_act == 4)
+		else if (shoot->frame_act == 3)
 		{
-			put_image(param->mlx, shoot->frame1_right->p, coor, 0);
+			sprite = shoot->s_right[shoot->frame_act];
 			shoot->frame_act = 1;
 		}
+		put_image(param->mlx, sprite->p, coor);
 	}
 	return (0);
+	return (0);
 }
+
 int	animate_shoot_bot(t_param *param, t_gps *coor)
 {
 	t_shoot_texture	*shoot;
+	t_texture		*sprite;
 
+	sprite = NULL;
 	shoot = param->textures->shoot;
 	if (param->map->nb_shot == 1)
 	{
-		put_image(param->mlx, param->textures->background->p, coor, 0);
-		if (shoot->frame_act < 4)
+		if (shoot->frame_act < 3)
 		{
-			if (shoot->frame_act == 1)
-				put_image(param->mlx, shoot->frame2_bot->p, coor, 0);
-			if (shoot->frame_act == 2)
-				put_image(param->mlx, shoot->frame3_bot->p, coor, 0);
-			if (shoot->frame_act == 3)
-				put_image(param->mlx, shoot->frame4_bot->p, coor, 0);
+			sprite = shoot->s_bot[shoot->frame_act];
 			shoot->frame_act += 1;
 		}
-		else if (shoot->frame_act == 4)
+		else if (shoot->frame_act == 3)
 		{
-			put_image(param->mlx, shoot->frame1_bot->p, coor, 0);
+			sprite = shoot->s_bot[shoot->frame_act];
 			shoot->frame_act = 1;
 		}
+		put_image(param->mlx, sprite->p, coor);
 	}
 	return (0);
 }
 
-int animate_shoot(t_param *param, t_gps *coor)
+int	animate_shoot(t_param *param, t_gps *coor)
 {
-    if (param->shots->direction == 1)
-
-        animate_shoot_left(param, coor);
-    if (param->shots->direction == 2)
-        animate_shoot_top(param, coor);
-    if (param->shots->direction == 3)
-        animate_shoot_right(param, coor);
-    if (param->shots->direction == 4)
-        animate_shoot_bot(param, coor);
-    return (0);
+	if (param->shots->direction == 1)
+		animate_shoot_left(param, coor);
+	if (param->shots->direction == 2)
+		animate_shoot_top(param, coor);
+	if (param->shots->direction == 3)
+		animate_shoot_right(param, coor);
+	if (param->shots->direction == 4)
+		animate_shoot_bot(param, coor);
+	return (0);
 }

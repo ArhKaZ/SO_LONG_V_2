@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 11:22:07 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/20 11:52:13 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/22 17:59:26 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,21 +64,7 @@ typedef struct s_texture
 
 typedef struct s_coins
 {
-	t_texture	*frame1;
-	t_texture	*frame2;
-	t_texture	*frame3;
-	t_texture	*frame4;
-	t_texture	*frame5;
-	t_texture	*frame6;
-	t_texture	*frame7;
-	t_texture	*frame8;
-	t_texture	*frame9;
-	t_texture	*frame10;
-	t_texture	*frame11;
-	t_texture	*frame12;
-	t_texture	*frame13;
-	t_texture	*frame14;
-	t_texture	*frame15;
+	t_texture	*coins[15];
 	int			frame_act;
 }					t_coins;
 
@@ -90,15 +76,7 @@ typedef struct s_hp
 
 typedef struct s_black_hole
 {
-	t_texture	*frame1;
-	t_texture	*frame2;
-	t_texture	*frame3;
-	t_texture	*frame4;
-	t_texture	*frame5;
-	t_texture	*frame6;
-	t_texture	*frame7;
-	t_texture	*frame8;
-	t_texture	*frame9;
+	t_texture	*bh[9];
 	int			frame_act;
 }				t_black_hole;
 
@@ -137,22 +115,10 @@ typedef	struct s_sprite_planet
 
 typedef struct s_shoot_texture
 {
-	t_texture	*frame1_left;
-	t_texture	*frame1_top;
-	t_texture	*frame1_right;
-	t_texture	*frame1_bot;
-	t_texture	*frame2_left;
-	t_texture	*frame2_top;
-	t_texture	*frame2_right;
-	t_texture	*frame2_bot;
-	t_texture	*frame3_left;
-	t_texture	*frame3_top;
-	t_texture	*frame3_right;
-	t_texture	*frame3_bot;
-	t_texture	*frame4_left;
-	t_texture	*frame4_top;
-	t_texture	*frame4_right;
-	t_texture	*frame4_bot;
+	t_texture	*s_left[4];
+	t_texture	*s_right[4];
+	t_texture	*s_bot[4];
+	t_texture	*s_top[4];
 	int			frame_act;
 }				t_shoot_texture;
 
@@ -163,18 +129,15 @@ typedef struct s_shoot
 	clock_t			shoot_time;
 }				t_shoot;
 
-typedef struct s_go
-{
-	t_texture	*little;
-	t_texture	*medium;
-	t_texture	*big;
-}				t_go;
 
 typedef struct s_end
 {
-	t_texture	*little;
-	t_texture	*medium;
-	t_texture	*big;
+	t_texture	*w_little;
+	t_texture	*w_med;
+	t_texture	*w_big;
+	t_texture	*l_little;
+	t_texture	*l_med;
+	t_texture	*l_big;
 }				t_end;
 
 typedef struct s_nb
@@ -191,13 +154,6 @@ typedef struct s_nb
 	t_texture	*nine;
 }				t_nb;
 
-// typedef struct s_all_nb
-// {
-// 	t_nb	*little;
-// 	t_nb	*medium;
-// 	t_nb	*big;
-// }				t_all_nb;
-
 typedef struct s_all_texture
 {
 	t_texture			*wall;
@@ -208,12 +164,11 @@ typedef struct s_all_texture
 	t_black_hole		*black_hole;
 	t_black_hole		*black_hole_close;
 	t_hp				*hp;
-	t_go				*game_over;
 	t_end				*end;
 	t_explode			*explode;
 	t_sprite_planet		*planets;
 	t_shoot_texture		*shoot;
-	t_nb			*nb;
+	t_nb				*nb;
 }				t_all_texture;
 
 typedef	struct s_map
@@ -280,9 +235,9 @@ void	free_map(t_map *map);
 
 void	put_strings(t_param *param);
 
-void	put_move(t_map *map, t_mlx *mlx, t_player *player, t_all_texture *textures);
+void	put_move(t_param *param);
 
-void	put_score(t_map *map, t_mlx *mlx, t_player *player, t_all_texture *textures);
+void	put_score(t_param *param);
 
 int		get_random(int nb_max);
 
@@ -292,7 +247,7 @@ void	free_char_map(char **map);
 
 int		close_win(t_param *param, void *mlx, void *mlx_win);
 
-void	put_coins(t_map *map, void *mlx, void *mlx_win, t_texture *coin);
+void	put_coins(t_map *map, t_mlx *mlx, t_texture *coin);
 
 void	move_left(t_param *param);
 
@@ -344,13 +299,13 @@ void	not_move_ennemy_sprite(t_param *param, int direction);
 
 void	less_hp(t_param *param, int direction);
 
-void	put_hp(t_map *map, t_mlx *mlx, t_player *player, t_all_texture *text);
+void	put_hp(t_param *param, t_hp *hp);
 
 int	game_over(t_param *param);
 
 int	animation(t_param *param);
 
-void	put_image(t_mlx *mlx, void *sprite, t_gps *new, int plus);
+void	put_image(t_mlx *mlx, void *sprite, t_gps *new);
 
 void	del_ennemy(t_param *param, t_gps *coor);
 
@@ -379,4 +334,30 @@ t_texture	*create_texture(char *path, t_mlx *mlx);
 t_explode	*create_explode(t_mlx *mlx, int direction);
 
 void	free_explode(t_explode *ex, void *mlx);
+
+void	move_ennemy(t_param *param, int random);
+
+void	move_ennemy_to_coin(t_param *param, t_gps *new, int direction, t_gps *ennemy);
+
+void	move_ennemy_sprite(t_param *param, t_gps *new, int direction, t_gps *ennemy);
+
+void	put_wall(t_map *map, t_mlx *mlx, t_texture *wall);
+
+void	put_background(t_map *map, t_mlx *mlx, t_texture *back);
+
+void	put_obstacle_in_map(t_map *map, t_mlx *mlx, t_sprite_planet *texts);
+
+void	change_exit(t_param *param);
+
+t_nb	*create_nb(t_mlx *mlx, int width, int height);
+
+t_explode	*create_explode(t_mlx *mlx, int direction);
+
+t_black_hole	*create_black_hole_for_end(t_mlx *mlx);
+
+t_black_hole	*create_black_hole(t_mlx *mlx);
+
+t_coins			*create_collectible(t_mlx *mlx);
+
+t_shoot_texture	*create_shoot_sprite(t_mlx *mlx);
 #endif

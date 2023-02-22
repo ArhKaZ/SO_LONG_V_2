@@ -1,32 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   move_player_in_tab.c                               :+:      :+:    :+:   */
+/*   player_action.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/24 14:25:45 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/13 12:51:36 by syluiset         ###   ########.fr       */
+/*   Created: 2023/01/19 12:43:10 by syluiset          #+#    #+#             */
+/*   Updated: 2023/02/22 15:18:10 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
-
-int		nb_ennemy(t_ennemy *lst)
-{
-	int i;
-	t_ennemy *fir;
-
-	fir = lst;
-	i = 0;
-	while (lst != NULL)
-	{
-		i++;
-		lst = lst->next;
-	}
-	lst = fir;
-	return (i);
-}
 
 void	move_left(t_param *param)
 {
@@ -40,16 +24,12 @@ void	move_left(t_param *param)
 	if (value_case == '1' || value_case == 'D')
 	{
 		not_move_player_sprite(param, 1);
-		free(new);
-		return ;
+		return (free(new));
 	}
 	if (value_case == 'E')
 	{
 		if (move_exit(param, new, 1) == 0)
-		{
-			free(new);
-			return ;
-		}
+			return (free(new));
 	}
 	if (value_case == 'C')
 		move_coins(param, new, 1);
@@ -70,16 +50,12 @@ void	move_right(t_param *param)
 	if (value_case == '1' || value_case == 'D')
 	{
 		not_move_player_sprite(param, 3);
-		free(new);
-		return ;
+		return (free(new));
 	}
 	if (value_case == 'E')
 	{
 		if (move_exit(param, new, 3) == 0)
-		{
-			free(new);
-			return ;
-		}
+			return (free(new));
 	}
 	if (value_case == 'C')
 		move_coins(param, new, 3);
@@ -100,16 +76,12 @@ void	move_top(t_param *param)
 	if (value_case == '1' || value_case == 'D')
 	{
 		not_move_player_sprite(param, 2);
-		free(new);
-		return ;
+		return (free(new));
 	}
 	if (value_case == 'E')
 	{
 		if (move_exit(param, new, 2) == 0)
-		{
-			free(new);
-			return ;
-		}
+			return (free(new));
 	}
 	if (value_case == 'C')
 		move_coins(param, new, 2);
@@ -146,4 +118,24 @@ void	move_bottom(t_param *param)
 	if (value_case == '0')
 		move_player_sprite(param, new, 4);
 	free(new);
+}
+
+int render_next_frame(int keycode, t_param *param)
+{
+	if (param->finish != 1)
+	{
+		if (keycode == 97)
+			move_left(param);
+		if (keycode == 115)
+			move_bottom(param);
+		if (keycode == 100)
+			move_right(param);
+		if (keycode == 119)
+			move_top(param);
+		if (keycode == 32 && param->map->nb_shot == 0)
+			create_new_shot(param);
+	}
+	if (keycode == 65307)
+			close_win(param, param->mlx->mlx, param->mlx->mlx_win);
+	return (0);
 }

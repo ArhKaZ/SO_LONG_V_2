@@ -2,19 +2,18 @@
 SRCS			=	so_long.c		\
 					get_map.c		\
 					map.c			\
-					gps.c			\
-					param.c			\
-					player.c		\
+					create_and_destroy.c	\
 					map_error.c		\
 					create_visu.c	\
 					texture.c		\
+					texture_nb.c			\
+					texture_animate.c		\
 					free.c			\
 					write.c			\
-					events.c		\
+					player_action.c			\
+					player_action_utils.c	\
 					test_map.c		\
-					mlx.c			\
 					test_map_utils.c	\
-					move_player_in_tab.c	\
 					animation.c				\
 					ennemy.c				\
 					move_ennemy.c			\
@@ -23,6 +22,8 @@ SRCS			=	so_long.c		\
 					put_image.c				\
 					shoot.c					\
 					animation_shot.c		\
+					create_visu_utils.c		\
+					move_ennemy_utils.c		\
 
 SRCS_MAP		=	create_map.c	 \
 					create_map_ennemy.c \
