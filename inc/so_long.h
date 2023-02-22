@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 11:22:07 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/22 17:59:26 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/22 20:23:38 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -360,4 +360,6 @@ t_black_hole	*create_black_hole(t_mlx *mlx);
 t_coins			*create_collectible(t_mlx *mlx);
 
 t_shoot_texture	*create_shoot_sprite(t_mlx *mlx);
+
+void			put_image_xy(t_mlx *mlx, void *sprite, t_gps *coor);
 #endif

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   write.c                                            :+:      :+:    :+:   */
+/*   hud.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:14:04 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/22 18:00:16 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/22 20:29:03 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ void	put_score(t_param *p)
 	place->x = 1;
 	put_image(p->mlx, p->textures->wall->p, place);
 	mlx_string_put(p->mlx->mlx, p->mlx->mlx_win, 10, p->map->height * 64 - 3,
-	0xFFFFFF, "Score:");
+		0xFFFFFF, "Score:");
 	mlx_string_put(p->mlx->mlx, p->mlx->mlx_win, 62, p->map->height * 64 - 3,
-	0xFFFFFF, nb_collect);
+		0xFFFFFF, nb_collect);
 	free(nb_collect);
 	free(place);
 }
@@ -45,9 +45,9 @@ void	put_move(t_param *p)
 	place->x = 3;
 	put_image(p->mlx, p->textures->wall->p, place);
 	mlx_string_put(p->mlx->mlx, p->mlx->mlx_win, 2 * 64,
-	p->map->height * 64 - 3, 0xFFFFFF, "Moves:");
+		p->map->height * 64 - 3, 0xFFFFFF, "Moves:");
 	mlx_string_put(p->mlx->mlx, p->mlx->mlx_win, 2 * 64 + 48,
-	p->map->height * 64 - 3, 0xFFFFFF, nb_moves);
+		p->map->height * 64 - 3, 0xFFFFFF, nb_moves);
 	free(nb_moves);
 	free(place);
 }
@@ -57,13 +57,13 @@ void	put_sprite_hp(t_param *p, t_texture *s1, t_texture *s2, t_texture *s3)
 	t_gps		*place;
 
 	place = create_empty_gps();
-	place->x = (4 * 64 + 35) / 64;
-	place->y = (p->map->height * 64 - 16) / 64;
-	put_image(p->mlx, s1->p, place);
-	place->x = (4 * 64 + 55) / 64;
-	put_image(p->mlx, s2->p, place);
-	place->x = (5 * 64 + 11) / 64;
-	put_image(p->mlx, s3->p, place);
+	place->x = (4 * 64 + 35);
+	place->y = (p->map->height * 64 - 16);
+	put_image_xy(p->mlx, s1->p, place);
+	place->x = (4 * 64 + 55);
+	put_image_xy(p->mlx, s2->p, place);
+	place->x = (5 * 64 + 11);
+	put_image_xy(p->mlx, s3->p, place);
 	free(place);
 }
 
@@ -78,7 +78,7 @@ void	put_hp(t_param *p, t_hp *hp)
 	place->x = 5;
 	put_image(p->mlx, p->textures->wall->p, place);
 	mlx_string_put(p->mlx->mlx, p->mlx->mlx_win, 4 * 64,
-		p->map->height * 64 - 3, 0xFFFFFF, "HP :"); //! maybe change
+		p->map->height * 64 - 3, 0xFFFFFF, "HP :");
 	if (p->player->hp == 3)
 		put_sprite_hp(p, hp->full, hp->full, hp->full);
 	if (p->player->hp == 2)
@@ -87,12 +87,11 @@ void	put_hp(t_param *p, t_hp *hp)
 		put_sprite_hp(p, hp->full, hp->empty, hp->empty);
 	if (p->player->hp == 0)
 		put_sprite_hp(p, hp->empty, hp->empty, hp->empty);
-
 }
 
 void	put_strings(t_param *param)
 {
-	t_hp *hp;
+	t_hp	*hp;
 
 	hp = NULL;
 	hp = malloc(sizeof(t_hp));

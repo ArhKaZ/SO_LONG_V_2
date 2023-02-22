@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 11:18:21 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/22 16:52:56 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/22 20:27:22 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	free_error(t_map *map, t_player *player, t_mlx *mlx)
 	free(mlx);
 }
 
-int		map_test(t_param *param)
+int	map_test(t_param *param)
 {
 	if (map_is_finishable(param->map) == false)
 		close_win(param, param->mlx->mlx, param->mlx->mlx_win);
@@ -37,16 +37,15 @@ t_param	*get_param(char **argv)
 	map = create_empty_map();
 	player = create_empty_player();
 	mlx = create_empty_mlx();
-	if (get_map(argv[1], map) == false || checking_map(map) == false )
-	{
-		free_error(map, player, mlx);
-		return (NULL);
-	}
+	if (get_map(argv[1], map) == false || checking_map(map) == false)
+		return (free_error(map, player, mlx), NULL);
 	mlx->mlx = mlx_init();
-	mlx->mlx_win = mlx_new_window(mlx->mlx, map->width * 64, map->height * 64, "SO_LONG");
+	mlx->mlx_win = mlx_new_window(mlx->mlx, map->width * 64,
+			map->height * 64, "SO_LONG");
 	all_texture = create_all_texture(mlx, map->width, map->height);
 	if (all_texture == NULL)
-		return (ft_putstr_fd("Error\ncan't load texture\n", 2), exit(EXIT_FAILURE), NULL);
+		return (ft_putstr_fd("Error\ncan't load texture\n", 2),
+			exit(EXIT_FAILURE), NULL);
 	create_visu(map, mlx, player->coor, all_texture);
 	param = create_param(map, mlx, player, all_texture);
 	if (map->nb_ennemy > 0)
@@ -54,7 +53,7 @@ t_param	*get_param(char **argv)
 	return (param);
 }
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	t_param		*param;
 
@@ -70,5 +69,5 @@ int main(int argc, char **argv)
 		mlx_hook(param->mlx->mlx_win, 17, 1L >> 0, &close_win, param);
 		mlx_hook(param->mlx->mlx_win, 2, 1L >> 0, &render_next_frame, param);
 		mlx_loop(param->mlx->mlx);
-	 }
+	}
 }

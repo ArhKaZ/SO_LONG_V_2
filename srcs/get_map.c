@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 15:38:49 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/20 15:22:28 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/22 20:32:43 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 bool	check_char(char c)
 {
-	if (c == '0' || c == '1' || c == 'C' || c == 'E' || c == 'P' || c == '\n' || c == 'D')
+	if (c == '0' || c == '1' || c == 'C' || c == 'E'
+		|| c == 'P' || c == '\n' || c == 'D')
 		return (true);
 	else
 		return (false);
@@ -32,16 +33,14 @@ void	add_to_map(t_map *map, char c)
 		map->exit += 1;
 	if (c == 'P')
 		map->begin += 1;
-	//!bonus
 	if (c == 'D')
 		map->nb_ennemy += 1;
-	//!bonus
 }
 
 bool	check_line(char *line, t_map *map, size_t *length)
 {
-	size_t i;
-	
+	size_t	i;
+
 	i = 0;
 	if (line[0] == 0)
 		return (false);
@@ -69,7 +68,7 @@ bool	check_line(char *line, t_map *map, size_t *length)
 
 char	*map_in_one_string(char *line, char *string)
 {
-	char *temp;
+	char	*temp;
 
 	if (string == NULL)
 		string = ft_strdup(line);

@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 13:48:41 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/16 17:36:18 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/22 20:27:54 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ t_map	*create_empty_map(void)
 bool	get_map(char *path, t_map *map)
 {
 	char	*map_temp;
-	int i;
+	int		i;
 
 	i = 0;
 	map_temp = get_map_to_string(path, map);
@@ -47,7 +47,7 @@ bool	get_map(char *path, t_map *map)
 	}
 	map->map = ft_split(map_temp, '\n');
 	free(map_temp);
-	while(map->map[0][i])
+	while (map->map[0][i])
 		i++;
 	map->width = i;
 	i = 0;

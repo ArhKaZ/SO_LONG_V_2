@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 15:51:15 by syluiset          #+#    #+#             */
-/*   Updated: 2023/01/24 09:29:44 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/22 20:31:07 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 bool	is_rectangle(t_map *map)
 {
-	int height;
-	int width;
+	int	height;
+	int	width;
 
 	width = 0;
 	height = 0;
@@ -35,7 +35,7 @@ bool	is_rectangle(t_map *map)
 
 bool	surround_by_wall(t_map *map)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (map->map[0][i])

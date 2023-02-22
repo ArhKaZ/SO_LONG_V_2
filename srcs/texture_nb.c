@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 17:27:47 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/22 17:28:09 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/22 20:30:37 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ t_nb	*create_nb_medium(t_mlx *mlx)
 	nb->nine = create_texture("texture_converted/nb/med_9.xpm", mlx);
 	return (nb);
 }
+
 t_nb	*create_nb_big(t_mlx *mlx)
 {
 	t_nb	*nb;
@@ -74,7 +75,7 @@ t_nb	*create_nb(t_mlx *mlx, int width, int height)
 
 	nb = NULL;
 	if (width < 8 || height < 8)
-		nb= create_nb_little(mlx);
+		nb = create_nb_little(mlx);
 	else if (width < 14 || height < 14)
 		nb = create_nb_medium(mlx);
 	else if (width >= 14 || height >= 14)

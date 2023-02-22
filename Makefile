@@ -9,7 +9,7 @@ SRCS			=	so_long.c		\
 					texture_nb.c			\
 					texture_animate.c		\
 					free.c			\
-					write.c			\
+					hud.c			\
 					player_action.c			\
 					player_action_utils.c	\
 					test_map.c		\

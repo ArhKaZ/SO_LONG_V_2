@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 16:29:58 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/22 17:46:57 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/22 20:16:04 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -221,7 +221,6 @@ void	free_textures(t_all_texture *texts, void *mlx)
 	free_ennemy_s(texts->ennemy, mlx);
 	free_black_hole(texts->black_hole, mlx);
 	free_black_hole(texts->black_hole_close, mlx);
-	free_hp(texts->hp, mlx);
 	free_end_and_go(texts->end, mlx);
 	free_shoot(texts->shoot, mlx);
 	free_nb(texts->nb, mlx);
