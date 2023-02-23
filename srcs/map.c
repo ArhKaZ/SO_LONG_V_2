@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 13:48:41 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/22 20:27:54 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/23 11:56:33 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ t_map	*create_empty_map(void)
 	map->map = NULL;
 	map->height = 0;
 	map->width = 0;
-	map->coor_exit = create_empty_gps();
+	map->coor_exit = create_gps(0, 0);
 	return (map);
 }
 

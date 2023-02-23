@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_visu.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 16:50:44 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/22 15:08:30 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/23 12:07:36 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	put_player(t_map *map, t_mlx *mlx, t_gps *p, t_texture *player)
 	int	width;
 
 	height = 1;
-	while (height < map->height )
+	while (height < map->height)
 	{
 		width = 1;
 		while (width < map->width)
@@ -66,7 +66,6 @@ void	put_coins(t_map *map, t_mlx *mlx, t_texture *coin)
 	int		width;
 	t_gps	*place;
 
-	place = create_empty_gps();
 	height = 1;
 	while (height < map->height)
 	{
@@ -75,8 +74,7 @@ void	put_coins(t_map *map, t_mlx *mlx, t_texture *coin)
 		{
 			if (map->map[height][width] == 'C')
 			{
-				place->x = width;
-				place->y = height;
+				place = create_gps(width, height);
 				put_image(mlx, coin->p, place);
 			}
 			width++;
@@ -93,7 +91,6 @@ void	put_ennemy(t_map *map, t_mlx *mlx, t_texture *ennemy)
 	t_gps	*place;
 
 	height = 1;
-	place = create_empty_gps();
 	while (height < map->height - 1)
 	{
 		width = 1;
@@ -101,8 +98,7 @@ void	put_ennemy(t_map *map, t_mlx *mlx, t_texture *ennemy)
 		{
 			if (map->map[height][width] == 'D')
 			{
-				place->x = width;
-				place->y = height;
+				place = create_gps(width, height);
 				put_image(mlx, ennemy->p, place);
 			}
 			width++;
@@ -112,15 +108,15 @@ void	put_ennemy(t_map *map, t_mlx *mlx, t_texture *ennemy)
 	free(place);
 }
 
-void	create_visu(t_map *map, t_mlx *mlx, t_gps *player, t_all_texture *all_texture)
+void	create_visu(t_map *map, t_mlx *mlx, t_gps *p, t_all_texture *all_text)
 {
-	put_background(map, mlx, all_texture->background);
-	put_wall(map, mlx, all_texture->wall);
-	put_obstacle_in_map(map, mlx, all_texture->planets);
-	put_coins(map, mlx, all_texture->coin->coins[0]);
-	all_texture->coin->frame_act = 0;
-	put_player(map, mlx, player, all_texture->player->player_top);
-	put_exit(map, mlx, all_texture->black_hole_close->bh[0]);
-	all_texture->black_hole_close->frame_act = 0;
-	put_ennemy(map, mlx, all_texture->ennemy->boss_top);
+	put_background(map, mlx, all_text->background);
+	put_wall(map, mlx, all_text->wall);
+	put_obstacle_in_map(map, mlx, all_text->planets);
+	put_coins(map, mlx, all_text->coin->coins[0]);
+	all_text->coin->frame_act = 0;
+	put_player(map, mlx, p, all_text->player->player_top);
+	put_exit(map, mlx, all_text->black_hole_close->bh[0]);
+	all_text->black_hole_close->frame_act = 0;
+	put_ennemy(map, mlx, all_text->ennemy->boss_top);
 }

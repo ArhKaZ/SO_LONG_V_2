@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hud.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:14:04 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/22 20:29:03 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/23 12:10:58 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,7 @@ void	put_score(t_param *p)
 	char	*nb_collect;
 	t_gps	*place;
 
-	place = create_empty_gps();
-	place->x = 0;
-	place->y = p->map->height - 1;
+	place = create_gps(0, p->map->height - 1);
 	nb_collect = ft_itoa(p->player->score);
 	put_image(p->mlx, p->textures->wall->p, place);
 	place->x = 1;
@@ -37,9 +35,7 @@ void	put_move(t_param *p)
 	char	*nb_moves;
 	t_gps	*place;
 
-	place = create_empty_gps();
-	place->x = 2;
-	place->y = p->map->height - 1;
+	place = create_gps(2, p->map->height - 1);
 	nb_moves = ft_itoa(p->player->moves);
 	put_image(p->mlx, p->textures->wall->p, place);
 	place->x = 3;
@@ -56,9 +52,7 @@ void	put_sprite_hp(t_param *p, t_texture *s1, t_texture *s2, t_texture *s3)
 {
 	t_gps		*place;
 
-	place = create_empty_gps();
-	place->x = (4 * 64 + 35);
-	place->y = (p->map->height * 64 - 16);
+	place = create_gps(4 * 64 + 35, (p->map->height * 64) - 16);
 	put_image_xy(p->mlx, s1->p, place);
 	place->x = (4 * 64 + 55);
 	put_image_xy(p->mlx, s2->p, place);
@@ -71,9 +65,7 @@ void	put_hp(t_param *p, t_hp *hp)
 {
 	t_gps	*place;
 
-	place = create_empty_gps();
-	place->y = p->map->height - 1;
-	place->x = 4;
+	place = create_gps(4, p->map->height - 1);
 	put_image(p->mlx, p->textures->wall->p, place);
 	place->x = 5;
 	put_image(p->mlx, p->textures->wall->p, place);
@@ -95,8 +87,8 @@ void	put_strings(t_param *param)
 
 	hp = NULL;
 	hp = malloc(sizeof(t_hp));
-	hp->empty = create_texture("texture_converted/hp_empty.xpm", param->mlx);
-	hp->full = create_texture("texture_converted/hp_full.xpm", param->mlx);
+	hp->empty = create_texture("xpm/hp_empty.xpm", param->mlx);
+	hp->full = create_texture("xpm/hp_full.xpm", param->mlx);
 	put_score(param);
 	put_move(param);
 	put_hp(param, hp);

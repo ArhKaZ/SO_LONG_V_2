@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player_action_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 14:25:45 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/22 18:03:02 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/23 12:23:25 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,13 @@ void	not_move_player_sprite(t_param *param, int direction)
 
 	sprite = NULL;
 	if (direction == 1)
-		sprite = param->textures->player->player_left->p;
+		sprite = param->textures->ships->player[0]->p;
 	if (direction == 2)
-		sprite = param->textures->player->player_top->p;
+		sprite = param->textures->ships->player[1]->p;
 	if (direction == 3)
-		sprite = param->textures->player->player_right->p;
+		sprite = param->textures->ships->player[2]->p;
 	if (direction == 4)
-		sprite = param->textures->player->player_bottom->p;
+		sprite = param->textures->ships->player[3]->p;
 	mlx_put_image_to_window(param->mlx->mlx, param->mlx->mlx_win, sprite, param->player->coor->x * 64, param->player->coor->y * 64);
 	sprite = NULL;
 	param->player->direction = direction;
@@ -56,13 +56,13 @@ void	move_player_sprite(t_param *param, t_gps *new, int direction)
 	sprite = NULL;
 	param->player->direction = direction;
 	if (direction == 1)
-		sprite = param->textures->player->player_left->p;
+		sprite = param->textures->ships->player[0]->p;
 	if (direction == 2)
-		sprite = param->textures->player->player_top->p;
+		sprite = param->textures->ships->player[1]->p;
 	if (direction == 3)
-		sprite = param->textures->player->player_right->p;
+		sprite = param->textures->ships->player[2]->p;
 	if (direction == 4)
-		sprite = param->textures->player->player_bottom->p;
+		sprite = param->textures->ships->player[3]->p;
 	move_player(param->map, param->player, new);
 	mlx_put_image_to_window(param->mlx->mlx, param->mlx->mlx_win, sprite, new->x * 64, new->y * 64);
 	sprite = param->textures->background->p;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   shoot.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 17:10:42 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/22 13:36:15 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/23 12:00:15 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,27 +26,14 @@ t_gps	*get_next_coor_s(int direction, t_gps *coor)
 {
 	t_gps	*new;
 
-	new = create_empty_gps();
 	if (direction == 1)
-	{
-		new->x = coor->x - 1;
-		new->y = coor->y;
-	}
+		new = create_gps(coor->x - 1, coor->y);
 	if (direction == 2)
-	{
-		new->x = coor->x;
-		new->y = coor->y - 1;
-	}
+		new = create_gps(coor->x, coor->y - 1);
 	if (direction == 3)
-	{
-		new->x = coor->x + 1;
-		new->y = coor->y;
-	}
+		new = create_gps(coor->x + 1, coor->y);
 	if (direction == 4)
-	{
-		new->x = coor->x;
-		new->y = coor->y + 1;
-	}
+		new = create_gps(coor->x, coor->y + 1);
 	return (new);
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_over.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 13:15:25 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/22 18:01:25 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/23 11:53:43 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,23 +60,22 @@ void	put_score_end(t_param *param, t_gps *place_back, t_gps *back_size, int choi
 	t_texture	*sprite;
 
 	sprite = NULL;
-	place = create_empty_gps();
 	size_x_10 = back_size->x / 100;
 	size_y_10 = back_size->y / 100;
 	if (choice == 1)
 	{
-		place->x = place_back->x + size_x_10 * 100;
-		place->y = place_back->y + size_y_10 * 46;
+		place = create_gps(place_back->x + size_x_10 * 100,
+			place_back->y + size_y_10 * 46);
 	}
 	if (choice == 2)
 	{
-		place->x = place_back->x + size_x_10 * 95;
-		place->y = place_back->y + size_y_10 * 37.5;
+		place = create_gps(place_back->x + size_x_10 * 95,
+			place_back->y + size_y_10 * 37.5);
 	}
 	if (choice == 3)
 	{
-		place->x = place_back->x + size_x_10 * 95;
-		place->y = place_back->y + size_y_10 * 41;
+		place = create_gps(place_back->x + size_x_10 * 95,
+			place_back->y + size_y_10 * 41);
 	}
 	put_sprite_nb(param, param->player->score, sprite, place);
 	free(place);
@@ -90,23 +89,22 @@ void	put_moves_end(t_param *param, t_gps *place_back, t_gps *back_size, int choi
 	t_texture	*sprite;
 
 	sprite = NULL;
-	place = create_empty_gps();
 	size_x_10 = back_size->x / 100;
 	size_y_10 = back_size->y / 100;
 	if (choice == 1)
 	{
-		place->x = place_back->x + size_x_10 * 90;
-		place->y = place_back->y + size_y_10 * 86;
+		place = create_gps(place_back->x + size_x_10 * 90,
+			place_back->y + size_y_10 * 86);
 	}
 	if (choice == 2)
 	{
-		place->x = place_back->x + size_x_10 * 90;
-		place->y = place_back->y + size_y_10 * 68.5;
+		place = create_gps(place_back->x + size_x_10 * 90,
+			place_back->y + size_y_10 * 68.5);
 	}
 	if (choice == 3)
 	{
-		place->x = place_back->x + size_x_10 * 90;
-		place->y = place_back->y + size_y_10 * 75;
+		place = create_gps(place_back->x + size_x_10 * 90,
+			place_back->y + size_y_10 * 75);
 	}
 	put_sprite_nb(param, param->player->moves, sprite, place);
 	free(place);
@@ -127,26 +125,25 @@ int	game_win(t_param *param)
 
 	sprite = NULL;
 	param->finish = true;
-	place = create_empty_gps();
 	if (param->map->height < 8 || param->map->width < 8)
 	{
 		sprite = param->textures->end->w_little;
-		place->x = ((param->map->width * 64 - sprite->size->x) / 2);
-		place->y = ((param->map->height * 64 - sprite->size->y) / 2);
+		place = create_gps((param->map->width * 64 - sprite->size->x) / 2,
+			(param->map->height * 64 - sprite->size->y) / 2);
 		put_last_image(param, place, sprite, 1);
 	}
 	else if (param->map->height < 14 || param->map->width < 14)
 	{
 		sprite = param->textures->end->w_med;
-		place->x = ((param->map->width * 64 - sprite->size->x) / 2);
-		place->y = ((param->map->height * 64 - sprite->size->y) / 2);
+		place = create_gps((param->map->width * 64 - sprite->size->x) / 2,
+			(param->map->height * 64 - sprite->size->y) / 2);
 		put_last_image(param, place, sprite, 2);
 	}
 	else if (param->map->height >= 14 || param->map->width >= 14)
 	{
 		sprite = param->textures->end->w_big;
-		place->x = ((param->map->width * 64 - sprite->size->x) / 2);
-		place->y = ((param->map->height * 64 - sprite->size->y) / 2);
+		place = create_gps((param->map->width * 64 - sprite->size->x) / 2,
+			(param->map->height * 64 - sprite->size->y) / 2);
 		put_last_image(param, place, sprite, 3);
 	}
 	free(place);
@@ -155,31 +152,30 @@ int	game_win(t_param *param)
 
 int	game_over(t_param *param)
 {
-	t_gps		*place;
+	t_gps	*place;
 	t_texture	*sprite;
 
 	sprite = NULL;
 	param->finish = true;
-	place = create_empty_gps();
 	if (param->map->height < 8 || param->map->width < 8)
 	{
 		sprite = param->textures->end->l_little;
-		place->x = ((param->map->width * 64 - sprite->size->x) / 2);
-		place->y = ((param->map->height * 64 - sprite->size->y) / 2);
+		place = create_gps((param->map->width * 64 - sprite->size->x) / 2,
+			(param->map->height * 64 - sprite->size->y) / 2);
 		put_last_image(param, place, sprite, 1);
 	}
 	else if (param->map->height < 14 || param->map->width < 14)
 	{
 		sprite = param->textures->end->l_med;
-		place->x = ((param->map->width * 64 - sprite->size->x) / 2);
-		place->y = ((param->map->height * 64 - sprite->size->y) / 2);
+		place = create_gps((param->map->width * 64 - sprite->size->x) / 2,
+			(param->map->height * 64 - sprite->size->y) / 2);
 		put_last_image(param, place, sprite, 2);
 	}
 	else if (param->map->height >= 14 || param->map->width >= 14)
 	{
 		sprite = param->textures->end->l_big;
-		place->x = ((param->map->width * 64 - sprite->size->x) / 2);
-		place->y = ((param->map->height * 64 - sprite->size->y) / 2);
+		place = create_gps((param->map->width * 64 - sprite->size->x) / 2,
+			(param->map->height * 64 - sprite->size->y) / 2);
 		put_last_image(param, place, sprite, 3);
 	}
 	free(place);

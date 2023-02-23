@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_and_destroy.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 16:49:55 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/22 16:58:46 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/23 11:41:20 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	close_win(t_param *param, void *mlx, void *mlx_win)
 	exit(EXIT_SUCCESS);
 }
 
-t_gps	*create_empty_gps(void) //create_gps(x y)
+t_gps	*create_gps(int x, int y) //create_gps(x y)
 {
 	t_gps	*gps;
 
@@ -29,8 +29,8 @@ t_gps	*create_empty_gps(void) //create_gps(x y)
 	gps = malloc(sizeof(t_gps));
 	if (!gps)
 		return (NULL);
-	gps->x = 0;
-	gps->y = 0;
+	gps->x = x;
+	gps->y = y;
 	return (gps);
 }
 
@@ -69,8 +69,12 @@ t_player	*create_empty_player(void)
 	t_player *player;
 
 	player = malloc(sizeof(t_player));
+	if (!player)
+		return (NULL);
 	player->collect = 0;
-	player->coor = create_empty_gps();
+	player->coor = create_gps(0,0);
+	if (!player->coor)
+		return (NULL);
 	player->moves = 0;
 	player->hp = 3;
 	player->direction = 2;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_visu_utils.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 14:37:20 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/22 15:10:16 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/23 11:44:08 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ void	put_obstacle_in_map(t_map *map, t_mlx *mlx, t_sprite_planet *plnts)
 	void	*sprite;
 	t_gps	*place;
 
-	place = create_empty_gps();
 	height = 1;
 	while (height < map->height - 1)
 	{
@@ -46,16 +45,15 @@ void	put_obstacle_in_map(t_map *map, t_mlx *mlx, t_sprite_planet *plnts)
 		{
 			if (map->map[height][width] == '1')
 			{
-				place->x = width;
-				place->y = height;
+				place = create_gps(width, height);
 				sprite = get_sprite_obstacle(plnts);
 				put_image(mlx, sprite, place);
+				free(place);
 			}
 			width++;
 		}
 		height++;
 	}
-	free(place);
 }
 
 void	put_wall(t_map *map, t_mlx *mlx, t_texture *wall)
@@ -64,12 +62,10 @@ void	put_wall(t_map *map, t_mlx *mlx, t_texture *wall)
 	int 	height;
 	t_gps	*place;
 
-	place = create_empty_gps();
 	width = -1;
 	while (++width < map->width)
 	{
-		place->x = width;
-		place->y = 0;
+		place = create_gps(width, 0);
 		put_image(mlx, wall->p, place);
 		place->y = map->height - 1;
 		put_image(mlx, wall->p, place);
@@ -77,8 +73,7 @@ void	put_wall(t_map *map, t_mlx *mlx, t_texture *wall)
 	height = 0;
 	while (++height < map->height)
 	{
-		place->x = 0;
-		place->y = height;
+		place = create_gps(0, height);
 		put_image(mlx, wall->p, place);
 		place->x = map->width - 1;
 		put_image(mlx, wall->p, place);
@@ -93,7 +88,6 @@ void	put_background(t_map *map, t_mlx *mlx, t_texture *back)
 	t_gps	*place;
 
 	height = 0;
-	place = create_empty_gps();
 	while (height < map->height * back->size->y)
 	{
 		width = 0;
@@ -101,8 +95,7 @@ void	put_background(t_map *map, t_mlx *mlx, t_texture *back)
 		{
 			if (map->map[height / 64][width / 64] == '0')
 			{
-				place->x = width / 64;
-				place->y = height / 64;
+				place = create_gps(width / 64, height / 64);
 				put_image(mlx, back->p, place);
 			}
 			width += back->size->x;

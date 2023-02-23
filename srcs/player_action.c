@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player_action.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 12:43:10 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/22 15:18:10 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/23 12:03:43 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,7 @@ void	move_left(t_param *param)
 	char	value_case;
 	t_gps	*new;
 
-	new = create_empty_gps();
-	new->x = param->player->coor->x - 1;
-	new->y = param->player->coor->y;
+	new = create_gps(param->player->coor->x - 1, param->player->coor->y);
 	value_case = param->map->map[new->y][new->x];
 	if (value_case == '1' || value_case == 'D')
 	{
@@ -43,9 +41,7 @@ void	move_right(t_param *param)
 	char	value_case;
 	t_gps	*new;
 
-	new = create_empty_gps();
-	new->x = param->player->coor->x + 1;
-	new->y = param->player->coor->y;
+	new = create_gps(param->player->coor->x + 1, param->player->coor->y);
 	value_case = param->map->map[new->y][new->x];
 	if (value_case == '1' || value_case == 'D')
 	{
@@ -69,9 +65,7 @@ void	move_top(t_param *param)
 	char	value_case;
 	t_gps	*new;
 
-	new = create_empty_gps();
-	new->x = param->player->coor->x;
-	new->y = param->player->coor->y - 1;
+	new = create_gps(param->player->coor->x, param->player->coor->y - 1);
 	value_case = param->map->map[new->y][new->x];
 	if (value_case == '1' || value_case == 'D')
 	{
@@ -95,9 +89,7 @@ void	move_bottom(t_param *param)
 	char	value_case;
 	t_gps	*new;
 
-	new = create_empty_gps();
-	new->x = param->player->coor->x;
-	new->y = param->player->coor->y + 1;
+	new = create_gps(param->player->coor->x, param->player->coor->y + 1);
 	value_case = param->map->map[new->y][new->x];
 	if (value_case == '1' || value_case == 'D')
 	{
@@ -120,7 +112,7 @@ void	move_bottom(t_param *param)
 	free(new);
 }
 
-int render_next_frame(int keycode, t_param *param)
+int	render_next_frame(int keycode, t_param *param)
 {
 	if (param->finish != 1)
 	{
@@ -136,6 +128,6 @@ int render_next_frame(int keycode, t_param *param)
 			create_new_shot(param);
 	}
 	if (keycode == 65307)
-			close_win(param, param->mlx->mlx, param->mlx->mlx_win);
+		close_win(param, param->mlx->mlx, param->mlx->mlx_win);
 	return (0);
 }
