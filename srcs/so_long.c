@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 11:18:21 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/23 23:21:07 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/24 00:08:28 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ int	main(int argc, char **argv)
 		if (param == NULL)
 			return (0);
 		map_test(param);
-		so_long(param);
+		main_menu(param);
 	}
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 11:22:07 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/23 16:02:45 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/24 00:08:13 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,15 @@
 # include "../Libft_w_a/libft.h"
 # include <stdbool.h>
 # include <fcntl.h>
+# include <unistd.h>
+# include <time.h>
 
-//!bonus
-#include <unistd.h>
-#include <time.h>
-//!bonus
+typedef struct s_menu
+{
+	t_texture	*menu[2];
+	t_mlx		*mlx;
+	int			keycode;
+}				t_menu;
 
 typedef struct s_mlx
 {
@@ -183,6 +187,7 @@ typedef struct s_param
 	t_all_texture	*textures;
 	t_ennemy		*boss;
 	t_shoot			*shots;
+	t_menu			*menu;
 	int				finish;
 }				t_param;
 
@@ -369,4 +374,6 @@ bool	check_line(char *line, t_map *map, size_t *length);
 bool get_next_line_loop (int fd, char **line_pt);
 
 void	add_to_map(t_map *map, char c);
+
+int	main_menu(t_param *param);
 #endif
