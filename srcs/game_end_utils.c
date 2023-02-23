@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 15:33:49 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/23 15:42:08 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/23 16:23:17 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,58 +51,61 @@ void	put_sprite_nb(t_param *param, int nb, t_texture *sprite, t_gps *place)
 		put_image(param->mlx, sprite->p, place);
 		nb /= 10;
 	}
+	free(place);
 }
 
 void	put_score_end(t_param *p, t_gps *place_img, t_gps *img_size, int size)
 {
 	t_gps		*place;
 	t_texture	*sprite;
+	int			x;
+	int			y;
 
 	sprite = NULL;
-	place = NULL;
 	if (size == 1)
 	{
-		place = create_gps(place_img->x + (img_size->x / 100) * 100,
-				place_img->y + (img_size->y / 100) * 46);
+		x = place_img->x + ((img_size->x / 100) * 100);
+		y = place_img->y + ((img_size->y / 100) * 46);
 	}
 	if (size == 2)
 	{
-		place = create_gps(place_img->x + (img_size->x / 100) * 95,
-				place_img->y + (img_size->y / 100) * 37.5);
+		x = place_img->x + ((img_size->x / 100) * 95),
+		y = place_img->y + ((img_size->y / 100) * 37.5);
 	}
 	if (size == 3)
 	{
-		place = create_gps(place_img->x + (img_size->x / 100) * 95,
-				place_img->y + (img_size->y / 100) * 41);
+		x = place_img->x + ((img_size->x / 100) * 95);
+		y = place_img->y + ((img_size->y / 100) * 41);
 	}
+	place = create_gps(x, y);
 	put_sprite_nb(p, p->player->score, sprite, place);
-	free(place);
 }
 
 void	put_moves_end(t_param *p, t_gps *place_img, t_gps *img_size, int size)
 {
 	t_gps		*place;
 	t_texture	*sprite;
+	int			y;
+	int			x;
 
 	sprite = NULL;
-	place = NULL;
 	if (size == 1)
 	{
-		place = create_gps(place_img->x + (img_size->x / 100) * 90,
-				place_img->y + (img_size->y / 100) * 86);
+		x = place_img->x + ((img_size->x / 100) * 90);
+		y = place_img->y + ((img_size->y / 100) * 86);
 	}
 	if (size == 2)
 	{
-		place = create_gps(place_img->x + (img_size->x / 100) * 90,
-				place_img->y + (img_size->y / 100) * 68.5);
+		x = place_img->x + ((img_size->x / 100) * 90);
+		y = place_img->y + ((img_size->y / 100) * 68.5);
 	}
 	if (size == 3)
 	{
-		place = create_gps(place_img->x + (img_size->x / 100) * 90,
-				place_img->y + (img_size->y / 100) * 75);
+		x = place_img->x + ((img_size->x / 100) * 90);
+		y = place_img->y + ((img_size->y / 100) * 75);
 	}
+	place = create_gps(x, y);
 	put_sprite_nb(p, p->player->moves, sprite, place);
-	free(place);
 }
 
 void	put_last_image(t_param *param, t_gps *place, t_texture *s, int size)
