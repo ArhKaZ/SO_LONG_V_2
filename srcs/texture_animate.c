@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 17:37:20 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/23 14:40:43 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/23 14:47:48 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,8 @@ t_explosion	*create_ex_sprite(t_mlx *mlx, char *path1, char *path2, char *path3)
 t_explosion	*create_explosion(t_mlx *mlx, int direction)
 {
 	t_explosion	*ex;
+
+	ex = NULL;
 	if (direction == 0)
 	{
 		ex = create_ex_sprite(mlx, "xpm/expl/e_left_ex_1.xpm",
