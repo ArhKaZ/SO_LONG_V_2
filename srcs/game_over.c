@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 13:15:25 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/23 13:20:47 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/23 13:22:30 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,6 @@ void	put_sprite_nb(t_param *param, int nb_temp, t_texture *sprite, t_gps *place)
 void	put_score_end(t_param *param, t_gps *place_back, t_gps *back_size, int choice)
 {
 	t_gps	*place;
-	int		size_x_10;
-	int		size_y_10;
 	t_texture	*sprite;
 
 	sprite = NULL;
@@ -83,8 +81,6 @@ void	put_score_end(t_param *param, t_gps *place_back, t_gps *back_size, int choi
 void	put_moves_end(t_param *param, t_gps *place_back, t_gps *back_size, int choice)
 {
 	t_gps	*place;
-	float		size_x_10;
-	float		size_y_10;
 	t_texture	*sprite;
 
 	sprite = NULL;

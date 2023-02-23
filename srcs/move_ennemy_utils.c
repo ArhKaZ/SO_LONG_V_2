@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 14:30:42 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/23 12:33:18 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/23 13:24:48 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ void	move_ennemy_to_coin(t_param *param, t_gps *new, int direction)
 	put_image(param->mlx, sprite, new);
 	// sprite = param->textures->background->p;
 	// put_image(param->mlx, sprite, param->boss->coor);
-	sprite = coin->coins[coin->frame_act];
+	sprite = coin->coins[coin->frame_act]->p;
 	put_image(param->mlx, sprite, param->boss->coor);
 	param->boss->coor->x = new->x;
 	param->boss->coor->y = new->y;
