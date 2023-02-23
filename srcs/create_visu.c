@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 16:50:44 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/23 12:07:36 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/23 12:48:16 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,12 +76,12 @@ void	put_coins(t_map *map, t_mlx *mlx, t_texture *coin)
 			{
 				place = create_gps(width, height);
 				put_image(mlx, coin->p, place);
+				free(place);
 			}
 			width++;
 		}
 		height++;
 	}
-	free(place);
 }
 
 void	put_ennemy(t_map *map, t_mlx *mlx, t_texture *ennemy)
@@ -100,6 +100,7 @@ void	put_ennemy(t_map *map, t_mlx *mlx, t_texture *ennemy)
 			{
 				place = create_gps(width, height);
 				put_image(mlx, ennemy->p, place);
+				free(place);
 			}
 			width++;
 		}
@@ -115,8 +116,8 @@ void	create_visu(t_map *map, t_mlx *mlx, t_gps *p, t_all_texture *all_text)
 	put_obstacle_in_map(map, mlx, all_text->planets);
 	put_coins(map, mlx, all_text->coin->coins[0]);
 	all_text->coin->frame_act = 0;
-	put_player(map, mlx, p, all_text->player->player_top);
+	put_player(map, mlx, p, all_text->ships->player[1]);
 	put_exit(map, mlx, all_text->black_hole_close->bh[0]);
 	all_text->black_hole_close->frame_act = 0;
-	put_ennemy(map, mlx, all_text->ennemy->boss_top);
+	put_ennemy(map, mlx, all_text->ships->ennemy[1]);
 }

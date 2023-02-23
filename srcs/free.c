@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 16:29:58 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/22 20:16:04 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/23 12:53:48 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,24 +97,18 @@ void	free_coin(t_coins *text, void *mlx)
 	text = NULL;
 }
 
-void	free_player_s(t_sprite_player *p, void *mlx)
+void	free_ships_sprite(t_ship *ships, void *mlx)
 {
-	free_texture(p->player_bottom, mlx);
-	free_texture(p->player_top, mlx);
-	free_texture(p->player_right, mlx);
-	free_texture(p->player_left, mlx);
-	free(p);
-	p = NULL;
-}
-
-void	free_ennemy_s(t_sprite_boss *b, void *mlx)
-{
-	free_texture(b->boss_bottom, mlx);
-	free_texture(b->boss_top, mlx);
-	free_texture(b->boss_right, mlx);
-	free_texture(b->boss_left, mlx);
-	free(b);
-	b = NULL;
+	free_texture(ships->ennemy[0], mlx);
+	free_texture(ships->ennemy[1], mlx);
+	free_texture(ships->ennemy[2], mlx);
+	free_texture(ships->ennemy[3], mlx);
+	free_texture(ships->player[0], mlx);
+	free_texture(ships->player[1], mlx);
+	free_texture(ships->player[2], mlx);
+	free_texture(ships->player[3], mlx);
+	free(ships);
+	ships = NULL;
 }
 
 void	free_black_hole(t_black_hole *bh, void *mlx)
@@ -216,9 +210,8 @@ void	free_textures(t_all_texture *texts, void *mlx)
 	free_texture(texts->background, mlx);
 	free_coin(texts->coin, mlx);
 	free_planets(texts->planets, mlx);
-	free_player_s(texts->player, mlx);
 	free_texture(texts->wall, mlx);
-	free_ennemy_s(texts->ennemy, mlx);
+	free_ships_sprite(texts->ships, mlx);
 	free_black_hole(texts->black_hole, mlx);
 	free_black_hole(texts->black_hole_close, mlx);
 	free_end_and_go(texts->end, mlx);
