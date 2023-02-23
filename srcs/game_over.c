@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 13:15:25 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/23 11:53:43 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/23 13:03:19 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,6 +124,7 @@ int	game_win(t_param *param)
 	t_texture	*sprite;
 
 	sprite = NULL;
+	place = NULL;
 	param->finish = true;
 	if (param->map->height < 8 || param->map->width < 8)
 	{
@@ -156,6 +157,7 @@ int	game_over(t_param *param)
 	t_texture	*sprite;
 
 	sprite = NULL;
+	place = NULL;
 	param->finish = true;
 	if (param->map->height < 8 || param->map->width < 8)
 	{

@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 17:10:42 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/23 12:00:15 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/23 13:04:20 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ t_gps	*get_next_coor_s(int direction, t_gps *coor)
 {
 	t_gps	*new;
 
+	new = NULL;
 	if (direction == 1)
 		new = create_gps(coor->x - 1, coor->y);
 	if (direction == 2)

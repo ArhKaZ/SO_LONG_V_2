@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 11:22:07 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/23 12:57:59 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/23 13:10:45 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -326,9 +326,9 @@ void	free_explode(t_explode *ex, void *mlx);
 
 void	move_ennemy(t_param *param, int random);
 
-void	move_ennemy_to_coin(t_param *param, t_gps *new, int direction, t_gps *ennemy);
+void	move_ennemy_to_coin(t_param *param, t_gps *new, int direction);
 
-void	move_ennemy_sprite(t_param *param, t_gps *new, int direction, t_gps *ennemy);
+void	move_ennemy_sprite(t_param *param, t_gps *new, int direction);
 
 void	put_wall(t_map *map, t_mlx *mlx, t_texture *wall);
 

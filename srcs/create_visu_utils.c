@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 14:37:20 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/23 11:44:08 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/23 13:08:02 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ void	put_wall(t_map *map, t_mlx *mlx, t_texture *wall)
 		put_image(mlx, wall->p, place);
 		place->y = map->height - 1;
 		put_image(mlx, wall->p, place);
+		free(place);
 	}
 	height = 0;
 	while (++height < map->height)
@@ -77,8 +78,8 @@ void	put_wall(t_map *map, t_mlx *mlx, t_texture *wall)
 		put_image(mlx, wall->p, place);
 		place->x = map->width - 1;
 		put_image(mlx, wall->p, place);
+		free(place);
 	}
-	free(place);
 }
 
 void	put_background(t_map *map, t_mlx *mlx, t_texture *back)
@@ -97,10 +98,10 @@ void	put_background(t_map *map, t_mlx *mlx, t_texture *back)
 			{
 				place = create_gps(width / 64, height / 64);
 				put_image(mlx, back->p, place);
+				free(place);
 			}
 			width += back->size->x;
 		}
 		height += back->size->y;
 	}
-	free(place);
 }
