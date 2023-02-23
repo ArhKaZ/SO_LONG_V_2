@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 13:15:25 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/23 13:03:19 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/23 13:20:47 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,22 +60,21 @@ void	put_score_end(t_param *param, t_gps *place_back, t_gps *back_size, int choi
 	t_texture	*sprite;
 
 	sprite = NULL;
-	size_x_10 = back_size->x / 100;
-	size_y_10 = back_size->y / 100;
+	place = NULL;
 	if (choice == 1)
 	{
-		place = create_gps(place_back->x + size_x_10 * 100,
-			place_back->y + size_y_10 * 46);
+		place = create_gps(place_back->x + (back_size->x / 100) * 100,
+			place_back->y + (back_size->y / 100) * 46);
 	}
 	if (choice == 2)
 	{
-		place = create_gps(place_back->x + size_x_10 * 95,
-			place_back->y + size_y_10 * 37.5);
+		place = create_gps(place_back->x + (back_size->x / 100) * 95,
+			place_back->y + (back_size->y / 100) * 37.5);
 	}
 	if (choice == 3)
 	{
-		place = create_gps(place_back->x + size_x_10 * 95,
-			place_back->y + size_y_10 * 41);
+		place = create_gps(place_back->x + (back_size->x / 100) * 95,
+			place_back->y + (back_size->y / 100) * 41);
 	}
 	put_sprite_nb(param, param->player->score, sprite, place);
 	free(place);
@@ -89,22 +88,21 @@ void	put_moves_end(t_param *param, t_gps *place_back, t_gps *back_size, int choi
 	t_texture	*sprite;
 
 	sprite = NULL;
-	size_x_10 = back_size->x / 100;
-	size_y_10 = back_size->y / 100;
+	place = NULL;
 	if (choice == 1)
 	{
-		place = create_gps(place_back->x + size_x_10 * 90,
-			place_back->y + size_y_10 * 86);
+		place = create_gps(place_back->x + (back_size->x / 100) * 90,
+			place_back->y + (back_size->y / 100) * 86);
 	}
 	if (choice == 2)
 	{
-		place = create_gps(place_back->x + size_x_10 * 90,
-			place_back->y + size_y_10 * 68.5);
+		place = create_gps(place_back->x + (back_size->x / 100) * 90,
+			place_back->y + (back_size->y / 100) * 68.5);
 	}
 	if (choice == 3)
 	{
-		place = create_gps(place_back->x + size_x_10 * 90,
-			place_back->y + size_y_10 * 75);
+		place = create_gps(place_back->x + (back_size->x / 100) * 90,
+			place_back->y + (back_size->y / 100) * 75);
 	}
 	put_sprite_nb(param, param->player->moves, sprite, place);
 	free(place);
