@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 15:45:56 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/24 00:19:25 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/24 00:20:59 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,12 +55,12 @@ int	choose_in_menu(int keycode, t_param *param)
 	if (keycode == 115 && menu->keycode != 115)
 	{
 		put_image(menu->mlx, menu->menu[1], zero);
-		menu->keycode == keycode;
+		menu->keycode = keycode;
 	}
 	if (keycode == 119 && menu->keycode != 119)
 	{
 		put_image(menu->mlx, menu->menu[0], zero);
-		menu->keycode == keycode;
+		menu->keycode = keycode;
 	}
 	if (keycode == 32)
 	{
