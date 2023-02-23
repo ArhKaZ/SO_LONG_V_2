@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ennemy.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 15:01:15 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/20 15:29:13 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/23 14:22:19 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,27 +51,27 @@ void	add_ennemy_back(t_ennemy **lst, int height, int width)
 		*lst = new;
 }
 
-void	del_ennemy(t_param *param, t_gps *coor)
+void	del_ennemy(t_param *param, t_gps *c)
 {
 	t_ennemy	*first;
 	t_ennemy	*temp;
 
 	first = param->boss;
 	temp = param->boss;
-	if (temp->coor->x == coor->x && temp->coor->y == coor->y)
+	if (temp->coor->x == c->x && temp->coor->y == c->y)
 	{
-		param->map->map[coor->y][coor->x] = '0';
+		param->map->map[c->y][c->x] = '0';
 		param->map->nb_ennemy -= 1;
 	}
 	else
 	{
 		while (temp->next != NULL)
 		{
-			if (temp->next->coor->x == coor->x && temp->next->coor->y == coor->y)
+			if (temp->next->coor->x == c->x && temp->next->coor->y == c->y)
 			{
-				param->map->map[coor->y][coor->x] = '0';
+				param->map->map[c->y][c->x] = '0';
 				param->map->nb_ennemy -= 1;
-				break;
+				break ;
 			}
 			temp = temp->next;
 		}
@@ -82,8 +82,8 @@ void	del_ennemy(t_param *param, t_gps *coor)
 t_ennemy	*get_ennemy(t_map *map)
 {
 	t_ennemy	*lst;
-	int height;
-	int width;
+	int			height;
+	int			width;
 
 	height = 1;
 	lst = NULL;

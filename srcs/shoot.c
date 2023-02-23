@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 17:10:42 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/23 13:04:20 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/23 14:40:19 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,11 @@ void	kill_boss(t_param *param, t_gps *new)
 {
 	clock_t		begin;
 	clock_t		current;
-	t_explode	*ex;
+	t_explosion	*ex;
 
 	begin = clock();
 	current = clock();
-	ex = create_explode(param->mlx, param->boss->direction);
+	ex = create_explosion(param->mlx, param->boss->direction);
 	put_image(param->mlx, ex->boss_explosion1->p, new);
 	param->player->score += 50;
 	while ((current - begin) * 1000 / CLOCKS_PER_SEC < 100)
@@ -68,7 +68,7 @@ void	kill_boss(t_param *param, t_gps *new)
 	}
 	del_ennemy(param, new);
 	put_image(param->mlx, param->textures->background->p, new);
-	free_explode(ex, param->mlx->mlx);
+	free_explosion(ex, param->mlx->mlx);
 }
 
 void	make_explosion(t_param *param, t_gps *new)

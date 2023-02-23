@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free.c                                             :+:      :+:    :+:   */
+/*   free_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 16:29:58 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/23 13:41:15 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/23 14:24:55 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	free_char_map(char **map)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (map != NULL)
@@ -56,7 +56,6 @@ void	free_ennemy(t_ennemy *boss)
 	}
 	boss = NULL;
 }
-
 
 void	free_player(t_player *player)
 {

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   test_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 00:47:17 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/17 16:12:52 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/23 14:19:41 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@ bool	change_to_x(t_map *map, char **map_cp, int x, int y)
 {
 	if (x < 1 || x > map->width - 1)
 		return (false);
-	if (map_cp[y][x] == 'C' || map_cp[y][x] == 'E' || map_cp[y][x] == 'P' || map_cp[y][x] == '0')
+	if (map_cp[y][x] == 'C' || map_cp[y][x] == 'E' || map_cp[y][x] == 'P'
+			|| map_cp[y][x] == '0')
 		map_cp[y][x] = 'X';
 	if (map_cp[y][x] == '1')
 		return (false);
@@ -42,8 +43,8 @@ char	**cp_map(t_map *map)
 
 void	change_p(char **map_cp, t_map *map)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	while (map_cp[i] != NULL)
@@ -59,12 +60,12 @@ void	change_p(char **map_cp, t_map *map)
 	}
 }
 
-char	**checker_map(t_map *map ,char **map_cp)
+char	**checker_map(t_map *map, char **map_cp)
 {
-	int count_x;
-	int new_count_x;
-	int y;
-	int x;
+	int	count_x;
+	int	new_count_x;
+	int	y;
+	int	x;
 
 	count_x = 0;
 	change_p(map_cp, map);
@@ -79,7 +80,6 @@ char	**checker_map(t_map *map ,char **map_cp)
 			x = 0;
 			while (map_cp[y][x])
 			{
-
 				if (map_cp[y][x] == 'X')
 				{
 					change_to_x(map, map_cp, x - 1, y);
@@ -99,8 +99,8 @@ char	**checker_map(t_map *map ,char **map_cp)
 bool	map_is_finishable(t_map *map)
 {
 	char	**map_cp;
-	int i;
-	int j;
+	int		i;
+	int		j;
 
 	i = 0;
 	map_cp = NULL;

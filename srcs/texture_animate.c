@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 17:37:20 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/23 12:11:05 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/23 14:40:43 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,14 @@ t_coins	*create_collectible(t_mlx *mlx)
 	coins = NULL;
 	coins = malloc(sizeof(t_coins));
 	coins->coins[0] = create_texture("xpm/coins/coins1.xpm", mlx);
-	coins->coins[1]= create_texture("xpm/coins/coins2.xpm", mlx);
-	coins->coins[2]= create_texture("xpm/coins/coins3.xpm", mlx);
-	coins->coins[3]= create_texture("xpm/coins/coins4.xpm", mlx);
-	coins->coins[4]= create_texture("xpm/coins/coins5.xpm", mlx);
-	coins->coins[5]= create_texture("xpm/coins/coins6.xpm", mlx);
-	coins->coins[6]= create_texture("xpm/coins/coins7.xpm", mlx);
-	coins->coins[7]= create_texture("xpm/coins/coins8.xpm", mlx);
-	coins->coins[8]= create_texture("xpm/coins/coins9.xpm", mlx);
+	coins->coins[1] = create_texture("xpm/coins/coins2.xpm", mlx);
+	coins->coins[2] = create_texture("xpm/coins/coins3.xpm", mlx);
+	coins->coins[3] = create_texture("xpm/coins/coins4.xpm", mlx);
+	coins->coins[4] = create_texture("xpm/coins/coins5.xpm", mlx);
+	coins->coins[5] = create_texture("xpm/coins/coins6.xpm", mlx);
+	coins->coins[6] = create_texture("xpm/coins/coins7.xpm", mlx);
+	coins->coins[7] = create_texture("xpm/coins/coins8.xpm", mlx);
+	coins->coins[8] = create_texture("xpm/coins/coins9.xpm", mlx);
 	coins->coins[9] = create_texture("xpm/coins/coins10.xpm", mlx);
 	coins->coins[10] = create_texture("xpm/coins/coins11.xpm", mlx);
 	coins->coins[11] = create_texture("xpm/coins/coins12.xpm", mlx);
@@ -39,7 +39,7 @@ t_coins	*create_collectible(t_mlx *mlx)
 
 t_black_hole	*create_black_hole(t_mlx *mlx)
 {
-	t_black_hole *bh;
+	t_black_hole	*bh;
 
 	bh = NULL;
 	bh = malloc(sizeof(t_black_hole));
@@ -58,7 +58,7 @@ t_black_hole	*create_black_hole(t_mlx *mlx)
 
 t_black_hole	*create_black_hole_for_end(t_mlx *mlx)
 {
-	t_black_hole *bh;
+	t_black_hole	*bh;
 
 	bh = NULL;
 	bh = malloc(sizeof(t_black_hole));
@@ -75,35 +75,40 @@ t_black_hole	*create_black_hole_for_end(t_mlx *mlx)
 	return (bh);
 }
 
-t_explode	*create_explode(t_mlx *mlx, int direction)
+t_explosion	*create_ex_sprite(t_mlx *mlx, char *path1, char *path2, char *path3)
 {
-	t_explode	*ex;
+	t_explosion	*ex;
 
 	ex = NULL;
-	ex = malloc(sizeof(t_explode));
+	ex = malloc(sizeof(t_explosion));
+	ex->boss_explosion1 = create_texture(path1, mlx);
+	ex->boss_explosion2 = create_texture(path2, mlx);
+	ex->boss_explosion3 = create_texture(path3, mlx);
+	return (ex);
+}
+
+t_explosion	*create_explosion(t_mlx *mlx, int direction)
+{
+	t_explosion	*ex;
 	if (direction == 0)
 	{
-		ex->boss_explosion1 = create_texture("xpm/explosion/boss_left_ex_1.xpm", mlx);
-		ex->boss_explosion2 = create_texture("xpm/explosion/boss_left_ex_2.xpm", mlx);
-		ex->boss_explosion3 = create_texture("xpm/explosion/boss_left_ex_3.xpm", mlx);
+		ex = create_ex_sprite(mlx, "xpm/expl/e_left_ex_1.xpm",
+			"xpm/expl/e_left_ex_2.xpm", "xpm/expl/e_left_ex_3.xpm");
 	}
 	if (direction == 1)
 	{
-		ex->boss_explosion1 = create_texture("xpm/explosion/boss_right_ex_1.xpm", mlx);
-		ex->boss_explosion2 = create_texture("xpm/explosion/boss_right_ex_2.xpm", mlx);
-		ex->boss_explosion3 = create_texture("xpm/explosion/boss_right_ex_3.xpm", mlx);
+		ex = create_ex_sprite(mlx, "xpm/expl/e_right_ex_1.xpm",
+			"xpm/expl/e_right_ex_2.xpm", "xpm/expl/e_right_ex_3.xpm");
 	}
 	if (direction == 2)
 	{
-		ex->boss_explosion1 = create_texture("xpm/explosion/boss_top_ex_1.xpm", mlx);
-		ex->boss_explosion2 = create_texture("xpm/explosion/boss_top_ex_2.xpm", mlx);
-		ex->boss_explosion3 = create_texture("xpm/explosion/boss_top_ex_3.xpm", mlx);
+		ex = create_ex_sprite(mlx, "xpm/expl/e_top_ex_1.xpm",
+			"xpm/expl/e_top_ex_2.xpm", "xpm/expl/e_top_ex_3.xpm");
 	}
 	if (direction == 3)
 	{
-		ex->boss_explosion1 = create_texture("xpm/explosion/boss_bottom_ex_1.xpm", mlx);
-		ex->boss_explosion2 = create_texture("xpm/explosion/boss_bottom_ex_2.xpm", mlx);
-		ex->boss_explosion3 = create_texture("xpm/explosion/boss_bottom_ex_3.xpm", mlx);
+		ex = create_ex_sprite(mlx, "xpm/expl/e_bot_ex_1.xpm",
+			"xpm/expl/e_bot_ex_2.xpm", "xpm/expl/e_bot_ex_3.xpm");
 	}
 	ex->frame_act = 0;
 	return (ex);

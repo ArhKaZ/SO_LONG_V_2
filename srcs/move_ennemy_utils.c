@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 14:30:42 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/23 13:24:48 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/23 14:23:51 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,8 @@ void	move_ennemy_to_coin(t_param *param, t_gps *new, int direction)
 	t_coins	*coin;
 
 	coin = param->textures->coin;
-	sprite = param->textures->background->p;
-	mlx_put_image_to_window(param->mlx->mlx, param->mlx->mlx_win, sprite, new->x * 64, new->y * 64);
+	// sprite = param->textures->background->p;
+	// put_image(param->mlx, sprite, new);
 	if (direction == 1)
 		sprite = param->textures->ships->ennemy[0]->p;
 	if (direction == 2)
