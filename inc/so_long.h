@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 11:22:07 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/22 20:23:38 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/23 12:17:20 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,21 +80,11 @@ typedef struct s_black_hole
 	int			frame_act;
 }				t_black_hole;
 
-typedef	struct s_sprite_boss
+typedef struct s_ship
 {
-	t_texture	*boss_top;
-	t_texture	*boss_left;
-	t_texture	*boss_right;
-	t_texture	*boss_bottom;
-}				t_sprite_boss;
-
-typedef struct s_sprite_player
-{
-	t_texture	*player_top;
-	t_texture	*player_bottom;
-	t_texture	*player_right;
-	t_texture	*player_left;
-}				t_sprite_player;
+	t_texture	*player[4];
+	t_texture	*ennemy[4];
+}				t_ship;
 
 typedef	struct s_explode
 {
@@ -159,8 +149,7 @@ typedef struct s_all_texture
 	t_texture			*wall;
 	t_texture			*background;
 	t_coins				*coin;
-	t_sprite_player		*player;
-	t_sprite_boss		*ennemy;
+	t_ship				*ships;
 	t_black_hole		*black_hole;
 	t_black_hole		*black_hole_close;
 	t_hp				*hp;
@@ -203,7 +192,7 @@ void	print_map(char **map);
 
 t_map	*create_empty_map(void);
 
-t_gps	*create_empty_gps(void);
+t_gps	*create_gps(int x, int y);
 
 t_player	*create_empty_player(void);
 

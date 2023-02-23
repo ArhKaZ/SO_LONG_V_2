@@ -18,7 +18,7 @@
 # include <stdint.h>
 # include <stdarg.h>
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 30
+#  define BUFFER_SIZE 1
 # endif
 # define LOWER_BASE_16	"0123456789abcdef"
 # define UPPER_BASE_16X	"0123456789ABCDEF"
