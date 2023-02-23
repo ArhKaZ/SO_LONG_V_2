@@ -23,13 +23,13 @@ SRCS			=	animation.c				\
 					put_image.c				\
 					rand.c					\
 					shoot.c					\
+					so_long.c				\
 					test_map.c				\
 					test_map_utils.c		\
 					texture.c				\
 					texture_animate.c		\
 					texture_explosion.c		\
 					texture_nb.c			\
-					so_long.c				\
 
 SRCS_MAP		=	create_map.c	 \
 					create_map_ennemy.c \
