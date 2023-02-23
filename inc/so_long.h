@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 11:22:07 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/24 00:08:13 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/24 00:10:46 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,6 @@
 # include <fcntl.h>
 # include <unistd.h>
 # include <time.h>
-
-typedef struct s_menu
-{
-	t_texture	*menu[2];
-	t_mlx		*mlx;
-	int			keycode;
-}				t_menu;
 
 typedef struct s_mlx
 {
@@ -178,6 +171,14 @@ typedef	struct s_map
 	int	height;
 	int	width;
 }				t_map;
+
+typedef struct s_menu
+{
+	t_texture	*menu[2];
+	t_mlx		*mlx;
+	int			keycode;
+}				t_menu;
+
 
 typedef struct s_param
 {
