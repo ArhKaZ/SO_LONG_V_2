@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 11:22:07 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/24 00:10:46 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/24 00:19:36 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -372,9 +372,13 @@ bool	check_char(char c);
 
 bool	check_line(char *line, t_map *map, size_t *length);
 
-bool get_next_line_loop (int fd, char **line_pt);
+bool	get_next_line_loop (int fd, char **line_pt);
 
 void	add_to_map(t_map *map, char c);
 
-int	main_menu(t_param *param);
+int		main_menu(t_param *param);
+
+int		so_long(t_param *param);
+
+void	free_menu(t_menu *menu);
 #endif
