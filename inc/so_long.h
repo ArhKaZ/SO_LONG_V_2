@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 11:22:07 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/23 13:51:39 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/23 14:46:05 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,13 +86,13 @@ typedef struct s_ship
 	t_texture	*ennemy[4];
 }				t_ship;
 
-typedef	struct s_explode
+typedef	struct s_explosion
 {
 	t_texture	*boss_explosion1;
 	t_texture	*boss_explosion2;
 	t_texture	*boss_explosion3;
 	int			frame_act;
-}				t_explode;
+}					t_explosion;
 
 typedef	struct s_sprite_planet
 {
@@ -154,7 +154,7 @@ typedef struct s_all_texture
 	t_black_hole		*black_hole_close;
 	t_hp				*hp;
 	t_end				*end;
-	t_explode			*explode;
+	t_explosion			*explosion;
 	t_sprite_planet		*planets;
 	t_shoot_texture		*shoot;
 	t_nb				*nb;
@@ -320,9 +320,9 @@ void	free_black_hole(t_black_hole *bh, void *mlx);
 
 t_texture	*create_texture(char *path, t_mlx *mlx);
 
-t_explode	*create_explode(t_mlx *mlx, int direction);
+t_explosion	*create_explosion(t_mlx *mlx, int direction);
 
-void	free_explode(t_explode *ex, void *mlx);
+void	free_explosion(t_explosion *ex, void *mlx);
 
 void	move_ennemy(t_param *param, int random);
 
@@ -340,8 +340,6 @@ void	change_exit(t_param *param);
 
 t_nb	*create_nb(t_mlx *mlx, int width, int height);
 
-t_explode	*create_explode(t_mlx *mlx, int direction);
-
 t_black_hole	*create_black_hole_for_end(t_mlx *mlx);
 
 t_black_hole	*create_black_hole(t_mlx *mlx);
@@ -355,8 +353,6 @@ void			put_image_xy(t_mlx *mlx, void *sprite, t_gps *coor);
 void	free_textures(t_all_texture *texts, void *mlx);
 
 void	free_shoot(t_shoot_texture *s, void *mlx);
-
-void	free_explode(t_explode *ex, void *mlx);
 
 void	free_nb(t_nb *nb, void *mlx);
 
