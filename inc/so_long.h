@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 11:22:07 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/23 13:10:45 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/23 13:51:39 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -351,4 +351,16 @@ t_coins			*create_collectible(t_mlx *mlx);
 t_shoot_texture	*create_shoot_sprite(t_mlx *mlx);
 
 void			put_image_xy(t_mlx *mlx, void *sprite, t_gps *coor);
+
+void	free_textures(t_all_texture *texts, void *mlx);
+
+void	free_shoot(t_shoot_texture *s, void *mlx);
+
+void	free_explode(t_explode *ex, void *mlx);
+
+void	free_nb(t_nb *nb, void *mlx);
+
+void	free_end_and_go(t_end *end, void *mlx);
+
+void	free_planets(t_sprite_planet *p, void *mlx);
 #endif

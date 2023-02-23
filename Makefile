@@ -8,7 +8,9 @@ SRCS			=	so_long.c		\
 					texture.c		\
 					texture_nb.c			\
 					texture_animate.c		\
-					free.c			\
+					free_textures.c			\
+					free_textures_two.c		\
+					free_utils.c			\
 					hud.c			\
 					player_action.c			\
 					player_action_utils.c	\
