@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 11:18:21 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/22 20:27:22 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/23 13:41:18 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,18 @@ int	map_test(t_param *param)
 	if (map_is_finishable(param->map) == false)
 		close_win(param, param->mlx->mlx, param->mlx->mlx_win);
 	return (1);
+}
+
+void	free_all(t_param *param)
+{
+	free_map(param->map);
+	free_player(param->player);
+	free_textures(param->textures, param->mlx->mlx);
+	free_ennemy(param->boss);
+	free(param->mlx);
+	param->mlx = NULL;
+	free(param);
+	param = NULL;
 }
 
 t_param	*get_param(char **argv)
