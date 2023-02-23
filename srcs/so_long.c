@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 11:18:21 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/24 00:08:28 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/24 00:11:26 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ int	so_long(t_param *param)
 	mlx_hook(param->mlx->mlx_win, 17, 1L >> 0, &close_win, param);
 	mlx_hook(param->mlx->mlx_win, 2, 1L >> 0, &render_next_frame, param);
 	mlx_loop(param->mlx->mlx);
+	return (0);
 }
 
 int	main(int argc, char **argv)

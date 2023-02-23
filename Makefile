@@ -13,6 +13,7 @@ SRCS			=	animation.c				\
 					get_map.c				\
 					get_map_utils.c			\
 					hud.c					\
+					main_menu.c				\
 					map.c					\
 					map_error.c				\
 					move_ennemy.c			\
