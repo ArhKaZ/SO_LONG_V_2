@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 11:22:07 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/23 16:00:16 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/23 16:02:45 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -368,5 +368,5 @@ bool	check_line(char *line, t_map *map, size_t *length);
 
 bool get_next_line_loop (int fd, char **line_pt);
 
-
+void	add_to_map(t_map *map, char c);
 #endif
