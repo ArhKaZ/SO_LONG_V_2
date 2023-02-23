@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 16:50:44 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/23 12:48:16 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/23 12:56:10 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,6 @@ void	put_ennemy(t_map *map, t_mlx *mlx, t_texture *ennemy)
 		}
 		height++;
 	}
-	free(place);
 }
 
 void	create_visu(t_map *map, t_mlx *mlx, t_gps *p, t_all_texture *all_text)

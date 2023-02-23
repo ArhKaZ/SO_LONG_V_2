@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 11:22:07 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/23 12:17:20 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/23 12:57:59 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -270,17 +270,17 @@ int		put_exit_animate(t_param *param);
 
 int		get_random(int nb_max);
 
-int	move_ennemy_left(t_param *param, t_gps *ennemy);
+void	move_ennemy_left(t_param *param, t_gps *ennemy);
 
-int	move_ennemy_right(t_param *param, t_gps *ennemy);
+void	move_ennemy_right(t_param *param, t_gps *ennemy);
 
-int	move_ennemy_top(t_param *param, t_gps *ennemy);
+void	move_ennemy_top(t_param *param, t_gps *ennemy);
 
-int	move_ennemy_bottom(t_param *param, t_gps *ennemy);
+void	move_ennemy_bottom(t_param *param, t_gps *ennemy);
 
 t_ennemy	*get_ennemy(t_map *map);
 
-int		choose_direction(t_param *param);
+void		choose_direction(t_param *param);
 
 void	move_to_boss(t_param *param, int direction);
 
