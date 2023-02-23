@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 14:30:42 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/23 14:23:51 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/23 14:48:58 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ void	move_ennemy_to_coin(t_param *param, t_gps *new, int direction)
 	void	*sprite;
 	t_coins	*coin;
 
+	sprite = NULL;
 	coin = param->textures->coin;
 	// sprite = param->textures->background->p;
 	// put_image(param->mlx, sprite, new);
