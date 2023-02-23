@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 16:49:55 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/23 11:41:20 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/23 15:40:28 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	close_win(t_param *param, void *mlx, void *mlx_win)
 	exit(EXIT_SUCCESS);
 }
 
-t_gps	*create_gps(int x, int y) //create_gps(x y)
+t_gps	*create_gps(int x, int y)
 {
 	t_gps	*gps;
 
@@ -47,7 +47,7 @@ t_mlx	*create_empty_mlx(void)
 	return (mlx);
 }
 
-t_param	*create_param(t_map *map, t_mlx *mlx, t_player *player, t_all_texture *all_texture)
+t_param	*create_param(t_map *map, t_mlx *mlx, t_player *p, t_all_texture *text)
 {
 	t_param	*param;
 
@@ -56,8 +56,8 @@ t_param	*create_param(t_map *map, t_mlx *mlx, t_player *player, t_all_texture *a
 		return (NULL);
 	param->map = map;
 	param->mlx = mlx;
-	param->player = player;
-	param->textures = all_texture;
+	param->player = p;
+	param->textures = text;
 	param->shots = NULL;
 	param->boss = NULL;
 	param->finish = 0;
@@ -66,13 +66,13 @@ t_param	*create_param(t_map *map, t_mlx *mlx, t_player *player, t_all_texture *a
 
 t_player	*create_empty_player(void)
 {
-	t_player *player;
+	t_player	*player;
 
 	player = malloc(sizeof(t_player));
 	if (!player)
 		return (NULL);
 	player->collect = 0;
-	player->coor = create_gps(0,0);
+	player->coor = create_gps(0, 0);
 	if (!player->coor)
 		return (NULL);
 	player->moves = 0;

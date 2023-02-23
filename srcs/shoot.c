@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 17:10:42 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/23 14:40:19 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/23 15:44:06 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,8 @@ void	kill_boss(t_param *param, t_gps *new)
 
 void	make_explosion(t_param *param, t_gps *new)
 {
-	if (new->x == 0 || new->y == 0 || new->y == param->map->height - 1 || new->x == param->map->width - 1)
+	if (new->x == 0 || new->y == 0 || new->y == param->map->height - 1
+			|| new->x == param->map->width - 1)
 		return ;
 	else
 	{

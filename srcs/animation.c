@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   animation.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 16:58:46 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/22 15:22:20 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/23 15:08:03 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,12 @@
 
 void	change_exit(t_param *param)
 {
-	put_image(param->mlx, param->textures->background->p, param->map->coor_exit);
-	put_image(param->mlx, param->textures->black_hole->bh[0]->p, param->map->coor_exit);
+	void	*sprite;
+
+	sprite = param->textures->background->p;
+	put_image(param->mlx, sprite, param->map->coor_exit);
+	sprite = param->textures->black_hole->bh[0]->p;
+	put_image(param->mlx, sprite, param->map->coor_exit);
 	param->textures->black_hole->frame_act = 1;
 	return ;
 }

@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 13:39:18 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/23 13:49:33 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/23 15:51:08 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,6 @@ void	free_black_hole(t_black_hole *bh, void *mlx)
 	free(bh);
 	bh = NULL;
 }
-
 
 void	free_hp(t_hp *hp, void *mlx)
 {

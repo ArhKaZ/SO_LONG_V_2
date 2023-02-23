@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 14:30:42 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/23 14:48:58 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/23 14:51:17 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,6 @@ void	move_ennemy_to_coin(t_param *param, t_gps *new, int direction)
 
 	sprite = NULL;
 	coin = param->textures->coin;
-	// sprite = param->textures->background->p;
-	// put_image(param->mlx, sprite, new);
 	if (direction == 1)
 		sprite = param->textures->ships->ennemy[0]->p;
 	if (direction == 2)
@@ -76,8 +74,6 @@ void	move_ennemy_to_coin(t_param *param, t_gps *new, int direction)
 		sprite = param->textures->ships->ennemy[3]->p;
 	move_ennemy_in_tab(param->map, param->boss->coor, new, 'C');
 	put_image(param->mlx, sprite, new);
-	// sprite = param->textures->background->p;
-	// put_image(param->mlx, sprite, param->boss->coor);
 	sprite = coin->coins[coin->frame_act]->p;
 	put_image(param->mlx, sprite, param->boss->coor);
 	param->boss->coor->x = new->x;

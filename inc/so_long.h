@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 11:22:07 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/23 14:46:05 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/23 15:35:10 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -359,4 +359,6 @@ void	free_nb(t_nb *nb, void *mlx);
 void	free_end_and_go(t_end *end, void *mlx);
 
 void	free_planets(t_sprite_planet *p, void *mlx);
+
+void	put_last_image(t_param *param, t_gps *place, t_texture *s, int size)
 #endif

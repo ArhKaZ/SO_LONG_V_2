@@ -1,6 +1,7 @@
 #============================= FILES PART =====================================
 SRCS			=	so_long.c		\
 					get_map.c		\
+					get_map_utils.c			\
 					map.c			\
 					create_and_destroy.c	\
 					map_error.c		\
@@ -8,6 +9,7 @@ SRCS			=	so_long.c		\
 					texture.c		\
 					texture_nb.c			\
 					texture_animate.c		\
+					texture_explosion.c		\
 					free_textures.c			\
 					free_textures_two.c		\
 					free_utils.c			\
@@ -20,12 +22,13 @@ SRCS			=	so_long.c		\
 					ennemy.c				\
 					move_ennemy.c			\
 					rand.c					\
-					game_over.c				\
+					game_end.c				\
 					put_image.c				\
 					shoot.c					\
 					animation_shot.c		\
 					create_visu_utils.c		\
 					move_ennemy_utils.c		\
+					player_damage.c			\
 
 SRCS_MAP		=	create_map.c	 \
 					create_map_ennemy.c \
