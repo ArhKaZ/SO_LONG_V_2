@@ -13,6 +13,7 @@ SRCS			=	animation.c				\
 					get_map.c				\
 					get_map_utils.c			\
 					hud.c					\
+					main_menu_utils.c		\
 					main_menu.c				\
 					map.c					\
 					map_error.c				\
@@ -24,6 +25,8 @@ SRCS			=	animation.c				\
 					put_image.c				\
 					rand.c					\
 					shoot.c					\
+					shoot_utils.c			\
+					shoot_create_and_moves.c\
 					so_long.c				\
 					test_map.c				\
 					test_map_utils.c		\

@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 11:22:07 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/24 00:24:48 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/24 02:32:45 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,9 +85,7 @@ typedef struct s_ship
 
 typedef	struct s_explosion
 {
-	t_texture	*boss_explosion1;
-	t_texture	*boss_explosion2;
-	t_texture	*boss_explosion3;
+	t_texture	*ennemy_ex[3];
 	int			frame_act;
 }					t_explosion;
 
@@ -115,7 +113,6 @@ typedef struct s_shoot
 	int 			direction;
 	clock_t			shoot_time;
 }				t_shoot;
-
 
 typedef struct s_end
 {
@@ -381,4 +378,10 @@ int		main_menu(t_param *param);
 int		so_long(t_param *param);
 
 void	free_menu(t_menu *menu);
+
+int		close_menu(t_param *param);
+
+int		close_menu_start(t_param *param);
+
+int		close_menu_exit(t_param *param);
 #endif
