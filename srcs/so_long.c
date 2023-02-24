@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 11:18:21 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/24 17:48:24 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/24 17:50:26 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ t_param	*get_param(char **argv)
 	t_mlx			*mlx_menu;
 
 	mlx = create_empty_mlx();
-	mlx = create_empty_mlx();
+	mlx_menu = create_empty_mlx();
 	map = create_empty_map();
 	player = create_empty_player();
 	if (get_map(argv[1], map) == false || checking_map(map) == false)
