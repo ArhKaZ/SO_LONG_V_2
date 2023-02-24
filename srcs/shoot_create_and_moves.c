@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 02:41:36 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/24 02:55:41 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/24 03:17:12 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ bool	put_shot_in_coor(t_param *p, t_gps *new)
 void	create_new_shot(t_param *param)
 {
 	t_shoot	*shot;
-	char	*c;
+	char	c;
 
 	shot = create_shot(clock(), param->player->direction, param->player->coor);
 	c = param->map->map[shot->coor->y][shot->coor->x];
