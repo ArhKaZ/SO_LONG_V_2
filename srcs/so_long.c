@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 11:18:21 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/24 03:01:03 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/24 03:22:06 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,25 +34,21 @@ void	free_all(t_param *param)
 t_param	*get_param(char **argv)
 {
 	t_map			*map;
-	t_mlx			*mlx;
 	t_player		*player;
 	t_all_texture	*all_texture;
 	t_param			*param;
 
 	map = create_empty_map();
 	player = create_empty_player();
-	mlx = create_empty_mlx();
+
 	if (get_map(argv[1], map) == false || checking_map(map) == false)
 		return (free_error(map, player, mlx), NULL);
-	mlx->mlx = mlx_init();
-	mlx->mlx_win = mlx_new_window(mlx->mlx, map->width * 64,
-			map->height * 64, "SO_LONG");
 	all_texture = create_all_texture(mlx, map->width, map->height);
 	if (all_texture == NULL)
 		return (ft_putstr_fd("Error\ncan't load texture\n", 2),
 			exit(EXIT_FAILURE), NULL);
 	create_visu(map, mlx, player->coor, all_texture);
-	param = create_param(map, mlx, player, all_texture);
+	param = create_param(map, NULL, player, all_texture);
 	if (map->nb_ennemy > 0)
 		param->boss = get_ennemy(map);
 	return (param);
@@ -60,6 +56,13 @@ t_param	*get_param(char **argv)
 
 int	so_long(t_param *param)
 {
+	t_mlx	*mlx;
+
+	mlx = create_empty_mlx();
+	mlx->mlx = mlx_init();
+	mlx->mlx_win = mlx_new_window(mlx->mlx, param->map->width * 64,
+			param->map->height * 64, "SO_LONG");
+	param->mlx = mlx;
 	mlx_loop_hook(param->mlx->mlx, &animation, param);
 	mlx_hook(param->mlx->mlx_win, 17, 1L >> 0, &close_win, param);
 	mlx_hook(param->mlx->mlx_win, 2, 1L >> 0, &render_next_frame, param);

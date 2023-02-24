@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 15:45:56 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/24 02:10:18 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/24 03:23:03 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,12 @@ int	choose_in_menu(int keycode, t_param *param)
 	zero = create_gps(0, 0);
 	if (keycode == 115 && menu->keycode != 115)
 	{
-		put_image(menu->mlx, menu->menu[1], zero);
+		put_image(menu->mlx, menu->menu[1]->p, zero);
 		menu->keycode = keycode;
 	}
 	if (keycode == 119 && menu->keycode != 119)
 	{
-		put_image(menu->mlx, menu->menu[0], zero);
+		put_image(menu->mlx, menu->menu[0]->p, zero);
 		menu->keycode = keycode;
 	}
 	if (keycode == 32)
