@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 11:18:21 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/24 03:47:37 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/24 03:53:57 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ t_param	*get_param(char **argv)
 	if (all_texture == NULL)
 		return (ft_putstr_fd("Error\ncan't load texture\n", 2),
 			exit(EXIT_FAILURE), NULL);
-	param = create_param(map, NULL, player, all_texture);
+	param = create_param(map, mlx, player, all_texture);
 	if (map->nb_ennemy > 0)
 		param->boss = get_ennemy(map);
 	return (param);
