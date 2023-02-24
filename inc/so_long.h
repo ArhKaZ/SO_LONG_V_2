@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 11:22:07 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/24 16:14:45 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/24 16:47:38 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,11 +52,6 @@ typedef struct s_texture
 {
 	void	*p;
 	t_gps	*size;
-	char	*addr;
-	char	*path;
-	int		bits_per_pixel;
-	int		line_len;
-	int		endian;
 }				t_texture;
 
 typedef struct s_coins
