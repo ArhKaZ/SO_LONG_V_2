@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 16:58:46 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/23 15:08:03 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/24 17:25:35 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,12 @@ int	animate_black_hole_close(t_param *param)
 	sprite = NULL;
 	map = param->map;
 	bh = param->textures->black_hole_close;
-	if (bh->frame_act < 8)
+	if (bh->frame_act <= 8)
 	{
 		sprite = bh->bh[bh->frame_act];
 		bh->frame_act += 1;
 	}
-	else if (bh->frame_act == 8)
+	else if (bh->frame_act == 9)
 	{
 		bh->frame_act = 0;
 		sprite = bh->bh[bh->frame_act];
@@ -56,12 +56,12 @@ int	animate_black_hole(t_param *param)
 	sprite = NULL;
 	map = param->map;
 	bh = param->textures->black_hole;
-	if (bh->frame_act < 8)
+	if (bh->frame_act <= 8)
 	{
 		sprite = bh->bh[bh->frame_act];
 		bh->frame_act += 1;
 	}
-	else if (bh->frame_act == 8)
+	else if (bh->frame_act == 9)
 	{
 		bh->frame_act = 0;
 		sprite = bh->bh[bh->frame_act];
@@ -77,12 +77,12 @@ int	put_frame_for_coin(t_param *param)
 
 	sprite = NULL;
 	coins = param->textures->coin;
-	if (coins->frame_act < 14)
+	if (coins->frame_act <= 14)
 	{
 		sprite = coins->coins[coins->frame_act];
 		coins->frame_act += 1;
 	}
-	else if (coins->frame_act == 14)
+	else if (coins->frame_act == 15)
 	{
 		coins->frame_act = 0;
 		sprite = coins->coins[coins->frame_act];

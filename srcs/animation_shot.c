@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   animation_shot.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 11:07:26 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/22 14:27:45 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/24 17:25:03 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,15 +21,15 @@ int	animate_shoot_left(t_param *param, t_gps *coor)
 	shoot = param->textures->shoot;
 	if (param->map->nb_shot == 1)
 	{
-		if (shoot->frame_act < 3)
+		if (shoot->frame_act <= 3)
 		{
 			sprite = shoot->s_left[shoot->frame_act];
 			shoot->frame_act += 1;
 		}
-		else if (shoot->frame_act == 3)
+		else if (shoot->frame_act == 4)
 		{
+			shoot->frame_act = 0;
 			sprite = shoot->s_left[shoot->frame_act];
-			shoot->frame_act = 1;
 		}
 		put_image(param->mlx, sprite->p, coor);
 	}
@@ -45,15 +45,15 @@ int	animate_shoot_top(t_param *param, t_gps *coor)
 	shoot = param->textures->shoot;
 	if (param->map->nb_shot == 1)
 	{
-		if (shoot->frame_act < 3)
+		if (shoot->frame_act <= 3)
 		{
 			sprite = shoot->s_top[shoot->frame_act];
 			shoot->frame_act += 1;
 		}
-		else if (shoot->frame_act == 3)
+		else if (shoot->frame_act == 4)
 		{
+			shoot->frame_act = 0;
 			sprite = shoot->s_top[shoot->frame_act];
-			shoot->frame_act = 1;
 		}
 		put_image(param->mlx, sprite->p, coor);
 	}
@@ -69,15 +69,15 @@ int	animate_shoot_right(t_param *param, t_gps *coor)
 	shoot = param->textures->shoot;
 	if (param->map->nb_shot == 1)
 	{
-		if (shoot->frame_act < 3)
+		if (shoot->frame_act <= 3)
 		{
 			sprite = shoot->s_right[shoot->frame_act];
 			shoot->frame_act += 1;
 		}
-		else if (shoot->frame_act == 3)
+		else if (shoot->frame_act == 4)
 		{
+			shoot->frame_act = 0;
 			sprite = shoot->s_right[shoot->frame_act];
-			shoot->frame_act = 1;
 		}
 		put_image(param->mlx, sprite->p, coor);
 	}
@@ -94,15 +94,15 @@ int	animate_shoot_bot(t_param *param, t_gps *coor)
 	shoot = param->textures->shoot;
 	if (param->map->nb_shot == 1)
 	{
-		if (shoot->frame_act < 3)
+		if (shoot->frame_act <= 3)
 		{
 			sprite = shoot->s_bot[shoot->frame_act];
 			shoot->frame_act += 1;
 		}
-		else if (shoot->frame_act == 3)
+		else if (shoot->frame_act == 4)
 		{
+			shoot->frame_act = 0;
 			sprite = shoot->s_bot[shoot->frame_act];
-			shoot->frame_act = 1;
 		}
 		put_image(param->mlx, sprite->p, coor);
 	}
