@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 15:04:18 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/24 17:10:45 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/24 17:13:13 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,9 @@ void	damage_on_player(t_param *param)
 
 void	less_hp(t_param *param, int direction)
 {
-	param->player->hp -= 1;
-	if (param->player->hp == 0)
+	if (param->player->hp - 1 == 0)
 		param->finish = 1;
+	param->player->hp -= 1;
 	not_move_ennemy_sprite(param, direction);
 	damage_on_player(param);
 }
