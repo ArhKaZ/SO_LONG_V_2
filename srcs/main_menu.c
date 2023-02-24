@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 15:45:56 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/24 17:00:07 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/24 17:02:01 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int	main_menu(t_param *param)
 	param->menu = create_t_menu(param);
 	place = create_gps(0, 0);
 	put_image(param->mlx, param->menu->menu[0]->p, place);
-	mlx_hook(param->mlx->mlx_win, 17, 1L >> 0, &close_menu, param);
+	mlx_hook(param->mlx->mlx_win, 17, 1L >> 0, &close_win, param);
 	mlx_hook(param->mlx->mlx_win, 2, 1L >> 0, &choose_in_menu, param);
 	mlx_loop(param->mlx->mlx);
 	return (0);
