@@ -6,20 +6,12 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 15:04:18 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/24 16:29:02 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/24 16:33:35 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
 
-void	less_hp(t_param *param, int direction)
-{
-	param->player->hp -= 1;
-	if (param->player->hp == 0)
-		param->finish = 1;
-	not_move_ennemy_sprite(param, direction);
-	damage_on_player(param);
-}
 
 void	damage_on_player(t_param *param)
 {
@@ -49,4 +41,13 @@ void	damage_on_player(t_param *param)
 		}
 		current = clock();
 	}
+}
+
+void	less_hp(t_param *param, int direction)
+{
+	param->player->hp -= 1;
+	if (param->player->hp == 0)
+		param->finish = 1;
+	not_move_ennemy_sprite(param, direction);
+	damage_on_player(param);
 }
