@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 11:18:21 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/24 03:29:29 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/24 03:34:14 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ t_param	*get_param(char **argv)
 	map = create_empty_map();
 	player = create_empty_player();
 	mlx->mlx = mlx_init();
+	p->mlx->mlx_win = mlx_new_window(p->mlx->mlx, p->map->width * 64,
+			p->map->height * 64, "SO_LONG");
 	if (get_map(argv[1], map) == false || checking_map(map) == false)
 		return (free_error(map, player, mlx), NULL);
 	all_texture = create_all_texture(mlx, map->width, map->height);
@@ -57,8 +59,6 @@ t_param	*get_param(char **argv)
 
 int	so_long(t_param *p)
 {
-	p->mlx->mlx_win = mlx_new_window(p->mlx->mlx, p->map->width * 64,
-			p->map->height * 64, "SO_LONG");
 	create_visu(p->map, p->mlx, p->player->coor, p->textures);
 	mlx_loop_hook(p->mlx->mlx, &animation, p);
 	mlx_hook(p->mlx->mlx_win, 17, 1L >> 0, &close_win, p);
