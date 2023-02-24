@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 15:04:18 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/24 16:33:35 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/24 17:08:31 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	damage_on_player(t_param *param)
 		}
 		else
 		{
-			sprite = param->textures->ships->player[direction];
+			sprite = param->textures->ships->player[direction]->p;
 			put_image(param->mlx, sprite, player->coor);
 			param->textures->explosion->frame_act_p = 0;
 		}
