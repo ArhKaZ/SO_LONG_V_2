@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 14:52:38 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/24 16:13:38 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/24 16:36:14 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,6 @@ t_explosion	*create_ex_sprite(t_mlx *mlx)
 	return (ex);
 }
 
-void	ex_for_dir(t_explosion *ex, t_mlx *mlx, int direction)
-{
-	free_texture(ex->ennemy_ex[0], mlx->mlx);
-	free_texture(ex->ennemy_ex[1], mlx->mlx);
-	free_texture(ex->ennemy_ex[2], mlx->mlx);
-	create_explosion(ex, mlx, direction);
-}
 
 void	create_explosion(t_explosion *ex, t_mlx *mlx, int direction)
 {
@@ -64,5 +57,13 @@ void	create_explosion(t_explosion *ex, t_mlx *mlx, int direction)
 		ex->ennemy_ex[1] = create_texture("xpm/expl/e_bot_ex_2.xpm", mlx);
 		ex->ennemy_ex[2] = create_texture("xpm/expl/e_bot_ex_3.xpm", mlx);
 	}
-	ex->frame_act = 0;
+	ex->frame_act_e = 0;
+}
+
+void	ex_for_dir(t_explosion *ex, t_mlx *mlx, int direction)
+{
+	free_texture(ex->ennemy_ex[0], mlx->mlx);
+	free_texture(ex->ennemy_ex[1], mlx->mlx);
+	free_texture(ex->ennemy_ex[2], mlx->mlx);
+	create_explosion(ex, mlx, direction);
 }
