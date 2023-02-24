@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 15:33:49 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/23 16:33:37 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/24 03:01:56 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void	put_score_end(t_param *p, t_gps *place_img, t_gps *img_size, int size)
 	}
 	if (size == 2)
 	{
-		x = place_img->x + ((img_size->x / 100) * 95),
+		x = place_img->x + ((img_size->x / 100) * 95);
 		y = place_img->y + ((img_size->y / 100) * 37.5);
 	}
 	if (size == 3)

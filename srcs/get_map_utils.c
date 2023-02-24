@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 12:04:35 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/23 15:55:06 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/24 02:56:52 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 bool	check_extension(char *path)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (path[i] != '.' && path[i])
@@ -28,7 +28,7 @@ bool	check_extension(char *path)
 	}
 }
 
-bool get_next_line_loop (int fd, char **line_pt)
+bool	get_next_line_loop(int fd, char **line_pt)
 {
 	*line_pt = get_next_line(fd);
 	if (*line_pt == NULL)

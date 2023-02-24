@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 11:18:21 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/24 00:14:03 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/24 03:01:03 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,6 @@ void	free_error(t_map *map, t_player *player, t_mlx *mlx)
 	free_map(map);
 	free_player(player);
 	free(mlx);
-}
-
-int	map_test(t_param *param)
-{
-	if (map_is_finishable(param->map) == false)
-		close_win(param, param->mlx->mlx, param->mlx->mlx_win);
-	return (1);
 }
 
 void	free_all(t_param *param)
@@ -65,7 +58,7 @@ t_param	*get_param(char **argv)
 	return (param);
 }
 
-
+int	so_long(t_param *param)
 {
 	mlx_loop_hook(param->mlx->mlx, &animation, param);
 	mlx_hook(param->mlx->mlx_win, 17, 1L >> 0, &close_win, param);
@@ -85,7 +78,8 @@ int	main(int argc, char **argv)
 		param = get_param(argv);
 		if (param == NULL)
 			return (0);
-		map_test(param);
+		if (map_is_finishable(param->map) == false)
+			close_win(param, param->mlx->mlx, param->mlx->mlx_win);
 		main_menu(param);
 	}
 	return (0);

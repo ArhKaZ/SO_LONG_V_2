@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 14:52:38 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/23 15:07:02 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/24 02:33:27 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ t_explosion	*create_ex_sprite(t_mlx *mlx, char *path1, char *path2, char *path3)
 
 	ex = NULL;
 	ex = malloc(sizeof(t_explosion));
-	ex->boss_explosion1 = create_texture(path1, mlx);
-	ex->boss_explosion2 = create_texture(path2, mlx);
-	ex->boss_explosion3 = create_texture(path3, mlx);
+	ex->ennemy_ex[0] = create_texture(path1, mlx);
+	ex->ennemy_ex[1] = create_texture(path2, mlx);
+	ex->ennemy_ex[2] = create_texture(path3, mlx);
 	return (ex);
 }
 

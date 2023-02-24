@@ -6,45 +6,12 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 15:45:56 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/24 00:34:15 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/24 02:10:18 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
-void	free_menu(t_menu *menu)
-{
-	free(menu->menu[0]);
-	free(menu->menu[1]);
-	free(menu->menu);
-	free(menu->mlx);
-	free(menu);
-}
 
-int	close_menu_exit(t_param *param)
-{
-	mlx_destroy_window(param->menu->mlx->mlx, param->menu->mlx->mlx_win);
-	mlx_destroy_display(param->menu->mlx->mlx);
-	free(param->menu->mlx->mlx);
-	close_win(param, param->mlx->mlx, param->mlx->mlx_win);
-	return (1);
-}
-
-int	close_menu_start(t_param *param)
-{
-	mlx_destroy_window(param->menu->mlx->mlx, param->menu->mlx->mlx_win);
-	mlx_destroy_display(param->menu->mlx->mlx);
-	free(param->menu->mlx->mlx);
-	so_long(param);
-	return (1);
-}
-
-int	close_menu(t_param *param)
-{
-	mlx_destroy_window(param->menu->mlx->mlx, param->menu->mlx->mlx_win);
-	mlx_destroy_display(param->menu->mlx->mlx);
-	free(param->menu->mlx->mlx);
-	return (1);
-}
 int	choose_in_menu(int keycode, t_param *param)
 {
 	t_gps	*zero;
@@ -65,13 +32,9 @@ int	choose_in_menu(int keycode, t_param *param)
 	if (keycode == 32)
 	{
 		if (menu->keycode == 119)
-		{
 			close_menu_start(param);
-		}
 		if (menu->keycode == 115)
-		{
 			close_menu_exit(param);
-		}
 	}
 	if (keycode == 65307)
 		close_win(param, param->mlx->mlx, param->mlx->mlx_win);
