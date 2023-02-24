@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 15:45:56 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/24 03:23:03 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/24 03:31:24 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ t_menu	*create_t_menu(void)
 	menu->menu[0] = create_texture("xpm/menu/menu_start.xpm", mlx);
 	menu->menu[1] = create_texture("xpm/menu/menu_exit.xpm", mlx);
 	menu->mlx = mlx;
+	menu->keycode = 119;
 	return (menu);
 }
 
