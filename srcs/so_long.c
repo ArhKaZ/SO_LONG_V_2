@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 11:18:21 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/24 03:26:30 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/24 03:29:29 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ t_param	*get_param(char **argv)
 	if (all_texture == NULL)
 		return (ft_putstr_fd("Error\ncan't load texture\n", 2),
 			exit(EXIT_FAILURE), NULL);
-	create_visu(map, mlx, player->coor, all_texture);
 	param = create_param(map, NULL, player, all_texture);
 	if (map->nb_ennemy > 0)
 		param->boss = get_ennemy(map);
@@ -60,6 +59,7 @@ int	so_long(t_param *p)
 {
 	p->mlx->mlx_win = mlx_new_window(p->mlx->mlx, p->map->width * 64,
 			p->map->height * 64, "SO_LONG");
+	create_visu(p->map, p->mlx, p->player->coor, p->textures);
 	mlx_loop_hook(p->mlx->mlx, &animation, p);
 	mlx_hook(p->mlx->mlx_win, 17, 1L >> 0, &close_win, p);
 	mlx_hook(p->mlx->mlx_win, 2, 1L >> 0, &render_next_frame, p);
