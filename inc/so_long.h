@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 11:22:07 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/24 16:58:15 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/24 17:46:36 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -177,6 +177,7 @@ typedef struct s_param
 {
 	t_map			*map;
 	t_mlx			*mlx;
+	t_mlx			*menu_mlx;
 	t_player 		*player;
 	t_all_texture	*textures;
 	t_ennemy		*boss;
