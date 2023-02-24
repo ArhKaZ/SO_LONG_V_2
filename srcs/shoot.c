@@ -6,13 +6,13 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 17:10:42 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/24 02:51:14 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/24 16:21:53 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
 
-void	kill_ennemy(t_param *param, t_gps *new)
+void	kill_ennemy(t_param *p, t_gps *new)
 {
 	clock_t		begin;
 	clock_t		current;
@@ -20,26 +20,25 @@ void	kill_ennemy(t_param *param, t_gps *new)
 
 	begin = clock();
 	current = clock();
-	ex = create_explosion(param->mlx, param->boss->direction);
-	put_image(param->mlx, ex->ennemy_ex[0]->p, new);
-	param->player->score += 50;
+	ex_for_dir(p->textures->explosion, p->mlx, p->boss->direction);
+	ex = p->textures->explosion;
+	p->player->score += 50;
 	while ((current - begin) * 1000 / CLOCKS_PER_SEC < 100)
 	{
-		if (ex->frame_act < 2)
+		if (ex->frame_act_e < 2)
 		{
-			put_image(param->mlx, ex->ennemy_ex[ex->frame_act]->p, new);
-			ex->frame_act += 1;
+			put_image(p->mlx, ex->ennemy_ex[ex->frame_act_e]->p, new);
+			ex->frame_act_e += 1;
 		}
 		else
 		{
-			ex->frame_act = 0;
-			put_image(param->mlx, ex->ennemy_ex[ex->frame_act]->p, new);
+			ex->frame_act_e = 0;
+			put_image(p->mlx, ex->ennemy_ex[ex->frame_act_e]->p, new);
 		}
 		current = clock();
 	}
-	del_ennemy(param, new);
-	put_image(param->mlx, param->textures->background->p, new);
-	free_explosion(ex, param->mlx->mlx);
+	del_ennemy(p, new);
+	put_image(p->mlx, p->textures->background->p, new);
 }
 
 void	make_explosion(t_param *param, t_gps *new)

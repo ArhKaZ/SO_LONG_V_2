@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 15:01:59 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/23 12:24:28 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/24 15:54:50 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,5 +88,6 @@ t_all_texture	*create_all_texture(t_mlx *mlx, int width, int height)
 	all_texture->shoot = create_shoot_sprite(mlx);
 	all_texture->end = create_end(mlx);
 	all_texture->nb = create_nb(mlx, width, height);
+	all_texture->explosion = create_explosion(mlx);
 	return (all_texture);
 }

@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 11:22:07 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/24 03:16:45 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/24 16:14:45 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,9 @@ typedef struct s_ship
 typedef	struct s_explosion
 {
 	t_texture	*ennemy_ex[3];
-	int			frame_act;
+	t_texture	*player_ex[4];
+	int			frame_act_e;
+	int			frame_act_p;
 }					t_explosion;
 
 typedef	struct s_sprite_planet
@@ -323,7 +325,9 @@ void	free_black_hole(t_black_hole *bh, void *mlx);
 
 t_texture	*create_texture(char *path, t_mlx *mlx);
 
-t_explosion	*create_explosion(t_mlx *mlx, int direction);
+t_explosion	*create_ex_sprite(t_mlx *mlx);
+
+void	ex_for_dir(t_explosion *ex, t_mlx *mlx, int direction);
 
 void	free_explosion(t_explosion *ex, void *mlx);
 
