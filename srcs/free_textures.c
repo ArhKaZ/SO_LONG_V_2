@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 13:39:18 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/23 15:51:08 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/24 03:52:38 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,11 +72,17 @@ void	free_hp(t_hp *hp, void *mlx)
 
 void	free_textures(t_all_texture *texts, void *mlx)
 {
+	ft_printf("%p", texts->background);
 	free_texture(texts->background, mlx);
+	ft_printf("%p", texts->coin);
 	free_coin(texts->coin, mlx);
+	ft_printf("%p", texts->planets);
 	free_planets(texts->planets, mlx);
+	ft_printf("%p", texts->wall);
 	free_texture(texts->wall, mlx);
+	ft_printf("%p", texts->ships);
 	free_ships_sprite(texts->ships, mlx);
+	ft_printf("%p", texts->black_hole);
 	free_black_hole(texts->black_hole, mlx);
 	free_black_hole(texts->black_hole_close, mlx);
 	free_end_and_go(texts->end, mlx);
