@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 11:18:21 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/24 03:40:36 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/24 03:47:37 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void	free_all(t_param *param)
 	free_player(param->player);
 	free_textures(param->textures, param->mlx->mlx);
 	free_ennemy(param->boss);
+	free_menu(param->menu);
 	free(param->mlx);
 	param->mlx = NULL;
 	free(param);
@@ -80,7 +81,7 @@ int	main(int argc, char **argv)
 			return (0);
 		if (map_is_finishable(param->map) == false)
 			close_win(param, param->mlx->mlx, param->mlx->mlx_win);
-		//main_menu(param);
+		main_menu(param);
 	}
 	return (0);
 }
