@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 11:18:21 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/24 03:22:06 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/24 03:26:30 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,12 @@ t_param	*get_param(char **argv)
 	t_player		*player;
 	t_all_texture	*all_texture;
 	t_param			*param;
+	t_mlx			*mlx;
 
+	mlx = create_empty_mlx();
 	map = create_empty_map();
 	player = create_empty_player();
-
+	mlx->mlx = mlx_init();
 	if (get_map(argv[1], map) == false || checking_map(map) == false)
 		return (free_error(map, player, mlx), NULL);
 	all_texture = create_all_texture(mlx, map->width, map->height);
@@ -54,19 +56,14 @@ t_param	*get_param(char **argv)
 	return (param);
 }
 
-int	so_long(t_param *param)
+int	so_long(t_param *p)
 {
-	t_mlx	*mlx;
-
-	mlx = create_empty_mlx();
-	mlx->mlx = mlx_init();
-	mlx->mlx_win = mlx_new_window(mlx->mlx, param->map->width * 64,
-			param->map->height * 64, "SO_LONG");
-	param->mlx = mlx;
-	mlx_loop_hook(param->mlx->mlx, &animation, param);
-	mlx_hook(param->mlx->mlx_win, 17, 1L >> 0, &close_win, param);
-	mlx_hook(param->mlx->mlx_win, 2, 1L >> 0, &render_next_frame, param);
-	mlx_loop(param->mlx->mlx);
+	p->mlx->mlx_win = mlx_new_window(p->mlx->mlx, p->map->width * 64,
+			p->map->height * 64, "SO_LONG");
+	mlx_loop_hook(p->mlx->mlx, &animation, p);
+	mlx_hook(p->mlx->mlx_win, 17, 1L >> 0, &close_win, p);
+	mlx_hook(p->mlx->mlx_win, 2, 1L >> 0, &render_next_frame, p);
+	mlx_loop(p->mlx->mlx);
 	return (0);
 }
 
