@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 11:18:21 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/24 03:53:57 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/24 16:54:33 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,7 @@ t_param	*get_param(char **argv)
 	if (get_map(argv[1], map) == false || checking_map(map) == false)
 		return (free_error(map, player, mlx), NULL);
 	mlx->mlx = mlx_init();
-	mlx->mlx_win = mlx_new_window(mlx->mlx, map->width * 64,
-			map->height * 64, "SO_LONG");
+	mlx->mlx_win = mlx_new_window(mlx->mlx, 800, 800, "SO_LONG");
 	all_texture = create_all_texture(mlx, map->width, map->height);
 	if (all_texture == NULL)
 		return (ft_putstr_fd("Error\ncan't load texture\n", 2),
@@ -60,6 +59,11 @@ t_param	*get_param(char **argv)
 
 int	so_long(t_param *p)
 {
+	t_mlx	*mlx;
+
+	mlx->mlx = mlx_init();
+	mlx->mlx_win = mlx_new_window(mlx->mlx, p->map->width * 64,
+			p->map->height * 64, "SO_LONG");
 	create_visu(p->map, p->mlx, p->player->coor, p->textures);
 	mlx_loop_hook(p->mlx->mlx, &animation, p);
 	mlx_hook(p->mlx->mlx_win, 17, 1L >> 0, &close_win, p);

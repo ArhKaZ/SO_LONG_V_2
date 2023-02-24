@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 15:45:56 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/24 03:31:24 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/24 16:54:30 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,7 @@ t_menu	*create_t_menu(void)
 
 	menu = malloc(sizeof(t_menu));
 	mlx = create_empty_mlx();
-	mlx->mlx = mlx_init();
-	mlx->mlx_win = mlx_new_window(mlx->mlx, 800, 800, "SO_LONG");
+	
 	menu->menu[0] = create_texture("xpm/menu/menu_start.xpm", mlx);
 	menu->menu[1] = create_texture("xpm/menu/menu_exit.xpm", mlx);
 	menu->mlx = mlx;
