@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 02:24:46 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/24 02:52:41 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/24 17:27:13 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ t_shoot	*create_shot(clock_t time, int direction, t_gps *player)
 
 void	del_shot(t_param *param)
 {
-	param->map->nb_shot -= 1;
+	param->map->nb_shot = 0;
 	free(param->shots->coor);
 	free(param->shots);
 }
