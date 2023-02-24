@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 13:48:53 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/23 15:36:57 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/24 03:10:15 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,9 @@ void	free_nb(t_nb *nb, void *mlx)
 
 void	free_explosion(t_explosion *ex, void *mlx)
 {
-	free_texture(ex->boss_explosion1, mlx);
-	free_texture(ex->boss_explosion2, mlx);
-	free_texture(ex->boss_explosion3, mlx);
+	free_texture(ex->ennemy_ex[0], mlx);
+	free_texture(ex->ennemy_ex[1], mlx);
+	free_texture(ex->ennemy_ex[2], mlx);
 	free(ex);
 	ex = NULL;
 }
