@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 16:49:55 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/24 03:21:08 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/25 15:34:51 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ t_param	*create_param(t_map *map, t_mlx *mlx, t_player *p, t_all_texture *text)
 	param->shots = NULL;
 	param->boss = NULL;
 	param->finish = 0;
+	param->menu = NULL;
 	return (param);
 }
 

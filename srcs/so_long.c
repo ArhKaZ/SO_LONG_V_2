@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 11:18:21 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/24 17:50:26 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/25 15:48:18 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,17 +39,14 @@ t_param	*get_param(char **argv)
 	t_all_texture	*all_texture;
 	t_param			*param;
 	t_mlx			*mlx;
-	t_mlx			*mlx_menu;
 
 	mlx = create_empty_mlx();
-	mlx_menu = create_empty_mlx();
 	map = create_empty_map();
 	player = create_empty_player();
 	if (get_map(argv[1], map) == false || checking_map(map) == false)
 		return (free_error(map, player, mlx), NULL);
 	mlx->mlx = mlx_init();
-	mlx_menu->mlx = mlx_init();
-	mlx_menu->mlx_win = mlx_new_window(mlx->mlx, 800, 800, "SO_LONG");
+	mlx->menu = true;
 	all_texture = create_all_texture(mlx, map->width, map->height);
 	if (all_texture == NULL)
 		return (ft_putstr_fd("Error\ncan't load texture\n", 2),
@@ -87,6 +84,7 @@ int	main(int argc, char **argv)
 		if (map_is_finishable(param->map) == false)
 			close_win(param, param->mlx->mlx, param->mlx->mlx_win);
 		main_menu(param);
+		so_long(p);
 	}
 	return (0);
 }
