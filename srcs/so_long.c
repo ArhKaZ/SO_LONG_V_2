@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 11:18:21 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/25 16:27:13 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/25 16:29:35 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,13 +59,14 @@ t_param	*get_param(char **argv)
 
 int	so_long(t_param *p)
 {
+	ft_printf("cc");
 	p->mlx->mlx_win = mlx_new_window(p->mlx->mlx, p->map->width * 64,
 			p->map->height * 64, "SO_LONG");
 	create_visu(p->map, p->mlx, p->player->coor, p->textures);
 	mlx_loop_hook(p->mlx->mlx, &animation, p);
 	mlx_hook(p->mlx->mlx_win, 17, 1L >> 0, &close_win, p);
 	mlx_hook(p->mlx->mlx_win, 2, 1L >> 0, &render_next_frame, p);
-	//mlx_loop(p->mlx->mlx);
+	mlx_loop(p->mlx->mlx);
 	return (0);
 }
 
