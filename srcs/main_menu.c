@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 15:45:56 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/25 16:13:42 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/25 16:20:03 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,9 @@ int	main_menu(t_param *param)
 	if (param->mlx->menu == true)
 		mlx_loop(param->mlx->mlx);
 	else
+	{
+		ft_printf("ccc");
 		return (0);
+	}
 	return (1);
 }
