@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 11:18:21 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/25 15:48:18 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/25 16:14:21 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ t_param	*get_param(char **argv)
 		return (ft_putstr_fd("Error\ncan't load texture\n", 2),
 			exit(EXIT_FAILURE), NULL);
 	param = create_param(map, mlx, player, all_texture);
-	param->menu_mlx = mlx_menu;
 	if (map->nb_ennemy > 0)
 		param->boss = get_ennemy(map);
 	return (param);
@@ -84,7 +83,7 @@ int	main(int argc, char **argv)
 		if (map_is_finishable(param->map) == false)
 			close_win(param, param->mlx->mlx, param->mlx->mlx_win);
 		main_menu(param);
-		so_long(p);
+		so_long(param);
 	}
 	return (0);
 }
