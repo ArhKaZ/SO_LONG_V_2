@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 11:18:21 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/26 13:19:21 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/26 13:21:30 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,14 +59,13 @@ t_param	*get_param(char **argv)
 
 int	so_long(t_param *p)
 {
-	main_menu(p);
 	if (p->mlx->menu == false)
 		mlx_loop_hook(p->mlx->mlx, &animation, p);
-	mlx_hook(p->mlx->mlx_win, 17, 1L >> 0, &close_win, p);
 	if (p->mlx->menu == false)
 		mlx_hook(p->mlx->mlx_win, 2, 1L >> 0, &render_next_frame, p);
 	if (p->mlx->menu == true)
 		mlx_hook(p->mlx->mlx_win, 2, 1L >> 0, &choose_in_menu, p);
+	mlx_hook(p->mlx->mlx_win, 17, 1L >> 0, &close_win, p);
 	mlx_loop(p->mlx->mlx);
 	return (0);
 }
@@ -84,6 +83,7 @@ int	main(int argc, char **argv)
 			return (0);
 		if (map_is_finishable(param->map) == false)
 			close_win(param, param->mlx->mlx, param->mlx->mlx_win);
+		main_menu(p);
 		so_long(param);
 	}
 	return (0);
