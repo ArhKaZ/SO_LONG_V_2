@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 11:22:07 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/26 21:35:55 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/26 23:48:47 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -267,10 +267,6 @@ int		game_win(t_param *param);
 
 int		put_frame_for_coin(t_param *param);
 
-int		put_exit_animate(t_param *param);
-
-int		get_random(int nb_max);
-
 void	move_ennemy_left(t_param *param, t_gps *ennemy);
 
 void	move_ennemy_right(t_param *param, t_gps *ennemy);
@@ -308,10 +304,6 @@ int	shoot_exist(t_param *param);
 void	create_new_shot(t_param *param);
 
 void	del_shot(t_param *param);
-
-int animate_shoot(t_param *param, t_gps *coor);
-
-t_ennemy	*clear_ennemy(t_ennemy *ennemy);
 
 void	free_ennemy(t_ennemy *boss);
 
@@ -352,8 +344,6 @@ t_coins			*create_collectible(t_mlx *mlx);
 t_shoot_texture	*create_shoot_sprite(t_mlx *mlx);
 
 void			put_image_xy(t_mlx *mlx, void *sprite, t_gps *coor);
-
-void	free_textures(t_all_texture *texts, void *mlx);
 
 void	free_shoot(t_shoot_texture *s, void *mlx);
 
