@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 11:18:21 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/26 19:23:31 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/26 19:27:36 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,11 @@ void	free_all(t_param *param)
 	free(param->menu->mlx);
 	param->menu->mlx = NULL;
 	free(param->menu);
-	free(param->mlx);
-	param->mlx = NULL;
+	if (param->mlx != NULL)
+	{
+		free(param->mlx);
+		param->mlx = NULL;
+	}
 	free(param);
 	param = NULL;
 }
