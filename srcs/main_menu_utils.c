@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 02:10:20 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/26 14:28:15 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/26 14:30:08 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,9 @@ int	close_menu_start(t_param *p)
 	mlx = create_empty_mlx();
 	mlx_destroy_window(p->mlx->mlx, p->mlx->mlx_win);
 	ft_printf("%p\n", p->mlx->mlx_win);
-	// mlx_destroy_display(p->mlx->mlx);
-	//p->mlx->mlx = mlx_init();
-	mlx->mlx = p->mlx->mlx;
+	mlx_destroy_display(p->mlx->mlx);
+	free(p->mlx);
+	mlx->mlx = mlx_init();
 	mlx->menu = false;
 	mlx->mlx_win = mlx_new_window(p->mlx->mlx, p->map->width * 64,
 				p->map->height * 64, "SO_LONG");
