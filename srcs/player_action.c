@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 12:43:10 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/26 14:24:01 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/26 14:37:22 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,6 +132,5 @@ int	render_next_frame(int keycode, t_param *param)
 				create_new_shot(param);
 		}
 	}
-	choose_in_menu(keycode, param);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 02:10:20 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/26 14:31:14 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/26 14:44:21 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,15 +32,16 @@ int	close_menu_start(t_param *p)
 	t_mlx	*mlx;
 
 	mlx = create_empty_mlx();
-	mlx_destroy_window(p->mlx->mlx, p->mlx->mlx_win);
-	ft_printf("%p\n", p->mlx->mlx_win);
-	mlx_destroy_display(p->mlx->mlx);
-	free(p->mlx);
-	mlx->mlx = mlx_init();
+	mlx_destroy_window(p->menu->mlx->mlx, p->menu->mlx->mlx_win);
+	mlx->mlx = p->mlx->mlx;
+	//ft_printf("%p\n", p->mlx->mlx_win);
+//	mlx_destroy_display(p->mlx->mlx);
+	//free(p->mlx);
+	//mlx->mlx = mlx_init();
 	mlx->menu = false;
 	mlx->mlx_win = mlx_new_window(mlx->mlx, p->map->width * 64,
 				p->map->height * 64, "SO_LONG");
-	ft_printf("%p\n", mlx->mlx_win);
+	//ft_printf("%p\n", mlx->mlx_win);
 	free(p->mlx);
 	p->mlx = mlx;
 	create_visu(p->map, p->mlx, p->player->coor, p->textures);
