@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 16:58:46 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/26 13:26:37 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/26 14:19:01 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,7 @@ int	put_frame_for_coin(t_param *param)
 
 int	animation(t_param *param)
 {
+	ft_printf("%p\n", param->mlx->mlx_win);
 	if (param->mlx->menu == false)
 	{
 		if (param->finish != 1)
