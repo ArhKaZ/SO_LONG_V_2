@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 02:10:20 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/26 14:44:21 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/26 14:45:58 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ int	close_menu_start(t_param *p)
 	free(p->mlx);
 	p->mlx = mlx;
 	create_visu(p->map, p->mlx, p->player->coor, p->textures);
+	so_long(param);
 	return (1);
 }
 

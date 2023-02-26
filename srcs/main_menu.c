@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 15:45:56 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/26 14:43:30 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/26 14:45:42 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,8 @@ t_menu	*create_t_menu(t_mlx *mlx)
 	t_menu		*menu;
 
 	menu = malloc(sizeof(t_menu));
-	menu->menu[0] = create_texture("xpm/menu/menu_start.xpm", p->mlx);
-	menu->menu[1] = create_texture("xpm/menu/menu_exit.xpm", p->mlx);
+	menu->menu[0] = create_texture("xpm/menu/menu_start.xpm", mlx);
+	menu->menu[1] = create_texture("xpm/menu/menu_exit.xpm", mlx);
 	menu->keycode = 119;
 	menu->mlx = mlx;
 	return (menu);
@@ -67,8 +67,8 @@ int	main_menu(t_param *param)
 
 	mlx = create_empty_mlx();
 	mlx->mlx = mlx_init();
-	mlx->mlx_win = mlx_new_window(param->mlx->mlx, 800, 800, "SO_LONG");
-	param->menu = create_t_menu(param);
+	mlx->mlx_win = mlx_new_window(mlx->mlx, 800, 800, "SO_LONG");
+	param->menu = create_t_menu(mlx);
 	place = create_gps(0, 0);
 	put_image(mlx, param->menu->menu[0]->p, place);
 	mlx_hook(mlx->mlx_win, 2, 1L >> 0, &choose_in_menu, param);
