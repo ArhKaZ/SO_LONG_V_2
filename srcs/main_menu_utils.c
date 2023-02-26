@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 02:10:20 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/26 18:53:14 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/26 18:56:20 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,12 @@
 
 void	free_menu(t_menu *menu)
 {
-	free_texture(menu->menu[0], menu->mlx->mlx);
-	free_texture(menu->menu[1], menu->mlx->mlx);
+	t_texture	*sprite;
+
+	sprite = menu->menu[0];
+	free_texture(sprite, menu->mlx->mlx);
+	sprite = menu->menu[1];
+	free_texture(sprite, menu->mlx->mlx);
 	menu = NULL;
 }
 
