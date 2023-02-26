@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 15:01:59 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/26 23:33:08 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/26 23:39:48 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,12 +61,12 @@ t_end	*create_end(t_mlx *mlx)
 
 	end = NULL;
 	end = malloc(sizeof(t_end));
-	end->w_little = create_texture("xpm/finish/little_win.xpm", mlx);
-	end->w_med = create_texture("xpm/finish/med_win.xpm", mlx);
-	end->w_big = create_texture("xpm/finish/big_win.xpm", mlx);
-	end->l_little = create_texture("xpm/finish/little_lose.xpm", mlx);
-	end->l_med = create_texture("xpm/finish/med_lose.xpm", mlx);
-	end->l_big = create_texture("xpm/finish/big_lose.xpm", mlx);
+	end->w_little = create_texture("xpm/finish/l_win.xpm", mlx);
+	end->w_med = create_texture("xpm/finish/m_win.xpm", mlx);
+	end->w_big = create_texture("xpm/finish/b_win.xpm", mlx);
+	end->l_little = create_texture("xpm/finish/l_lose.xpm", mlx);
+	end->l_med = create_texture("xpm/finish/m_lose.xpm", mlx);
+	end->l_big = create_texture("xpm/finish/b_lose.xpm", mlx);
 	return (end);
 }
 
