@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 02:10:20 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/25 15:49:08 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/26 04:16:00 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,8 @@ int	close_menu_start(t_param *param)
 	mlx_destroy_window(param->mlx->mlx, param->mlx->mlx_win);
 	//mlx_destroy_display(param->mlx->mlx);
 	//so_long(param);
-	param->mlx->menu = false;
+	//param->mlx->menu = false;
+	so_long(param);
 	return (1);
 }
 
