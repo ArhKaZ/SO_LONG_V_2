@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 11:18:21 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/26 13:21:59 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/26 13:23:05 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ t_param	*get_param(char **argv)
 
 int	so_long(t_param *p)
 {
+	ft_printf("%d", p->mlx->menu);
 	if (p->mlx->menu == false)
 		mlx_loop_hook(p->mlx->mlx, &animation, p);
 	if (p->mlx->menu == false)
