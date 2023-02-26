@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 02:10:20 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/26 14:46:20 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/26 14:47:41 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,26 +33,14 @@ int	close_menu_start(t_param *p)
 
 	mlx = create_empty_mlx();
 	mlx_destroy_window(p->menu->mlx->mlx, p->menu->mlx->mlx_win);
+	mlx_destroy_display(p->menu->mlx->mlx);
 	mlx->mlx = p->mlx->mlx;
-	//ft_printf("%p\n", p->mlx->mlx_win);
-//	mlx_destroy_display(p->mlx->mlx);
-	//free(p->mlx);
-	//mlx->mlx = mlx_init();
 	mlx->menu = false;
 	mlx->mlx_win = mlx_new_window(mlx->mlx, p->map->width * 64,
 				p->map->height * 64, "SO_LONG");
-	//ft_printf("%p\n", mlx->mlx_win);
 	free(p->mlx);
 	p->mlx = mlx;
 	create_visu(p->map, p->mlx, p->player->coor, p->textures);
 	so_long(p);
 	return (1);
 }
-
-// int	close_menu(t_param *param)
-// {
-// 	mlx_destroy_window(param->mlx->mlx, param->mlx->mlx_win);
-// 	mlx_destroy_display(param->mlx->mlx);
-// 	free(param->mlx->mlx);
-// 	return (1);
-// }
