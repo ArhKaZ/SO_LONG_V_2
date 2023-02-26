@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 02:10:20 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/26 18:40:42 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/26 18:43:47 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,14 @@ void	free_menu(t_menu *menu)
 	menu = NULL;
 }
 
-int	close_menu_exit(t_param *param)
+int	close_menu_exit(t_param *param, void *mlx, void *mlx_win)
 {
 	free_menu(param->menu);
-	close_win(param, param->menu->mlx->mlx, param->menu->mlx->mlx_win);
-	return (1);
+	free_all(param);
+	mlx_destroy_window(mlx, mlx_win);
+	mlx_destroy_display(mlx);
+	free(mlx);
+	exit(EXIT_SUCCESS);
 }
 
 int	close_menu_start(t_param *p)
