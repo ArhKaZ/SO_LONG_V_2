@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 11:18:21 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/25 16:30:52 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/26 12:44:03 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,14 @@ t_param	*get_param(char **argv)
 
 int	so_long(t_param *p)
 {
-	p->mlx->mlx_win = mlx_new_window(p->mlx->mlx, p->map->width * 64,
-			p->map->height * 64, "SO_LONG");
-	create_visu(p->map, p->mlx, p->player->coor, p->textures);
+	if (p->mlx->menu == true)
+		main_menu(p);
+	else
+	{
+		p->mlx->mlx_win = mlx_new_window(p->mlx->mlx, p->map->width * 64,
+				p->map->height * 64, "SO_LONG");
+		create_visu(p->map, p->mlx, p->player->coor, p->textures);
+	}
 	mlx_loop_hook(p->mlx->mlx, &animation, p);
 	mlx_hook(p->mlx->mlx_win, 17, 1L >> 0, &close_win, p);
 	mlx_hook(p->mlx->mlx_win, 2, 1L >> 0, &render_next_frame, p);
@@ -82,7 +87,6 @@ int	main(int argc, char **argv)
 			return (0);
 		if (map_is_finishable(param->map) == false)
 			close_win(param, param->mlx->mlx, param->mlx->mlx_win);
-		main_menu(param);
 		so_long(param);
 	}
 	return (0);

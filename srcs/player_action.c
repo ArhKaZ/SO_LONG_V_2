@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 12:43:10 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/23 12:03:43 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/26 12:49:54 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,9 @@ void	move_bottom(t_param *param)
 
 int	render_next_frame(int keycode, t_param *param)
 {
-	if (param->finish != 1)
+	if (param->mlx->menu == true)
+		choose_in_menu(keycode, param);
+	else if (param->finish != 1)
 	{
 		if (keycode == 97)
 			move_left(param);

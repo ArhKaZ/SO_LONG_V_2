@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 16:58:46 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/24 17:25:35 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/26 12:44:22 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ int	put_frame_for_coin(t_param *param)
 
 int	animation(t_param *param)
 {
-	if (param->finish != 1)
+	if (param->finish != 1 && param->mlx->menu == false)
 	{
 		if (shoot_exist(param) == 1)
 			animate_shoot(param, param->shots->coor);
