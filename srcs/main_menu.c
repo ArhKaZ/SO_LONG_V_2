@@ -6,13 +6,13 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 15:45:56 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/26 14:45:42 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/26 14:57:49 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
 
-int	move_in_menu(int keycode, t_param *param)
+void	move_in_menu(int keycode, t_param *param)
 {
 	t_gps	*zero;
 	t_menu	*menu;
@@ -38,7 +38,7 @@ int	move_in_menu(int keycode, t_param *param)
 	}
 	if (keycode == 65307)
 		close_win(param, menu->mlx->mlx, menu->mlx->mlx_win);
-	return (0);
+	free(zero);
 }
 
 int	choose_in_menu(int keycode, t_param *param)
@@ -71,6 +71,7 @@ int	main_menu(t_param *param)
 	param->menu = create_t_menu(mlx);
 	place = create_gps(0, 0);
 	put_image(mlx, param->menu->menu[0]->p, place);
+	free(place);
 	mlx_hook(mlx->mlx_win, 2, 1L >> 0, &choose_in_menu, param);
 	mlx_loop(mlx->mlx);
 	return (1);
