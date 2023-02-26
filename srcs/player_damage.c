@@ -6,18 +6,17 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 15:04:18 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/26 23:53:40 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/27 00:02:36 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
 
-
 void	damage_on_player(t_param *param)
 {
-	clock_t	begin;
-	clock_t	current;
-	int		direction;
+	clock_t		begin;
+	clock_t		current;
+	int			direction;
 	t_player	*player;
 	void		*sprite;
 

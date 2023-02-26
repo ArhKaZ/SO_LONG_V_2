@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 14:52:38 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/24 16:36:14 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/27 00:02:58 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ t_explosion	*create_ex_sprite(t_mlx *mlx)
 	ex->frame_act_p = 0;
 	return (ex);
 }
-
 
 void	create_explosion(t_explosion *ex, t_mlx *mlx, int direction)
 {

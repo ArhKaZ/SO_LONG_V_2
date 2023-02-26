@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 12:43:10 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/26 14:37:22 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/26 23:59:57 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,7 @@ void	move_bottom(t_param *param)
 int	render_next_frame(int keycode, t_param *param)
 {
 	if (keycode == 65307)
-			close_win(param, param->mlx->mlx, param->mlx->mlx_win);
+		close_win(param, param->mlx->mlx, param->mlx->mlx_win);
 	if (param->mlx->menu == false)
 	{
 		if (param->finish != 1)

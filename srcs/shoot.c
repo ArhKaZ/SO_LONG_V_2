@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 17:10:42 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/26 21:43:02 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/27 00:01:32 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,11 @@ void	make_explosion(t_param *param, t_gps *new, t_shoot *s, int just_c)
 	if (just_c == 0)
 	{
 		param->map->map[param->shots->coor->y][param->shots->coor->x] = '0';
-		put_image(param->mlx, param->textures->background->p, param->shots->coor);
+		put_image(param->mlx, param->textures->background->p,
+			param->shots->coor);
 	}
 	if (!(new->x == 0 || new->y == 0 || new->y == param->map->height - 1
-		|| new->x == param->map->width - 1))
+			|| new->x == param->map->width - 1))
 	{
 		put_image(param->mlx, param->textures->planets->planet_exp->p, new);
 		if (param->player->score - 20 > 0)

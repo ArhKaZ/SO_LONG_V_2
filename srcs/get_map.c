@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 15:38:49 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/23 15:55:03 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/27 00:00:09 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,4 +79,3 @@ char	*get_map_to_string(char *path, t_map *map)
 		return (map_string);
 	return (NULL);
 }
-
