@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 12:43:10 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/26 13:39:28 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/26 13:42:21 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,8 +114,11 @@ void	move_bottom(t_param *param)
 
 int	render_next_frame(int keycode, t_param *param)
 {
+	if (keycode == 65307)
+			close_win(param, param->mlx->mlx, param->mlx->mlx_win);
 	if (param->mlx->menu == false)
 	{
+		ft_printf("ddddd");
 		if (param->finish != 1)
 		{
 			if (keycode == 97)
@@ -129,8 +132,6 @@ int	render_next_frame(int keycode, t_param *param)
 			if (keycode == 32 && param->map->nb_shot == 0)
 				create_new_shot(param);
 		}
-		if (keycode == 65307)
-			close_win(param, param->mlx->mlx, param->mlx->mlx_win);
 	}
 	choose_in_menu(keycode, param);
 	return (0);
