@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 02:41:36 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/26 21:09:39 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/26 21:28:25 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,11 @@ void	create_new_shot(t_param *param)
 			make_explosion(param, shot->coor, 1);
 	}
 	else if (c == 'D')
+	{
 		kill_ennemy(param, shot->coor);
+		free(param->shots->coor);
+		free(param->shots);
+	}
 	else if (c == '0')
 	{
 		param->map->nb_shot = 1;
