@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 15:45:56 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/26 13:25:43 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/26 13:27:18 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ int	choose_in_menu(int keycode, t_param *param)
 {
 	if (param->mlx->menu == true)
 		move_in_menu(keycode, param);
+	return (0);
 }
 
 t_menu	*create_t_menu(t_param *p)
