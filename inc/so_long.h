@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 11:22:07 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/26 19:26:48 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/26 19:33:17 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -381,9 +381,9 @@ void	free_menu(t_menu *menu);
 
 int		close_menu(t_param *param);
 
-int		close_menu_start(t_param *param, void *mlx, void *mlx_win);
+int		close_menu_start(t_param *param, void *mlx_menu, void *mlx_win, void *mlx);
 
-int		close_menu_exit(t_param *param, void *mlx_menu, void *mlx_win);
+int		close_menu_exit(t_param *param, void *mlx_menu, void *mlx_win, void *mlx);
 
 t_gps	*get_next_coor_s(int direction, t_gps *coor);
 

@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 02:10:20 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/26 19:28:13 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/26 19:32:38 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	free_menu(t_menu *menu)
 	menu = NULL;
 }
 
-int	close_menu_exit(t_param *param, void *mlx_menu, void *mlx_win)
+int	close_menu_exit(t_param *param, void *mlx_menu, void *mlx_win, void *mlx)
 {
 	free_menu(param->menu);
 	free_all(param);
@@ -35,19 +35,19 @@ int	close_menu_exit(t_param *param, void *mlx_menu, void *mlx_win)
 	exit(EXIT_SUCCESS);
 }
 
-int	close_menu_start(t_param *p, void *mlx, void *mlx_win)
+int	close_menu_start(t_param *p, void *mlx_menu, void *mlx_win, void *mlx)
 {
 	t_mlx	*mlx_game;
 
-	 mlx_game = create_empty_mlx();
-	// mlx_destroy_window(p->menu->mlx->mlx, p->menu->mlx->mlx_win);
-	// mlx_destroy_display(p->menu->mlx->mlx);
+	mlx_game = create_empty_mlx();
+	mlx_destroy_window(mlx_menu, mlx_win);
+	mlx_destroy_display(mlx_menu);
 	free_menu(p->menu);
-	mlx_destroy_window(mlx, mlx_win);
-	mlx_destroy_display(mlx);
-	free(mlx);
+	// mlx_destroy_window(mlx, mlx_win);
+	// mlx_destroy_display(mlx);
+	//free(mlx);
 	//mlx_game->mlx = p->mlx->mlx;
-	mlx_game->mlx = mlx_init();
+	mlx_game->mlx = mlx;
 	mlx_game->menu = false;
 	mlx_game->mlx_win = mlx_new_window(mlx_game->mlx, p->map->width * 64,
 				p->map->height * 64, "SO_LONG");
