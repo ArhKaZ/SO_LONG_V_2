@@ -6,13 +6,13 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 15:45:56 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/26 13:18:24 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/26 13:25:43 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
 
-int	choose_in_menu(int keycode, t_param *param)
+int	move_in_menu(int keycode, t_param *param)
 {
 	t_gps	*zero;
 	t_menu	*menu;
@@ -39,6 +39,12 @@ int	choose_in_menu(int keycode, t_param *param)
 	if (keycode == 65307)
 		close_win(param, param->mlx->mlx, param->mlx->mlx_win);
 	return (0);
+}
+
+int	choose_in_menu(int keycode, t_param *param)
+{
+	if (param->mlx->menu == true)
+		move_in_menu(keycode, param);
 }
 
 t_menu	*create_t_menu(t_param *p)

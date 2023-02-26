@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 16:58:46 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/26 12:44:22 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/26 13:26:37 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,19 +93,22 @@ int	put_frame_for_coin(t_param *param)
 
 int	animation(t_param *param)
 {
-	if (param->finish != 1 && param->mlx->menu == false)
+	if (param->mlx->menu == false)
 	{
-		if (shoot_exist(param) == 1)
-			animate_shoot(param, param->shots->coor);
-		choose_direction(param);
-		put_frame_for_coin(param);
-		if (param->player->collect != param->map->nb_item)
-			animate_black_hole_close(param);
-		else
-			animate_black_hole(param);
-		put_strings(param);
-		is_end(param);
-		usleep(50000);
+		if (param->finish != 1)
+		{
+			if (shoot_exist(param) == 1)
+				animate_shoot(param, param->shots->coor);
+			choose_direction(param);
+			put_frame_for_coin(param);
+			if (param->player->collect != param->map->nb_item)
+				animate_black_hole_close(param);
+			else
+				animate_black_hole(param);
+			put_strings(param);
+			is_end(param);
+			usleep(50000);
+		}
 	}
 	return (0);
 }
