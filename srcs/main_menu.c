@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 15:45:56 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/26 19:11:10 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/26 19:15:09 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ void	move_in_menu(int keycode, t_param *param)
 	}
 	if (keycode == 65307)
 		close_menu_exit(param, menu->mlx->mlx, menu->mlx->mlx_win, param->mlx->mlx);
+	free(zero);
 }
 
 int	choose_in_menu(int keycode, t_param *param)
