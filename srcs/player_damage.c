@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 15:04:18 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/24 17:21:11 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/26 23:53:40 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ void	less_hp(t_param *param, int direction)
 	{
 		param->finish = 1;
 		param->player->hp -= 1;
+		game_over(param);
 	}
 	else
 	{

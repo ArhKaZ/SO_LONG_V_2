@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 14:25:45 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/26 23:49:12 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/26 23:53:18 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ int	move_exit(t_param *param, t_gps *new, int move)
 	{
 		move_player_sprite(param, new, move);
 		param->finish = 1;
-		//game_win(param);
+		game_win(param);
 	}
 	else
 		not_move_player_sprite(param, move);
