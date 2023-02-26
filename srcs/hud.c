@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:14:04 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/26 20:23:20 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/26 21:38:23 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ void	put_hp(t_param *p, t_hp *hp)
 		put_sprite_hp(p, hp->full, hp->empty, hp->empty);
 	if (p->player->hp == 0)
 		put_sprite_hp(p, hp->empty, hp->empty, hp->empty);
+	free(place);
 }
 
 void	put_strings(t_param *param)
