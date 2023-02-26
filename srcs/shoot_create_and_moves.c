@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 02:41:36 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/26 21:31:27 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/26 21:35:22 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ bool	put_shot_in_coor(t_param *p, t_gps *new)
 	value_case = p->map->map[new->y][new->x];
 	if (value_case == '1')
 	{
-		make_explosion(p, new, 0);
+		make_explosion(p, new, p->shots, 0);
 		del_shot(p);
 		return (false);
 	}
@@ -68,7 +68,7 @@ void	create_new_shot(t_param *param)
 		if (!(shot->coor->x == 0 || shot->coor->y == 0
 				|| shot->coor->x == param->map->width - 1
 				|| shot->coor->y == param->map->height - 1))
-			make_explosion(param, shot->coor, 1);
+			make_explosion(param, shot->coor, shot, 1);
 	}
 	else if (c == 'D')
 	{
@@ -83,6 +83,4 @@ void	create_new_shot(t_param *param)
 		param->shots = shot;
 		put_shoot_in_direction(param, param->shots->coor);
 	}
-	// free(shot->coor);
-	// free(shot);
 }
