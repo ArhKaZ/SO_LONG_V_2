@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 17:10:42 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/26 21:09:27 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/26 21:23:46 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ void	kill_ennemy(t_param *p, t_gps *new)
 
 void	make_explosion(t_param *param, t_gps *new, int just_c)
 {
-	put_image(param->mlx, param->textures->background->p, param->shots->coor);
 	if (new->x == 0 || new->y == 0 || new->y == param->map->height - 1
 		|| new->x == param->map->width - 1)
 		return ;
@@ -58,7 +57,10 @@ void	make_explosion(t_param *param, t_gps *new, int just_c)
 			param->player->score = 0;
 		param->map->map[new->y][new->x] = '2';
 		if (just_c == 0)
+		{
 			param->map->map[param->shots->coor->y][param->shots->coor->x] = '0';
+			put_image(param->mlx, param->textures->background->p, param->shots->coor);
+		}
 	}
 	return ;
 }
