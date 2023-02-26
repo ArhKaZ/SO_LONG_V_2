@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 11:18:21 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/26 14:52:30 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/26 14:59:01 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	free_all(t_param *param)
 	free_player(param->player);
 	free_textures(param->textures, param->mlx->mlx);
 	free_ennemy(param->boss);
-	free_menu(param->menu);
+	//free_menu(param->menu);
 	free(param->mlx);
 	param->mlx = NULL;
 	free(param);
