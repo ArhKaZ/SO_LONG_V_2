@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:14:04 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/26 20:18:29 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/26 20:19:17 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,6 @@ void	put_strings(t_param *param)
 	put_score(param);
 	put_move(param);
 	put_hp(param, hp);
-	free_texture(hp->empty);
-	free_texture(hp->full);
+	free_texture(hp->empty, param->mlx->mlx);
+	free_texture(hp->full, param->mlx->mlx);
 }
