@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 13:15:25 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/26 23:36:11 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/26 23:40:44 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,6 @@ int	game_win(t_param *param)
 	sprite = NULL;
 	place = NULL;
 	param->finish = true;
-	place = create_gps(0, 0);
-	put_image(param->mlx, param->textures->end->w_little->p, place);
 	if (param->map->height < 8 || param->map->width < 8)
 	{
 		sprite = param->textures->end->w_little;
