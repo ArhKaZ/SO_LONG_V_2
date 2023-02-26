@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 15:45:56 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/26 19:17:22 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/26 19:17:43 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	move_in_menu(int keycode, t_param *param)
 	else if (keycode == 119 && menu->keycode != 119)
 		put_image(menu->mlx, menu->menu[0]->p, zero);
 	free(zero);
-	else if (keycode == 32)
+	if (keycode == 32)
 	{
 		if (menu->keycode == 119)
 			close_menu_start(param);
