@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 02:10:20 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/26 15:01:05 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/26 15:01:44 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ void	free_menu(t_menu *menu)
 	free(menu->menu[0]->size);
 	free(menu->menu[1]->p);
 	free(menu->menu[1]->size);
-	free(menu->menu);
 	free(menu);
 }
 
