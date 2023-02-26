@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 17:10:42 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/26 21:36:23 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/26 21:41:23 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,10 @@ void	make_explosion(t_param *param, t_gps *new, t_shoot *s, int just_c)
 {
 	if (new->x == 0 || new->y == 0 || new->y == param->map->height - 1
 		|| new->x == param->map->width - 1)
-		return ;
+	{
+		if (just_c == 0)
+			put_image(param->mlx, param->textures->background->p, param->shots->coor);
+	}
 	else
 	{
 		put_image(param->mlx, param->textures->planets->planet_exp->p, new);
@@ -65,7 +68,6 @@ void	make_explosion(t_param *param, t_gps *new, t_shoot *s, int just_c)
 			free(s);
 		}
 	}
-	return ;
 }
 
 bool	move_shot(t_param *param)
