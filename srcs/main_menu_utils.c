@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 02:10:20 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/26 20:32:05 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/26 21:47:48 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ int	close_menu_start(t_param *p, void *mlx_menu, void *mlx_win, void *mlx)
 	mlx_game->menu = false;
 	mlx_game->mlx_win = mlx_new_window(mlx_game->mlx, p->map->width * 64,
 				p->map->height * 64, "SO_LONG");
+	free(p->mlx);
 	p->mlx = mlx_game;
 	create_visu(p->map, p->mlx, p->player->coor, p->textures);
 	so_long(p);
