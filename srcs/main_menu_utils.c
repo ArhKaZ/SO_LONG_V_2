@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 02:10:20 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/26 19:26:23 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/26 19:28:13 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	close_menu_start(t_param *p, void *mlx, void *mlx_win)
 {
 	t_mlx	*mlx_game;
 
-	// mlx = create_empty_mlx();
+	 mlx_game = create_empty_mlx();
 	// mlx_destroy_window(p->menu->mlx->mlx, p->menu->mlx->mlx_win);
 	// mlx_destroy_display(p->menu->mlx->mlx);
 	free_menu(p->menu);
