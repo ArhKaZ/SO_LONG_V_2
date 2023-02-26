@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 11:22:07 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/26 19:33:17 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/26 21:20:21 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -391,7 +391,7 @@ void	put_shoot_in_direction(t_param *param, t_gps *new);
 
 void	kill_ennemy(t_param *param, t_gps *new);
 
-void	make_explosion(t_param *param, t_gps *new);
+void	make_explosion(t_param *param, t_gps *new, int just_c);
 
 t_shoot	*create_shot(clock_t time, int direction, t_gps *player);
 
