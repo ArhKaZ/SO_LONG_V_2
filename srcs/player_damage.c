@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player_damage.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
+/*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 15:04:18 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/27 00:02:36 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/27 17:02:34 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	damage_on_player(t_param *param)
 	direction = param->player->direction;
 	begin = clock();
 	current = clock();
-	while ((current - begin) * 1000 / CLOCKS_PER_SEC < 100)
+	while ((current - begin) * 1000 / CLOCKS_PER_SEC < 200)
 	{
 		if (param->textures->explosion->frame_act_p == 0)
 		{
@@ -50,7 +50,6 @@ void	less_hp(t_param *param, int direction)
 	{
 		param->finish = 1;
 		param->player->hp -= 1;
-		game_over(param);
 	}
 	else
 	{

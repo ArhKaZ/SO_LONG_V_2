@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   shoot_create_and_moves.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
+/*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 02:41:36 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/26 21:35:22 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/27 13:11:49 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,20 @@ bool	put_shot_in_coor(t_param *p, t_gps *new)
 	}
 	return (true);
 }
+void	create_shot_spe_case(t_param *param, int c, t_shoot *shot)
+{
+	if (c == 'D')
+	{
+		kill_ennemy(param, shot->coor);
+		free(shot->coor);
+		free(shot);
+	}
+	else if (c == 'E' || c == 'C' || c == '2')
+	{
+		free(shot->coor);
+		free(shot);
+	}
+}
 
 void	create_new_shot(t_param *param)
 {
@@ -69,12 +83,11 @@ void	create_new_shot(t_param *param)
 				|| shot->coor->x == param->map->width - 1
 				|| shot->coor->y == param->map->height - 1))
 			make_explosion(param, shot->coor, shot, 1);
-	}
-	else if (c == 'D')
-	{
-		kill_ennemy(param, shot->coor);
-		free(shot->coor);
-		free(shot);
+		else
+		{
+			free(shot->coor);
+			free(shot);
+		}
 	}
 	else if (c == '0')
 	{
@@ -83,4 +96,6 @@ void	create_new_shot(t_param *param)
 		param->shots = shot;
 		put_shoot_in_direction(param, param->shots->coor);
 	}
+	else
+		create_shot_spe_case(param, c, shot);
 }

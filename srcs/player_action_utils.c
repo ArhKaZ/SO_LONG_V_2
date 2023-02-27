@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player_action_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
+/*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 14:25:45 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/26 23:53:18 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/27 17:02:32 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,13 @@ void	not_move_player_sprite(t_param *param, int direction)
 	void	*sprite;
 
 	sprite = NULL;
-	if (direction == 1)
+	if (direction == 0)
 		sprite = param->textures->ships->player[0]->p;
-	if (direction == 2)
+	if (direction == 1)
 		sprite = param->textures->ships->player[1]->p;
-	if (direction == 3)
+	if (direction == 2)
 		sprite = param->textures->ships->player[2]->p;
-	if (direction == 4)
+	if (direction == 3)
 		sprite = param->textures->ships->player[3]->p;
 	put_image(param->mlx, sprite, param->player->coor);
 	sprite = NULL;
@@ -46,13 +46,13 @@ void	move_player_sprite(t_param *param, t_gps *new, int direction)
 
 	sprite = NULL;
 	param->player->direction = direction;
-	if (direction == 1)
+	if (direction == 0)
 		sprite = param->textures->ships->player[0]->p;
-	if (direction == 2)
+	if (direction == 1)
 		sprite = param->textures->ships->player[1]->p;
-	if (direction == 3)
+	if (direction == 2)
 		sprite = param->textures->ships->player[2]->p;
-	if (direction == 4)
+	if (direction == 3)
 		sprite = param->textures->ships->player[3]->p;
 	move_player(param->map, param->player, new);
 	put_image(param->mlx, sprite, new);
@@ -69,7 +69,6 @@ int	move_exit(t_param *param, t_gps *new, int move)
 	{
 		move_player_sprite(param, new, move);
 		param->finish = 1;
-		game_win(param);
 	}
 	else
 		not_move_player_sprite(param, move);

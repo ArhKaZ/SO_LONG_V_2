@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ennemy.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
+/*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 15:01:15 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/23 14:22:19 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/27 14:34:16 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,10 @@ void	add_ennemy_back(t_ennemy **lst, int height, int width)
 
 void	del_ennemy(t_param *param, t_gps *c)
 {
-	t_ennemy	*first;
+	//t_ennemy	*first;
 	t_ennemy	*temp;
 
-	first = param->boss;
+	//first = param->boss;
 	temp = param->boss;
 	if (temp->coor->x == c->x && temp->coor->y == c->y)
 	{
@@ -75,8 +75,10 @@ void	del_ennemy(t_param *param, t_gps *c)
 			}
 			temp = temp->next;
 		}
-		param->boss = first;
+		//param->boss = first;
 	}
+	free_ennemy(param->boss);
+	param->boss = get_ennemy(param->map);
 }
 
 t_ennemy	*get_ennemy(t_map *map)

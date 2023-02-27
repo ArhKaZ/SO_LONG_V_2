@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player_action.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
+/*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 12:43:10 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/26 23:59:57 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/27 13:32:05 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,18 +21,18 @@ void	move_left(t_param *param)
 	value_case = param->map->map[new->y][new->x];
 	if (value_case == '1' || value_case == 'D')
 	{
-		not_move_player_sprite(param, 1);
+		not_move_player_sprite(param, 0);
 		return (free(new));
 	}
 	if (value_case == 'E')
 	{
-		if (move_exit(param, new, 1) == 0)
+		if (move_exit(param, new, 0) == 0)
 			return (free(new));
 	}
 	if (value_case == 'C')
-		move_coins(param, new, 1);
+		move_coins(param, new, 0);
 	if (value_case == '0')
-		move_player_sprite(param, new, 1);
+		move_player_sprite(param, new, 0);
 	free(new);
 }
 
@@ -42,30 +42,6 @@ void	move_right(t_param *param)
 	t_gps	*new;
 
 	new = create_gps(param->player->coor->x + 1, param->player->coor->y);
-	value_case = param->map->map[new->y][new->x];
-	if (value_case == '1' || value_case == 'D')
-	{
-		not_move_player_sprite(param, 3);
-		return (free(new));
-	}
-	if (value_case == 'E')
-	{
-		if (move_exit(param, new, 3) == 0)
-			return (free(new));
-	}
-	if (value_case == 'C')
-		move_coins(param, new, 3);
-	if (value_case == '0')
-		move_player_sprite(param, new, 3);
-	free(new);
-}
-
-void	move_top(t_param *param)
-{
-	char	value_case;
-	t_gps	*new;
-
-	new = create_gps(param->player->coor->x, param->player->coor->y - 1);
 	value_case = param->map->map[new->y][new->x];
 	if (value_case == '1' || value_case == 'D')
 	{
@@ -84,6 +60,30 @@ void	move_top(t_param *param)
 	free(new);
 }
 
+void	move_top(t_param *param)
+{
+	char	value_case;
+	t_gps	*new;
+
+	new = create_gps(param->player->coor->x, param->player->coor->y - 1);
+	value_case = param->map->map[new->y][new->x];
+	if (value_case == '1' || value_case == 'D')
+	{
+		not_move_player_sprite(param, 1);
+		return (free(new));
+	}
+	if (value_case == 'E')
+	{
+		if (move_exit(param, new, 1) == 0)
+			return (free(new));
+	}
+	if (value_case == 'C')
+		move_coins(param, new, 1);
+	if (value_case == '0')
+		move_player_sprite(param, new, 1);
+	free(new);
+}
+
 void	move_bottom(t_param *param)
 {
 	char	value_case;
@@ -93,22 +93,22 @@ void	move_bottom(t_param *param)
 	value_case = param->map->map[new->y][new->x];
 	if (value_case == '1' || value_case == 'D')
 	{
-		not_move_player_sprite(param, 4);
+		not_move_player_sprite(param, 3);
 		free(new);
 		return ;
 	}
 	if (value_case == 'E')
 	{
-		if (move_exit(param, new, 4) == 0)
+		if (move_exit(param, new, 3) == 0)
 		{
 			free(new);
 			return ;
 		}
 	}
 	if (value_case == 'C')
-		move_coins(param, new, 4);
+		move_coins(param, new, 3);
 	if (value_case == '0')
-		move_player_sprite(param, new, 4);
+		move_player_sprite(param, new, 3);
 	free(new);
 }
 

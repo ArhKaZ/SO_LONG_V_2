@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   animation.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
+/*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 16:58:46 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/26 23:24:23 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/27 13:40:05 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,9 +106,10 @@ int	animation(t_param *param)
 			else
 				animate_black_hole(param);
 			put_strings(param);
-			is_end(param);
 			usleep(50000);
 		}
+		is_end(param);
+
 	}
 	return (0);
 }

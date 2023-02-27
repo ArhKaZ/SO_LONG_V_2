@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
+/*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 11:18:21 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/27 00:01:47 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/27 11:38:57 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,21 @@ void	free_all(t_param *param)
 	param->mlx = NULL;
 	free(param);
 	param = NULL;
+}
+
+void	free_error_non_finish(t_param *param)
+{
+	free_map(param->map);
+	free_player(param->player);
+	free_ennemy(param->boss);
+	free_textures(param->textures, param->mlx->mlx);
+	mlx_destroy_display(param->mlx->mlx);
+	free(param->mlx->mlx);
+	free(param->mlx);
+	param->mlx = NULL;
+	free(param);
+	param = NULL;
+	exit(EXIT_FAILURE);
 }
 
 t_param	*get_param(char **argv)
@@ -81,7 +96,7 @@ int	main(int argc, char **argv)
 		if (param == NULL)
 			return (0);
 		if (map_is_finishable(param->map) == false)
-			close_win(param, param->mlx->mlx, param->mlx->mlx_win);
+			free_error_non_finish(param);
 		main_menu(param);
 	}
 	return (0);

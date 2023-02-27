@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
+/*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 11:22:07 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/26 23:48:47 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/27 17:03:19 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -205,7 +205,7 @@ void	try_go_wall(char **map_cp, t_gps *coor, t_map *map, int direction);
 
 bool	change_to_x(t_map *map, char **map_cp, int x, int y);
 
-char	*get_map_to_string(char *path, t_map *map);
+char	*get_map_to_string(char *path);
 
 bool	get_map(char *path, t_map *map);
 
@@ -263,8 +263,6 @@ void	free_textures(t_all_texture *texts, void *mlx);
 
 bool	put_shot_in_coor(t_param *param, t_gps *new);
 
-int		game_win(t_param *param);
-
 int		put_frame_for_coin(t_param *param);
 
 void	move_ennemy_left(t_param *param, t_gps *ennemy);
@@ -286,8 +284,6 @@ void	not_move_ennemy_sprite(t_param *param, int direction);
 void	less_hp(t_param *param, int direction);
 
 void	put_hp(t_param *param, t_hp *hp);
-
-int	game_over(t_param *param);
 
 int	animation(t_param *param);
 
@@ -357,7 +353,7 @@ void	put_last_image(t_param *param, t_gps *place, t_texture *s, int size);
 
 bool	check_char(char c);
 
-bool	check_line(char *line, t_map *map, size_t *length);
+bool	check_line(char **map, t_map *map_s);
 
 bool	get_next_line_loop(int fd, char **line_pt);
 

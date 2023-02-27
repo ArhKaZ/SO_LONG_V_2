@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_map.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
+/*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 15:38:49 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/27 00:00:09 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/27 12:12:02 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,37 +45,16 @@ char	*map_in_one_string(char *line, char *string)
 	return (string);
 }
 
-char	*get_map_to_string(char *path, t_map *map)
+char	*get_map_to_string(char *path)
 {
 	int		fd;
 	char	*line;
 	char	*map_string;
-	size_t	length;
-	bool	ret;
 
-	ret = true;
-	length = 0;
 	map_string = NULL;
 	fd = open(path, O_RDONLY);
 	while (get_next_line_loop(fd, &line))
-	{
-		if (ret == false)
-			free(line);
-		else
-		{
-			if (check_line(line, map, &length) == false)
-			{
-				if (map_string != NULL)
-					free(map_string);
-				free(line);
-				ret = false;
-			}
-			else
-				map_string = map_in_one_string(line, map_string);
-		}
-	}
+		map_string = map_in_one_string(line, map_string);
 	close(fd);
-	if (ret == true)
-		return (map_string);
-	return (NULL);
+	return (map_string);
 }

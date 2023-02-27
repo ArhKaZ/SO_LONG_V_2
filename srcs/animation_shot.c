@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   animation_shot.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
+/*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 11:07:26 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/24 17:25:03 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/27 13:45:01 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,13 +111,13 @@ int	animate_shoot_bot(t_param *param, t_gps *coor)
 
 int	animate_shoot(t_param *param, t_gps *coor)
 {
-	if (param->shots->direction == 1)
+	if (param->shots->direction == 0)
 		animate_shoot_left(param, coor);
-	if (param->shots->direction == 2)
+	if (param->shots->direction == 1)
 		animate_shoot_top(param, coor);
-	if (param->shots->direction == 3)
+	if (param->shots->direction == 2)
 		animate_shoot_right(param, coor);
-	if (param->shots->direction == 4)
+	if (param->shots->direction == 3)
 		animate_shoot_bot(param, coor);
 	return (0);
 }
