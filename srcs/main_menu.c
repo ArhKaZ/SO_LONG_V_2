@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 15:45:56 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/27 23:39:20 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/28 00:09:33 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	move_in_menu(int keycode, t_param *param)
 	zero = create_gps(0, 0);
 	if (select < 2 && keycode == 115)
 	{
-		mlx_clear_window(param->mlx->mlx, param->mlx->mlx_win);
+		mlx_clear_window(menu->mlx->mlx, menu->mlx->mlx_win);
 		if (select == 0)
 			put_image(menu->mlx, menu->menu[1]->p, zero);
 		if (select == 1)
