@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 15:45:56 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/28 00:09:33 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/28 00:35:51 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,33 +68,6 @@ void	move_in_menu(int keycode, t_param *param)
 		select_choice(param, menu, zero);
 }
 
-// void	move_in_menu(int keycode, t_param *param)
-// {
-// 	t_gps	*zero;
-// 	t_menu	*menu;
-
-// 	menu = param->menu;
-// 	zero = create_gps(0, 0);
-// 	if (keycode == 115 && menu->keycode != 115)
-// 		put_image(menu->mlx, menu->menu[1]->p, zero);
-// 	else if (keycode == 119 && menu->keycode != 119)
-// 		put_image(menu->mlx, menu->menu[0]->p, zero);
-// 	free(zero);
-// 	if (keycode == 32)
-// 	{
-// 		if (menu->keycode == 119)
-// 			close_menu_start(param, menu->mlx->mlx, menu->mlx->mlx_win,
-// 				param->mlx->mlx);
-// 		if (menu->keycode == 115)
-// 			close_menu_exit(param, menu->mlx->mlx, menu->mlx->mlx_win,
-// 				param->mlx->mlx);
-// 	}
-// 	if (keycode == 65307)
-// 		close_menu_exit(param, menu->mlx->mlx, menu->mlx->mlx_win,
-// 			param->mlx->mlx);
-// 	menu->keycode = keycode;
-// }
-
 int	choose_in_menu(int keycode, t_param *param)
 {
 	if (param->mlx->menu == true)
@@ -129,6 +102,7 @@ int	main_menu(t_param *param)
 	put_image(mlx, param->menu->menu[0]->p, place);
 	free(place);
 	mlx_hook(mlx->mlx_win, 2, 1L >> 0, &choose_in_menu, param);
+	mlx_hook(mlx->mlx_win, 17, 1L >> 0, &close_win, param);
 	mlx_loop(mlx->mlx);
 	return (1);
 }
