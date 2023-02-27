@@ -1,42 +1,42 @@
 #============================= FILES PART =====================================
-SRCS			=	animation.c				\
-					animation_shot.c		\
-					create_and_destroy.c	\
-					create_visu.c			\
-					create_visu_utils.c		\
-					ennemy.c				\
-					free_textures.c			\
-					free_textures_two.c		\
-					free_utils.c			\
-					game_end.c				\
-					game_end_utils.c		\
-					get_map.c				\
-					get_map_utils.c			\
-					hud.c					\
-					main_menu_utils.c		\
-					main_menu.c				\
-					map.c					\
-					map_error.c				\
-					move_ennemy.c			\
-					move_ennemy_utils.c		\
-					player_action.c			\
-					player_action_utils.c	\
-					player_damage.c			\
-					put_image.c				\
-					rand.c					\
-					shoot.c					\
-					shoot_utils.c			\
-					shoot_create_and_moves.c\
-					so_long.c				\
-					test_map.c				\
-					test_map_utils.c		\
-					texture.c				\
-					texture_animate.c		\
-					texture_explosion.c		\
-					texture_nb.c			\
+SRCS			=	visual/animation.c				\
+					visual/animation_shot.c		\
+					actions/create_and_destroy.c	\
+					visual/create_visu.c			\
+					visual/create_visu_utils.c		\
+					actions/ennemy.c				\
+					visual/free_textures.c			\
+					visual/free_textures_two.c		\
+					visual/free_utils.c			\
+					visual/game_end.c				\
+					visual/game_end_utils.c		\
+					map/get_map.c				\
+					map/get_map_utils.c			\
+					visual/hud.c					\
+					menu/main_menu_utils.c		\
+					menu/main_menu.c				\
+					map/map.c					\
+					map/map_error.c				\
+					actions/move_ennemy.c			\
+					actions/move_ennemy_utils.c		\
+					actions/player_action.c			\
+					actions/player_action_utils.c	\
+					actions/player_damage.c			\
+					visual/put_image.c				\
+					actions/rand.c					\
+					shot/shoot.c					\
+					shot/shoot_utils.c			\
+					shot/shoot_create_and_moves.c\
+					actions/so_long.c				\
+					map/test_map.c				\
+					map/test_map_utils.c		\
+					visual/texture.c				\
+					visual/texture_animate.c		\
+					visual/texture_explosion.c		\
+					visual/texture_nb.c			\
 
-SRCS_MAP		=	create_map.c	 \
-					create_map_ennemy.c \
+SRCS_MAP		=	map/create_map.c	 \
+					map/create_map_ennemy.c \
 
 SRCS_D			=	srcs/
 

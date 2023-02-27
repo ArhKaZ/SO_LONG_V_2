@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 11:22:07 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/27 17:03:19 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/02/27 21:52:14 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -169,9 +169,9 @@ typedef	struct s_map
 
 typedef struct s_menu
 {
-	t_texture	*menu[2];
+	t_texture	*menu[4];
 	t_mlx		*mlx;
-	int			keycode;
+	int			select;
 }				t_menu;
 
 
