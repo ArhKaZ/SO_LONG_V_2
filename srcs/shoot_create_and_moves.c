@@ -6,40 +6,48 @@
 /*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 02:41:36 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/27 13:11:49 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/03/01 18:24:14 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
 
-void	put_shot_in_new(t_param *param, t_gps *new)
+void	put_shot_in_new(t_param *p, t_gps *new)
 {
-	param->map->map[param->shots->coor->y][param->shots->coor->x] = '0';
-	put_image(param->mlx, param->textures->background->p, param->shots->coor);
-	param->map->map[new->y][new->x] = 'S';
-	put_shoot_in_direction(param, new);
-	param->shots->coor->x = new->x;
-	param->shots->coor->y = new->y;
+	void	*sprite;
+
+	sprite = p->textures->background->back[get_random(8)]->p;
+	p->map->map[p->shots->coor->y][p->shots->coor->x] = '0';
+	put_image(p->mlx, sprite, p->shots->coor);
+	p->map->map[new->y][new->x] = 'S';
+	put_shoot_in_direction(p, new);
+	p->shots->coor->x = new->x;
+	p->shots->coor->y = new->y;
 }
 
-bool	kill_ennemy_and_del_shot(t_param *param, t_gps *new)
+bool	kill_ennemy_and_del_shot(t_param *p, t_gps *new)
 {
-	kill_ennemy(param, new);
-	param->map->map[param->shots->coor->y][param->shots->coor->x] = '0';
-	put_image(param->mlx, param->textures->background->p, param->shots->coor);
-	del_shot(param);
+	void	*sprite;
+
+	sprite = p->textures->background->back[get_random(8)]->p;
+	kill_ennemy(p, new);
+	p->map->map[p->shots->coor->y][p->shots->coor->x] = '0';
+	put_image(p->mlx, sprite, p->shots->coor);
+	del_shot(p, p->shots);
 	return (false);
 }
 
 bool	put_shot_in_coor(t_param *p, t_gps *new)
 {
 	char	value_case;
+	void	*sprite;
 
+	sprite = NULL;
 	value_case = p->map->map[new->y][new->x];
 	if (value_case == '1')
 	{
 		make_explosion(p, new, p->shots, 0);
-		del_shot(p);
+		del_shot(p, p->shots);
 		return (false);
 	}
 	if (value_case == 'D')
@@ -48,13 +56,15 @@ bool	put_shot_in_coor(t_param *p, t_gps *new)
 		put_shot_in_new(p, new);
 	if (value_case == 'E' || value_case == 'C' || value_case == '2')
 	{
-		put_image(p->mlx, p->textures->background->p, p->shots->coor);
+		sprite = p->textures->background->back[get_random(8)]->p;
+		put_image(p->mlx, sprite, p->shots->coor);
 		p->map->map[p->shots->coor->y][p->shots->coor->x] = '0';
-		del_shot(p);
+		del_shot(p, p->shots);
 		return (false);
 	}
 	return (true);
 }
+
 void	create_shot_spe_case(t_param *param, int c, t_shoot *shot)
 {
 	if (c == 'D')
@@ -84,10 +94,7 @@ void	create_new_shot(t_param *param)
 				|| shot->coor->y == param->map->height - 1))
 			make_explosion(param, shot->coor, shot, 1);
 		else
-		{
-			free(shot->coor);
-			free(shot);
-		}
+			del_shot(param, shot);
 	}
 	else if (c == '0')
 	{

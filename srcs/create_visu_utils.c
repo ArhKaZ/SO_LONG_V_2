@@ -3,32 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   create_visu_utils.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
+/*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 14:37:20 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/23 14:24:22 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/03/01 14:57:36 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
-
-void	*get_sprite_obstacle(t_sprite_planet *texts)
-{
-	void	*sprite;
-	int		random;
-
-	sprite = NULL;
-	random = get_random(4);
-	if (random == 0)
-		sprite = texts->planet_1->p;
-	if (random == 1)
-		sprite = texts->planet_2->p;
-	if (random == 2)
-		sprite = texts->planet_3->p;
-	if (random == 3)
-		sprite = texts->planet_4->p;
-	return (sprite);
-}
 
 void	put_obstacle_in_map(t_map *map, t_mlx *mlx, t_sprite_planet *plnts)
 {
@@ -46,7 +28,7 @@ void	put_obstacle_in_map(t_map *map, t_mlx *mlx, t_sprite_planet *plnts)
 			if (map->map[height][width] == '1')
 			{
 				place = create_gps(width, height);
-				sprite = get_sprite_obstacle(plnts);
+				sprite = plnts->planets[get_random(4)]->p;
 				put_image(mlx, sprite, place);
 				free(place);
 			}
@@ -82,26 +64,29 @@ void	put_wall(t_map *map, t_mlx *mlx, t_texture *wall)
 	}
 }
 
-void	put_background(t_map *map, t_mlx *mlx, t_texture *back)
+void	put_background(t_map *map, t_mlx *mlx, t_sprite_back *back)
 {
 	int		height;
 	int		width;
 	t_gps	*place;
+	void	*sprite;
 
+	sprite = NULL;
 	height = 0;
-	while (height < map->height * back->size->y)
+	while (height < map->height * back->back[0]->size->y)
 	{
 		width = 0;
-		while (width < map->width * back->size->x)
+		while (width < map->width * back->back[0]->size->x)
 		{
 			if (map->map[height / 64][width / 64] == '0')
 			{
 				place = create_gps(width / 64, height / 64);
-				put_image(mlx, back->p, place);
+				sprite = back->back[get_random(8)]->p;
+				put_image(mlx, sprite, place);
 				free(place);
 			}
-			width += back->size->x;
+			width += back->back[0]->size->x;
 		}
-		height += back->size->y;
+		height += back->back[0]->size->y;
 	}
 }

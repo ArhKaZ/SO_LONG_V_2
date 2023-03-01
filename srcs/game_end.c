@@ -6,11 +6,12 @@
 /*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 13:15:25 by syluiset          #+#    #+#             */
-/*   Updated: 2023/03/01 13:54:53 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/03/01 14:10:52 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
+
 void	put_last_image_little(t_param *param, bool win)
 {
 	t_gps		*place;

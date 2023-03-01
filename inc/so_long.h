@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 11:22:07 by syluiset          #+#    #+#             */
-/*   Updated: 2023/03/01 13:45:41 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/03/01 18:26:56 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,10 @@ typedef struct s_black_hole
 	int			frame_act;
 }				t_black_hole;
 
+typedef struct s_sprite_back
+{
+}				t_sprite_back;
+
 typedef struct s_ship
 {
 	t_texture	*player[4];
@@ -95,10 +99,7 @@ typedef	struct s_explosion
 
 typedef	struct s_sprite_planet
 {
-	t_texture	*planet_1;
-	t_texture	*planet_2;
-	t_texture	*planet_3;
-	t_texture	*planet_4;
+	t_texture	*planets[4];
 	t_texture	*planet_exp;
 }				t_sprite_planet;
 
@@ -145,7 +146,7 @@ typedef struct s_nb
 typedef struct s_all_texture
 {
 	t_texture			*wall;
-	t_texture			*background;
+	t_texture			*back[8];
 	t_coins				*coin;
 	t_ship				*ships;
 	t_black_hole		*black_hole;
@@ -209,8 +210,6 @@ t_param		*create_param(t_map *map, t_mlx *mlx, t_player *player, t_all_texture *
 
 void	try_go_wall(char **map_cp, t_gps *coor, t_map *map, int direction);
 
-bool	change_to_x(t_map *map, char **map_cp, int x, int y);
-
 char	*get_map_to_string(char *path);
 
 bool	get_map(char *path, t_map *map);
@@ -228,6 +227,16 @@ void	free_all(t_param *param);
 void	free_player(t_player *player);
 
 void	free_map(t_map *map);
+
+void	free_back(t_sprite_back *b, void *mlx);
+
+void	free_hp(t_hp *hp, void *mlx);
+
+void	free_black_hole(t_black_hole *bh, void *mlx);
+
+void	free_ships_sprite(t_ship *ships, void *mlx);
+
+void	free_coin(t_coins *text, void *mlx);
 
 void	put_strings(t_param *param);
 
@@ -305,7 +314,7 @@ int	shoot_exist(t_param *param);
 
 void	create_new_shot(t_param *param);
 
-void	del_shot(t_param *param);
+void	del_shot(t_param *param, t_shoot *shot);
 
 void	free_ennemy(t_ennemy *boss);
 
@@ -333,7 +342,7 @@ void	move_ennemy_sprite(t_param *param, t_gps *new, int direction);
 
 void	put_wall(t_map *map, t_mlx *mlx, t_texture *wall);
 
-void	put_background(t_map *map, t_mlx *mlx, t_texture *back);
+void	put_background(t_map *map, t_mlx *mlx, t_sprite_back *back);
 
 void	put_obstacle_in_map(t_map *map, t_mlx *mlx, t_sprite_planet *texts);
 
@@ -342,6 +351,8 @@ void	change_exit(t_param *param);
 t_nb	*create_nb(t_mlx *mlx, int width, int height);
 
 t_black_hole	*create_black_hole_for_end(t_mlx *mlx);
+
+t_sprite_back	*create_back(t_mlx *mlx);
 
 t_black_hole	*create_black_hole(t_mlx *mlx);
 
@@ -392,4 +403,12 @@ void	make_explosion(t_param *param, t_gps *new, t_shoot *s, int just_c);
 t_shoot	*create_shot(clock_t time, int direction, t_gps *player);
 
 int		move_in_menu(int keycode, t_param *param);
+
+char	**checker_map(t_map *map, char **map_cp);
+
+void	change_to_x(t_map *map, char **map_cp, int x, int y);
+
+void	*get_sprite_obstacle(t_sprite_planet *texts);
+
+void	*get_sprite_back(t_sprite_back *texts);
 #endif

@@ -3,158 +3,84 @@
 /*                                                        :::      ::::::::   */
 /*   test_map_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
+/*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 18:40:46 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/23 14:56:09 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/03/01 14:21:46 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
 
-// void	try_by_top_plus(char **map_cp, int x, int y, t_map *map)
-// {
-// 	int	cp_y;
-// 	int	count_less_y;
-// 	int	i;
+void	change_to_x(t_map *map, char **map_cp, int x, int y)
+{
+	if (x < 1 || x > map->width - 1)
+		return ;
+	if (map_cp[y][x] == 'C' || map_cp[y][x] == 'E' || map_cp[y][x] == 'P'
+			|| map_cp[y][x] == '0')
+		map_cp[y][x] = 'X';
+	if (map_cp[y][x] == '1')
+		return ;
+}
 
-// 	i = 0;
-// 	count_less_y = 0;
-// 	cp_y = y;
-// 	while (x <= map->width - 2 || cp_y != y)
-// 	{
-// 		if (map_cp[cp_y][x + 1] != '1')
-// 		{
-// 			x += 1;
-// 			change_to_x(map, map_cp, x, cp_y);
-// 			while (i < count_less_y)
-// 			{
-// 				if (map_cp[cp_y + i][x] != '1')
-// 					cp_y += 1;
-// 				else
-// 					break ;
-// 				i++;
-// 			}
-// 		}
-// 		else
-// 		{
-// 			if (cp_y == 0)
-// 				break ;
-// 			cp_y -= 1;
-// 			count_less_y += 1;
-// 		}
-// 	}
-// }
+void	change_p(char **map_cp, t_map *map)
+{
+	int	i;
+	int	j;
 
-// void	try_by_bottom_plus(char **map_cp, int x, int y, t_map *map)
-// {
-// 	int	cp_y;
-// 	int	count_less_y;
-// 	int	i;
+	i = 0;
+	while (map_cp[i] != NULL)
+	{
+		j = 0;
+		while (map_cp[i][j])
+		{
+			if (map_cp[i][j] == 'P')
+				change_to_x(map, map_cp, j, i);
+			j++;
+		}
+		i++;
+	}
+}
 
-// 	i = 0;
-// 	count_less_y = 0;
-// 	cp_y = y;
-// 	while (x <= map->width - 2 || cp_y != y)
-// 	{
-// 		if (map_cp[cp_y][x + 1] != '1')
-// 		{
-// 			x += 1;
-// 			change_to_x(map, map_cp, x, cp_y);
-// 			while (i < count_less_y)
-// 			{
-// 				if (map_cp[cp_y + i][x] != '1')
-// 					cp_y -= 1;
-// 				else
-// 					break ;
-// 				i++;
-// 			}
-// 		}
-// 		else
-// 		{
-// 			if (cp_y == map->height - 1)
-// 				break ;
-// 			cp_y += 1;
-// 		}
-// 	}
-// }
+int	loop_check_map(t_map *map, char **map_cp, int count_x)
+{
+	int	x;
+	int	y;
 
-// void	try_by_top_less(char **map_cp, int x, int y, t_map *map)
-// {
-// 	int	cp_y;
-// 	int	count_less_y;
-// 	int	i;
+	y = 0;
+	while (map_cp[y] != NULL)
+	{
+		x = 0;
+		while (map_cp[y][x])
+		{
+			if (map_cp[y][x] == 'X')
+			{
+				change_to_x(map, map_cp, x - 1, y);
+				change_to_x(map, map_cp, x + 1, y);
+				change_to_x(map, map_cp, x, y - 1);
+				change_to_x(map, map_cp, x, y + 1);
+				count_x++;
+			}
+			x++;
+		}
+		y++;
+	}
+	return (count_x);
+}
 
-// 	i = 0;
-// 	count_less_y = 0;
-// 	cp_y = y;
-// 	while (x >= 1 || cp_y != y)
-// 	{
-// 		if (map_cp[cp_y][x -1] != '1')
-// 		{
-// 			x -= 1;
-// 			change_to_x(map, map_cp, x, cp_y);
-// 			while (i < count_less_y)
-// 			{
-// 				if (map_cp[cp_y + i][x] != '1')
-// 					cp_y += 1;
-// 				else
-// 					break ;
-// 				i++;
-// 			}
-// 		}
-// 		else
-// 		{
-// 			if (cp_y == 0)
-// 				break ;
-// 			cp_y -= 1;
-// 		}
-// 	}
-// }
+char	**checker_map(t_map *map, char **map_cp)
+{
+	int	count_x;
+	int	new_count_x;
 
-// void	try_by_bottom_less(char **map_cp, int x, int y, t_map *map)
-// {
-// 	int	cp_y;
-// 	int	count_less_y;
-// 	int	i;
-
-// 	i = 0;
-// 	count_less_y = 0;
-// 	cp_y = y;
-// 	while (x >= 1 || cp_y != y)
-// 	{
-// 		if (map_cp[cp_y][x - 1] != '1')
-// 		{
-// 			x -= 1;
-// 			change_to_x(map, map_cp, x, cp_y);
-// 			while (i < count_less_y)
-// 			{
-// 				if (map_cp[cp_y + i][x] != '1')
-// 					cp_y -= 1;
-// 				else
-// 					break ;
-// 				i++;
-// 			}
-// 		}
-// 		else
-// 		{
-// 			if (cp_y == map->height - 1)
-// 				break ;
-// 			cp_y += 1;
-// 		}
-// 	}
-// }
-
-// void	try_go_wall(char **map_cp, t_gps *coor, t_map *map, int direction)
-// {
-// 	if (direction == 1)
-// 	{
-// 		try_by_top_plus(map_cp, coor->x, coor->y, map);
-// 		try_by_bottom_plus(map_cp, coor->x, coor->y, map);
-// 	}
-// 	else
-// 	{
-// 		try_by_top_less(map_cp, coor->x, coor->y, map);
-// 		try_by_bottom_less(map_cp, coor->x, coor->y, map);
-// 	}
-// }
+	count_x = 0;
+	change_p(map_cp, map);
+	new_count_x = 1;
+	while (count_x != new_count_x)
+	{
+		count_x = new_count_x;
+		new_count_x = 0;
+		new_count_x = loop_check_map(map, map_cp, 0);
+	}
+	return (map_cp);
+}

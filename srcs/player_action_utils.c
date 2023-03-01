@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 14:25:45 by syluiset          #+#    #+#             */
-/*   Updated: 2023/03/01 13:51:56 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/03/01 14:52:11 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	move_player_sprite(t_param *param, t_gps *new, int direction)
 		sprite = param->textures->ships->player[3]->p;
 	move_player(param->map, param->player, new);
 	put_image(param->mlx, sprite, new);
-	sprite = param->textures->background->p;
+	sprite = param->textures->background->back[get_random(8)]->p;
 	put_image(param->mlx, sprite, param->player->coor);
 	param->player->coor->x = new->x;
 	param->player->coor->y = new->y;
@@ -69,20 +69,19 @@ int	move_exit(t_param *param, t_gps *new, int move)
 	{
 		move_player_sprite(param, new, move);
 		param->finish = 1;
-		//is_end(param);
 	}
 	else
 		not_move_player_sprite(param, move);
 	return (0);
 }
 
-void	move_coins(t_param *param, t_gps *new, int direction)
+void	move_coins(t_param *p, t_gps *new, int direction)
 {
-	param->player->collect += 1;
-	param->player->score += 140;
-	if (param->player->collect == param->map->nb_item)
-		change_exit(param);
-	put_image(param->mlx, param->textures->background->p, new);
-	param->map->map[new->y][new->x] = '0';
-	move_player_sprite(param, new, direction);
+	p->player->collect += 1;
+	p->player->score += 140;
+	if (p->player->collect == p->map->nb_item)
+		change_exit(p);
+	put_image(p->mlx, p->textures->background->back[get_random(8)]->p, new);
+	p->map->map[new->y][new->x] = '0';
+	move_player_sprite(p, new, direction);
 }

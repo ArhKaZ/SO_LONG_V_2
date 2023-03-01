@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   shoot.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
+/*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 17:10:42 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/27 00:01:32 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/03/01 14:55:18 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,26 +38,26 @@ void	kill_ennemy(t_param *p, t_gps *new)
 		current = clock();
 	}
 	del_ennemy(p, new);
-	put_image(p->mlx, p->textures->background->p, new);
+	put_image(p->mlx, p->textures->background->back[get_random(8)]->p, new);
 }
 
-void	make_explosion(t_param *param, t_gps *new, t_shoot *s, int just_c)
+void	make_explosion(t_param *p, t_gps *new, t_shoot *s, int just_c)
 {
 	if (just_c == 0)
 	{
-		param->map->map[param->shots->coor->y][param->shots->coor->x] = '0';
-		put_image(param->mlx, param->textures->background->p,
-			param->shots->coor);
+		p->map->map[p->shots->coor->y][p->shots->coor->x] = '0';
+		put_image(p->mlx, p->textures->background->back[get_random(8)]->p,
+			p->shots->coor);
 	}
-	if (!(new->x == 0 || new->y == 0 || new->y == param->map->height - 1
-			|| new->x == param->map->width - 1))
+	if (!(new->x == 0 || new->y == 0 || new->y == p->map->height - 1
+			|| new->x == p->map->width - 1))
 	{
-		put_image(param->mlx, param->textures->planets->planet_exp->p, new);
-		if (param->player->score - 20 > 0)
-			param->player->score -= 20;
+		put_image(p->mlx, p->textures->planets->planet_exp->p, new);
+		if (p->player->score - 20 > 0)
+			p->player->score -= 20;
 		else
-			param->player->score = 0;
-		param->map->map[new->y][new->x] = '2';
+			p->player->score = 0;
+		p->map->map[new->y][new->x] = '2';
 		if (just_c == 1)
 		{
 			free(s->coor);

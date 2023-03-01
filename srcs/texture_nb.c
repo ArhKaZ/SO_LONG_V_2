@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   texture_nb.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
+/*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 17:27:47 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/23 12:11:10 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/03/01 18:13:36 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ t_nb	*create_nb_little(t_mlx *mlx)
 
 	nb = NULL;
 	nb = malloc(sizeof(t_nb));
+	if (!nb)
+		//EXIT
 	nb->zero = create_texture("xpm/nb/little_0.xpm", mlx);
 	nb->one = create_texture("xpm/nb/little_1.xpm", mlx);
 	nb->two = create_texture("xpm/nb/little_2.xpm", mlx);
@@ -37,6 +39,8 @@ t_nb	*create_nb_medium(t_mlx *mlx)
 
 	nb = NULL;
 	nb = malloc(sizeof(t_nb));
+	if (!nb)
+		//EXIT
 	nb->zero = create_texture("xpm/nb/med_0.xpm", mlx);
 	nb->one = create_texture("xpm/nb/med_1.xpm", mlx);
 	nb->two = create_texture("xpm/nb/med_2.xpm", mlx);
@@ -56,6 +60,8 @@ t_nb	*create_nb_big(t_mlx *mlx)
 
 	nb = NULL;
 	nb = malloc(sizeof(t_nb));
+	if (!nb)
+		//EXIT
 	nb->zero = create_texture("xpm/nb/big_0.xpm", mlx);
 	nb->one = create_texture("xpm/nb/big_1.xpm", mlx);
 	nb->two = create_texture("xpm/nb/big_2.xpm", mlx);

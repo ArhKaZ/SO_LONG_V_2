@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 12:04:35 by syluiset          #+#    #+#             */
-/*   Updated: 2023/03/01 13:59:13 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/03/01 14:10:21 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ bool	check_extension(char *path)
 	i = 0;
 	while (path[i] != '.' && path[i])
 		i++;
-	if (i != 0 && ft_strncmp(path + i, ".ber", 4) == 0 &&
-			ft_strncmp(path + i - 1, "/", 1) != 0)
+	if (i != 0 && ft_strncmp(path + i, ".ber", 4) == 0
+		&& ft_strncmp(path + i - 1, "/", 1) != 0)
 		return (true);
 	else
 	{

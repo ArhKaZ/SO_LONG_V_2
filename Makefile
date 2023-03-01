@@ -33,7 +33,7 @@ SRCS			=	animation.c				\
 					test_map.c				\
 					test_map_utils.c		\
 					texture.c				\
-					texture_animate.c		\
+					texture2.c				\
 					texture_explosion.c		\
 					texture_nb.c			\
 

@@ -6,12 +6,11 @@
 /*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 15:45:56 by syluiset          #+#    #+#             */
-/*   Updated: 2023/03/01 13:20:50 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/03/01 14:07:32 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
-
 
 t_menu	*create_t_menu(t_mlx *mlx)
 {

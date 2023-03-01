@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_textures_two.c                                :+:      :+:    :+:   */
+/*   free_textures_2.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
+/*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 13:48:53 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/24 16:15:53 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/03/01 15:02:12 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 void	free_planets(t_sprite_planet *p, void *mlx)
 {
-	free_texture(p->planet_1, mlx);
-	free_texture(p->planet_2, mlx);
-	free_texture(p->planet_3, mlx);
-	free_texture(p->planet_4, mlx);
+	free_texture(p->planets[0], mlx);
+	free_texture(p->planets[1], mlx);
+	free_texture(p->planets[2], mlx);
+	free_texture(p->planets[3], mlx);
 	free_texture(p->planet_exp, mlx);
 	free(p);
 	p = NULL;

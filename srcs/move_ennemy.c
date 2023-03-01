@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 15:32:53 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/27 14:35:24 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/03/01 14:19:49 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,8 +134,6 @@ void	choose_direction(t_param *param)
 
 	if (param->map->nb_ennemy > 0)
 	{
-		//free_ennemy(param->boss);
-		//param->boss = get_ennemy(param->map);
 		first = param->boss;
 		while (param->boss != NULL)
 		{

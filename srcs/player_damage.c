@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 15:04:18 by syluiset          #+#    #+#             */
-/*   Updated: 2023/03/01 13:51:58 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/03/01 15:02:27 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,11 @@
 
 t_texture	*get_sprite_frame(t_param *param, int direction)
 {
-	t_texture *sprite;
+	t_texture	*sprite;
+
 	if (param->textures->explosion->frame_act_p == 0)
 	{
-		sprite = param->textures->background->p;
+		sprite = param->textures->background->back[get_random(8)]->p;
 		param->textures->explosion->frame_act_p = 1;
 	}
 	else
@@ -56,7 +57,6 @@ void	less_hp(t_param *param, int direction)
 	{
 		param->finish = 1;
 		param->player->hp -= 1;
-		//is_end(param);
 	}
 	else
 	{

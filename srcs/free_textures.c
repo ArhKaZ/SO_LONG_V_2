@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_textures.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
+/*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 13:39:18 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/26 14:51:51 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/03/01 14:59:37 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,19 +70,16 @@ void	free_hp(t_hp *hp, void *mlx)
 	hp = NULL;
 }
 
-void	free_textures(t_all_texture *texts, void *mlx)
+void	free_back(t_sprite_back *b, void *mlx)
 {
-	free_texture(texts->background, mlx);
-	free_coin(texts->coin, mlx);
-	free_planets(texts->planets, mlx);
-	free_texture(texts->wall, mlx);
-	free_ships_sprite(texts->ships, mlx);
-	free_black_hole(texts->black_hole, mlx);
-	free_black_hole(texts->black_hole_close, mlx);
-	free_end_and_go(texts->end, mlx);
-	free_shoot(texts->shoot, mlx);
-	free_nb(texts->nb, mlx);
-	free_explosion(texts->explosion, mlx);
-	free(texts);
-	texts = NULL;
+	free_texture(b->back[0], mlx);
+	free_texture(b->back[1], mlx);
+	free_texture(b->back[2], mlx);
+	free_texture(b->back[3], mlx);
+	free_texture(b->back[4], mlx);
+	free_texture(b->back[5], mlx);
+	free_texture(b->back[6], mlx);
+	free_texture(b->back[7], mlx);
+	free(b);
+	b = NULL;
 }

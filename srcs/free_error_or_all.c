@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 13:42:37 by syluiset          #+#    #+#             */
-/*   Updated: 2023/03/01 13:43:00 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/03/01 18:11:43 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,23 @@ void	free_all(t_param *param)
 	param->mlx = NULL;
 	free(param);
 	param = NULL;
+}
+
+void	free_textures(t_all_texture *texts, void *mlx)
+{
+	free_back(texts->background, mlx);
+	free_coin(texts->coin, mlx);
+	free_planets(texts->planets, mlx);
+	free_texture(texts->wall, mlx);
+	free_ships_sprite(texts->ships, mlx);
+	free_black_hole(texts->black_hole, mlx);
+	free_black_hole(texts->black_hole_close, mlx);
+	free_end_and_go(texts->end, mlx);
+	free_shoot(texts->shoot, mlx);
+	free_nb(texts->nb, mlx);
+	free_explosion(texts->explosion, mlx);
+	free(texts);
+	texts = NULL;
 }
 
 void	free_error_non_finish(t_param *param)

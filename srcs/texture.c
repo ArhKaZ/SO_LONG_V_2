@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 15:01:59 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/27 17:07:50 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/03/01 18:12:33 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ t_ship	*create_ships_sprite(t_mlx *mlx)
 
 	ships = NULL;
 	ships = malloc(sizeof(t_ship));
+	if (!ships)
+		//EXIT
 	ships->player[0] = create_texture("xpm/ship/ship_left.xpm", mlx);
 	ships->player[1] = create_texture("xpm/ship/ship_top.xpm", mlx);
 	ships->player[2] = create_texture("xpm/ship/ship_right.xpm", mlx);
@@ -47,10 +49,12 @@ t_sprite_planet	*create_planet_sprite(t_mlx *mlx)
 
 	planets = NULL;
 	planets = malloc(sizeof(t_sprite_planet));
-	planets->planet_1 = create_texture("xpm/planet/Planet1.xpm", mlx);
-	planets->planet_2 = create_texture("xpm/planet/Planet2.xpm", mlx);
-	planets->planet_3 = create_texture("xpm/planet/Planet3.xpm", mlx);
-	planets->planet_4 = create_texture("xpm/planet/Planet4.xpm", mlx);
+	if (!planets)
+		//EXIT
+	planets->planets[0] = create_texture("xpm/planet/Planet1.xpm", mlx);
+	planets->planets[1] = create_texture("xpm/planet/Planet2.xpm", mlx);
+	planets->planets[2] = create_texture("xpm/planet/Planet3.xpm", mlx);
+	planets->planets[3] = create_texture("xpm/planet/Planet4.xpm", mlx);
 	planets->planet_exp = create_texture("xpm/planet/Planet_explode.xpm", mlx);
 	return (planets);
 }
@@ -61,12 +65,15 @@ t_end	*create_end(t_mlx *mlx)
 
 	end = NULL;
 	end = malloc(sizeof(t_end));
+	if (!end)
+		//EXIT
 	end->w_little = create_texture("xpm/finish/l_win.xpm", mlx);
 	end->w_med = create_texture("xpm/finish/m_win.xpm", mlx);
 	end->w_big = create_texture("xpm/finish/b_win.xpm", mlx);
 	end->l_little = create_texture("xpm/finish/l_lose.xpm", mlx);
 	end->l_med = create_texture("xpm/finish/m_lose.xpm", mlx);
 	end->l_big = create_texture("xpm/finish/b_lose.xpm", mlx);
+	//if (!(end->w_little || end->))
 	return (end);
 }
 
@@ -77,8 +84,8 @@ t_all_texture	*create_all_texture(t_mlx *mlx, int width, int height)
 	all_texture = NULL;
 	all_texture = malloc(sizeof(t_all_texture));
 	if (!all_texture)
-		return (NULL);
-	all_texture->background = create_texture("xpm/background.xpm", mlx);
+		//EXIT
+	all_texture->background = create_back(mlx);
 	all_texture->coin = create_collectible(mlx);
 	all_texture->planets = create_planet_sprite(mlx);
 	all_texture->wall = create_texture("xpm/asteroid.xpm", mlx);
