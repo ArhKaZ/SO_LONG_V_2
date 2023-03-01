@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_and_destroy.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
+/*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 16:49:55 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/25 15:34:51 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/03/01 13:56:17 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ t_player	*create_empty_player(void)
 		return (NULL);
 	player->moves = 0;
 	player->hp = 3;
-	player->direction = 2;
+	player->direction = 1;
 	player->score = 0;
 	return (player);
 }

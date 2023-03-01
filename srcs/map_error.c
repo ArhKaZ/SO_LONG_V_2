@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 15:51:15 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/22 20:31:07 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/03/01 14:00:58 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,22 +62,22 @@ bool	is_exploitable(t_map *map)
 {
 	if (map->begin != 1)
 	{
-		ft_putstr_fd("Error\nLa map ne possède pas de départ\n", 2);
+		ft_putstr_fd("Error\nMap does not have begin\n", 2);
 		return (false);
 	}
 	if (map->exit != 1)
 	{
-		ft_putstr_fd("Error\nLa map ne possède pas de sortie\n", 2);
+		ft_putstr_fd("Error\nMap does not have exit\n", 2);
 		return (false);
 	}
 	if (map->nb_item < 1)
 	{
-		ft_putstr_fd("Error\nLa map ne possède pas d'item\n", 2);
+		ft_putstr_fd("Error\nMap does not have item\n", 2);
 		return (false);
 	}
 	if (surround_by_wall(map) == false)
 	{
-		ft_putstr_fd("Error\nLa map n'est pas entourer de murs\n", 2);
+		ft_putstr_fd("Error\nMap is not surround by walls\n", 2);
 		return (false);
 	}
 	return (true);
@@ -87,7 +87,7 @@ bool	checking_map(t_map *map)
 {
 	if (is_rectangle(map) == false)
 	{
-		ft_putstr_fd("Error\nLa map n'est pas rectangulaire\n", 2);
+		ft_putstr_fd("Error\nMap is not rectangular\n", 2);
 		return (false);
 	}
 	if (is_exploitable(map) == false)

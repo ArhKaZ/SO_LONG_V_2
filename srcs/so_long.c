@@ -6,48 +6,16 @@
 /*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 11:18:21 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/27 11:38:57 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/03/01 13:44:38 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
 
-void	free_error(t_map *map, t_player *player, t_mlx *mlx)
+int	close_with_cross_run(t_param *param)
 {
-	free_map(map);
-	free_player(player);
-	free(mlx);
-}
-
-void	free_all(t_param *param)
-{
-	free_map(param->map);
-	free_player(param->player);
-	free_ennemy(param->boss);
-	free_textures(param->textures, param->mlx->mlx);
-	free(param->menu->mlx);
-	param->menu->mlx = NULL;
-	free(param->menu);
-	param->menu = NULL;
-	free(param->mlx);
-	param->mlx = NULL;
-	free(param);
-	param = NULL;
-}
-
-void	free_error_non_finish(t_param *param)
-{
-	free_map(param->map);
-	free_player(param->player);
-	free_ennemy(param->boss);
-	free_textures(param->textures, param->mlx->mlx);
-	mlx_destroy_display(param->mlx->mlx);
-	free(param->mlx->mlx);
-	free(param->mlx);
-	param->mlx = NULL;
-	free(param);
-	param = NULL;
-	exit(EXIT_FAILURE);
+	close_win(param, param->mlx->mlx, param->mlx->mlx_win);
+	return (1);
 }
 
 t_param	*get_param(char **argv)
@@ -79,7 +47,7 @@ int	so_long(t_param *p)
 {
 	mlx_loop_hook(p->mlx->mlx, &animation, p);
 	mlx_hook(p->mlx->mlx_win, 2, 1L >> 0, &render_next_frame, p);
-	mlx_hook(p->mlx->mlx_win, 17, 1L >> 0, &close_win, p);
+	mlx_hook(p->mlx->mlx_win, 17, 1L >> 0, &close_with_cross_run, p);
 	mlx_loop(p->mlx->mlx);
 	return (0);
 }

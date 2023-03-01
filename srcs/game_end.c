@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 13:15:25 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/27 17:00:16 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/03/01 13:54:53 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,9 +84,10 @@ int	is_end(t_param *param)
 	win = true;
 	if (param->finish == 1)
 	{
+		param->finish = 2;
 		if (param->player->hp == 0)
 			win = false;
-		if (param->map->height < 8 || param->map->width < 8)
+		if (param->map->height < 9 || param->map->width < 9)
 			put_last_image_little(param, win);
 		if (param->map->height < 14 || param->map->width < 14)
 			put_last_image_med(param, win);

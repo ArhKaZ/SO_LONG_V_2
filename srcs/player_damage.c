@@ -6,11 +6,27 @@
 /*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 15:04:18 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/27 17:02:34 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/03/01 13:51:58 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
+
+t_texture	*get_sprite_frame(t_param *param, int direction)
+{
+	t_texture *sprite;
+	if (param->textures->explosion->frame_act_p == 0)
+	{
+		sprite = param->textures->background->p;
+		param->textures->explosion->frame_act_p = 1;
+	}
+	else
+	{
+		sprite = param->textures->ships->player[direction]->p;
+		param->textures->explosion->frame_act_p = 0;
+	}
+	return (sprite);
+}
 
 void	damage_on_player(t_param *param)
 {
@@ -26,18 +42,8 @@ void	damage_on_player(t_param *param)
 	current = clock();
 	while ((current - begin) * 1000 / CLOCKS_PER_SEC < 200)
 	{
-		if (param->textures->explosion->frame_act_p == 0)
-		{
-			sprite = param->textures->background->p;
-			put_image(param->mlx, sprite, player->coor);
-			param->textures->explosion->frame_act_p = 1;
-		}
-		else
-		{
-			sprite = param->textures->ships->player[direction]->p;
-			put_image(param->mlx, sprite, player->coor);
-			param->textures->explosion->frame_act_p = 0;
-		}
+		sprite = get_sprite_frame(param, direction);
+		put_image(param->mlx, sprite, player->coor);
 		current = clock();
 	}
 	sprite = param->textures->ships->player[direction]->p;
@@ -50,6 +56,7 @@ void	less_hp(t_param *param, int direction)
 	{
 		param->finish = 1;
 		param->player->hp -= 1;
+		//is_end(param);
 	}
 	else
 	{

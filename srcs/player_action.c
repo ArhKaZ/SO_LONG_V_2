@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 12:43:10 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/27 13:32:05 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/03/01 13:19:06 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,21 +114,21 @@ void	move_bottom(t_param *param)
 
 int	render_next_frame(int keycode, t_param *param)
 {
-	if (keycode == 65307)
+	if (keycode == ESC)
 		close_win(param, param->mlx->mlx, param->mlx->mlx_win);
 	if (param->mlx->menu == false)
 	{
 		if (param->finish != 1)
 		{
-			if (keycode == 97)
+			if (keycode == LEFT)
 				move_left(param);
-			if (keycode == 115)
+			if (keycode == DOWN)
 				move_bottom(param);
-			if (keycode == 100)
+			if (keycode == RIGHT)
 				move_right(param);
-			if (keycode == 119)
+			if (keycode == UP)
 				move_top(param);
-			if (keycode == 32 && param->map->nb_shot == 0)
+			if (keycode == SPACE && param->map->nb_shot == 0)
 				create_new_shot(param);
 		}
 	}

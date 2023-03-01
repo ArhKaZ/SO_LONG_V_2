@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   test_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
+/*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 00:47:17 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/23 14:19:41 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/03/01 14:03:30 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,7 @@ bool	map_is_finishable(t_map *map)
 			if (map_cp[i][j] == 'E' || map_cp[i][j] == 'C')
 			{
 				free_char_map(map_cp);
-				ft_putstr_fd("Error\nLa map n'est pas finissable\n", 2);
+				ft_putstr_fd("Error\nMap is not finishable\n", 2);
 				return (false);
 			}
 			j++;

@@ -5,13 +5,15 @@ SRCS			=	animation.c				\
 					create_visu.c			\
 					create_visu_utils.c		\
 					ennemy.c				\
+					free_error_or_all.c		\
 					free_textures.c			\
-					free_textures_two.c		\
+					free_textures_2.c		\
 					free_utils.c			\
 					game_end.c				\
 					game_end_utils.c		\
 					get_map.c				\
 					get_map_utils.c			\
+					keypress_menu.c			\
 					hud.c					\
 					main_menu_utils.c		\
 					main_menu.c				\

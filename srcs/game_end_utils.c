@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_end_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
+/*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 15:33:49 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/26 23:50:20 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/03/01 13:09:11 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,13 +42,13 @@ void	put_sprite_nb(t_param *param, int nb, t_texture *sprite, t_gps *place)
 	if (nb == 0)
 	{
 		sprite = param->textures->nb->zero;
-		put_image(param->mlx, sprite->p, place);
+		put_image_xy(param->mlx, sprite->p, place);
 	}
 	while (nb > 0)
 	{
 		sprite = choose_sprite_nb(param->textures, nb % 10);
 		place->x -= (sprite->size->x + 4);
-		put_image(param->mlx, sprite->p, place);
+		put_image_xy(param->mlx, sprite->p, place);
 		nb /= 10;
 	}
 	free(place);
@@ -115,7 +115,7 @@ void	put_moves_end(t_param *p, t_gps *place_img, t_gps *img_size, int size)
 void	put_last_image(t_param *param, t_gps *place, t_texture *s, int size)
 {
 	mlx_clear_window(param->mlx->mlx, param->mlx->mlx_win);
-	put_image(param->mlx, s->p, place);
+	put_image_xy(param->mlx, s->p, place);
 	put_moves_end(param, place, s->size, size);
 	put_score_end(param, place, s->size, size);
 }

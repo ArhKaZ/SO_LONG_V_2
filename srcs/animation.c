@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 16:58:46 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/27 13:40:05 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/03/01 13:54:34 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ int	animation(t_param *param)
 {
 	if (param->mlx->menu == false)
 	{
-		if (param->finish != 1)
+		if (param->finish == 0)
 		{
 			if (shoot_exist(param) == 1)
 				animate_shoot(param, param->shots->coor);
@@ -109,7 +109,6 @@ int	animation(t_param *param)
 			usleep(50000);
 		}
 		is_end(param);
-
 	}
 	return (0);
 }

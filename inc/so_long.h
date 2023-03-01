@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
+/*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 11:22:07 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/27 21:52:14 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/03/01 13:45:41 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,12 @@
 # include <unistd.h>
 # include <time.h>
 
+# define UP 119
+# define DOWN 115
+# define ESC 65307
+# define LEFT 97
+# define RIGHT 100
+# define SPACE 32
 typedef struct s_mlx
 {
 	void	*mlx;
@@ -303,6 +309,10 @@ void	del_shot(t_param *param);
 
 void	free_ennemy(t_ennemy *boss);
 
+void	free_error(t_map *map, t_player *player, t_mlx *mlx);
+
+void	free_error_non_finish(t_param *param);
+
 int		is_end(t_param *param);
 
 void	free_black_hole(t_black_hole *bh, void *mlx);
@@ -381,5 +391,5 @@ void	make_explosion(t_param *param, t_gps *new, t_shoot *s, int just_c);
 
 t_shoot	*create_shot(clock_t time, int direction, t_gps *player);
 
-int		choose_in_menu(int keycode, t_param *param);
+int		move_in_menu(int keycode, t_param *param);
 #endif
