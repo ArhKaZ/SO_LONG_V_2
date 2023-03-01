@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 14:37:20 by syluiset          #+#    #+#             */
-/*   Updated: 2023/03/01 14:57:36 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/03/01 18:28:07 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,15 +73,15 @@ void	put_background(t_map *map, t_mlx *mlx, t_sprite_back *back)
 
 	sprite = NULL;
 	height = 0;
-	while (height < map->height * back->back[0]->size->y)
+	while (height < map->height * back[0]->size->y)
 	{
 		width = 0;
-		while (width < map->width * back->back[0]->size->x)
+		while (width < map->width * back[0]->size->x)
 		{
 			if (map->map[height / 64][width / 64] == '0')
 			{
 				place = create_gps(width / 64, height / 64);
-				sprite = back->back[get_random(8)]->p;
+				sprite = back[get_random(8)]->p;
 				put_image(mlx, sprite, place);
 				free(place);
 			}
