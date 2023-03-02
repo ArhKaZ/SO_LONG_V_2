@@ -6,20 +6,14 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 17:37:20 by syluiset          #+#    #+#             */
-/*   Updated: 2023/03/02 13:50:39 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/03/02 13:56:49 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
 
-t_texture	*create_back(t_mlx *mlx)
+void	create_back(t_mlx *mlx, t_texture *back[8])
 {
-	t_texture	*back[8];
-
-	//back = NULL;
-	//back = malloc(sizeof(t_sprite_back));
-	//if (!back)
-		//EXIT
 	back[0] = create_texture("xpm/back/Starfield_01.xpm", mlx);
 	back[1] = create_texture("xpm/back/Starfield_02.xpm", mlx);
 	back[2] = create_texture("xpm/back/Starfield_03.xpm", mlx);
@@ -28,7 +22,6 @@ t_texture	*create_back(t_mlx *mlx)
 	back[5] = create_texture("xpm/back/Starfield_06.xpm", mlx);
 	back[6] = create_texture("xpm/back/Starfield_07.xpm", mlx);
 	back[7] = create_texture("xpm/back/Starfield_08.xpm", mlx);
-	return (back);
 }
 
 t_coins	*create_collectible(t_mlx *mlx)
