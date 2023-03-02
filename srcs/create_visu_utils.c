@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 14:37:20 by syluiset          #+#    #+#             */
-/*   Updated: 2023/03/02 15:14:22 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/03/02 15:16:54 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ void	put_obstacle_in_map(t_map *map, t_mlx *mlx, t_sprite_planet *plnts)
 			if (map->map[height][width] == '1')
 			{
 				place = create_gps(width, height);
-				rand =	0;
-				sprite = plnts->planets[rand]->p;
+				//rand =	0;
+				sprite = plnts->planets[0]->p;
 				put_image(mlx, sprite, place);
 				free(place);
 			}
