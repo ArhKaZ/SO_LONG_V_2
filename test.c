@@ -1,3 +1,4 @@
+#include "inc/so_long.h"
 int	get_random(int nb_max)
 {
 	int	random_number;
