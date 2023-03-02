@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_textures.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 13:39:18 by syluiset          #+#    #+#             */
-/*   Updated: 2023/03/01 14:59:37 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/03/02 13:42:18 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,14 +72,14 @@ void	free_hp(t_hp *hp, void *mlx)
 
 void	free_back(t_sprite_back *b, void *mlx)
 {
-	free_texture(b->back[0], mlx);
-	free_texture(b->back[1], mlx);
-	free_texture(b->back[2], mlx);
-	free_texture(b->back[3], mlx);
-	free_texture(b->back[4], mlx);
-	free_texture(b->back[5], mlx);
-	free_texture(b->back[6], mlx);
-	free_texture(b->back[7], mlx);
+	free_texture(back[0], mlx);
+	free_texture(back[1], mlx);
+	free_texture(back[2], mlx);
+	free_texture(back[3], mlx);
+	free_texture(back[4], mlx);
+	free_texture(back[5], mlx);
+	free_texture(back[6], mlx);
+	free_texture(back[7], mlx);
 	free(b);
 	b = NULL;
 }
