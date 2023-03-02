@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 11:22:07 by syluiset          #+#    #+#             */
-/*   Updated: 2023/03/02 13:32:10 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/03/02 13:51:05 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -352,7 +352,7 @@ t_nb	*create_nb(t_mlx *mlx, int width, int height);
 
 t_black_hole	*create_black_hole_for_end(t_mlx *mlx);
 
-t_sprite_back	*create_back(t_mlx *mlx);
+t_texture	*create_back(t_mlx *mlx);
 
 t_black_hole	*create_black_hole(t_mlx *mlx);
 

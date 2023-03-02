@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_error_or_all.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 13:42:37 by syluiset          #+#    #+#             */
-/*   Updated: 2023/03/01 18:11:43 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/03/02 13:49:51 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	free_all(t_param *param)
 
 void	free_textures(t_all_texture *texts, void *mlx)
 {
-	free_back(texts->background, mlx);
+	free_back(texts->back, mlx);
 	free_coin(texts->coin, mlx);
 	free_planets(texts->planets, mlx);
 	free_texture(texts->wall, mlx);

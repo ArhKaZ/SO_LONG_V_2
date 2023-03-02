@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   texture2.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 17:37:20 by syluiset          #+#    #+#             */
-/*   Updated: 2023/03/01 18:27:29 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/03/02 13:50:39 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@ t_texture	*create_back(t_mlx *mlx)
 {
 	t_texture	*back[8];
 
-	back = NULL;
-	back = malloc(sizeof(t_sprite_back));
-	if (!back)
+	//back = NULL;
+	//back = malloc(sizeof(t_sprite_back));
+	//if (!back)
 		//EXIT
 	back[0] = create_texture("xpm/back/Starfield_01.xpm", mlx);
 	back[1] = create_texture("xpm/back/Starfield_02.xpm", mlx);

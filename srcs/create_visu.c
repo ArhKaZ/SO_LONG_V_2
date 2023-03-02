@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 16:50:44 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/23 12:56:10 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/03/02 13:49:44 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ void	put_ennemy(t_map *map, t_mlx *mlx, t_texture *ennemy)
 
 void	create_visu(t_map *map, t_mlx *mlx, t_gps *p, t_all_texture *all_text)
 {
-	put_background(map, mlx, all_text->background);
+	put_background(map, mlx, all_text->back);
 	put_wall(map, mlx, all_text->wall);
 	put_obstacle_in_map(map, mlx, all_text->planets);
 	put_coins(map, mlx, all_text->coin->coins[0]);
