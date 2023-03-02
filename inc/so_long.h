@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 11:22:07 by syluiset          #+#    #+#             */
-/*   Updated: 2023/03/02 13:51:05 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/03/02 13:52:23 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -228,7 +228,7 @@ void	free_player(t_player *player);
 
 void	free_map(t_map *map);
 
-void	free_back(t_sprite_back *b, void *mlx);
+void	free_back(t_texture *b, void *mlx);
 
 void	free_hp(t_hp *hp, void *mlx);
 
