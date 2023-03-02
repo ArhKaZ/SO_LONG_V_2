@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 13:39:18 by syluiset          #+#    #+#             */
-/*   Updated: 2023/03/02 13:50:12 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/03/02 13:54:48 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,4 @@ void	free_back(t_texture *back[8], void *mlx)
 	free_texture(back[5], mlx);
 	free_texture(back[6], mlx);
 	free_texture(back[7], mlx);
-	free(b);
-	b = NULL;
 }
