@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   create_map_ennemy.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 15:50:27 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/20 15:25:37 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/03/02 15:00:06 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "inc/map.h"
+#include "../inc/map.h"
 
 t_gen_map	*create_gen_map(int collect, int ennemy)
 {

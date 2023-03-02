@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   create_map.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 15:12:39 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/20 15:26:39 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/03/02 15:00:03 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "inc/map.h"
+#include "../inc/map.h"
 
 int	map_random(int nb_max)
 {
