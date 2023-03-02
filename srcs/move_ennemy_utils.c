@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 14:30:42 by syluiset          #+#    #+#             */
-/*   Updated: 2023/03/02 13:55:27 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/03/02 14:37:58 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	move_ennemy_sprite(t_param *param, t_gps *new, int direction)
 	sprite = param->textures->ships->ennemy[direction]->p;
 	move_ennemy_in_tab(param->map, param->boss->coor, new, '0');
 	put_image(param->mlx, sprite, new);
-	sprite = param->textures->back[get_random(8)]->p;
+	sprite = param->textures->back->back[get_random(8)]->p;
 	put_image(param->mlx, sprite, param->boss->coor);
 	param->boss->coor->x = new->x;
 	param->boss->coor->y = new->y;

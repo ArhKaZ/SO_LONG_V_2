@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 11:22:07 by syluiset          #+#    #+#             */
-/*   Updated: 2023/03/02 14:10:09 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/03/02 14:37:41 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,7 @@ typedef struct s_black_hole
 
 typedef struct s_sprite_back
 {
+	t_texture	*back[8];
 }				t_sprite_back;
 
 typedef struct s_ship
@@ -146,7 +147,7 @@ typedef struct s_nb
 typedef struct s_all_texture
 {
 	t_texture			*wall;
-	t_texture			*back[8];
+	t_sprite_back		*back;
 	t_coins				*coin;
 	t_ship				*ships;
 	t_black_hole		*black_hole;
@@ -228,7 +229,7 @@ void	free_player(t_player *player);
 
 void	free_map(t_map *map);
 
-void	free_back(t_texture *b[8], void *mlx);
+void	free_back(t_sprite_back *back, void *mlx);
 
 void	free_hp(t_hp *hp, void *mlx);
 
@@ -352,7 +353,7 @@ t_nb	*create_nb(t_mlx *mlx, int width, int height);
 
 t_black_hole	*create_black_hole_for_end(t_mlx *mlx);
 
-void	create_back(t_mlx *mlx, t_texture *back[8]);
+t_sprite_back	*create_back(t_mlx *mlx);
 
 t_black_hole	*create_black_hole(t_mlx *mlx);
 

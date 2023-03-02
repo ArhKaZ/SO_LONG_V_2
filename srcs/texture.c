@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 15:01:59 by syluiset          #+#    #+#             */
-/*   Updated: 2023/03/02 14:24:59 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/03/02 14:34:32 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ t_all_texture	*create_all_texture(t_mlx *mlx, int width, int height)
 	all_texture = malloc(sizeof(t_all_texture));
 	if (!all_texture)
 		//EXIT
-	create_back(mlx, all_texture->back);
+	all_texture->back = create_back(mlx);
 	all_texture->coin = create_collectible(mlx);
 	all_texture->planets = create_planet_sprite(mlx);
 	all_texture->wall = create_texture("xpm/asteroid.xpm", mlx);

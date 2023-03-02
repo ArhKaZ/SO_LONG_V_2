@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 02:41:36 by syluiset          #+#    #+#             */
-/*   Updated: 2023/03/02 13:42:51 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/03/02 14:38:30 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	put_shot_in_new(t_param *p, t_gps *new)
 {
 	void	*sprite;
 
-	sprite = p->textures->back[get_random(8)]->p;
+	sprite = p->textures->back->back[get_random(8)]->p;
 	p->map->map[p->shots->coor->y][p->shots->coor->x] = '0';
 	put_image(p->mlx, sprite, p->shots->coor);
 	p->map->map[new->y][new->x] = 'S';
@@ -29,7 +29,7 @@ bool	kill_ennemy_and_del_shot(t_param *p, t_gps *new)
 {
 	void	*sprite;
 
-	sprite = p->textures->back[get_random(8)]->p;
+	sprite = p->textures->back->back[get_random(8)]->p;
 	kill_ennemy(p, new);
 	p->map->map[p->shots->coor->y][p->shots->coor->x] = '0';
 	put_image(p->mlx, sprite, p->shots->coor);
@@ -56,7 +56,7 @@ bool	put_shot_in_coor(t_param *p, t_gps *new)
 		put_shot_in_new(p, new);
 	if (value_case == 'E' || value_case == 'C' || value_case == '2')
 	{
-		sprite = p->textures->back[get_random(8)]->p;
+		sprite = p->textures->back->back[get_random(8)]->p;
 		put_image(p->mlx, sprite, p->shots->coor);
 		p->map->map[p->shots->coor->y][p->shots->coor->x] = '0';
 		del_shot(p, p->shots);
