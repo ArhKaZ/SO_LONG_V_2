@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 14:37:20 by syluiset          #+#    #+#             */
-/*   Updated: 2023/03/02 16:16:44 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/03/02 16:17:06 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	put_obstacle_in_map(t_map *map, t_mlx *mlx, t_sprite_planet *plnts)
 {
 	int		height;
 	int		width;
-	void	*sprite;
+	t_texture	*sprite;
 	t_gps	*place;
 	height = 1;
 	while (height < map->height - 1)
