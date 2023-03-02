@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_visu_utils.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 14:37:20 by syluiset          #+#    #+#             */
-/*   Updated: 2023/03/01 18:28:07 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/03/02 13:32:21 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	put_wall(t_map *map, t_mlx *mlx, t_texture *wall)
 	}
 }
 
-void	put_background(t_map *map, t_mlx *mlx, t_sprite_back *back)
+void	put_background(t_map *map, t_mlx *mlx, t_texture *back[8])
 {
 	int		height;
 	int		width;
@@ -81,12 +81,12 @@ void	put_background(t_map *map, t_mlx *mlx, t_sprite_back *back)
 			if (map->map[height / 64][width / 64] == '0')
 			{
 				place = create_gps(width / 64, height / 64);
-				sprite = back[get_random(8)]->p;
+				sprite = back[get_random(1)]->p;
 				put_image(mlx, sprite, place);
 				free(place);
 			}
-			width += back->back[0]->size->x;
+			width += back[0]->size->x;
 		}
-		height += back->back[0]->size->y;
+		height += back[0]->size->y;
 	}
 }
