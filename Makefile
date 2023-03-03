@@ -1,44 +1,44 @@
 #============================= FILES PART =====================================
-SRCS			=	animation.c				\
-					animation_shot.c		\
-					create_and_destroy.c	\
-					create_visu.c			\
-					create_visu_utils.c		\
-					ennemy.c				\
-					free_error_or_all.c		\
-					free_textures.c			\
-					free_textures_2.c		\
-					free_utils.c			\
-					game_end.c				\
-					game_end_utils.c		\
-					get_map.c				\
-					get_map_utils.c			\
-					keypress_menu.c			\
-					hud.c					\
-					main_menu_utils.c		\
-					main_menu.c				\
-					map.c					\
-					map_error.c				\
-					move_ennemy.c			\
-					move_ennemy_utils.c		\
-					player_action.c			\
-					player_action_utils.c	\
-					player_damage.c			\
-					put_image.c				\
-					rand.c					\
-					shoot.c					\
-					shoot_utils.c			\
-					shoot_create_and_moves.c\
-					so_long.c				\
-					test_map.c				\
-					test_map_utils.c		\
-					texture.c				\
-					texture2.c				\
-					texture_explosion.c		\
-					texture_nb.c			\
+SRCS			=	visual/animation.c				\
+					shoot/animation_shot.c		\
+					global/create_and_destroy.c	\
+					visual/create_visu.c			\
+					visual/create_visu_utils.c		\
+					ennemy/ennemy.c			\
+					free/free_error_or_all.c		\
+					free/free_textures.c			\
+					free/free_textures_2.c		\
+					free/free_utils.c			\
+					visual/game_end.c				\
+					visual/game_end_utils.c		\
+					global/get_map.c				\
+					global/get_map_utils.c			\
+					menu/keypress_menu.c			\
+					visual/hud.c					\
+					menu/main_menu_utils.c		\
+					menu/main_menu.c				\
+					global/map.c					\
+					global/map_error.c				\
+					ennemy/move_ennemy.c		\
+					ennemy/move_ennemy_utils.c	\
+					player/player_action.c			\
+					player/player_action_utils.c	\
+					player/player_damage.c			\
+					visual/put_image.c				\
+					global/rand.c					\
+					shoot/shoot.c					\
+					shoot/shoot_utils.c			\
+					shoot/shoot_create_and_moves.c\
+					global/so_long.c				\
+					global/test_map.c				\
+					global/test_map_utils.c		\
+					visual/texture.c				\
+					visual/texture2.c				\
+					visual/texture_explosion.c		\
+					visual/texture_nb.c			\
 
-SRCS_MAP		=	create_map.c	 \
-					create_map_ennemy.c \
+SRCS_MAP		=	map_generator/create_map.c	 \
+					map_generator/create_map_ennemy.c \
 
 SRCS_D			=	srcs/
 
@@ -132,6 +132,14 @@ $(OBJS_MAP)		:	$(OBJS_D)%.o: $(SRCS_D)%.c $(HEAD_D)$(HEAD_MAP) $(LIBFT_A)
 
 $(OBJS_D)		:
 				mkdir -p $(OBJS_D)
+				mkdir -p $(OBJS_D)/ennemy
+				mkdir -p $(OBJS_D)/free
+				mkdir -p $(OBJS_D)/global
+				mkdir -p $(OBJS_D)/map_generator
+				mkdir -p $(OBJS_D)/menu
+				mkdir -p $(OBJS_D)/player
+				mkdir -p $(OBJS_D)/shoot
+				mkdir -p $(OBJS_D)/visual
 
 $(MLX_A)		:	FORCE $(MLX_D)
 				make -j -C $(MLX_D) 2>/dev/null >/dev/null
