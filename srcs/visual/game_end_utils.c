@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 15:33:49 by syluiset          #+#    #+#             */
-/*   Updated: 2023/03/03 20:38:19 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/03/03 20:48:00 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,12 +47,12 @@ void	put_score_end(t_param *p, t_gps *place_img, t_gps *img_size, int size)
 	if (size == 2)
 	{
 		x = place_img->x + ((img_size->x / 100) * 95);
-		y = place_img->y + ((img_size->y / 100) * 37.5);
+		y = place_img->y + ((img_size->y / 100) * 28);
 	}
 	if (size == 3)
 	{
 		x = place_img->x + ((img_size->x / 100) * 95);
-		y = place_img->y + ((img_size->y / 100) * 41);
+		y = place_img->y + ((img_size->y / 100) * 31);
 	}
 	place = create_gps(x, y);
 	put_sprite_nb(p, p->player->score, place);
@@ -97,13 +97,13 @@ void	put_moves_end(t_param *p, t_gps *place_img, t_gps *img_size, int size)
 	x = 0;
 	if (size == 1)
 	{
-		x = place_img->x + ((img_size->x / 100) * 90);
-		y = place_img->y + ((img_size->y / 100) * 65);
+		x = place_img->x + ((img_size->x / 100) * 100);
+		y = place_img->y + ((img_size->y / 100) * 64.5);
 	}
 	if (size == 2)
 	{
 		x = place_img->x + ((img_size->x / 100) * 90);
-		y = place_img->y + ((img_size->y / 100) * 50);
+		y = place_img->y + ((img_size->y / 100) * 48);
 	}
 	if (size == 3)
 	{
