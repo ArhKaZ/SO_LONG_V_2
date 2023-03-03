@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 15:01:59 by syluiset          #+#    #+#             */
-/*   Updated: 2023/03/03 16:31:09 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/03/03 16:52:58 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ t_end	*create_end(t_mlx *mlx)
 		ft_putstr_fd("Error\nEnd struct isn't alloc\n", 2);
 		exit(EXIT_FAILURE);
 	}
-	end->w_little = create_texture("xpm/finish/l_win.xpm", mlx);
+	end->w_little = create_texture("xpm/finish/little_win_bis.xpm", mlx);
 	end->w_med = create_texture("xpm/finish/m_win.xpm", mlx);
 	end->w_big = create_texture("xpm/finish/b_win.xpm", mlx);
 	end->l_little = create_texture("xpm/finish/l_lose.xpm", mlx);
