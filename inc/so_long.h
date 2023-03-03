@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 11:22:07 by syluiset          #+#    #+#             */
-/*   Updated: 2023/03/03 15:58:49 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/03/03 18:39:39 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,16 +131,7 @@ typedef struct s_end
 
 typedef struct s_nb
 {
-	t_texture	*zero;
-	t_texture	*one;
-	t_texture	*two;
-	t_texture	*three;
-	t_texture	*four;
-	t_texture	*five;
-	t_texture	*six;
-	t_texture	*seven;
-	t_texture	*eight;
-	t_texture	*nine;
+	t_texture	*nb[10];
 }				t_nb;
 
 typedef struct s_all_texture
@@ -330,7 +321,7 @@ t_texture	*create_texture(char *path, t_mlx *mlx);
 
 t_explosion	*create_ex_sprite(t_mlx *mlx);
 
-void	ex_for_dir(t_explosion *ex, t_mlx *mlx, int direction);
+void	ex_for_dir(t_param *p, t_explosion *ex, t_mlx *mlx, int direction);
 
 void	free_explosion(t_explosion *ex, void *mlx);
 
@@ -413,4 +404,18 @@ void	*get_sprite_obstacle(t_sprite_planet *texts);
 void	*get_sprite_back(t_sprite_back *texts);
 
 void	put_image_player(t_mlx *mlx, t_texture *sprite, t_gps *coor);
+
+bool	verif_texture(t_all_texture *texts);
+
+void	verif_collectible(t_coins *c);
+
+void	verif_black_hole(t_black_hole *bh);
+
+void	verif_shot(t_shoot_texture *s);
+
+void	verif_planets(t_sprite_planet *pl);
+
+void	verif_end(t_end *end);
+
+void	verif_nb(t_nb *nb);
 #endif

@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 17:10:42 by syluiset          #+#    #+#             */
-/*   Updated: 2023/03/03 15:23:57 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/03/03 18:38:59 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	kill_ennemy(t_param *p, t_gps *new)
 
 	begin = clock();
 	current = clock();
-	ex_for_dir(p->textures->explosion, p->mlx, p->boss->direction);
+	ex_for_dir(p, p->textures->explosion, p->mlx, p->boss->direction);
 	ex = p->textures->explosion;
 	p->player->score += 50;
 	while ((current - begin) * 1000 / CLOCKS_PER_SEC < 100)

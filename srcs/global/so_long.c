@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 11:18:21 by syluiset          #+#    #+#             */
-/*   Updated: 2023/03/01 13:44:38 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/03/03 17:10:32 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,11 @@ t_param	*get_param(char **argv)
 	mlx->menu = true;
 	all_texture = create_all_texture(mlx, map->width, map->height);
 	if (all_texture == NULL)
+	{
+		free_error(map, player, mlx);
 		return (ft_putstr_fd("Error\ncan't load texture\n", 2),
 			exit(EXIT_FAILURE), NULL);
+	}
 	param = create_param(map, mlx, player, all_texture);
 	if (map->nb_ennemy > 0)
 		param->boss = get_ennemy(map);

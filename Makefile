@@ -15,27 +15,30 @@ SRCS			=	visual/animation.c				\
 					global/get_map_utils.c			\
 					menu/keypress_menu.c			\
 					visual/hud.c					\
-					menu/main_menu_utils.c		\
+					menu/main_menu_utils.c			\
 					menu/main_menu.c				\
 					global/map.c					\
 					global/map_error.c				\
-					ennemy/move_ennemy.c		\
-					ennemy/move_ennemy_utils.c	\
+					ennemy/move_ennemy.c			\
+					ennemy/move_ennemy_utils.c		\
 					player/player_action.c			\
 					player/player_action_utils.c	\
 					player/player_damage.c			\
 					visual/put_image.c				\
 					global/rand.c					\
 					shoot/shoot.c					\
-					shoot/shoot_utils.c			\
-					shoot/shoot_create_and_moves.c\
+					shoot/shoot_utils.c				\
+					shoot/shoot_create_and_moves.c	\
 					global/so_long.c				\
 					global/test_map.c				\
-					global/test_map_utils.c		\
+					global/test_map_utils.c			\
 					visual/texture.c				\
 					visual/texture2.c				\
 					visual/texture_explosion.c		\
-					visual/texture_nb.c			\
+					visual/texture_nb.c				\
+					visual/verif_texture.c			\
+					visual/verif_texture2.c			\
+					visual/verif_texture_shoot.c	\
 
 SRCS_MAP		=	map_generator/create_map.c	 \
 					map_generator/create_map_ennemy.c \
