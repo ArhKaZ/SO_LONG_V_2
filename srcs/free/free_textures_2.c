@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 13:48:53 by syluiset          #+#    #+#             */
-/*   Updated: 2023/03/03 15:29:42 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/03/03 19:04:20 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,16 +37,16 @@ void	free_end_and_go(t_end *end, void *mlx)
 
 void	free_nb(t_nb *nb, void *mlx)
 {
-	free_texture(nb->zero, mlx);
-	free_texture(nb->one, mlx);
-	free_texture(nb->two, mlx);
-	free_texture(nb->three, mlx);
-	free_texture(nb->four, mlx);
-	free_texture(nb->five, mlx);
-	free_texture(nb->six, mlx);
-	free_texture(nb->seven, mlx);
-	free_texture(nb->eight, mlx);
-	free_texture(nb->nine, mlx);
+	free_texture(nb->nb[0], mlx);
+	free_texture(nb->nb[1], mlx);
+	free_texture(nb->nb[2], mlx);
+	free_texture(nb->nb[3], mlx);
+	free_texture(nb->nb[4], mlx);
+	free_texture(nb->nb[5], mlx);
+	free_texture(nb->nb[6], mlx);
+	free_texture(nb->nb[7], mlx);
+	free_texture(nb->nb[8], mlx);
+	free_texture(nb->nb[9], mlx);
 	free(nb);
 	nb = NULL;
 }
