@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 15:33:49 by syluiset          #+#    #+#             */
-/*   Updated: 2023/03/03 20:32:41 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/03/03 20:37:20 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ void	put_time_end(t_param *p, t_gps *place_img, t_gps *img_size, int size)
 		y = place_img->y + ((img_size->y / 100) * 75);
 	}
 	place = create_gps(x, y);
-	now = clock();
+	now = clock() * 1000 / CLOCKS_PER_SEC;
 	put_sprite_nb(p, now - (p->time), place);
 }
 
