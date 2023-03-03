@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 11:22:07 by syluiset          #+#    #+#             */
-/*   Updated: 2023/03/03 19:08:07 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/03/03 20:19:23 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -183,6 +183,7 @@ typedef struct s_param
 	t_ennemy		*boss;
 	t_shoot			*shots;
 	int				finish;
+	clock_t			*time;
 }				t_param;
 
 bool	check_extension(char *path);
