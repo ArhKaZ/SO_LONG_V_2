@@ -3,50 +3,50 @@
 /*                                                        :::      ::::::::   */
 /*   game_end_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 15:33:49 by syluiset          #+#    #+#             */
-/*   Updated: 2023/03/01 13:09:11 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/03/03 19:06:45 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
 
-t_texture	*choose_sprite_nb(t_all_texture *text, int nb)
-{
-	if (nb == 0)
-		return (text->nb->zero);
-	if (nb == 1)
-		return (text->nb->one);
-	if (nb == 2)
-		return (text->nb->two);
-	if (nb == 3)
-		return (text->nb->three);
-	if (nb == 4)
-		return (text->nb->four);
-	if (nb == 5)
-		return (text->nb->five);
-	if (nb == 6)
-		return (text->nb->six);
-	if (nb == 7)
-		return (text->nb->seven);
-	if (nb == 8)
-		return (text->nb->eight);
-	if (nb == 9)
-		return (text->nb->nine);
-	return (NULL);
-}
+// t_texture	*choose_sprite_nb(t_all_texture *text, int nb)
+// {
+// 	if (nb == 0)
+// 		return (text->nb->zero);
+// 	if (nb == 1)
+// 		return (text->nb->one);
+// 	if (nb == 2)
+// 		return (text->nb->two);
+// 	if (nb == 3)
+// 		return (text->nb->three);
+// 	if (nb == 4)
+// 		return (text->nb->four);
+// 	if (nb == 5)
+// 		return (text->nb->five);
+// 	if (nb == 6)
+// 		return (text->nb->six);
+// 	if (nb == 7)
+// 		return (text->nb->seven);
+// 	if (nb == 8)
+// 		return (text->nb->eight);
+// 	if (nb == 9)
+// 		return (text->nb->nine);
+// 	return (NULL);
+// }
 
 void	put_sprite_nb(t_param *param, int nb, t_texture *sprite, t_gps *place)
 {
 	if (nb == 0)
 	{
-		sprite = param->textures->nb->zero;
+		sprite = param->textures->nb->nb[0];
 		put_image_xy(param->mlx, sprite->p, place);
 	}
 	while (nb > 0)
 	{
-		sprite = choose_sprite_nb(param->textures, nb % 10);
+		sprite = param->textures->nb->nb[nb % 10];
 		place->x -= (sprite->size->x + 4);
 		put_image_xy(param->mlx, sprite->p, place);
 		nb /= 10;
