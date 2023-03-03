@@ -12,7 +12,7 @@
 
 #include	"mlx_int.h"
 
-#include <stdio.h>
+
 char	*mlx_get_data_addr(t_img *img,int *bits_per_pixel,
 			   int *size_line,int *endian)
 {
