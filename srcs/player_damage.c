@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 15:04:18 by syluiset          #+#    #+#             */
-/*   Updated: 2023/03/02 14:38:17 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/03/03 15:23:40 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ t_texture	*get_sprite_frame(t_param *param, int direction)
 
 	if (param->textures->explosion->frame_act_p == 0)
 	{
-		sprite = param->textures->back->back[get_random(8)]->p;
+		sprite = param->textures->back->back[get_random(2)]->p;
 		param->textures->explosion->frame_act_p = 1;
 	}
 	else

@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 13:39:18 by syluiset          #+#    #+#             */
-/*   Updated: 2023/03/02 14:37:24 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/03/03 15:23:23 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,10 +74,10 @@ void	free_back(t_sprite_back *back, void *mlx)
 {
 	free_texture(back->back[0], mlx);
 	free_texture(back->back[1], mlx);
-	free_texture(back->back[2], mlx);
-	free_texture(back->back[3], mlx);
-	free_texture(back->back[4], mlx);
-	free_texture(back->back[5], mlx);
-	free_texture(back->back[6], mlx);
-	free_texture(back->back[7], mlx);
+	// free_texture(back->back[2], mlx);
+	// free_texture(back->back[3], mlx);
+	// free_texture(back->back[4], mlx);
+	// free_texture(back->back[5], mlx);
+	// free_texture(back->back[6], mlx);
+	// free_texture(back->back[7], mlx);
 }

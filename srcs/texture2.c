@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 17:37:20 by syluiset          #+#    #+#             */
-/*   Updated: 2023/03/03 14:49:18 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/03/03 15:24:02 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,12 @@ t_sprite_back	*create_back(t_mlx *mlx)
 	}
 	back->back[0] = create_texture("xpm/back/Starfield_01.xpm", mlx);
 	back->back[1] = create_texture("xpm/back/Starfield_02.xpm", mlx);
-	back->back[2] = create_texture("xpm/back/Starfield_03.xpm", mlx);
-	back->back[3] = create_texture("xpm/back/Starfield_04.xpm", mlx);
-	back->back[4] = create_texture("xpm/back/Starfield_05.xpm", mlx);
-	back->back[5] = create_texture("xpm/back/Starfield_06.xpm", mlx);
-	back->back[6] = create_texture("xpm/back/Starfield_07.xpm", mlx);
-	back->back[7] = create_texture("xpm/back/Starfield_08.xpm", mlx);
+	// back->back[2] = create_texture("xpm/back/Starfield_03.xpm", mlx);
+	// back->back[3] = create_texture("xpm/back/Starfield_04.xpm", mlx);
+	// back->back[4] = create_texture("xpm/back/Starfield_05.xpm", mlx);
+	// back->back[5] = create_texture("xpm/back/Starfield_06.xpm", mlx);
+	// back->back[6] = create_texture("xpm/back/Starfield_07.xpm", mlx);
+	// back->back[7] = create_texture("xpm/back/Starfield_08.xpm", mlx);
 	return (back);
 }
 
