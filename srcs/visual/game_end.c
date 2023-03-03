@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 13:15:25 by syluiset          #+#    #+#             */
-/*   Updated: 2023/03/03 16:57:20 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/03/03 16:58:19 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ void	put_last_image_little(t_param *param, bool win)
 	}
 	place = create_gps((param->map->width * 64 - sprite->size->x) / 2,
 				(param->map->height * 64 - sprite->size->y) / 2);
+	ft_printf("%d/%d", place->x, place->y);
 	put_last_image(param, place, sprite, 1);
 	free(place);
 }
