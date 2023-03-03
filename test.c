@@ -19,8 +19,18 @@ int	get_random(int nb_max)
 	}
 	return (random_number);
 }
+
+bool	test(int i)
+{
+	if (i == 4)
+		return (true);
+	return (false);
+}
+
 #include <stdio.h>
 int main()
 {
-	printf("%d/%d/%d/%d/%d", get_random(4), get_random(4), get_random(4), get_random(4), get_random(4));
+	// printf("%d/%d/%d/%d/%d", get_random(4), get_random(4), get_random(4), get_random(4), get_random(4));
+	int i = 4;
+	printf("%d", !test(i));
 }
