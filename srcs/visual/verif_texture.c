@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 18:02:53 by syluiset          #+#    #+#             */
-/*   Updated: 2023/03/03 18:34:12 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/03/03 19:10:50 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,9 @@ void	verif_end(t_end *end)
 
 void	verif_ship(t_ship *ship)
 {
-	if (!ship->ennemy[0], !ship->ennemy[1], !ship->ennemy[2], !ship->ennemy[3],
-		!ship->player[0], !ship->player[1], !ship->player[2], !ship->player[3])
+	if (!ship->ennemy[0] || !ship->ennemy[1] || !ship->ennemy[2]
+		|| ship->ennemy[3] || !ship->player[0] || !ship->player[1]
+		|| !ship->player[2] ||  !ship->player[3])
 	{
 		if (ship->ennemy[0])
 			free(ship->ennemy[0]);
