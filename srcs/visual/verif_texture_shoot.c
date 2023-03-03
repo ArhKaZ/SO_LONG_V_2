@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 17:50:54 by syluiset          #+#    #+#             */
-/*   Updated: 2023/03/03 19:56:43 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/03/03 20:03:42 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,11 @@ void	free_shot_texture_spe_case(t_texture *s[4])
 		i++;
 	}
 }
+
 void	verif_shot(t_shoot_texture *s)
 {
-	if (verif_s(s->s_left) == false || verif_s(s->s_top) == false
-		|| verif_s(s->s_right) || verif_s(s->s_bot) == false)
+	if (!verif_s(s->s_left) || !verif_s(s->s_top) || !verif_s(s->s_right)
+		|| !verif_s(s->s_bot))
 	{
 		free_shot_texture_spe_case(s->s_left);
 		free_shot_texture_spe_case(s->s_top);
