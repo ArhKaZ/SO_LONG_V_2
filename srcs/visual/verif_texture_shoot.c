@@ -6,13 +6,13 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 17:50:54 by syluiset          #+#    #+#             */
-/*   Updated: 2023/03/03 19:47:44 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/03/03 19:56:43 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/so_long.h"
 
-bool	verif_s_left(t_texture *s[4])
+bool	verif_s(t_texture *s[4])
 {
 	int i;
 
@@ -37,90 +37,26 @@ bool	verif_s_left(t_texture *s[4])
 	return (true);
 }
 
-bool	verif_s_top(t_texture *s[4])
+void	free_shot_texture_spe_case(t_texture *s[4])
 {
 	int i;
 
 	i = 0;
 	while (i < 4)
 	{
-		if (!s[i])
-			break;
+		free(s[i]);
 		i++;
 	}
-	if (i != 4)
-	{
-		i = 0;
-		while (i < 4)
-		{
-			if (s[i])
-				free(s[i]);
-			i++;
-		}
-		return (false);
-	}
-	return (true);
 }
-
-bool	verif_s_right(t_texture *s[4])
-{
-	int i;
-
-	i = 0;
-	while (i <= 4)
-	{
-		if (!s[i])
-			break;
-		i++;
-	}
-	if (i != 4)
-	{
-		i = 0;
-		while (i < 4)
-		{
-			if (s[i])
-				free(s[i]);
-			i++;
-		}
-		return (false);
-	}
-	return (true);
-}
-
-bool	verif_s_bot(t_texture *s[4])
-{
-	int i;
-
-	i = 0;
-	while (i < 4)
-	{
-		if (!s[i])
-			break;
-		i++;
-	}
-	if (i != 4)
-	{
-		i = 0;
-		while (i < 4)
-		{
-			if (s[i])
-				free(s[i]);
-			i++;
-		}
-		return (false);
-	}
-	return (true);
-}
-
 void	verif_shot(t_shoot_texture *s)
 {
-	if (verif_s_left(s->s_left) == false || verif_s_top(s->s_top) == false
-		|| verif_s_right(s->s_right) || verif_s_right(s->s_bot) == false)
+	if (verif_s(s->s_left) == false || verif_s(s->s_top) == false
+		|| verif_s(s->s_right) || verif_s(s->s_bot) == false)
 	{
-		verif_s_left(s->s_left);
-		verif_s_top(s->s_top);
-		verif_s_right(s->s_right);
-		verif_s_bot(s->s_bot);
+		free_shot_texture_spe_case(s->s_left);
+		free_shot_texture_spe_case(s->s_top);
+		free_shot_texture_spe_case(s->s_right);
+		free_shot_texture_spe_case(s->s_bot);
 		free(s);
 		s = NULL;
 	}
