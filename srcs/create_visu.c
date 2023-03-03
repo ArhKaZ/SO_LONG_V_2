@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 16:50:44 by syluiset          #+#    #+#             */
-/*   Updated: 2023/03/03 16:12:50 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/03/03 16:32:08 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	put_player(t_map *map, t_mlx *mlx, t_gps *p, t_texture *player)
 			{
 				p->y = height;
 				p->x = width;
-				put_image_player(mlx, player, p);
+				put_image(mlx, player->p, p);
 				return ;
 			}
 			width++;
