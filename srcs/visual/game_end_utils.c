@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 15:33:49 by syluiset          #+#    #+#             */
-/*   Updated: 2023/03/03 20:29:26 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/03/03 20:32:41 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,18 @@
 
 void	put_sprite_nb(t_param *param, int nb, t_gps *place)
 {
-	void	*sprite
+	t_texture	*sprite;
+
 	if (nb == 0)
 	{
-		sprite = param->textures->nb->nb[0]->;
-		put_image_xy(param->mlx, sprite, place);
+		sprite = param->textures->nb->nb[0];
+		put_image_xy(param->mlx, sprite->p, place);
 	}
 	while (nb > 0)
 	{
-		sprite = param->textures->nb->nb[nb % 10]->p;
+		sprite = param->textures->nb->nb[nb % 10];
 		place->x -= (sprite->size->x + 4);
-		put_image_xy(param->mlx, sprite, place);
+		put_image_xy(param->mlx, sprite->p, place);
 		nb /= 10;
 	}
 	free(place);
