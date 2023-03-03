@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 15:01:59 by syluiset          #+#    #+#             */
-/*   Updated: 2023/03/03 14:47:26 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/03/03 15:54:28 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,10 @@ t_ship	*create_ships_sprite(t_mlx *mlx)
 		ft_putstr_fd("Error\nShips struct isn't alloc", 2);
 		exit(EXIT_FAILURE);
 	}
-	ships->player[0] = create_texture("xpm/ship/ship_left.xpm", mlx);
-	ships->player[1] = create_texture("xpm/ship/ship_top.xpm", mlx);
-	ships->player[2] = create_texture("xpm/ship/ship_right.xpm", mlx);
-	ships->player[3] = create_texture("xpm/ship/ship_bot.xpm", mlx);
+	ships->player[0] = create_texture("xpm/ship/38x48_left.xpm", mlx);
+	ships->player[1] = create_texture("xpm/ship/48x38_top.xpm", mlx);
+	ships->player[2] = create_texture("xpm/ship/38x48_right.xpm", mlx);
+	ships->player[3] = create_texture("xpm/ship/48x38_bot.xpm", mlx);
 	ships->ennemy[0] = create_texture("xpm/boss/boss_left.xpm", mlx);
 	ships->ennemy[1] = create_texture("xpm/boss/boss_top.xpm", mlx);
 	ships->ennemy[2] = create_texture("xpm/boss/boss_right.xpm", mlx);

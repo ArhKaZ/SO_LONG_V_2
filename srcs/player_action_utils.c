@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 14:25:45 by syluiset          #+#    #+#             */
-/*   Updated: 2023/03/03 15:23:36 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/03/03 15:59:17 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,20 +42,20 @@ void	not_move_player_sprite(t_param *param, int direction)
 
 void	move_player_sprite(t_param *param, t_gps *new, int direction)
 {
-	void	*sprite;
+	t_texture	*sprite;
 
 	sprite = NULL;
 	param->player->direction = direction;
 	if (direction == 0)
-		sprite = param->textures->ships->player[0]->p;
+		sprite = param->textures->ships->player[0];
 	if (direction == 1)
-		sprite = param->textures->ships->player[1]->p;
+		sprite = param->textures->ships->player[1];
 	if (direction == 2)
-		sprite = param->textures->ships->player[2]->p;
+		sprite = param->textures->ships->player[2];
 	if (direction == 3)
-		sprite = param->textures->ships->player[3]->p;
+		sprite = param->textures->ships->player[3];
 	move_player(param->map, param->player, new);
-	put_image(param->mlx, sprite, new);
+	put_image_player(param->mlx, sprite, new);
 	sprite = param->textures->back->back[get_random(2)]->p;
 	put_image(param->mlx, sprite, param->player->coor);
 	param->player->coor->x = new->x;

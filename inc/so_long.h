@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 11:22:07 by syluiset          #+#    #+#             */
-/*   Updated: 2023/03/03 15:29:15 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/03/03 15:58:49 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -411,4 +411,6 @@ void	change_to_x(t_map *map, char **map_cp, int x, int y);
 void	*get_sprite_obstacle(t_sprite_planet *texts);
 
 void	*get_sprite_back(t_sprite_back *texts);
+
+void	put_image_player(t_mlx *mlx, t_texture *sprite, t_gps *coor);
 #endif
