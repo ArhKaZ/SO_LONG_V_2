@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 17:50:54 by syluiset          #+#    #+#             */
-/*   Updated: 2023/03/03 18:01:17 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/03/03 19:47:44 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ bool	verif_s_left(t_texture *s[4])
 			break;
 		i++;
 	}
-	if (i != 5)
+	if (i != 4)
 	{
 		i = 0;
 		while (i < 4)
