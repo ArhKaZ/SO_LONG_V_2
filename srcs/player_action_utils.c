@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 14:25:45 by syluiset          #+#    #+#             */
-/*   Updated: 2023/03/03 16:14:39 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/03/03 16:27:57 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,8 @@ void	move_player_sprite(t_param *param, t_gps *new, int direction)
 		sprite = param->textures->ships->player[3];
 	move_player(param->map, param->player, new);
 	put_image_player(param->mlx, sprite, new);
-	sprite = param->textures->back->back[get_random(2)]->p;
-	put_image(param->mlx, sprite, param->player->coor);
+	sprite = param->textures->back->back[get_random(2)];
+	put_image(param->mlx, sprite->p, param->player->coor);
 	param->player->coor->x = new->x;
 	param->player->coor->y = new->y;
 	sprite = NULL;
