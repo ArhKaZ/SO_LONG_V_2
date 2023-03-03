@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 11:22:07 by syluiset          #+#    #+#             */
-/*   Updated: 2023/03/03 15:22:47 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/03/03 15:25:17 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -343,7 +343,7 @@ void	move_ennemy_sprite(t_param *param, t_gps *new, int direction);
 
 void	put_wall(t_map *map, t_mlx *mlx, t_texture *wall);
 
-void	put_background(t_map *map, t_mlx *mlx, t_texture *8]);
+void	put_background(t_map *map, t_mlx *mlx, t_texture *back[2]);
 
 void	put_obstacle_in_map(t_map *map, t_mlx *mlx, t_sprite_planet *texts);
 
