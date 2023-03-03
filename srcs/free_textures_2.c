@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_textures_2.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 13:48:53 by syluiset          #+#    #+#             */
-/*   Updated: 2023/03/01 15:02:12 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/03/03 15:29:42 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,10 +56,6 @@ void	free_explosion(t_explosion *ex, void *mlx)
 	free_texture(ex->ennemy_ex[0], mlx);
 	free_texture(ex->ennemy_ex[1], mlx);
 	free_texture(ex->ennemy_ex[2], mlx);
-	free_texture(ex->player_ex[0], mlx);
-	free_texture(ex->player_ex[1], mlx);
-	free_texture(ex->player_ex[2], mlx);
-	free_texture(ex->player_ex[3], mlx);
 	free(ex);
 	ex = NULL;
 }

@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 14:52:38 by syluiset          #+#    #+#             */
-/*   Updated: 2023/03/03 15:08:06 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/03/03 15:29:30 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,6 @@ t_explosion	*create_ex_sprite(t_mlx *mlx)
 	ex->ennemy_ex[0] = create_texture("xpm/expl/e_top_ex_1.xpm", mlx);
 	ex->ennemy_ex[1] = create_texture("xpm/expl/e_top_ex_2.xpm", mlx);
 	ex->ennemy_ex[2] = create_texture("xpm/expl/e_top_ex_3.xpm", mlx);
-	ex->player_ex[0] = create_texture("xpm/expl/ship_ex_left.xpm", mlx);
-	ex->player_ex[1] = create_texture("xpm/expl/ship_ex_top.xpm", mlx);
-	ex->player_ex[2] = create_texture("xpm/expl/ship_ex_right.xpm", mlx);
-	ex->player_ex[3] = create_texture("xpm/expl/ship_ex_bot.xpm", mlx);
 	ex->frame_act_e = 0;
 	ex->frame_act_p = 0;
 	return (ex);

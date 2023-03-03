@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 11:22:07 by syluiset          #+#    #+#             */
-/*   Updated: 2023/03/03 15:25:17 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/03/03 15:29:15 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,6 @@ typedef struct s_ship
 typedef	struct s_explosion
 {
 	t_texture	*ennemy_ex[3];
-	t_texture	*player_ex[4];
 	int			frame_act_e;
 	int			frame_act_p;
 }					t_explosion;
