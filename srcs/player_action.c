@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player_action.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 12:43:10 by syluiset          #+#    #+#             */
-/*   Updated: 2023/03/01 13:19:06 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/03/03 15:33:10 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,7 @@ int	render_next_frame(int keycode, t_param *param)
 		close_win(param, param->mlx->mlx, param->mlx->mlx_win);
 	if (param->mlx->menu == false)
 	{
-		if (param->finish != 1)
+		if (param->finish == 0)
 		{
 			if (keycode == LEFT)
 				move_left(param);
