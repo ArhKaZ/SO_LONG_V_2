@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 15:01:59 by syluiset          #+#    #+#             */
-/*   Updated: 2023/03/02 16:27:17 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/03/03 14:47:26 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,10 @@ t_ship	*create_ships_sprite(t_mlx *mlx)
 	ships = NULL;
 	ships = malloc(sizeof(t_ship));
 	if (!ships)
-		//EXIT
+	{
+		ft_putstr_fd("Error\nShips struct isn't alloc", 2);
+		exit(EXIT_FAILURE);
+	}
 	ships->player[0] = create_texture("xpm/ship/ship_left.xpm", mlx);
 	ships->player[1] = create_texture("xpm/ship/ship_top.xpm", mlx);
 	ships->player[2] = create_texture("xpm/ship/ship_right.xpm", mlx);
@@ -50,12 +53,20 @@ t_sprite_planet	*create_planet_sprite(t_mlx *mlx)
 	planets = NULL;
 	planets = malloc(sizeof(t_sprite_planet));
 	if (!planets)
-		//EXIT
+	{
+		ft_putstr_fd("Error\nPlanets struct isn't alloc\n", 2);
+		exit(EXIT_FAILURE);
+	}
 	planets->planets[0] = create_texture("xpm/planet/planet2.xpm", mlx);
 	planets->planets[1] = create_texture("xpm/planet/planet2.xpm", mlx);
 	planets->planets[2] = create_texture("xpm/planet/planet3.xpm", mlx);
 	planets->planets[3] = create_texture("xpm/planet/planet4.xpm", mlx);
 	planets->planet_exp = create_texture("xpm/planet/Planet_explode.xpm", mlx);
+	if (!planets->planets[0] || !planets->planets[1] || !planets->planets[2] || !planets->planets[3] || !planets->planet_exp)
+	{
+		ft_putstr_fd("Error\nPlanets texture have a probleme\n", 2);
+		exit(EXIT_FAILURE);
+	}
 	return (planets);
 }
 
@@ -66,7 +77,10 @@ t_end	*create_end(t_mlx *mlx)
 	end = NULL;
 	end = malloc(sizeof(t_end));
 	if (!end)
-		//EXIT
+	{
+		ft_putstr_fd("Error\nEnd struct isn't alloc\n", 2);
+		exit(EXIT_FAILURE);
+	}
 	end->w_little = create_texture("xpm/finish/l_win.xpm", mlx);
 	end->w_med = create_texture("xpm/finish/m_win.xpm", mlx);
 	end->w_big = create_texture("xpm/finish/b_win.xpm", mlx);
@@ -83,10 +97,14 @@ t_all_texture	*create_all_texture(t_mlx *mlx, int width, int height)
 
 	all_texture = NULL;
 	all_texture = malloc(sizeof(t_all_texture));
-	//if (!all_texture)
-		//EXIT
+	if (!all_texture)
+	{
+		ft_putstr_fd("Error\nTextures struct isn't alloc\n", 2);
+		exit(EXIT_FAILURE);
+	}
 	all_texture->back = create_back(mlx);
 	all_texture->coin = create_collectible(mlx);
+	all_texture->coin->frame_act = 0;
 	all_texture->planets = create_planet_sprite(mlx);
 	all_texture->wall = create_texture("xpm/asteroid.xpm", mlx);
 	all_texture->black_hole_close = create_black_hole(mlx);

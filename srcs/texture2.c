@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 17:37:20 by syluiset          #+#    #+#             */
-/*   Updated: 2023/03/02 14:35:56 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/03/03 14:49:18 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,11 @@ t_sprite_back	*create_back(t_mlx *mlx)
 	t_sprite_back	*back;
 
 	back = malloc(sizeof(t_sprite_back));
-
+	if (!back)
+	{
+		ft_putstr_fd("Error\nBack struct isn't alloc", 2);
+		exit(EXIT_FAILURE);
+	}
 	back->back[0] = create_texture("xpm/back/Starfield_01.xpm", mlx);
 	back->back[1] = create_texture("xpm/back/Starfield_02.xpm", mlx);
 	back->back[2] = create_texture("xpm/back/Starfield_03.xpm", mlx);
@@ -33,10 +37,12 @@ t_coins	*create_collectible(t_mlx *mlx)
 {
 	t_coins	*coins;
 
-	coins = NULL;
 	coins = malloc(sizeof(t_coins));
 	if (!coins)
-		//EXIT
+	{
+		ft_putstr_fd("Error\nCoin struct isn't alloc", 2);
+		exit(EXIT_FAILURE);
+	}
 	coins->coins[0] = create_texture("xpm/coins/coins1.xpm", mlx);
 	coins->coins[1] = create_texture("xpm/coins/coins2.xpm", mlx);
 	coins->coins[2] = create_texture("xpm/coins/coins3.xpm", mlx);
@@ -52,7 +58,6 @@ t_coins	*create_collectible(t_mlx *mlx)
 	coins->coins[12] = create_texture("xpm/coins/coins13.xpm", mlx);
 	coins->coins[13] = create_texture("xpm/coins/coins14.xpm", mlx);
 	coins->coins[14] = create_texture("xpm/coins/coins15.xpm", mlx);
-	coins->frame_act = 0;
 	return (coins);
 }
 
@@ -60,10 +65,12 @@ t_black_hole	*create_black_hole(t_mlx *mlx)
 {
 	t_black_hole	*bh;
 
-	bh = NULL;
 	bh = malloc(sizeof(t_black_hole));
 	if (!bh)
-		//EXIT
+	{
+		ft_putstr_fd("Error\nBlack Hole struct isn't alloc", 2);
+		exit(EXIT_FAILURE);
+	}
 	bh->bh[0] = create_texture("xpm/black_hole/black_hole_close1.xpm", mlx);
 	bh->bh[1] = create_texture("xpm/black_hole/black_hole_close2.xpm", mlx);
 	bh->bh[2] = create_texture("xpm/black_hole/black_hole_close3.xpm", mlx);
@@ -84,7 +91,10 @@ t_black_hole	*create_black_hole_for_end(t_mlx *mlx)
 	bh = NULL;
 	bh = malloc(sizeof(t_black_hole));
 	if (!bh)
-		//EXIT
+	{
+		ft_putstr_fd("Error\nBlack Hole Open struct isn't alloc", 2);
+		exit(EXIT_FAILURE);
+	}
 	bh->bh[0] = create_texture("xpm/black_hole/black_hole1.xpm", mlx);
 	bh->bh[1] = create_texture("xpm/black_hole/black_hole2.xpm", mlx);
 	bh->bh[2] = create_texture("xpm/black_hole/black_hole3.xpm", mlx);
@@ -102,10 +112,12 @@ t_shoot_texture	*create_shoot_sprite(t_mlx *mlx)
 {
 	t_shoot_texture	*s;
 
-	s = NULL;
 	s = malloc(sizeof(t_shoot_texture));
 	if (!s)
-		//EXIT
+	{
+		ft_putstr_fd("Error\nShoot struct isn't alloc", 2);
+		exit(EXIT_FAILURE);
+	}
 	s->s_left[0] = create_texture("xpm/shoot/pulse1_left.xpm", mlx);
 	s->s_top[0] = create_texture("xpm/shoot/pulse1_top.xpm", mlx);
 	s->s_right[0] = create_texture("xpm/shoot/pulse1_right.xpm", mlx);

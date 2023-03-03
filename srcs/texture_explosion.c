@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 14:52:38 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/27 00:02:58 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/03/03 15:08:06 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,11 @@ t_explosion	*create_ex_sprite(t_mlx *mlx)
 
 	ex = NULL;
 	ex = malloc(sizeof(t_explosion));
+	if (!ex)
+	{
+		ft_putstr_fd("Error\nExplosion struct isn't alloc", 2);
+		exit(EXIT_FAILURE);
+	}
 	ex->ennemy_ex[0] = create_texture("xpm/expl/e_top_ex_1.xpm", mlx);
 	ex->ennemy_ex[1] = create_texture("xpm/expl/e_top_ex_2.xpm", mlx);
 	ex->ennemy_ex[2] = create_texture("xpm/expl/e_top_ex_3.xpm", mlx);
