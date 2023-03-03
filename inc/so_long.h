@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 11:22:07 by syluiset          #+#    #+#             */
-/*   Updated: 2023/03/03 18:39:39 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/03/03 19:08:07 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -418,4 +418,6 @@ void	verif_planets(t_sprite_planet *pl);
 void	verif_end(t_end *end);
 
 void	verif_nb(t_nb *nb);
+
+void	verif_explosion(t_explosion *ex);
 #endif
