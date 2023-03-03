@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 18:02:53 by syluiset          #+#    #+#             */
-/*   Updated: 2023/03/03 19:10:50 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/03/03 19:15:36 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,7 @@ void	free_textures_error(t_all_texture *texts)
 		free(texts->explosion);
 }
 
-bool	verif_textures(t_all_texture *texts)
+bool	verif_texture(t_all_texture *texts)
 {
 	if (texts->back == NULL)
 		return (false);
