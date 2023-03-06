@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_map_ennemy.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
+/*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 15:50:27 by syluiset          #+#    #+#             */
-/*   Updated: 2023/03/02 15:00:06 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/03/06 15:36:37 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ t_gen_map	*create_gen_map(int collect, int ennemy)
 
 void	line_of_wall(t_gps *coor)
 {
-	int x;
+	int	x;
 
 	x = 0;
 	while (x < coor->x + 2)
@@ -91,8 +91,8 @@ void	put_component_with_d(t_gen_map *map, t_gps *coor, int rand)
 
 void	create_map_with_d(t_gps *coor, int density, int collect, int ennemy)
 {
-	int y;
-	int x;
+	int			y;
+	int			x;
 	t_gen_map	*map;
 
 	y = 0;
@@ -102,26 +102,11 @@ void	create_map_with_d(t_gps *coor, int density, int collect, int ennemy)
 	while (y < coor->y + 1)
 	{
 		x = 0;
-		if (y == 0)
-			line_of_wall(coor);
-		if (y == coor->y)
-		{
-			line_of_wall(coor);
+		if (on_y_action(y, coor) == true)
 			return ;
-		}
 		while (x <= coor->x + 1)
 		{
-			if (x == 0)
-				ft_printf("1");
-			else if (x == coor->x + 1)
-				ft_printf("1");
-			else
-			{
-				if (map_random(coor->x) * 2 < density)
-					ft_printf("1");
-				else
-					put_component_with_d(map, coor, map_random(7));
-			}
+			on_x_action_e(x, coor, density, map);
 			x++;
 		}
 		ft_printf("\n");

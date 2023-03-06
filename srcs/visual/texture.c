@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   texture.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
+/*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 15:01:59 by syluiset          #+#    #+#             */
-/*   Updated: 2023/03/03 18:57:25 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/03/06 13:27:00 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ t_end	*create_end(t_mlx *mlx)
 	end = malloc(sizeof(t_end));
 	if (!end)
 		return (NULL);
-	end->w_little = create_texture("xpm/finish/little_win_bis.xpm", mlx);
+	end->w_little = create_texture("xpm/finish/l_win.xpm", mlx);
 	end->w_med = create_texture("xpm/finish/m_win.xpm", mlx);
 	end->w_big = create_texture("xpm/finish/b_win.xpm", mlx);
 	end->l_little = create_texture("xpm/finish/l_lose.xpm", mlx);

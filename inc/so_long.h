@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
+/*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 11:22:07 by syluiset          #+#    #+#             */
-/*   Updated: 2023/03/03 20:33:11 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/03/06 14:52:16 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 # define LEFT 97
 # define RIGHT 100
 # define SPACE 32
+
 typedef struct s_mlx
 {
 	void	*mlx;
@@ -198,7 +199,7 @@ t_player	*create_empty_player(void);
 
 t_mlx	*create_empty_mlx(void);
 
-t_param		*create_param(t_map *map, t_mlx *mlx, t_player *player, t_all_texture *all_texture);
+t_param		*create_param(void);
 
 void	try_go_wall(char **map_cp, t_gps *coor, t_map *map, int direction);
 
@@ -208,7 +209,7 @@ bool	get_map(char *path, t_map *map);
 
 bool	checking_map(t_map *map);
 
-void	create_visu(t_map *map, t_mlx *mlx, t_gps *player, t_all_texture *all_texture);
+bool	create_visu(t_map *map, t_mlx *mlx, t_gps *player, t_all_texture *all_texture);
 
 int		render_next_frame(int keycode, t_param *param);
 
@@ -244,7 +245,7 @@ void	free_char_map(char **map);
 
 int		close_win(t_param *param, void *mlx, void *mlx_win);
 
-void	put_coins(t_map *map, t_mlx *mlx, t_texture *coin);
+bool	put_coins(t_map *map, t_mlx *mlx, t_texture *coin);
 
 void	move_left(t_param *param);
 
@@ -310,7 +311,7 @@ void	del_shot(t_param *param, t_shoot *shot);
 
 void	free_ennemy(t_ennemy *boss);
 
-void	free_error(t_map *map, t_player *player, t_mlx *mlx);
+void	free_error(t_param *param);
 
 void	free_error_non_finish(t_param *param);
 
@@ -332,11 +333,13 @@ void	move_ennemy_to_coin(t_param *param, t_gps *new, int direction);
 
 void	move_ennemy_sprite(t_param *param, t_gps *new, int direction);
 
-void	put_wall(t_map *map, t_mlx *mlx, t_texture *wall);
+bool	put_wall_col(t_map *map, t_mlx *mlx, t_texture *wall);
 
-void	put_background(t_map *map, t_mlx *mlx, t_texture *back[2]);
+bool	put_wall_line(t_map *map, t_mlx *mlx, t_texture *wall);
 
-void	put_obstacle_in_map(t_map *map, t_mlx *mlx, t_sprite_planet *texts);
+bool	put_background(t_map *map, t_mlx *mlx, t_texture *back[2]);
+
+bool	put_obstacle_in_map(t_map *map, t_mlx *mlx, t_sprite_planet *texts);
 
 void	change_exit(t_param *param);
 

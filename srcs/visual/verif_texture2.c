@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   verif_texture2.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
+/*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 17:06:55 by syluiset          #+#    #+#             */
-/*   Updated: 2023/03/03 18:37:02 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/03/06 15:08:02 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	verif_collectible(t_coins *c)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i <= 14)
@@ -39,7 +39,7 @@ void	verif_collectible(t_coins *c)
 
 void	verif_black_hole(t_black_hole *bh)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i <= 8)
@@ -64,13 +64,13 @@ void	verif_black_hole(t_black_hole *bh)
 
 void	verif_nb(t_nb *nb)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < 10)
 	{
 		if (!nb->nb[i])
-			break;
+			break ;
 		i++;
 	}
 	if (i != 10)

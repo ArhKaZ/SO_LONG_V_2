@@ -3,33 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   create_map.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
+/*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 15:12:39 by syluiset          #+#    #+#             */
-/*   Updated: 2023/03/02 15:00:03 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/03/06 15:36:21 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/map.h"
-
-int	map_random(int nb_max)
-{
-    int	random_number;
-	int	fd;
-	int ret;
-
-    fd = open("/dev/random", O_RDONLY);
-	if (fd < 0 || read(fd, 0, 0) < 0)
-		exit(EXIT_FAILURE);
-    ret = read(fd, &random_number, sizeof(int));
-	if (ret < 0)
-		return (-1); //TODO Securisé
-    close(fd);
-	random_number %= nb_max;
-	if (random_number < 0)
-		random_number = random_number * -1;
-	return (random_number);
-}
 
 t_gps	*create_gps(int height, int width)
 {
@@ -42,6 +23,7 @@ t_gps	*create_gps(int height, int width)
 	new->x = width;
 	return (new);
 }
+
 bool	should_put_item(t_gen_map *map, int height)
 {
 	if (map->item < map->item_param)
@@ -82,16 +64,12 @@ void	put_component(t_gen_map *map, t_gps *coor, int rand)
 		ft_printf("0");
 }
 
-void	create_map(int width, int height, int density, int collect)
+void	create_map(t_gps *coor, int density, int collect)
 {
-	int y;
-	int x;
+	int			y;
+	int			x;
 	t_gen_map	*map;
-	t_gps		*coor;
 
-	coor = create_gps(height, width);
-	if (!coor)
-		return ;
 	map = create_gen_map(collect, 0);
 	if (!map)
 		return ;
@@ -99,26 +77,11 @@ void	create_map(int width, int height, int density, int collect)
 	while (y < coor->y + 1)
 	{
 		x = 0;
-		if (y == 0)
-			line_of_wall(coor);
-		if (y == coor->y)
-		{
-			line_of_wall(coor);
+		if (on_y_action(y, coor) == true)
 			return ;
-		}
-		while (x <= width + 1)
+		while (x <= coor->x + 1)
 		{
-			if (x == 0)
-				ft_printf("1");
-			else if (x == width + 1)
-				ft_printf("1");
-			else
-			{
-				if (map_random(width) * 2 < density)
-					ft_printf("1");
-				else
-					put_component(map, coor, map_random(7));
-			}
+			on_x_action(x, coor, density, map);
 			x++;
 		}
 		ft_printf("\n");
@@ -135,12 +98,17 @@ int	main(int argc, char **argv)
 	if (!gps)
 		return (0);
 	if (argc == 5)
-		create_map(ft_atoi(argv[1]), ft_atoi(argv[2]), ft_atoi(argv[3]), ft_atoi(argv[4]));
+	{
+		gps->x = ft_atoi(argv[1]);
+		gps->y = ft_atoi(argv[2]);
+		create_map(gps, ft_atoi(argv[3]), ft_atoi(argv[4]));
+	}
 	if (argc == 6)
 	{
 		gps->x = ft_atoi(argv[1]);
 		gps->y = ft_atoi(argv[2]);
-		create_map_with_d(gps, ft_atoi(argv[3]), ft_atoi(argv[4]), ft_atoi(argv[5]));
+		create_map_with_d(gps, ft_atoi(argv[3]), ft_atoi(argv[4]),
+			ft_atoi(argv[5]));
 	}
 	free(gps);
 	return (0);

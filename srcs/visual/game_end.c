@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_end.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
+/*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 13:15:25 by syluiset          #+#    #+#             */
-/*   Updated: 2023/03/03 20:13:16 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/03/06 15:07:30 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	put_last_image_little(t_param *param, bool win)
 	else
 		sprite = param->textures->end->l_little;
 	place = create_gps((param->map->width * 64 - sprite->size->x) / 2,
-				(param->map->height * 64 - sprite->size->y) / 2);
+			(param->map->height * 64 - sprite->size->y) / 2);
 	put_last_image(param, place, sprite, 1);
 	free(place);
 }
@@ -37,7 +37,7 @@ void	put_last_image_med(t_param *param, bool win)
 	else
 		sprite = param->textures->end->l_med;
 	place = create_gps((param->map->width * 64 - sprite->size->x) / 2,
-				(param->map->height * 64 - sprite->size->y) / 2);
+			(param->map->height * 64 - sprite->size->y) / 2);
 	put_last_image(param, place, sprite, 2);
 	free(place);
 }

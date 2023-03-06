@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 13:48:41 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/27 12:23:30 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/03/06 15:05:51 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,14 @@ t_map	*create_empty_map(void)
 	map->height = 0;
 	map->width = 0;
 	map->coor_exit = create_gps(0, 0);
+	if (map->coor_exit == NULL)
+		return (free(map), NULL);
 	return (map);
 }
 
 bool	check_line_empty(char *s)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (s[i + 1])

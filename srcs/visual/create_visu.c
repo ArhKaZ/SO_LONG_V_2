@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_visu.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
+/*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 16:50:44 by syluiset          #+#    #+#             */
-/*   Updated: 2023/03/03 16:32:08 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/03/06 14:57:19 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	put_exit(t_map *map, t_mlx *mlx, t_texture *bh)
 	}
 }
 
-void	put_coins(t_map *map, t_mlx *mlx, t_texture *coin)
+bool	put_coins(t_map *map, t_mlx *mlx, t_texture *coin)
 {
 	int		height;
 	int		width;
@@ -75,6 +75,8 @@ void	put_coins(t_map *map, t_mlx *mlx, t_texture *coin)
 			if (map->map[height][width] == 'C')
 			{
 				place = create_gps(width, height);
+				if (place == NULL)
+					return (false);
 				put_image(mlx, coin->p, place);
 				free(place);
 			}
@@ -82,9 +84,10 @@ void	put_coins(t_map *map, t_mlx *mlx, t_texture *coin)
 		}
 		height++;
 	}
+	return (true);
 }
 
-void	put_ennemy(t_map *map, t_mlx *mlx, t_texture *ennemy)
+bool	put_ennemy(t_map *map, t_mlx *mlx, t_texture *ennemy)
 {
 	int		height;
 	int		width;
@@ -99,6 +102,8 @@ void	put_ennemy(t_map *map, t_mlx *mlx, t_texture *ennemy)
 			if (map->map[height][width] == 'D')
 			{
 				place = create_gps(width, height);
+				if (place == NULL)
+					return (false);
 				put_image(mlx, ennemy->p, place);
 				free(place);
 			}
@@ -106,17 +111,26 @@ void	put_ennemy(t_map *map, t_mlx *mlx, t_texture *ennemy)
 		}
 		height++;
 	}
+	return (true);
 }
 
-void	create_visu(t_map *map, t_mlx *mlx, t_gps *p, t_all_texture *all_text)
+bool	create_visu(t_map *map, t_mlx *mlx, t_gps *p, t_all_texture *all_text)
 {
-	put_background(map, mlx, all_text->back->back);
-	put_wall(map, mlx, all_text->wall);
-	put_obstacle_in_map(map, mlx, all_text->planets);
-	put_coins(map, mlx, all_text->coin->coins[0]);
+	if (put_background(map, mlx, all_text->back->back) == false)
+		return (false);
+	if (put_wall_line(map, mlx, all_text->wall) == false)
+		return (false);
+	if (put_wall_col(map, mlx, all_text->wall) == false)
+		return (false);
+	if (put_obstacle_in_map(map, mlx, all_text->planets) == false)
+		return (false);
+	if (put_coins(map, mlx, all_text->coin->coins[0]) == false)
+		return (false);
 	all_text->coin->frame_act = 0;
 	put_player(map, mlx, p, all_text->ships->player[1]);
 	put_exit(map, mlx, all_text->black_hole_close->bh[0]);
 	all_text->black_hole_close->frame_act = 0;
-	put_ennemy(map, mlx, all_text->ships->ennemy[1]);
+	if (put_ennemy(map, mlx, all_text->ships->ennemy[1]) == false)
+		return (false);
+	return (true);
 }

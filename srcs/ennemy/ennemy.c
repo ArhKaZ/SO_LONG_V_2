@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 15:01:15 by syluiset          #+#    #+#             */
-/*   Updated: 2023/03/01 14:11:08 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/03/06 13:50:14 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,10 @@ t_ennemy	*last_ennemy(t_ennemy *list)
 	return (list);
 }
 
-void	add_ennemy_back(t_ennemy **lst, int height, int width)
+void	add_ennemy_back(t_ennemy **lst, t_ennemy *new)
 {
 	t_ennemy	*temp;
-	t_ennemy	*new;
 
-	new = create_new_ennemy(height, width);
 	if (!lst || !new)
 		return ;
 	if (*lst != NULL)
@@ -83,6 +81,7 @@ t_ennemy	*get_ennemy(t_map *map)
 	t_ennemy	*lst;
 	int			height;
 	int			width;
+	t_ennemy	*new;
 
 	height = 1;
 	lst = NULL;
@@ -92,7 +91,12 @@ t_ennemy	*get_ennemy(t_map *map)
 		while (map->map[height][width])
 		{
 			if (map->map[height][width] == 'D')
-				add_ennemy_back(&lst, height, width);
+			{
+				new = create_new_ennemy(height, width);
+				if (!new)
+					return (NULL);
+				add_ennemy_back(&lst, new);
+			}
 			width++;
 		}
 		height++;

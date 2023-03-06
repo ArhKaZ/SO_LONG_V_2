@@ -3,20 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   free_error_or_all.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
+/*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 13:42:37 by syluiset          #+#    #+#             */
-/*   Updated: 2023/03/02 13:49:51 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/03/06 14:03:22 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
 
-void	free_error(t_map *map, t_player *player, t_mlx *mlx)
+void	free_error(t_param *param)
 {
-	free_map(map);
-	free_player(player);
-	free(mlx);
+	if (param != NULL)
+	{
+		if (param->map != NULL)
+			free_map(param->map);
+		if (param->player != NULL)
+			free_player(param->player);
+		if (param->mlx != NULL)
+			free(param->mlx);
+		free(param);
+	}
 }
 
 void	free_all(t_param *param)

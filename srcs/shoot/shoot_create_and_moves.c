@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   shoot_create_and_moves.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
+/*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 02:41:36 by syluiset          #+#    #+#             */
-/*   Updated: 2023/03/03 15:23:51 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/03/06 14:34:01 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,8 @@ void	create_new_shot(t_param *param)
 	char	c;
 
 	shot = create_shot(clock(), param->player->direction, param->player->coor);
+	if (shot == NULL)
+		return ;
 	c = param->map->map[shot->coor->y][shot->coor->x];
 	if (c == '1')
 	{

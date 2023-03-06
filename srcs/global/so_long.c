@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
+/*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 11:18:21 by syluiset          #+#    #+#             */
-/*   Updated: 2023/03/03 17:10:32 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/03/06 14:21:54 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,32 +18,49 @@ int	close_with_cross_run(t_param *param)
 	return (1);
 }
 
+void	get_ennemy_in_param(t_param *param)
+{
+	t_map	*map;
+
+	map = param->map;
+	if (map->nb_ennemy > 0)
+	{
+		param->boss = get_ennemy(map);
+		if (param->boss == NULL)
+		{
+			ft_putstr_fd("Error\nEnnemy alloc as a problem\n", 2);
+			close_with_cross_run(param);
+		}
+	}
+}
+
 t_param	*get_param(char **argv)
 {
-	t_map			*map;
-	t_player		*player;
 	t_all_texture	*all_texture;
-	t_param			*param;
-	t_mlx			*mlx;
+	t_param			*p;
 
-	mlx = create_empty_mlx();
-	map = create_empty_map();
-	player = create_empty_player();
-	if (get_map(argv[1], map) == false || checking_map(map) == false)
-		return (free_error(map, player, mlx), NULL);
-	mlx->mlx = mlx_init();
-	mlx->menu = true;
-	all_texture = create_all_texture(mlx, map->width, map->height);
+	p = create_param();
+	if (!p)
+	{
+		ft_putstr_fd("Error\nParam alloc problem", 2);
+		free_error(p);
+		return (NULL);
+	}
+	if (get_map(argv[1], p->map) == false || checking_map(p->map) == false)
+		return (free_error(p), NULL);
+	p->mlx->mlx = mlx_init();
+	if (p->mlx->mlx == NULL)
+		return (free_error(p), NULL);
+	p->mlx->menu = true;
+	all_texture = create_all_texture(p->mlx, p->map->width, p->map->height);
 	if (all_texture == NULL)
 	{
-		free_error(map, player, mlx);
-		return (ft_putstr_fd("Error\ncan't load texture\n", 2),
+		return (free_error(p), ft_putstr_fd("Error\ncan't load texture\n", 2),
 			exit(EXIT_FAILURE), NULL);
 	}
-	param = create_param(map, mlx, player, all_texture);
-	if (map->nb_ennemy > 0)
-		param->boss = get_ennemy(map);
-	return (param);
+	p->textures = all_texture;
+	get_ennemy_in_param(p);
+	return (p);
 }
 
 int	so_long(t_param *p)

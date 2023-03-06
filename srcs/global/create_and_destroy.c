@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 16:49:55 by syluiset          #+#    #+#             */
-/*   Updated: 2023/03/01 13:56:17 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/03/06 13:58:10 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,17 +47,23 @@ t_mlx	*create_empty_mlx(void)
 	return (mlx);
 }
 
-t_param	*create_param(t_map *map, t_mlx *mlx, t_player *p, t_all_texture *text)
+t_param	*create_param(void)
 {
-	t_param	*param;
+	t_param		*param;
 
 	param = malloc(sizeof(t_param));
 	if (!param)
 		return (NULL);
-	param->map = map;
-	param->mlx = mlx;
-	param->player = p;
-	param->textures = text;
+	param->map = create_empty_map();
+	if (!param->map)
+		return (NULL);
+	param->mlx = create_empty_mlx();
+	if (!param->mlx)
+		return (NULL);
+	param->player = create_empty_player();
+	if (!param->player)
+		return (NULL);
+	param->textures = NULL;
 	param->shots = NULL;
 	param->boss = NULL;
 	param->finish = 0;

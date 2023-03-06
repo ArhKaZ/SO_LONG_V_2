@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   shoot.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
+/*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 17:10:42 by syluiset          #+#    #+#             */
-/*   Updated: 2023/03/03 18:38:59 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/03/06 15:03:45 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,8 @@ void	make_explosion(t_param *p, t_gps *new, t_shoot *s, int just_c)
 			|| new->x == p->map->width - 1))
 	{
 		put_image(p->mlx, p->textures->planets->planet_exp->p, new);
-		if (p->player->score - 20 > 0)
-			p->player->score -= 20;
+		if (p->player->score - 150 > 0)
+			p->player->score -= 150;
 		else
 			p->player->score = 0;
 		p->map->map[new->y][new->x] = '2';

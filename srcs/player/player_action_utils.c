@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player_action_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
+/*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 14:25:45 by syluiset          #+#    #+#             */
-/*   Updated: 2023/03/03 16:30:33 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/03/06 15:04:00 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ int	move_exit(t_param *param, t_gps *new, int move)
 void	move_coins(t_param *p, t_gps *new, int direction)
 {
 	p->player->collect += 1;
-	p->player->score += 140;
+	p->player->score += 100;
 	if (p->player->collect == p->map->nb_item)
 		change_exit(p);
 	put_image(p->mlx, p->textures->back->back[get_random(2)]->p, new);

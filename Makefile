@@ -42,6 +42,7 @@ SRCS			=	visual/animation.c				\
 
 SRCS_MAP		=	map_generator/create_map.c	 \
 					map_generator/create_map_ennemy.c \
+					map_generator/create_map_utils.c	\
 
 SRCS_D			=	srcs/
 

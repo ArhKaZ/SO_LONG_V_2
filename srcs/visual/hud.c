@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hud.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
+/*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:14:04 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/26 21:44:25 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/03/06 14:17:19 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,8 @@ void	put_strings(t_param *param)
 
 	hp = NULL;
 	hp = malloc(sizeof(t_hp));
+	if (!hp)
+		return ;
 	hp->empty = create_texture("xpm/hp_empty.xpm", param->mlx);
 	hp->full = create_texture("xpm/hp_full.xpm", param->mlx);
 	put_score(param);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   verif_texture_shoot.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
+/*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 17:50:54 by syluiset          #+#    #+#             */
-/*   Updated: 2023/03/03 20:04:40 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/03/06 15:08:13 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 bool	verif_s(t_texture *s[4])
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < 4)
 	{
 		if (!s[i])
-			break;
+			break ;
 		i++;
 	}
 	if (i != 4)
@@ -39,7 +39,7 @@ bool	verif_s(t_texture *s[4])
 
 void	free_shot_texture_spe_case(t_texture *s[4])
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < 4)

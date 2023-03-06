@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 15:45:56 by syluiset          #+#    #+#             */
-/*   Updated: 2023/03/01 14:07:32 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/03/06 14:27:59 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ t_menu	*create_t_menu(t_mlx *mlx)
 	t_menu		*menu;
 
 	menu = malloc(sizeof(t_menu));
+	if (!menu)
+		return (NULL);
 	menu->menu[0] = create_texture("xpm/menu/menu_start.xpm", mlx);
 	menu->menu[1] = create_texture("xpm/menu/menu_command.xpm", mlx);
 	menu->menu[2] = create_texture("xpm/menu/menu_exit.xpm", mlx);
@@ -36,6 +38,8 @@ int	main_menu(t_param *param)
 	mlx->mlx_win = mlx_new_window(mlx->mlx, 800, 800, "SO_LONG");
 	param->menu = create_t_menu(mlx);
 	place = create_gps(0, 0);
+	if (!place)
+		close_win(param, param->mlx->mlx, param->mlx->mlx_win);
 	put_image(mlx, param->menu->menu[0]->p, place);
 	free(place);
 	mlx_hook(mlx->mlx_win, 17, 1L >> 0, &close_win, param);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player_action.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
+/*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 12:43:10 by syluiset          #+#    #+#             */
-/*   Updated: 2023/03/03 15:33:10 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/03/06 14:34:23 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,15 @@ void	move_left(t_param *param)
 	t_gps	*new;
 
 	new = create_gps(param->player->coor->x - 1, param->player->coor->y);
+	if (!new)
+	{
+		ft_putstr_fd("Error\nCan't create gps\n", 2);
+		close_win(param, param->mlx->mlx, param->mlx->mlx_win);
+	}
 	value_case = param->map->map[new->y][new->x];
 	if (value_case == '1' || value_case == 'D')
-	{
 		not_move_player_sprite(param, 0);
-		return (free(new));
-	}
-	if (value_case == 'E')
+	else if (value_case == 'E')
 	{
 		if (move_exit(param, new, 0) == 0)
 			return (free(new));
@@ -42,20 +44,22 @@ void	move_right(t_param *param)
 	t_gps	*new;
 
 	new = create_gps(param->player->coor->x + 1, param->player->coor->y);
+	if (!new)
+	{
+		ft_putstr_fd("Error\nCan't create gps\n", 2);
+		close_win(param, param->mlx->mlx, param->mlx->mlx_win);
+	}
 	value_case = param->map->map[new->y][new->x];
 	if (value_case == '1' || value_case == 'D')
-	{
 		not_move_player_sprite(param, 2);
-		return (free(new));
-	}
-	if (value_case == 'E')
+	else if (value_case == 'E')
 	{
 		if (move_exit(param, new, 2) == 0)
 			return (free(new));
 	}
-	if (value_case == 'C')
+	else if (value_case == 'C')
 		move_coins(param, new, 2);
-	if (value_case == '0')
+	else if (value_case == '0')
 		move_player_sprite(param, new, 2);
 	free(new);
 }
@@ -66,20 +70,22 @@ void	move_top(t_param *param)
 	t_gps	*new;
 
 	new = create_gps(param->player->coor->x, param->player->coor->y - 1);
+	if (!new)
+	{
+		ft_putstr_fd("Error\nCan't create gps\n", 2);
+		close_win(param, param->mlx->mlx, param->mlx->mlx_win);
+	}
 	value_case = param->map->map[new->y][new->x];
 	if (value_case == '1' || value_case == 'D')
-	{
 		not_move_player_sprite(param, 1);
-		return (free(new));
-	}
-	if (value_case == 'E')
+	else if (value_case == 'E')
 	{
 		if (move_exit(param, new, 1) == 0)
 			return (free(new));
 	}
-	if (value_case == 'C')
+	else if (value_case == 'C')
 		move_coins(param, new, 1);
-	if (value_case == '0')
+	else if (value_case == '0')
 		move_player_sprite(param, new, 1);
 	free(new);
 }
@@ -90,14 +96,15 @@ void	move_bottom(t_param *param)
 	t_gps	*new;
 
 	new = create_gps(param->player->coor->x, param->player->coor->y + 1);
+	if (!new)
+	{
+		ft_putstr_fd("Error\nCan't create gps\n", 2);
+		close_win(param, param->mlx->mlx, param->mlx->mlx_win);
+	}
 	value_case = param->map->map[new->y][new->x];
 	if (value_case == '1' || value_case == 'D')
-	{
 		not_move_player_sprite(param, 3);
-		free(new);
-		return ;
-	}
-	if (value_case == 'E')
+	else if (value_case == 'E')
 	{
 		if (move_exit(param, new, 3) == 0)
 		{
@@ -105,9 +112,9 @@ void	move_bottom(t_param *param)
 			return ;
 		}
 	}
-	if (value_case == 'C')
+	else if (value_case == 'C')
 		move_coins(param, new, 3);
-	if (value_case == '0')
+	else if (value_case == '0')
 		move_player_sprite(param, new, 3);
 	free(new);
 }

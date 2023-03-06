@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 02:24:46 by syluiset          #+#    #+#             */
-/*   Updated: 2023/03/01 18:23:26 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/03/06 14:33:29 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ t_gps	*get_next_coor_s(int direction, t_gps *coor)
 		new = create_gps(coor->x + 1, coor->y);
 	if (direction == 3)
 		new = create_gps(coor->x, coor->y + 1);
+	if (!new)
+		return (NULL);
 	return (new);
 }
 
@@ -33,9 +35,13 @@ t_shoot	*create_shot(clock_t time, int direction, t_gps *player)
 	t_shoot	*shot;
 
 	shot = malloc(sizeof(t_shoot));
+	if (!shot)
+		return (NULL);
 	shot->direction = direction;
 	shot->shoot_time = time;
 	shot->coor = get_next_coor_s(direction, player);
+	if (shot->coor == NULL)
+		return (NULL);
 	return (shot);
 }
 
