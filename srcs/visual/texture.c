@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   texture.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 15:01:59 by syluiset          #+#    #+#             */
-/*   Updated: 2023/03/06 13:27:00 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/03/07 09:58:40 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ t_ship	*create_ships_sprite(t_mlx *mlx)
 	ships->ennemy[1] = create_texture("xpm/boss/boss_top.xpm", mlx);
 	ships->ennemy[2] = create_texture("xpm/boss/boss_right.xpm", mlx);
 	ships->ennemy[3] = create_texture("xpm/boss/boss_bottom.xpm", mlx);
+	verif_ship(ships);
 	return (ships);
 }
 

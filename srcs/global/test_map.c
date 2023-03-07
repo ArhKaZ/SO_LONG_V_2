@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   test_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 00:47:17 by syluiset          #+#    #+#             */
-/*   Updated: 2023/03/06 14:08:14 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/03/07 10:12:21 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,15 +31,12 @@ char	**cp_map(t_map *map)
 	return (map_cp);
 }
 
-bool	map_is_finishable(t_map *map)
+bool	check_map_is_finishable(char **map)
 {
-	char	**map_cp;
 	int		i;
 	int		j;
 
 	i = 0;
-	map_cp = NULL;
-	map_cp = checker_map(map, cp_map(map));
 	while (map_cp[i] != NULL)
 	{
 		j = 0;
@@ -55,6 +52,20 @@ bool	map_is_finishable(t_map *map)
 		}
 		i++;
 	}
+	return (true);
+}
+
+bool	map_is_finishable(t_map *map)
+{
+	char	**map_cp;
+
+	map_cp = NULL;
+	map_cp = cp_map(map);
+	if (map_cp == NULL)
+		return (false);
+	checker_map(map, map_cp);
+	if (check_map_is_finishable(map_cp) == false)
+		return (false);
 	free_char_map(map_cp);
 	return (true);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 11:22:07 by syluiset          #+#    #+#             */
-/*   Updated: 2023/03/06 14:52:16 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/03/07 09:58:26 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -410,6 +410,8 @@ void	*get_sprite_back(t_sprite_back *texts);
 void	put_image_player(t_mlx *mlx, t_texture *sprite, t_gps *coor);
 
 bool	verif_texture(t_all_texture *texts);
+
+void	verif_ship(t_ship *ship);
 
 void	verif_collectible(t_coins *c);
 

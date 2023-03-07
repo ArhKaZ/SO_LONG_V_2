@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 13:48:41 by syluiset          #+#    #+#             */
-/*   Updated: 2023/03/06 15:05:51 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/03/07 09:56:58 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,8 @@ bool	all_check_map(char *map_temp, t_map **map)
 		return (false);
 	}
 	(*map)->map = ft_split(map_temp, '\n');
+	if ((*map)->map == NULL)
+		return (false);
 	if (check_line((*map)->map, *map) == false)
 	{
 		free_char_map((*map)->map);
@@ -81,6 +83,8 @@ bool	get_map(char *path, t_map *map)
 
 	i = 0;
 	map_temp = get_map_to_string(path);
+	if (map_temp == NULL)
+		return (false);
 	if (all_check_map(map_temp, &map) == false)
 		return (false);
 	free(map_temp);
