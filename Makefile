@@ -155,7 +155,7 @@ fsanitize		:	$(MLX_A) $(LIBFT_A) $(OBJS_D) $(HEAD_D)$(HEAD) $(OBJS)
 
 all				: $(HEAD) $(NAME)
 
-$(LIBFT_A)			:
+$(LIBFT_A)		:	FORCE
 				make -C $(LIBFT_D)
 
 clean			:

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   texture.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
+/*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 15:01:59 by syluiset          #+#    #+#             */
-/*   Updated: 2023/03/07 09:58:40 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/03/08 11:12:18 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ t_texture	*create_texture(char *path, t_mlx *mlx)
 	if (!texture)
 		return (NULL);
 	texture->size = create_gps(0, 0);
+	if (texture->size == NULL)
+		return (NULL);
 	texture->p = mlx_xpm_file_to_image(mlx->mlx, path,
 			&texture->size->x, &texture->size->y);
 	return (texture);

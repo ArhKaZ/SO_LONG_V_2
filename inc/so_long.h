@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
+/*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 11:22:07 by syluiset          #+#    #+#             */
-/*   Updated: 2023/03/07 09:58:26 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/03/08 13:30:30 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,9 @@
 # define ESC 65307
 # define LEFT 97
 # define RIGHT 100
+# define CROSS_UP 65362
+# define CROSS_DOWN 65364
+# define ENTER 65293
 # define SPACE 32
 
 typedef struct s_mlx
@@ -282,6 +285,10 @@ void	move_ennemy_top(t_param *param, t_gps *ennemy);
 void	move_ennemy_bottom(t_param *param, t_gps *ennemy);
 
 t_ennemy	*get_ennemy(t_map *map);
+
+bool	check_line_empty(char *s);
+
+void	free_error_main_menu(t_param *param, t_mlx *mlx);
 
 void		choose_direction(t_param *param);
 

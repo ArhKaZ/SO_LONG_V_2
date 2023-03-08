@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 15:38:49 by syluiset          #+#    #+#             */
-/*   Updated: 2023/02/27 12:12:02 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/03/08 11:42:15 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,4 +57,53 @@ char	*get_map_to_string(char *path)
 		map_string = map_in_one_string(line, map_string);
 	close(fd);
 	return (map_string);
+}
+
+bool	all_check_map(char *map_temp, t_map **map)
+{
+	if (map_temp == NULL)
+	{
+		(*map)->map = NULL;
+		return (false);
+	}
+	if (check_line_empty(map_temp) == true)
+	{
+		free(map_temp);
+		return (false);
+	}
+	(*map)->map = ft_split(map_temp, '\n');
+	if ((*map)->map == NULL)
+		return (false);
+	if (check_line((*map)->map, *map) == false)
+	{
+		free_char_map((*map)->map);
+		(*map)->map = NULL;
+		return (false);
+	}
+	return (true);
+}
+
+bool	get_map(char *path, t_map *map)
+{
+	char	*map_temp;
+	int		i;
+
+	i = 0;
+	map_temp = get_map_to_string(path);
+	if (map_temp == NULL)
+	{
+		ft_putstr_fd("Error\nMap is empty or got error", 2);
+		return (false);
+	}
+	if (all_check_map(map_temp, &map) == false)
+		return (false);
+	free(map_temp);
+	while (map->map[0][i])
+		i++;
+	map->width = i;
+	i = 0;
+	while (map->map[i] != NULL)
+		i++;
+	map->height = i;
+	return (true);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   test_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
+/*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 00:47:17 by syluiset          #+#    #+#             */
-/*   Updated: 2023/03/07 10:12:21 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/03/08 11:00:36 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,14 +37,14 @@ bool	check_map_is_finishable(char **map)
 	int		j;
 
 	i = 0;
-	while (map_cp[i] != NULL)
+	while (map[i] != NULL)
 	{
 		j = 0;
-		while (map_cp[i][j])
+		while (map[i][j])
 		{
-			if (map_cp[i][j] == 'E' || map_cp[i][j] == 'C')
+			if (map[i][j] == 'E' || map[i][j] == 'C')
 			{
-				free_char_map(map_cp);
+				free_char_map(map);
 				ft_putstr_fd("Error\nMap is not finishable\n", 2);
 				return (false);
 			}

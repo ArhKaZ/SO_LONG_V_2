@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 15:50:27 by syluiset          #+#    #+#             */
-/*   Updated: 2023/03/06 15:36:37 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/03/08 13:52:17 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ void	create_map_with_d(t_gps *coor, int density, int collect, int ennemy)
 	{
 		x = 0;
 		if (on_y_action(y, coor) == true)
-			return ;
+			break ;
 		while (x <= coor->x + 1)
 		{
 			on_x_action_e(x, coor, density, map);
@@ -114,4 +114,5 @@ void	create_map_with_d(t_gps *coor, int density, int collect, int ennemy)
 		map->d_on_line = 0;
 		y++;
 	}
+	free(map);
 }

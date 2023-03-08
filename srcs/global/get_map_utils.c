@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 12:04:35 by syluiset          #+#    #+#             */
-/*   Updated: 2023/03/01 14:10:21 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/03/08 11:38:27 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,19 @@
 
 bool	check_extension(char *path)
 {
-	int	i;
-
-	i = 0;
-	while (path[i] != '.' && path[i])
-		i++;
-	if (i != 0 && ft_strncmp(path + i, ".ber", 4) == 0
-		&& ft_strncmp(path + i - 1, "/", 1) != 0)
+	path = ft_strchr(path, '.');
+	if (*path == 0 || ft_strlen(path) < 4)
+		return (false);
+	if (ft_strncmp(path, ".ber", 4) == 0 && ft_strncmp(path - 1, "/", 1) != 0)
 		return (true);
+	if (ft_strlen(path) >= 4)
+		check_extension(path + 1);
 	else
 	{
 		ft_putstr_fd("Error\nThe file name is not correct\n", 2);
 		return (false);
 	}
+	return (true);
 }
 
 bool	get_next_line_loop(int fd, char **line_pt)
@@ -73,4 +73,21 @@ bool	check_char(char c)
 		return (true);
 	else
 		return (false);
+}
+
+bool	check_line_empty(char *s)
+{
+	int	i;
+
+	i = 0;
+	while (s[i + 1])
+	{
+		if (s[i] == '\n' && s[i + 1] == '\n')
+		{
+			ft_putstr_fd("Error\nMap as a empty line", 2);
+			return (true);
+		}
+		i++;
+	}
+	return (false);
 }

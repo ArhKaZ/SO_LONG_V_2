@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 13:13:17 by syluiset          #+#    #+#             */
-/*   Updated: 2023/03/06 15:06:06 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/03/08 13:30:35 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,11 +97,11 @@ int	move_in_menu(int keycode, t_param *p)
 	if (!zero)
 		close_menu_exit(p, p->menu->mlx->mlx, p->menu->mlx->mlx_win,
 			p->mlx->mlx);
-	if (keycode == DOWN)
+	if (keycode == CROSS_DOWN)
 		press_down(p, menu, zero);
-	if (keycode == UP)
+	if (keycode == CROSS_UP)
 		press_up(p, menu, zero);
-	if (keycode == SPACE)
+	if (keycode == ENTER)
 		select_choice(p, menu, zero);
 	if (keycode == ESC)
 	{

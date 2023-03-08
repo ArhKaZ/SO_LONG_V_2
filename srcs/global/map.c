@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
+/*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 13:48:41 by syluiset          #+#    #+#             */
-/*   Updated: 2023/03/07 09:56:58 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/03/08 11:38:55 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,67 +33,4 @@ t_map	*create_empty_map(void)
 	if (map->coor_exit == NULL)
 		return (free(map), NULL);
 	return (map);
-}
-
-bool	check_line_empty(char *s)
-{
-	int	i;
-
-	i = 0;
-	while (s[i + 1])
-	{
-		if (s[i] == '\n' && s[i + 1] == '\n')
-		{
-			ft_putstr_fd("Error\nMap as a empty line", 2);
-			return (true);
-		}
-		i++;
-	}
-	return (false);
-}
-
-bool	all_check_map(char *map_temp, t_map **map)
-{
-	if (map_temp == NULL)
-	{
-		(*map)->map = NULL;
-		return (false);
-	}
-	if (check_line_empty(map_temp) == true)
-	{
-		free(map_temp);
-		return (false);
-	}
-	(*map)->map = ft_split(map_temp, '\n');
-	if ((*map)->map == NULL)
-		return (false);
-	if (check_line((*map)->map, *map) == false)
-	{
-		free_char_map((*map)->map);
-		(*map)->map = NULL;
-		return (false);
-	}
-	return (true);
-}
-
-bool	get_map(char *path, t_map *map)
-{
-	char	*map_temp;
-	int		i;
-
-	i = 0;
-	map_temp = get_map_to_string(path);
-	if (map_temp == NULL)
-		return (false);
-	if (all_check_map(map_temp, &map) == false)
-		return (false);
-	free(map_temp);
-	while (map->map[0][i])
-		i++;
-	map->width = i;
-	i = 0;
-	while (map->map[i] != NULL)
-		i++;
-	map->height = i;
-	return (true);
 }

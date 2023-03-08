@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 13:42:37 by syluiset          #+#    #+#             */
-/*   Updated: 2023/03/06 14:03:22 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/03/08 13:02:03 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,4 +72,21 @@ void	free_error_non_finish(t_param *param)
 	free(param);
 	param = NULL;
 	exit(EXIT_FAILURE);
+}
+
+void	free_error_main_menu(t_param *param, t_mlx *mlx)
+{
+	free_map(param->map);
+	free_player(param->player);
+	free_ennemy(param->boss);
+	free_textures(param->textures, param->mlx->mlx);
+	mlx_destroy_display(param->mlx->mlx);
+	free(param->mlx->mlx);
+	free(param->mlx);
+	param->mlx = NULL;
+	free(param);
+	param = NULL;
+	mlx_destroy_window(mlx->mlx, mlx->mlx_win);
+	mlx_destroy_display(mlx->mlx);
+	free(mlx);
 }

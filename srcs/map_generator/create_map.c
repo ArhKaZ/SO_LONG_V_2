@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 15:12:39 by syluiset          #+#    #+#             */
-/*   Updated: 2023/03/06 15:36:21 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/03/08 13:52:11 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ void	create_map(t_gps *coor, int density, int collect)
 	{
 		x = 0;
 		if (on_y_action(y, coor) == true)
-			return ;
+			break ;
 		while (x <= coor->x + 1)
 		{
 			on_x_action(x, coor, density, map);
@@ -88,6 +88,7 @@ void	create_map(t_gps *coor, int density, int collect)
 		map->item_on_line = 0;
 		y++;
 	}
+	free(map);
 }
 
 int	main(int argc, char **argv)
