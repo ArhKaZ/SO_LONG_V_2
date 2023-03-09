@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 15:01:59 by syluiset          #+#    #+#             */
-/*   Updated: 2023/03/08 11:12:18 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/03/09 10:52:24 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,12 +83,12 @@ t_end	*create_end(t_mlx *mlx)
 	return (end);
 }
 
-t_all_texture	*create_all_texture(t_mlx *mlx, int width, int height)
+t_all_text	*create_all_texture(t_mlx *mlx, int width, int height)
 {
-	t_all_texture	*all_texture;
+	t_all_text	*all_texture;
 
 	all_texture = NULL;
-	all_texture = malloc(sizeof(t_all_texture));
+	all_texture = malloc(sizeof(t_all_text));
 	if (!all_texture)
 		return (NULL);
 	all_texture->back = create_back(mlx);

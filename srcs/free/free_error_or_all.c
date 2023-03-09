@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 13:42:37 by syluiset          #+#    #+#             */
-/*   Updated: 2023/03/08 13:02:03 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/03/09 10:52:12 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	free_all(t_param *param)
 	param = NULL;
 }
 
-void	free_textures(t_all_texture *texts, void *mlx)
+void	free_textures(t_all_text *texts, void *mlx)
 {
 	free_back(texts->back, mlx);
 	free_coin(texts->coin, mlx);

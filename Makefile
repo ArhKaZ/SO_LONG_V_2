@@ -1,18 +1,19 @@
 #============================= FILES PART =====================================
 SRCS			=	visual/animation.c				\
-					shoot/animation_shot.c		\
-					global/create_and_destroy.c	\
+					shoot/animation_shot.c			\
+					global/create_and_destroy.c		\
 					visual/create_visu.c			\
 					visual/create_visu_utils.c		\
-					ennemy/ennemy.c			\
+					ennemy/ennemy.c					\
 					free/free_error_or_all.c		\
 					free/free_textures.c			\
-					free/free_textures_2.c		\
-					free/free_utils.c			\
+					free/free_textures_2.c			\
+					free/free_utils.c				\
 					visual/game_end.c				\
-					visual/game_end_utils.c		\
+					visual/game_end_utils.c			\
 					global/get_map.c				\
 					global/get_map_utils.c			\
+					global/get_param.c				\
 					menu/keypress_menu.c			\
 					visual/hud.c					\
 					menu/main_menu_utils.c			\

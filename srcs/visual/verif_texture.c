@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 18:02:53 by syluiset          #+#    #+#             */
-/*   Updated: 2023/03/08 11:14:14 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/03/09 10:52:32 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ void	verif_ship(t_ship *ship)
 	}
 }
 
-void	free_textures_error(t_all_texture *texts)
+void	free_textures_error(t_all_text *texts)
 {
 	free(texts->back);
 	if (texts->coin != NULL)
@@ -106,7 +106,7 @@ void	free_textures_error(t_all_texture *texts)
 		free(texts->explosion);
 }
 
-bool	verif_texture(t_all_texture *texts)
+bool	verif_texture(t_all_text *texts)
 {
 	if (texts->back == NULL)
 		return (false);

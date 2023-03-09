@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 17:10:42 by syluiset          #+#    #+#             */
-/*   Updated: 2023/03/06 15:03:45 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/03/09 11:02:15 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ bool	move_shot(t_param *param)
 
 	ret = true;
 	current = clock();
-	if ((current - param->shots->shoot_time) * 1000 / CLOCKS_PER_SEC > 1)
+	if ((current - param->shots->shoot_time) * 1000 / CLOCKS_PER_SEC > 0.5)
 	{
 		new = get_next_coor_s(param->shots->direction, param->shots->coor);
 		if (put_shot_in_coor(param, new) == false)

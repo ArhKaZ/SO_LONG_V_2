@@ -6,13 +6,13 @@
 /*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 14:37:20 by syluiset          #+#    #+#             */
-/*   Updated: 2023/03/06 15:07:17 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/03/09 10:54:54 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
 
-bool	put_obstacle_in_map(t_map *map, t_mlx *mlx, t_sprite_planet *plnts)
+bool	put_obstacle(t_map *map, t_mlx *mlx, t_sprite_planet *plnts)
 {
 	int			height;
 	int			width;
