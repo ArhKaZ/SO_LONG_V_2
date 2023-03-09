@@ -6,7 +6,7 @@
 /*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 12:04:35 by syluiset          #+#    #+#             */
-/*   Updated: 2023/03/08 11:38:27 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/03/09 14:32:58 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,13 @@
 
 bool	check_extension(char *path)
 {
-	path = ft_strchr(path, '.');
-	if (*path == 0 || ft_strlen(path) < 4)
+	if (ft_strrchr(path, '.') == 0)
+	{
+		ft_putstr_fd("Error\nThe file name is not correct\n", 2);
 		return (false);
-	if (ft_strncmp(path, ".ber", 4) == 0 && ft_strncmp(path - 1, "/", 1) != 0)
-		return (true);
-	if (ft_strlen(path) >= 4)
-		check_extension(path + 1);
-	else
+	}
+	path = ft_strrchr(path, '.');
+	if (ft_strncmp(path, ".ber", 4) != 0)
 	{
 		ft_putstr_fd("Error\nThe file name is not correct\n", 2);
 		return (false);
