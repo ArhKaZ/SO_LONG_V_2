@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player_action.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: syluiset <syluiset@student42.fr>           +#+  +:+       +#+        */
+/*   By: syluiset <syluiset@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 12:43:10 by syluiset          #+#    #+#             */
-/*   Updated: 2023/03/10 14:53:21 by syluiset         ###   ########.fr       */
+/*   Updated: 2023/03/06 14:34:23 by syluiset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,6 +135,8 @@ int	render_next_frame(int keycode, t_param *param)
 				move_right(param);
 			if (keycode == UP)
 				move_top(param);
+			if (keycode == SPACE && param->map->nb_shot == 0)
+				create_new_shot(param);
 		}
 	}
 	return (0);

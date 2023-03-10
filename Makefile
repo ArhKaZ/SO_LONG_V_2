@@ -1,5 +1,38 @@
 #============================= FILES PART =====================================
-SRCS			=	visual/animation.c				\
+SRCS			=	global/create_and_destroy.c		\
+					visual/create_visu.c			\
+					visual/create_visu_utils.c		\
+					free/free_error_or_all.c		\
+					free/free_textures.c			\
+					free/free_textures_2.c			\
+					free/free_utils.c				\
+					visual/game_end.c				\
+					visual/game_end_utils.c			\
+					global/get_map.c				\
+					global/get_map_utils.c			\
+					global/get_param.c				\
+					menu/keypress_menu.c			\
+					menu/main_menu_utils.c			\
+					menu/main_menu.c				\
+					global/map.c					\
+					global/map_error.c				\
+					player/player_action.c			\
+					player/player_action_utils.c	\
+					player/player_damage.c			\
+					visual/put_image.c				\
+					global/rand.c					\
+					global/so_long.c				\
+					global/test_map.c				\
+					global/test_map_utils.c			\
+					visual/texture.c				\
+					visual/texture2.c				\
+					visual/texture_explosion.c		\
+					visual/texture_nb.c				\
+					visual/verif_texture.c			\
+					visual/verif_texture2.c			\
+					visual/verif_texture_shoot.c	\
+
+SRCS_B			=	visual/animation.c				\
 					shoot/animation_shot.c			\
 					global/create_and_destroy.c		\
 					visual/create_visu.c			\
@@ -22,7 +55,7 @@ SRCS			=	visual/animation.c				\
 					global/map_error.c				\
 					ennemy/move_ennemy.c			\
 					ennemy/move_ennemy_utils.c		\
-					player/player_action.c			\
+					player/player_action_bonus.c	\
 					player/player_action_utils.c	\
 					player/player_damage.c			\
 					visual/put_image.c				\
@@ -49,6 +82,8 @@ SRCS_D			=	srcs/
 
 OBJS			=	$(SRCS:%.c=$(OBJS_D)%.o)
 
+OBJS_B			=	$(SRCS_B:%c=$(OBJS_D)%.o)
+
 OBJS_MAP		=	$(SRCS_MAP:%.c=$(OBJS_D)%.o)
 
 OBJS_D			=	obj/
@@ -68,19 +103,10 @@ LIBFT_D			=	Libft_w_a/
 LIBFT_A			=	Libft_w_a/libft.a
 
 LIBFT_H			=	Libft_w_a/libft.h
-UNAME_S := $(shell uname -s)
 
-ifeq ($(UNAME_S),Linux)
-	MLX_D	=	mlx_linux/
+MLX_D	=	mlx_linux/
 
-	MLX_A	=	mlx_linux/libmlx.a
-endif
-
-ifeq ($(UNAME_S),Darwin)
-	MLX_D	=	minilibx/
-
-	MLX_A	=	minilibx/libmlx.a
-endif
+MLX_A	=	mlx_linux/libmlx.a
 
 #==============================================================================
 
@@ -95,45 +121,29 @@ FSA				=	-fsanitize=address -g3
 
 RM				=	rm -f -r
 
-ifeq ($(UNAME_S),Linux)
-	MLXFLAG = -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz
+MLXFLAG = -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz
 
-	MLXFLAGO = -I/usr/include -Imlx_linux -O3 -g3
-endif
-
-ifeq ($(UNAME_S),Darwin)
-	MLXFLAG = -framework OpenGL -framework AppKit
-endif
-
-MAKE			=	make
-
-MAKEALL			=	make all
-
-MAKEFC			=	make fclean
+MLXFLAGO = -I/usr/include -Imlx_linux -O3 -g3
 #==============================================================================
 
 #============================= MK COMMAND =====================================
-ifeq ($(UNAME_S), Linux)
 $(NAME)			:	$(OBJS_D) $(OBJS) $(HEAD_D)$(HEAD)
 				$(CC) $(CCFLAG) -o $(NAME) $(OBJS) $(LIBFT_A) $(MLX_A) $(MLXFLAG)
 
 $(OBJS)			:	$(OBJS_D)%.o: $(SRCS_D)%.c $(HEAD_D)$(HEAD) $(MLX_A) $(LIBFT_A)
 				$(CC) $(CCFLAG) -I$(HEAD_D) -I$(LIBFT_D) -I$(MLX_D) $(MLXFLAGO) -c $< -o $@
-endif
-
-ifeq ($(UNAME_S), Darwin)
-$(NAME)			:	$(OBJS_D) $(OBJS) $(HEAD_D)$(HEAD)
-				$(CC) $(CCFLAG) -o $(NAME) $(OBJS) $(LIBFT_A) $(MLX_A) $(MLXFLAG)
-
-$(OBJS)			:	$(OBJS_D)%.o: $(SRCS_D)%.c $(HEAD_D)$(HEAD) $(MLX_A) $(LIBFT_A)
-				$(CC) $(CCFLAG) -I$(HEAD_D)$(HEAD) -I$(LIBFT_D) -I$(MLX_D) -c $< -o $@
-endif
 
 map				:	$(OBJS_D) $(OBJS) $(OBJS_MAP) $(HEAD_D)$(HEAD_MAP)
 				$(CC) $(CCFLAG) -o $(NAME_MAP) $(OBJS_MAP) $(LIBFT_A)
 
 $(OBJS_MAP)		:	$(OBJS_D)%.o: $(SRCS_D)%.c $(HEAD_D)$(HEAD_MAP) $(LIBFT_A)
 				$(CC) $(CCFLAG) -I$(HEAD_D) -I$(LIBFT_D) -c $< -o $@
+
+bonus			:	$(OBJS_D) $(OBJS_B) $(HEAD_D)$(HEAD)
+				$(CC) $(CCFLAG) -o $(NAME) $(OBJS) $(LIBFT_A) $(MLX_A) $(MLXFLAG)
+
+$(OBJS_B)		:	$(OBJS_D)%.o: $(SRCS_D)%.c $(HEAD_D)$(HEAD) $(MLX_A) $(LIBFT_A)
+				$(CC) $(CCFLAG) -I$(HEAD_D) -I$(LIBFT_D) -I$(MLX_D) $(MLXFLAGO) -c $< -o $@
 
 $(OBJS_D)		:
 				mkdir -p $(OBJS_D)
@@ -149,6 +159,9 @@ $(OBJS_D)		:
 $(MLX_A)		:	FORCE $(MLX_D)
 				make -j -C $(MLX_D) 2>/dev/null >/dev/null
 
+$(LIBFT_A)		:	FORCE
+				make -C $(LIBFT_D)
+				
 FORCE			:
 
 fsanitize		:	$(MLX_A) $(LIBFT_A) $(OBJS_D) $(HEAD_D)$(HEAD) $(OBJS)
@@ -156,8 +169,6 @@ fsanitize		:	$(MLX_A) $(LIBFT_A) $(OBJS_D) $(HEAD_D)$(HEAD) $(OBJS)
 
 all				: $(HEAD) $(NAME)
 
-$(LIBFT_A)		:	FORCE
-				make -C $(LIBFT_D)
 
 clean			:
 				$(RM) $(OBJS) $(OBJS_D)
@@ -173,5 +184,5 @@ re				:	fclean $(NAME)
 
 refs			:	fclean fsanitize
 
-.PHONY			:	all clean fclean re
+.PHONY			:	all clean fclean re bonus refs cleanlibext fsanitize map FORCE
 #==============================================================================
